@@ -124,9 +124,13 @@
   <ItemGroup>
     <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\Widget.cpp" />
+    <ClCompile Include="src\Xbox360Controller.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Game.h" />
+    <ClInclude Include="include\Widget.h" />
+    <ClInclude Include="include\Xbox360Controller.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
