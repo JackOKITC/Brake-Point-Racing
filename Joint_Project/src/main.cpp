@@ -1,12 +1,13 @@
 /// <summary>
-/// @mainpage Connect Lads -> A game that features a UI elements and has connect 4 like gameplay that revolves around the usage of buttons.
-/// @Authors D.J. O'Leary and Peter Daly
+/// @mainpage Joint Project -> A game that features 
+/// @Authors D.J. O'Leary, Peter Daly, Jack O'Kelly and John O'Grady
 /// @Version 1.0
-/// @brief Connect 4 like game.
+/// @brief
 ///
 /// 
-/// Date/ Start time -> End time / length of time.
-/// 23/01/17 / 17:45 -> 19:00 / 1hr 15mins.
+/// Date / Start time -> End time / length of time.
+/// 06-03-17 / 09:00 -> 11:00 / 2hr.
+/// 06-03-17 / 13:00 -> 
 /// 
 /// Total Time Taken: ???
 /// </summary> 

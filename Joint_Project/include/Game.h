@@ -4,6 +4,10 @@
 #include "SFML\Graphics.hpp"
 #include "Xbox360Controller.h"
 #include "Widget.h"
+#include "Menu.h"
+#include "Options.h"
+#include "Play.h"
+#include "Splash.h"
 #include <iostream>
 
 enum GameState

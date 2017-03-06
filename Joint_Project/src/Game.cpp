@@ -2,7 +2,8 @@
 
 Game::Game(sf::Font &font) :
 	m_window(sf::VideoMode(900,600,32), "Team J", sf::Style::Default),
-	m_font(font)
+	m_font(font),
+	m_currentGameState(GameState::Splash)
 {
 }
 
