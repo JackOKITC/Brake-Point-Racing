@@ -1,6 +1,5 @@
-
-#ifndef XBOX360_CONTROLLER_H 
-#define XBOX360_CONTROLLER_H
+#ifndef XBOX360CONTROLLER_H 
+#define XBOX360CONTROLLER_H
 
 #include <SFML\Graphics.hpp>
 #include <vector>
@@ -59,4 +58,4 @@ private:
 	int m_buttons = 0;
 };
 
-#endif // !XBOX360_CONTROLLER_H 
+#endif // !XBOX360CONTROLLER_H 
