@@ -1,5 +1,5 @@
 # jp-team-j-1 Joint Project
-TODO: Write a project description
+A top-down 2D racing game which pits players against the AI, made in C++.
 ## Installation
 TODO: Describe the installation process
 ## Usage
