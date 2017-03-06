@@ -12,11 +12,11 @@
 
 enum GameState
 {
-	Splash,
-	Menu,
-	Play,
-	Options,
-	Credits
+	SPLASH,
+	MENU,
+	PLAY,
+	OPTIONS,
+	CREDITS
 };
 
 class Game
@@ -27,18 +27,23 @@ public:
 
 	void run();
 
+	void checkGameStateChange();
+
 private:
 
 	void update(sf::Time deltaTime);
 	void render(sf::RenderWindow & window);
-
-	void setGameState(GameState gameState);
+	
+	GameState m_screen = GameState::SPLASH;
 
 	sf::RenderWindow m_window;
 	sf::Font m_font;
 
 	GameState m_currentGameState;
 
-	Xbox360Controller m_controller;
+	Xbox360Controller *m_controller;
+
+	Splash *m_splashScreen;
+	Menu *m_menuScreen;
 };
 #endif // !GAME_H

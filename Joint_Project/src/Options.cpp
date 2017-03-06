@@ -12,7 +12,7 @@ void Options::update()
 {
 }
 
-void Options::render()
+void Options::render(sf::RenderWindow & window)
 {
 }
 

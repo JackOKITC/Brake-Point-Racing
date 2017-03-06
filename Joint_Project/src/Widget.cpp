@@ -40,7 +40,7 @@ Button::Button()
 Button::Button(sf::Texture& texture, std::string *text, sf::Vector2f *position, sf::Font *font) :
 	m_texture(texture),	// Sets m_texture to the address of the texture argument.
 	m_position(*position),	// Sets m_position to the de-referenced value of the position argument.
-	m_text(*text, *font, 28)	// Sets m_text to the de-referenced value of the text argument as well as the de-referenced value of the font argument and then sets the size of the text to 28.
+	m_text(*text, *font, 20)	// Sets m_text to the de-referenced value of the text argument as well as the de-referenced value of the font argument and then sets the size of the text to 28.
 {
 	m_sprite.setTexture(texture);	// Sets the texture of the sprite to be that of the texture stored at the address.
 
@@ -51,7 +51,7 @@ Button::Button(sf::Texture& texture, std::string *text, sf::Vector2f *position, 
 	m_textRectangle = m_text.getLocalBounds();	// Gets the dimensions of the rectangle that contains the text.
 	m_text.setOrigin(m_textRectangle.left + m_textRectangle.width / 2.0f, m_textRectangle.top + m_textRectangle.height / 2.0f);	// Centres the origin of the text.
 	m_text.setPosition(m_position);	// Sets the position of the text with its centre now being its origin.
-	m_text.setColor(sf::Color(0, 0, 0));	// Sets the colour of the text to black.
+	m_text.setColor(sf::Color(255, 255, 255));	// Sets the colour of the text to black.
 }
 
 Button::~Button()
