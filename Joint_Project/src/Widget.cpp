@@ -37,20 +37,19 @@ Button::Button()
 
 }
 
-Button::Button(sf::Texture& texture, std::string *text, sf::Vector2f *position, sf::Font *font) :
-	m_texture(texture),	// Sets m_texture to the address of the texture argument.
+Button::Button(std::string *text, sf::Vector2f *position, sf::Font *font) :
+	
 	m_position(*position),	// Sets m_position to the de-referenced value of the position argument.
 	m_text(*text, *font, 20)	// Sets m_text to the de-referenced value of the text argument as well as the de-referenced value of the font argument and then sets the size of the text to 28.
 {
-	m_sprite.setTexture(texture);	// Sets the texture of the sprite to be that of the texture stored at the address.
-
-	m_spriteRectangle = m_sprite.getLocalBounds();	// Gets the dimensions of the rectangle that contains the sprite.
-	m_sprite.setOrigin(m_spriteRectangle.left + m_spriteRectangle.width / 2.0f, m_spriteRectangle.top + m_spriteRectangle.height / 2.0f);	// Centres the origin of the text.
-	m_sprite.setPosition(m_position);	// Sets the position of the sprite with its centre now being its origin.
-
+	m_buttonRectangle.setOutlineColor(sf::Color::Black);
+	m_buttonRectangle.setOutlineThickness(2.0f);
+	m_buttonRectangle.setPosition(m_position);
+	m_buttonRectangle.setFillColor(sf::Color(75, 125, 175));
+	m_buttonRectangle.setSize(sf::Vector2f(150, 50));
 	m_textRectangle = m_text.getLocalBounds();	// Gets the dimensions of the rectangle that contains the text.
 	m_text.setOrigin(m_textRectangle.left + m_textRectangle.width / 2.0f, m_textRectangle.top + m_textRectangle.height / 2.0f);	// Centres the origin of the text.
-	m_text.setPosition(m_position);	// Sets the position of the text with its centre now being its origin.
+	m_text.setPosition(m_position.x + m_buttonRectangle.getLocalBounds().width / 2, m_position.y + m_buttonRectangle.getLocalBounds().height / 2);	// Sets the position of the text with its centre now being its origin.
 	m_text.setColor(sf::Color(255, 255, 255));	// Sets the colour of the text to black.
 }
 
@@ -76,25 +75,23 @@ void Button::loseFocus()
 
 void Button::scaleButtons(float xScale, float yScale)
 {
-	m_sprite.setScale(xScale, yScale);	// Scales the button by the arguments given.
+	
 }
 
 void Button::moveRight()
 {
-	m_sprite.setPosition(m_sprite.getPosition().x + 1, m_sprite.getPosition().y);	// Moves the sprite by positive one along the x-axis each time this is called, the y-axis remains the same. 
-	m_text.setPosition(m_text.getPosition().x + 1, m_text.getPosition().y);	// Moves the text by positive one along the x-axis each time this is called, the y-axis remains the same.
+	
 }
 
 void Button::moveLeft()
 {
-	m_sprite.setPosition(m_sprite.getPosition().x - 1, m_sprite.getPosition().y);	// Moves the sprite by negative one along the x-axis each time this is called, the y-axis remains the same.
-	m_text.setPosition(m_text.getPosition().x - 1, m_text.getPosition().y);	// Moves the text by negative one along the x-axis each time this is called, the y-axis remains the same.
+
 }
 
 
 void Button::render(sf::RenderWindow & window)
 {
-	window.draw(m_sprite);	// Draws the sprite to the screen.
+	window.draw(m_buttonRectangle);	// Draws the button rectangle to the screen.
 	window.draw(m_text);	// Draws the text on top of the sprite.
 }
 

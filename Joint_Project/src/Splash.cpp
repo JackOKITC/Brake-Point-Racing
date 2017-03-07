@@ -14,9 +14,9 @@ Splash::~Splash()
 {
 }
 
-void Splash::update(Xbox360Controller * yeah)
+void Splash::update(Xbox360Controller * controller)
 {
-	m_controller = yeah;
+	m_controller = controller;
 	if (m_controller->m_currentState.Start)
 	{
 		m_changeState = true;

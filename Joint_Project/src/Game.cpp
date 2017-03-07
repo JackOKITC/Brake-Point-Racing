@@ -5,7 +5,6 @@ Game::Game(sf::Font &font) :
 	m_font(font),
 	m_currentGameState(GameState::SPLASH)
 {
-	m_controller = new Xbox360Controller();
 	m_splashScreen = new Splash();
 	m_menuScreen = new Menu(font);
 }
@@ -38,15 +37,15 @@ void Game::run()
 
 void Game::update(sf::Time deltaTime)
 {
-	m_controller->update();
+	m_controller.update();
 	checkGameStateChange();
 	switch (m_currentGameState)
 	{
 	case SPLASH:
-		m_splashScreen->update(m_controller);
+		m_splashScreen->update(&m_controller);
 		break;
 	case MENU:
-		m_menuScreen->update();
+		m_menuScreen->update(m_controller.m_currentState, m_controller);
 		break;
 	case PLAY:
 

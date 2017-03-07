@@ -60,7 +60,7 @@ public:
 	/// <param name="text"></param>
 	/// <param name="position"></param>
 	/// <param name="font"></param>
-	Button(sf::Texture& texture, std::string *text, sf::Vector2f *position, sf::Font *font);
+	Button(std::string *text, sf::Vector2f *position, sf::Font *font);
 	~Button();	// Deconstructor for the Button object.
 
 	virtual void update() override;	// "update" method for the Button object, Overrides the "update" method in the widget.
@@ -89,18 +89,17 @@ public:
 	void moveLeft();	// Method to move the button left, This method is called in transitions.
 
 	sf::Vector2f m_position;	// Stores the postion of the Button.
-	sf::Sprite m_sprite;	// Is used to store and draw the Button texture.
+	
 	
 
 private:
 	
-	sf::Texture m_texture;	// Stores the texture of the Button.
 	
 	sf::Text m_text;	// Stores the text that will be written on the Button.
 	sf::Font m_font;	// Stores the font that will be used to draw the Text.
 	bool m_hasFocus;	// Determines whether or not the Button hasFocus;
 	sf::FloatRect m_textRectangle;	// Rectangle used to set the origin of the text to its centre, this is done to allow for the text to be centred easier.
-	sf::FloatRect m_spriteRectangle;	// Rectangle used to set the origin of the sprite to its centre, this is done to allow the sprite to be centred easier.
+	sf::RectangleShape m_buttonRectangle; // Rectangle for the button
 };
 #endif // !BUTTON_H
 

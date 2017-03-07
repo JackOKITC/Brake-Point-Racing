@@ -11,7 +11,7 @@ public:
 	Splash();
 	~Splash();
 
-	void update(Xbox360Controller * yeah);
+	void update(Xbox360Controller * controller);
 	void render(sf::RenderWindow & window);
 
 	bool changeGameState();
@@ -22,6 +22,6 @@ private:
 	sf::Texture m_backgroundTex;
 	sf::Sprite m_backgroundSprite;
 
-	Xbox360Controller *m_controller;
+	Xbox360Controller * m_controller;
 };
 #endif // !SPLASH_H

@@ -41,7 +41,7 @@ private:
 
 	GameState m_currentGameState;
 
-	Xbox360Controller *m_controller;
+	Xbox360Controller m_controller;
 
 	Splash *m_splashScreen;
 	Menu *m_menuScreen;
