@@ -42,15 +42,17 @@ Button::Button(std::string *text, sf::Vector2f *position, sf::Font *font) :
 	m_position(*position),	// Sets m_position to the de-referenced value of the position argument.
 	m_text(*text, *font, 20)	// Sets m_text to the de-referenced value of the text argument as well as the de-referenced value of the font argument and then sets the size of the text to 28.
 {
-	m_buttonRectangle.setOutlineColor(sf::Color::Black);
-	m_buttonRectangle.setOutlineThickness(2.0f);
+	m_buttonRectangle.setOutlineColor(m_seaBlue);
+	m_buttonRectangle.setOutlineThickness(5.0f);
 	m_buttonRectangle.setPosition(m_position);
-	m_buttonRectangle.setFillColor(sf::Color(75, 125, 175));
+	m_buttonRectangle.setFillColor(m_deepGrey);
 	m_buttonRectangle.setSize(sf::Vector2f(150, 50));
+	m_buttonRectangle.setOrigin(sf::Vector2f(75, 25));
+
 	m_textRectangle = m_text.getLocalBounds();	// Gets the dimensions of the rectangle that contains the text.
-	m_text.setOrigin(m_textRectangle.left + m_textRectangle.width / 2.0f, m_textRectangle.top + m_textRectangle.height / 2.0f);	// Centres the origin of the text.
-	m_text.setPosition(m_position.x + m_buttonRectangle.getLocalBounds().width / 2, m_position.y + m_buttonRectangle.getLocalBounds().height / 2);	// Sets the position of the text with its centre now being its origin.
-	m_text.setColor(sf::Color(255, 255, 255));	// Sets the colour of the text to black.
+	m_text.setOrigin(m_textRectangle.width / 2.0f, m_textRectangle.height / 2.0f);	// Centres the origin of the text.
+	m_text.setPosition(m_position.x, m_position.y - 5);	// Sets the position of the text with its centre now being its origin.
+	m_text.setColor(m_gold);	// Sets the colour of the text to black.
 }
 
 Button::~Button()
@@ -63,13 +65,17 @@ void Button::update()
 
 void Button::getFocus()
 {
-	m_text.setColor(sf::Color(236, 0, 24));	// Sets the colour of the text to red.
+	m_buttonRectangle.setFillColor(m_deepGrey);
+	m_buttonRectangle.setOutlineColor(m_seaBlue);
+	m_text.setColor(m_gold);	// Sets the colour of the text to red.
 	m_hasFocus = true;	// Sets the variable m_hasFocus to true.
 }
 
 void Button::loseFocus()
 {
-	m_text.setColor(sf::Color(0,0,0));	// Sets the colour of the text to black.
+	m_buttonRectangle.setFillColor(m_grey);
+	m_buttonRectangle.setOutlineColor(m_white);
+	m_text.setColor(m_paleBanana);	// Sets the colour of the text to black.
 	m_hasFocus = false;	// Sets the variable m_hasFocus to false.
 }
 

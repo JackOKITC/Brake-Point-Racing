@@ -36,7 +36,7 @@ private:
 
 	sf::Font m_font;
 	button m_buttonSelected = button::Play; // The button enum which starts on the play button
-	std::string m_strings[3] = { "Memes", "Dreams", "Mimes" };
+	std::string m_strings[3] = { "Memes", "Dremes", "Ketamemes" };
 
 	Button *m_buttons[3];
 };

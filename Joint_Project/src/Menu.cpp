@@ -6,7 +6,7 @@ Menu::Menu(sf::Font & font) :
 
 	for (int i = 0; i < 3; i++)
 	{
-		m_buttons[i] = new Button(&m_strings[i], &sf::Vector2f(400, 200 + (i * 100)), &m_font);
+		m_buttons[i] = new Button(&m_strings[i], &sf::Vector2f(450, 200 + (i * 100)), &m_font);
 	}
 
 }
@@ -23,7 +23,7 @@ void Menu::update(GamePadState m_state, Xbox360Controller & m_controller)
 
 void Menu::render(sf::RenderWindow & window)
 {
-	window.clear(sf::Color::White);
+	window.clear(sf::Color::Black);
 	for (int i = 0; i < 3; i++)
 	{
 		m_buttons[i]->render(window);

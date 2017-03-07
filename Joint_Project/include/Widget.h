@@ -37,6 +37,25 @@ public:
 	/// This Method doesn't have to be overwritten but it can be.
 	/// </summary>
 	virtual void loseFocus();
+protected:
+	// Base contrasts (whites/greys/blacks)
+	sf::Color m_grey = sf::Color(160,160,160);
+	sf::Color m_deepGrey = sf::Color(85, 90, 90);
+	sf::Color m_lightGrey = sf::Color(200, 200, 200);
+
+	sf::Color m_white = sf::Color(255, 255, 255);
+	sf::Color m_black = sf::Color(0, 0, 0);
+
+	// "Blue" palette
+	sf::Color m_lilac = sf::Color(140, 80, 160);
+	sf::Color m_blue = sf::Color(65, 70, 200);
+	sf::Color m_purple = sf::Color(145, 0, 165);
+	sf::Color m_seaBlue = sf::Color(85, 165, 185);
+
+	// "Yellow" palette
+	sf::Color m_gold = sf::Color(255, 205, 0);
+	sf::Color m_paleBanana = sf::Color(245, 245, 130);
+
 
 private:
 	bool hasFocus;	// Bool used to determine whether or not the widget has focus.
