@@ -3,7 +3,7 @@
 Menu::Menu(sf::Font & font, GameState *gameState) :
 	m_font(font)
 {
-	m_gameState = gameState;
+	m_state = gameState;
 	for (int i = 0; i < BUTTON_COUNT; i++)
 	{
 		m_buttons[i] = new Button(&m_strings[i], &sf::Vector2f(450, 200 + (i * 100)), &m_font);
@@ -123,30 +123,30 @@ void Menu::checkButtonSelected(GamePadState m_state, Xbox360Controller m_control
 }
 
 // Function to check if the selected button has been pressed
-void Menu::selectedButton(GamePadState m_state, Xbox360Controller m_controller)
+void Menu::selectedButton(GamePadState m_gamePadState, Xbox360Controller m_controller)
 {
 	switch (m_buttonSelected) // Switch statement for the buttons
 	{
 	case button::Play:	// The play button 
-		if (m_state.A && !m_controller.m_previousState.A)	// If the A button has been pressed
+		if (m_gamePadState.A && !m_controller.m_previousState.A)	// If the A button has been pressed
 		{
 			
 		}
 		break;
 	case button::Garage:
-		if (m_state.A && !m_controller.m_previousState.A)
+		if (m_gamePadState.A && !m_controller.m_previousState.A)
 		{
-			*m_gameState = GameState::UPGRADE_STATE;
+			*m_state = GameState::UPGRADE_STATE;
 		}
 		  break;
 	case button::Options:	// The options button 
-		if (m_state.A && !m_controller.m_previousState.A)	// If the A button has been pressed
+		if (m_gamePadState.A && !m_controller.m_previousState.A)	// If the A button has been pressed
 		{
 			
 		}
 		break;
 	case button::Exit:	// The exit button 
-		if (m_state.A && !m_controller.m_previousState.A)	// If the A button has been pressed
+		if (m_gamePadState.A && !m_controller.m_previousState.A)	// If the A button has been pressed
 		{
 			exit(0);	// Exits the game
 		}

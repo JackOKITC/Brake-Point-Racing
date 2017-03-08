@@ -3,7 +3,7 @@
 Garage::Garage(sf::Font font, GameState * gameState) :
 	m_font(font)
 {
-	m_gameState = gameState;
+	m_state = gameState;
 	if (!m_backgroundTex.loadFromFile(".//resources//images//car_parts//all.png"))
 	{
 		std::cout << "Problem loading Texture for splash screen";
@@ -203,38 +203,38 @@ void Garage::checkButtonSelected(GamePadState m_state, Xbox360Controller m_contr
 }
 
 // Function to check if the selected button has been pressed
-void Garage::selectedButton(GamePadState m_state, Xbox360Controller m_controller)
+void Garage::selectedButton(GamePadState m_gamePadState, Xbox360Controller m_controller)
 {
 	switch (m_buttonSelected) // Switch statement for the buttons
 	{
 	case upgradebutton::Engine:	// The engine button 
-		if (m_state.A && !m_controller.m_previousState.A)	// If the A button has been pressed
+		if (m_gamePadState.A && !m_controller.m_previousState.A)	// If the A button has been pressed
 		{
 
 		}
 		break;
 	case upgradebutton::Turbo:	// The turbo button
-		if (m_state.A && !m_controller.m_previousState.A)
+		if (m_gamePadState.A && !m_controller.m_previousState.A)
 		{
 			
 		}
 		break;
 	case upgradebutton::Handling:	// The handling button 
-		if (m_state.A && !m_controller.m_previousState.A)	// If the A button has been pressed
+		if (m_gamePadState.A && !m_controller.m_previousState.A)	// If the A button has been pressed
 		{
 
 		}
 		break;
 	case upgradebutton::Tires:	// The tires button 
-		if (m_state.A && !m_controller.m_previousState.A)	// If the A button has been pressed
+		if (m_gamePadState.A && !m_controller.m_previousState.A)	// If the A button has been pressed
 		{
 			
 		}
 		break;
 	case upgradebutton::Back:	// The back button
-		if (m_state.A && !m_controller.m_previousState.A)	// If the A button has been pressed
+		if (m_gamePadState.A && !m_controller.m_previousState.A)	// If the A button has been pressed
 		{
-			*m_gameState = GameState::MENU_STATE;
+			*m_state = GameState::MENU_STATE;
 		}
 	default:
 		break;

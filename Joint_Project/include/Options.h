@@ -7,15 +7,13 @@
 class Options
 {
 public:
-	Options();
+	Options(GameState *gameState);
 	~Options();
 
 	void update();
 	void render(sf::RenderWindow & window);
 
-	GameState changeGameState();
-
 private:
-	GameState m_changeState;
+	GameState *m_state;
 };
 #endif // !OPTIONS_H

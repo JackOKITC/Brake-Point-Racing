@@ -29,7 +29,7 @@ public:
 
 
 private:
-	GameState *m_gameState;
+	GameState *m_state;
 	const int BUTTON_COUNT = 4;
 
 	sf::Texture m_backgroundTex;

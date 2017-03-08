@@ -17,11 +17,8 @@ public:
 	void update(Xbox360Controller * controller, sf::Time dt);
 	void render(sf::RenderWindow & window);
 
-	bool changeGameState();
-
 private:
-	GameState *state;
-	bool m_changeState;
+	GameState *m_state;
 	bool m_transitionToNext = false;
 	sf::Time currentTime;
 

@@ -31,7 +31,7 @@ public:
 
 private:
 
-	GameState *m_gameState;
+	GameState *m_state;
 	bool m_transitionToNext = false;
 	sf::Time currentTime;
 

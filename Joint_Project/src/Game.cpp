@@ -1,7 +1,7 @@
 #include "Game.h"
 
 Game::Game(sf::Font &font) :
-	m_window(sf::VideoMode(900,600,32), "Team J", sf::Style::Default),
+	m_window(sf::VideoMode(900,600,32), "Brake Point Racing", sf::Style::Default),
 	m_font(font)
 {
 	// pointer to GameState object, will be passed to each menu state so
@@ -95,22 +95,4 @@ void Game::render(sf::RenderWindow &window)
 		break;
 	}
 	window.display();
-}
-
-void Game::checkGameStateChange()
-{
-	//if (m_splashScreen->changeGameState())
-	//{
-	//	m_currentGameState = GameState::MENU_STATE;
-	//}
-
-	//if (m_menuScreen->changeGameState() == GameState::UPGRADE_STATE)
-	//{
-	//	m_currentGameState = GameState::UPGRADE_STATE;
-	//}
-
-	//if (m_upgradeScreen->changeGameState() == GameState::MENU_STATE)
-	//{
-	//	m_currentGameState = GameState::MENU_STATE;
-	//}
 }
