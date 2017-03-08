@@ -10,7 +10,8 @@
 enum class button	// Enum for the buttons
 {
 	Play,
-	Options,
+	Garage,
+	Settings,
 	Exit
 };
 
@@ -37,8 +38,8 @@ private:
 
 	sf::Font m_font;
 	button m_buttonSelected = button::Play; // The button enum which starts on the play button
-	std::string m_strings[3] = { "Memes", "Dremes", "Ketamemes" };
+	std::string m_strings[4] = { "Race", "Garage", "Settings", "Exit" };
 
-	Button *m_buttons[3];
+	Button *m_buttons[4];
 };
 #endif // !MENU_H

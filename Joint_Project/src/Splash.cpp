@@ -2,11 +2,12 @@
 
 Splash::Splash()
 {
-	if (!m_backgroundTex.loadFromFile(".//resources//images//trees//2.png"))
+	if (!m_backgroundTex.loadFromFile(".//resources//images//UI//bg.jpg"))
 	{
 		std::cout << "Problem loading Texture for splash screen";
 	}
 	m_backgroundSprite.setTexture(m_backgroundTex);
+	m_backgroundSprite.setScale(0.4f, 0.4f);
 	m_backgroundSprite.setOrigin(m_backgroundTex.getSize().x / 2, m_backgroundTex.getSize().y / 2);
 	m_backgroundSprite.setPosition(450, 300);
 	m_changeState = false;
@@ -56,5 +57,9 @@ bool Splash::changeGameState()
 	if (m_changeState)
 	{
 		return true;
+	}
+	else
+	{
+		return false;
 	}
 }
