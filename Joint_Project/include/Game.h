@@ -14,7 +14,7 @@
 class Game
 {
 public:
-	Game(sf::Font & font);
+	Game(sf::Font & font, sf::Font & titleFont);
 	~Game();
 
 	void run();
@@ -30,6 +30,7 @@ private:
 
 	sf::RenderWindow m_window;
 	sf::Font m_font;
+	sf::Font m_titleFont;
 
 	GameState m_currentGameState;
 

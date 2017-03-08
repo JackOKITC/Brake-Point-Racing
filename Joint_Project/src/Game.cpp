@@ -1,11 +1,12 @@
 #include "Game.h"
 
-Game::Game(sf::Font &font) :
+Game::Game(sf::Font &font, sf::Font &titleFont) :
 	m_window(sf::VideoMode(900,600,32), "Team J", sf::Style::Default),
 	m_font(font),
+	m_titleFont(titleFont),
 	m_currentGameState(GameState::SPLASH_STATE)
 {
-	m_splashScreen = new Splash();
+	m_splashScreen = new Splash(titleFont);
 	m_menuScreen = new Menu(font);
 }
 

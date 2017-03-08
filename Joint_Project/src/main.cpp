@@ -33,13 +33,18 @@
 int main()
 {
 	sf::Font font;
+	sf::Font titleFont;
 
 	if (!font.loadFromFile(".\\resources\\fonts\\arial.ttf"))	//Checks to make sure font is correct
 	{
 		std::cout << "Problem loading font file!" << std::endl;
 	}
+	if (!titleFont.loadFromFile(".\\resources\\fonts\\Orena.ttf"))	//Checks to make sure font is correct
+	{
+		std::cout << "Problem loading font file!" << std::endl;
+	}
 
-	Game game(font);
+	Game game(font, titleFont);
 	game.run();
 
 	return 0;

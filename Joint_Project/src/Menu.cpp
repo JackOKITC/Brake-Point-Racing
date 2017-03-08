@@ -58,10 +58,12 @@ void Menu::render(sf::RenderWindow & window)
 {
 	window.clear(sf::Color(235, 233, 247));
 	window.draw(m_backgroundSprite);
-
-	for (int i = 0; i < 4; i++)
+	if (m_transitionStop)
 	{
-		m_buttons[i]->render(window);
+		for (int i = 0; i < 4; i++)
+		{
+			m_buttons[i]->render(window);
+		}
 	}
 }
 
