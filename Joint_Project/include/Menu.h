@@ -17,11 +17,13 @@ enum class button	// Enum for the buttons
 
 class Menu
 {
+	const sf::Time TIME_PER_UPDATE;
+
 public:
 	Menu(sf::Font & font);
 	~Menu();
 
-	void update(GamePadState m_state, Xbox360Controller & m_controller);
+	void update(GamePadState m_state, Xbox360Controller & m_controller, sf::Time deltaTime);
 	void render(sf::RenderWindow & window);
 
 	GameState changeGameState();
@@ -32,6 +34,12 @@ public:
 
 private:
 	GameState m_changeState;
+
+	bool m_timeStop;
+	bool m_transitionStop;
+
+
+	sf::Time m_time;
 
 	sf::Texture m_backgroundTex;
 	sf::Sprite m_backgroundSprite;

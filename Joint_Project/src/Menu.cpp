@@ -2,7 +2,19 @@
 
 Menu::Menu(sf::Font & font) :
 	m_font(font)
+	, TIME_PER_UPDATE(sf::microseconds(1500))
 {
+	if (!m_backgroundTex.loadFromFile(".//resources//images//UI//bg.jpg"))
+	{
+		std::cout << "Problem loading Texture for splash screen";
+	}
+	m_backgroundSprite.setTexture(m_backgroundTex);
+	m_backgroundSprite.setScale(0.01f, 0.01f);
+	m_backgroundSprite.setOrigin(m_backgroundTex.getSize().x / 2, m_backgroundTex.getSize().y / 2);
+	m_backgroundSprite.setPosition(450, 300);
+
+	m_timeStop = false;
+	m_transitionStop = false;
 
 	for (int i = 0; i < 4; i++)
 	{
@@ -15,15 +27,38 @@ Menu::~Menu()
 {
 }
 
-void Menu::update(GamePadState m_state, Xbox360Controller & m_controller)
+void Menu::update(GamePadState m_state, Xbox360Controller & m_controller, sf::Time deltaTime)
 {
-	checkButtonSelected(m_state, m_controller);
-	selectedButton(m_state,m_controller);
+	if (m_transitionStop)
+	{
+		checkButtonSelected(m_state, m_controller);
+		selectedButton(m_state, m_controller);
+	}
+
+	if (!m_timeStop)
+	{
+		deltaTime.Zero;
+		m_timeStop = true;
+	}
+
+	if (m_time.asSeconds() <= 3.6)
+	{
+		m_backgroundSprite.setRotation(m_backgroundSprite.getRotation() - 2);
+		m_backgroundSprite.scale(1.00185, 1.00185);
+		m_time += TIME_PER_UPDATE;
+	}
+	else
+	{
+		m_transitionStop = true;
+	}
+	
 }
 
 void Menu::render(sf::RenderWindow & window)
 {
-	window.clear(sf::Color::Black);
+	window.clear(sf::Color(235, 233, 247));
+	window.draw(m_backgroundSprite);
+
 	for (int i = 0; i < 4; i++)
 	{
 		m_buttons[i]->render(window);

@@ -45,7 +45,7 @@ void Game::update(sf::Time deltaTime)
 		m_splashScreen->update(&m_controller, deltaTime);
 		break;
 	case GameState::MENU_STATE:
-		m_menuScreen->update(m_controller.m_currentState, m_controller);
+		m_menuScreen->update(m_controller.m_currentState, m_controller, deltaTime);
 		break;
 	case GameState::PLAY_STATE:
 
@@ -63,7 +63,7 @@ void Game::update(sf::Time deltaTime)
 
 void Game::render(sf::RenderWindow &window)
 {
-	window.clear(sf::Color(245, 245, 130));
+	window.clear(sf::Color(235, 233, 247));
 	switch (m_currentGameState)
 	{
 	case GameState::SPLASH_STATE:
