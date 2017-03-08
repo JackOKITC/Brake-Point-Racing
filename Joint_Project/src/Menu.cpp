@@ -4,10 +4,7 @@ Menu::Menu(sf::Font & font) :
 	m_font(font)
 {
 
-	for (int i = 0; i < 3; i++)
-	{
-		m_buttons[i] = new Button(&m_strings[i], &sf::Vector2f(450, 200 + (i * 100)), &m_font);
-	}
+	
 
 }
 
@@ -34,11 +31,11 @@ GameState Menu::changeGameState()
 {
 	if (m_changeState == GameState::PLAY_STATE)
 	{
-		
+		return m_changeState;
 	}
 	else if (m_changeState == GameState::OPTIONS_STATE)
 	{
-		
+		return m_changeState;
 	}
 }
 

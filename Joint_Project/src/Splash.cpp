@@ -57,4 +57,6 @@ bool Splash::changeGameState()
 	{
 		return true;
 	}
+	else
+		return false;
 }

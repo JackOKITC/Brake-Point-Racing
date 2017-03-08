@@ -3,10 +3,11 @@
 Game::Game(sf::Font &font) :
 	m_window(sf::VideoMode(900,600,32), "Team J", sf::Style::Default),
 	m_font(font),
-	m_currentGameState(GameState::SPLASH_STATE)
+	m_currentGameState(GameState::OPTIONS_STATE)
 {
 	m_splashScreen = new Splash();
 	m_menuScreen = new Menu(font);
+	m_optionsScreen = new Options(font);
 }
 
 Game::~Game()
@@ -51,7 +52,7 @@ void Game::update(sf::Time deltaTime)
 
 		break;
 	case GameState::OPTIONS_STATE:
-
+		m_optionsScreen->update(m_controller.m_currentState, m_controller);
 		break;
 	case GameState::CREDITS_STATE:
 
@@ -76,7 +77,7 @@ void Game::render(sf::RenderWindow &window)
 
 		break;
 	case GameState::OPTIONS_STATE:
-
+		m_optionsScreen->render(window);
 		break;
 	case GameState::CREDITS_STATE:
 

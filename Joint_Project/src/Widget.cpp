@@ -173,15 +173,17 @@ Slider::Slider(sf::Vector2f * position, int numOfSegments) :
 
 	m_sliderBackground.setPosition(m_position);	// Sets the position of the slider background using the top left corner as the origin.
 	m_slider.setPosition(m_position);	// Sets the position of the slider using the top left corner as the origin.
-	m_circle.setPosition(m_position);	// Sets the position of the slider's circle using it's centre as the origin.
+	m_circle.setPosition(m_position.x + m_sliderBackground.getLocalBounds().width, m_position.y - 5);	// Sets the position of the slider's circle using it's centre as the origin.
 
 	m_sliderBackground.setFillColor(sf::Color::Blue);	// Sets the colour of the slider background to blue.
 	m_slider.setFillColor(sf::Color(0,0,0));	// Sets the colour of the slider to black.
-	m_circle.setFillColor(sf::Color(0,0,0));	// Sets the colour of the slider's circle to black.
+	m_circle.setFillColor(sf::Color::Red);	// Sets the colour of the slider's circle to black.
 
 	m_sliderBackground.setSize(m_rectangleSize);	// Sets the size of the slider background to the values in m_rectangleSize.
 	m_slider.setSize(m_rectangleSize);	// Sets the size of the slider background to the values in m_rectangleSize.
 	m_circle.setRadius(m_circleSize);	// Sets the size of the circle to the value in m_circleSize.
+
+	m_circle.setPosition(m_position.x + m_sliderBackground.getLocalBounds().width - m_circle.getLocalBounds().width, m_position.y - 5);	// Sets the position of the slider's circle using it's centre as the origin.
 
 	m_currentSegment = m_numOfSegments;	// sets m_currentSegment to the maximum possible value.
 }
