@@ -123,6 +123,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\Game.cpp" />
+    <ClCompile Include="src\Garage.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Menu.cpp" />
     <ClCompile Include="src\Options.cpp" />
@@ -134,6 +135,7 @@
   <ItemGroup>
     <ClInclude Include="include\Game.h" />
     <ClInclude Include="include\GameState.h" />
+    <ClInclude Include="include\Garage.h" />
     <ClInclude Include="include\Menu.h" />
     <ClInclude Include="include\Options.h" />
     <ClInclude Include="include\Play.h" />

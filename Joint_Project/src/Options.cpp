@@ -20,6 +20,6 @@ GameState Options::changeGameState()
 {
 	if (m_changeState == GameState::MENU_STATE)
 	{
-
+		return m_changeState;
 	}
 }

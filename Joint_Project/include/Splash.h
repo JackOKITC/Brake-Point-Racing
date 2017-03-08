@@ -11,7 +11,7 @@ class Splash
 	const sf::Time TIME_PER_UPDATE = sf::microseconds(1000);
 
 public:
-	Splash();
+	Splash(GameState *gameState);
 	~Splash();
 
 	void update(Xbox360Controller * controller, sf::Time dt);
@@ -20,7 +20,7 @@ public:
 	bool changeGameState();
 
 private:
-
+	GameState *state;
 	bool m_changeState;
 	bool m_transitionToNext = false;
 	sf::Time currentTime;
