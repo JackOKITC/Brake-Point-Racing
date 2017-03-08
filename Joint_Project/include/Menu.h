@@ -38,7 +38,6 @@ private:
 	bool m_timeStop;
 	bool m_transitionStop;
 
-
 	sf::Time m_time;
 
 	sf::Texture m_backgroundTex;

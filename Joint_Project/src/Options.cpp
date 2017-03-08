@@ -33,7 +33,6 @@ void Options::render(sf::RenderWindow & window)
 	m_slider->render(window);
 }
 
-
 // Function to check which button is selected
 void Options::checkButtonSelected(GamePadState m_state, Xbox360Controller m_controller)
 {
@@ -107,4 +106,3 @@ void Options::selectedButton(GamePadState m_state, Xbox360Controller m_controlle
 		break;
 	}
 }
-

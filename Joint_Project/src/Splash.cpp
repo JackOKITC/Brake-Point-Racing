@@ -45,7 +45,6 @@ Splash::Splash(GameState *gameState, sf::Font font)
 	m_licenseText.setString("By Team J");
 
 	m_state = gameState;
-
 }
 
 Splash::~Splash()
@@ -94,4 +93,3 @@ void Splash::render(sf::RenderWindow & window)
 		window.draw(m_licenseText);
 	}	
 }
-

@@ -58,7 +58,6 @@ void Menu::update(GamePadState m_state, Xbox360Controller & m_controller, sf::Ti
 	{
 		m_transitionStop = true;
 	}
-	
 }
 
 void Menu::render(sf::RenderWindow & window)
@@ -82,7 +81,6 @@ void Menu::checkButtonSelected(GamePadState m_state, Xbox360Controller m_control
 	// if Down toggled
 	if ((m_state.dpadDown && !m_controller.m_previousState.dpadDown) || (m_state.LeftThumbStick.y > 50 && m_controller.m_previousState.LeftThumbStick.y < 50))
 	{
-
 		m_buttons[m_currentBtn]->loseFocus(); // currently selected button loses focus, unhighlighted
 		m_currentBtn = m_currentBtn + 1; // currentBtn selected incremented
 		if (m_currentBtn > BUTTON_COUNT - 1)
@@ -140,5 +138,4 @@ void Menu::selectedButton(GamePadState m_gamePadState, Xbox360Controller m_contr
 	default:
 		break;
 	}
-
 }

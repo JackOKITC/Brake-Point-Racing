@@ -43,6 +43,5 @@ private:
 	int m_sliderValue;
 	int m_currentBtn = 0;
 	const int BUTTON_COUNT = 2;
-
 };
 #endif // !OPTIONS_H
