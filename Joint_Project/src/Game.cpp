@@ -3,7 +3,7 @@
 Game::Game(sf::Font &font) :
 	m_window(sf::VideoMode(900,600,32), "Team J", sf::Style::Default),
 	m_font(font),
-	m_currentGameState(GameState::SPLASH)
+	m_currentGameState(GameState::SPLASH_STATE)
 {
 	m_splashScreen = new Splash();
 	m_menuScreen = new Menu(font);
@@ -41,19 +41,19 @@ void Game::update(sf::Time deltaTime)
 	checkGameStateChange();
 	switch (m_currentGameState)
 	{
-	case SPLASH:
+	case GameState::SPLASH_STATE:
 		m_splashScreen->update(&m_controller, deltaTime);
 		break;
-	case MENU:
+	case GameState::MENU_STATE:
 		m_menuScreen->update(m_controller.m_currentState, m_controller);
 		break;
-	case PLAY:
+	case GameState::PLAY_STATE:
 
 		break;
-	case OPTIONS:
+	case GameState::OPTIONS_STATE:
 
 		break;
-	case CREDITS:
+	case GameState::CREDITS_STATE:
 
 		break;
 	default:
@@ -66,19 +66,19 @@ void Game::render(sf::RenderWindow &window)
 	window.clear(sf::Color(245, 245, 130));
 	switch (m_currentGameState)
 	{
-	case SPLASH:
+	case GameState::SPLASH_STATE:
 		m_splashScreen->render(window);
 		break;
-	case MENU:
+	case GameState::MENU_STATE:
 		m_menuScreen->render(window);
 		break;
-	case PLAY:
+	case GameState::PLAY_STATE:
 
 		break;
-	case OPTIONS:
+	case GameState::OPTIONS_STATE:
 
 		break;
-	case CREDITS:
+	case GameState::CREDITS_STATE:
 
 		break;
 
@@ -92,8 +92,6 @@ void Game::checkGameStateChange()
 {
 	if (m_splashScreen->changeGameState())
 	{
-		m_currentGameState = GameState::MENU;
+		m_currentGameState = GameState::MENU_STATE;
 	}
 }
-
-

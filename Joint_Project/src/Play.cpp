@@ -16,14 +16,10 @@ void Play::render()
 {
 }
 
-bool Play::changeGameState()
+GameState Play::changeGameState()
 {
-	if (m_changeState)
+	if (m_changeState == GameState::MENU_STATE)
 	{
-		return true;
-	}
-	else
-	{
-		return false;
+
 	}
 }

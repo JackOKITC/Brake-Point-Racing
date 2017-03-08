@@ -4,9 +4,10 @@
 #include <SFML\Graphics.hpp>
 #include <iostream>
 #include "Widget.h"
+#include "GameState.h"
 #include "Xbox360Controller.h"
 
-enum button	// Enum for the buttons
+enum class button	// Enum for the buttons
 {
 	Play,
 	Options,
@@ -22,14 +23,14 @@ public:
 	void update(GamePadState m_state, Xbox360Controller & m_controller);
 	void render(sf::RenderWindow & window);
 
-	bool changeGameState();
+	GameState changeGameState();
 
 	void checkButtonSelected(GamePadState m_state, Xbox360Controller m_controller);	// Function to check which button is selected
 	void selectedButton(GamePadState m_state, Xbox360Controller m_controller);	// Function to check if the selected button is clicked
 
 
 private:
-	bool m_changeState;
+	GameState m_changeState;
 
 	sf::Texture m_backgroundTex;
 	sf::Sprite m_backgroundSprite;

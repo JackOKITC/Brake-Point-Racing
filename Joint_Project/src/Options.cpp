@@ -16,14 +16,10 @@ void Options::render(sf::RenderWindow & window)
 {
 }
 
-bool Options::changeGameState()
+GameState Options::changeGameState()
 {
-	if (m_changeState)
+	if (m_changeState == GameState::MENU_STATE)
 	{
-		return true;
-	}
-	else
-	{
-		return false;
+
 	}
 }

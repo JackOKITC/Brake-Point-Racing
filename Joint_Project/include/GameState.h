@@ -1,0 +1,12 @@
+#ifndef GAME_STATE_H
+#define GAME_STATE_H
+
+enum class GameState
+{
+	SPLASH_STATE,
+	MENU_STATE,
+	PLAY_STATE,
+	OPTIONS_STATE,
+	CREDITS_STATE
+};
+#endif // !GAME_STATE_H

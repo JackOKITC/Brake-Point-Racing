@@ -4,6 +4,7 @@
 #include <SFML\Graphics.hpp>
 #include <iostream>
 #include "Xbox360Controller.h"
+#include "GameState.h"
 
 class Splash
 {
@@ -19,6 +20,7 @@ public:
 	bool changeGameState();
 
 private:
+
 	bool m_changeState;
 	bool m_transitionToNext = false;
 	sf::Time currentTime;

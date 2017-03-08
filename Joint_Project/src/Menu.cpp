@@ -30,15 +30,15 @@ void Menu::render(sf::RenderWindow & window)
 	}
 }
 
-bool Menu::changeGameState()
+GameState Menu::changeGameState()
 {
-	if (m_changeState)
+	if (m_changeState == GameState::PLAY_STATE)
 	{
-		return true;
+		
 	}
-	else
+	else if (m_changeState == GameState::OPTIONS_STATE)
 	{
-		return false;
+		
 	}
 }
 
@@ -115,19 +115,19 @@ void Menu::selectedButton(GamePadState m_state, Xbox360Controller m_controller)
 {
 	switch (m_buttonSelected) // Switch statement for the buttons
 	{
-	case Play:	// The play button 
+	case button::Play:	// The play button 
 		if (m_state.A && !m_controller.m_previousState.A)	// If the A button has been pressed
 		{
 			
 		}
 		break;
-	case Options:	// The options button 
+	case button::Options:	// The options button 
 		if (m_state.A && !m_controller.m_previousState.A)	// If the A button has been pressed
 		{
 			
 		}
 		break;
-	case Exit:	// The exit button 
+	case button::Exit:	// The exit button 
 		if (m_state.A && !m_controller.m_previousState.A)	// If the A button has been pressed
 		{
 			exit(0);	// Exits the game

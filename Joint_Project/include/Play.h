@@ -1,6 +1,8 @@
 #ifndef PLAY_H
 #define PLAY_H
 
+#include "GameState.h"
+
 class Play
 {
 public:
@@ -10,9 +12,9 @@ public:
 	void update();
 	void render();
 
-	bool changeGameState();
+	GameState changeGameState();
 
 private:
-	bool m_changeState;
+	GameState m_changeState;
 };
 #endif // !PLAY_H

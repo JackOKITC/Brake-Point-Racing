@@ -2,6 +2,7 @@
 #define OPTIONS_H
 
 #include <SFML\Graphics.hpp>
+#include "GameState.h"
 
 class Options
 {
@@ -12,9 +13,9 @@ public:
 	void update();
 	void render(sf::RenderWindow & window);
 
-	bool changeGameState();
+	GameState changeGameState();
 
 private:
-	bool m_changeState;
+	GameState m_changeState;
 };
 #endif // !OPTIONS_H

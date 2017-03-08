@@ -8,16 +8,8 @@
 #include "Options.h"
 #include "Play.h"
 #include "Splash.h"
+#include "GameState.h"
 #include <iostream>
-
-enum GameState
-{
-	SPLASH,
-	MENU,
-	PLAY,
-	OPTIONS,
-	CREDITS
-};
 
 class Game
 {
