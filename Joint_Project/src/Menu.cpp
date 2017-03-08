@@ -7,10 +7,11 @@ Menu::Menu(sf::Font & font, GameState *gameState) :
 	for (int i = 0; i < BUTTON_COUNT; i++)
 	{
 		m_buttons[i] = new Button(&m_strings[i], &sf::Vector2f(450, 200 + (i * 100)), &m_font);
+		m_buttons[i]->loseFocus();
 	}
 	
-	m_currentButton = 0;
-
+	m_currentBtn = 0;
+	m_buttons[m_currentBtn]->getFocus();
 }
 
 Menu::~Menu()
@@ -36,97 +37,32 @@ void Menu::render(sf::RenderWindow & window)
 // Function to check which button is selected
 void Menu::checkButtonSelected(GamePadState m_state, Xbox360Controller m_controller)
 {
-
-	for (int i = 0; i < 4; i++)
+	// if Down toggled
+	if ((m_state.dpadDown && !m_controller.m_previousState.dpadDown) || (m_state.LeftThumbStick.y > 50 && m_controller.m_previousState.LeftThumbStick.y < 50))
 	{
-		m_buttons[m_currentButton]->getFocus();
+		m_buttons[m_currentBtn]->loseFocus(); // currently selected button loses focus, unhighlighted
+		m_currentBtn = m_currentBtn + 1; // currentBtn selected incremented
+		if (m_currentBtn > BUTTON_COUNT - 1)
+		{
+			m_currentBtn = m_currentBtn - 1; // safe guard to stop out of bound behaviour
+		}
 
+		m_buttons[m_currentBtn]->getFocus(); // newly seleted button highlighted
+		m_buttonSelected = (button)m_currentBtn; // enum for buttons set to current int value of current button
 	}
-	switch (m_buttonSelected)	// Switch statement for every button
+
+	// if Up toggled, same behaviour as above except the counter is decremented
+	if ((m_state.dpadUp && !m_controller.m_previousState.dpadUp) || (m_state.LeftThumbStick.y < -50 && m_controller.m_previousState.LeftThumbStick.y > -50))
 	{
-
-	case button::Play:	// The play button
-
-						// Sets the play button to be highlighted and the other buttons to be not
-		m_buttons[0]->getFocus();
-		m_buttons[1]->loseFocus();
-		m_buttons[2]->loseFocus();
-		m_buttons[3]->loseFocus();
-
-		// Checks if the down button has been pressed
-		if ((m_state.dpadDown && !m_controller.m_previousState.dpadDown) || (m_state.LeftThumbStick.y > 50 && m_controller.m_previousState.LeftThumbStick.y < 50))
+		m_buttons[m_currentBtn]->loseFocus();
+		m_currentBtn = m_currentBtn - 1;
+		if (m_currentBtn < 0)
 		{
-			m_buttonSelected = button::Garage;	// Switches to the garage button
+			m_currentBtn = 0;
 		}
 
-		// Checks if the up button has been pressed
-		if ((m_state.dpadUp && !m_controller.m_previousState.dpadUp) || (m_state.LeftThumbStick.y < -50 && m_controller.m_previousState.LeftThumbStick.y > -50))
-		{
-			m_buttonSelected = button::Exit;	// Switches to the exit button
-		}
-		break;
-	case button::Garage: // The Garage button 
-
-						  // Sets the Garage button to be highlighted and the other buttons to be not
-		m_buttons[0]->loseFocus();
-		m_buttons[1]->getFocus();
-		m_buttons[2]->loseFocus();
-		m_buttons[3]->loseFocus();
-
-		// Checks if the down button has been pressed
-		if ((m_state.dpadDown && !m_controller.m_previousState.dpadDown) || (m_state.LeftThumbStick.y > 50 && m_controller.m_previousState.LeftThumbStick.y < 50))
-		{
-			m_buttonSelected = button::Options;	// Switches to the Options button
-		}
-
-		// Checks if the up button has been pressed
-		if ((m_state.dpadUp && !m_controller.m_previousState.dpadUp) || (m_state.LeftThumbStick.y < -50 && m_controller.m_previousState.LeftThumbStick.y > -50))
-		{
-			m_buttonSelected = button::Play;	// Switches to the play button
-		}
-		break;
-	case button::Options:	// The options button
-
-						// Sets the options button to be highlighted and the other buttons to be not
-		m_buttons[0]->loseFocus();
-		m_buttons[1]->loseFocus();
-		m_buttons[2]->getFocus();
-		m_buttons[3]->loseFocus();
-
-		// Checks if the down button has been pressed
-		if ((m_state.dpadDown && !m_controller.m_previousState.dpadDown) || (m_state.LeftThumbStick.y > 50 && m_controller.m_previousState.LeftThumbStick.y < 50))
-		{
-			m_buttonSelected = button::Exit;	// Switches to the exit button
-		}
-
-		// Checks if the up button has been pressed
-		if ((m_state.dpadUp && !m_controller.m_previousState.dpadUp) || (m_state.LeftThumbStick.y < -50 && m_controller.m_previousState.LeftThumbStick.y > -50))
-		{
-			m_buttonSelected = button::Garage;	// Switches to the garage button
-		}
-		break;
-	case button::Exit:	// The exit button
-
-		// Sets the exit button to be highlighted and the other buttons to be not
-		m_buttons[0]->loseFocus();
-		m_buttons[1]->loseFocus();
-		m_buttons[2]->loseFocus();
-		m_buttons[3]->getFocus();
-
-		// Checks if the down button has been pressed
-		if ((m_state.dpadDown && !m_controller.m_previousState.dpadDown) || (m_state.LeftThumbStick.y > 50 && m_controller.m_previousState.LeftThumbStick.y < 50))
-		{
-			m_buttonSelected = button::Play;	// Switches to the play button
-		}
-
-		// Checks if the up button has been pressed
-		if ((m_state.dpadUp && !m_controller.m_previousState.dpadUp) || (m_state.LeftThumbStick.y < -50 && m_controller.m_previousState.LeftThumbStick.y > -50))
-		{
-			m_buttonSelected = button::Options;	// Switches to the options button
-		}
-		break;
-	default:
-		break;
+		m_buttons[m_currentBtn]->getFocus();
+		m_buttonSelected = (button)m_currentBtn;
 	}
 }
 

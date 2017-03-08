@@ -11,7 +11,6 @@ Splash::Splash(GameState *gameState)
 	m_backgroundSprite.setTexture(m_backgroundTex);
 	m_backgroundSprite.setOrigin(m_backgroundTex.getSize().x / 2, m_backgroundTex.getSize().y / 2);
 	m_backgroundSprite.setPosition(450, 300);
-	m_changeState = false;
 }
 
 Splash::~Splash()
@@ -37,7 +36,6 @@ void Splash::update(Xbox360Controller * controller, sf::Time dt)
 
 		if (currentTime.asSeconds() > 3)
 		{
-			m_changeState = true;
 			*state = GameState::MENU_STATE;
 			m_transitionToNext = false;
 		}
@@ -48,17 +46,4 @@ void Splash::update(Xbox360Controller * controller, sf::Time dt)
 void Splash::render(sf::RenderWindow & window)
 {
 	window.draw(m_backgroundSprite);
-}
-
-bool Splash::changeGameState()
-{
-	if (m_changeState)
-	{
-		return true;
-	}
-
-	else
-	{
-		return false;
-	}
 }
