@@ -11,12 +11,18 @@ Garage::Garage(sf::Font font, GameState * gameState) :
 	m_backgroundSprite.setTexture(m_backgroundTex);
 	m_backgroundSprite.setOrigin(m_backgroundTex.getSize().x / 2, m_backgroundTex.getSize().y / 2);
 	m_backgroundSprite.setPosition(450, 300);
+	m_currentBtn = 0;
 
 	for (int i = 0; i < BUTTON_COUNT; i++)
 	{
 		m_buttons[i] = new Button(&m_strings[i], &sf::Vector2f(150 + (i * 200), 400 ), &m_font);
+		m_buttons[i]->loseFocus();
 	}
+
 	m_backButton = new Button(&m_backString, &sf::Vector2f(450, 500), &m_font);
+
+	m_backButton->loseFocus(); // unhighlight the back button
+	m_buttons[m_currentBtn]->getFocus(); // sets the first button to be highlighted
 }
 
 Garage::~Garage()
@@ -29,7 +35,7 @@ void Garage::update(Xbox360Controller & controller, sf::Time dt)
 	selectedButton(controller.m_currentState, controller);
 }
 
-void Garage::render(sf::RenderWindow & window)
+void Garage::render(sf::RenderWindow &window)
 {
 	window.draw(m_backgroundSprite);
 	for (int i = 0; i < BUTTON_COUNT; i++)
@@ -43,162 +49,55 @@ void Garage::render(sf::RenderWindow & window)
 // Function to check which button is selected
 void Garage::checkButtonSelected(GamePadState m_state, Xbox360Controller m_controller)
 {
-	switch (m_buttonSelected)	// Switch statement for every button
+	//if the currently selected button is not the back button run this series of code
+	if (m_buttonSelected != (upgradebutton)4)
 	{
-
-	case upgradebutton::Engine:	// The engine button
-
-						// Sets the engine button to be highlighted and the other buttons to be not
-		m_buttons[0]->getFocus();
-		m_buttons[1]->loseFocus();
-		m_buttons[2]->loseFocus();
-		m_buttons[3]->loseFocus();
-		m_backButton->loseFocus();
-
-		// Checks if the down button has been pressed
-		if ((m_state.dpadRight && !m_controller.m_previousState.dpadRight) || (m_state.LeftThumbStick.x > 50 && m_controller.m_previousState.LeftThumbStick.x < 50))
+		// if left toggled
+		if ((m_state.dpadLeft && !m_controller.m_previousState.dpadLeft) || (m_state.LeftThumbStick.x > 50 && m_controller.m_previousState.LeftThumbStick.x < 50))
 		{
-			m_buttonSelected = upgradebutton::Turbo;	// Switches to the turbo button
+			m_buttons[m_currentBtn]->loseFocus(); // currently selected button loses focus, unhighlighted
+			m_currentBtn = m_currentBtn + 1; // currentBtn selected incremented
+			if (m_currentBtn > BUTTON_COUNT - 1)
+			{
+				m_currentBtn = m_currentBtn - 1; // safe guard to stop out of bound behaviour
+			}
+
+			m_buttons[m_currentBtn]->getFocus(); // newly seleted button highlighted
+			m_buttonSelected = (upgradebutton)m_currentBtn; // enum for buttons set to current int value of current button
 		}
 
-		// Checks if the up button has been pressed
-		if ((m_state.dpadLeft && !m_controller.m_previousState.dpadLeft) || (m_state.LeftThumbStick.x < -50 && m_controller.m_previousState.LeftThumbStick.x > -50))
+		// if right toggled, same behaviour as above except the counter is decremented
+		if ((m_state.dpadRight && !m_controller.m_previousState.dpadRight) || (m_state.LeftThumbStick.x < -50 && m_controller.m_previousState.LeftThumbStick.x > -50))
 		{
-			m_buttonSelected = upgradebutton::Tires;	// Switches to the tires button
+			m_buttons[m_currentBtn]->loseFocus();
+			m_currentBtn = m_currentBtn - 1;
+			if (m_currentBtn < 0)
+			{
+				m_currentBtn = 0;
+			}
+
+			m_buttons[m_currentBtn]->getFocus();
+			m_buttonSelected = (upgradebutton)m_currentBtn;
 		}
 
-		// Checks if the down button has been pressed
+		// if down is pressed, keep track of current row of buttons selection and move to the back button
 		if ((m_state.dpadDown && !m_controller.m_previousState.dpadDown) || (m_state.LeftThumbStick.y > 50 && m_controller.m_previousState.LeftThumbStick.y < 50))
 		{
-			m_buttonSelected = upgradebutton::Back;	// Switches to the Engine button
+			m_buttonSelected = (upgradebutton)4;
+			m_buttons[m_currentBtn]->loseFocus();
+			m_backButton->getFocus();
 		}
+	}
 
-		// Checks if the up button has been pressed
+	// if back is selected and up toggled return to the button row
+	if (m_buttonSelected == (upgradebutton)4)
+	{
 		if ((m_state.dpadUp && !m_controller.m_previousState.dpadUp) || (m_state.LeftThumbStick.y < -50 && m_controller.m_previousState.LeftThumbStick.y > -50))
 		{
-			m_buttonSelected = upgradebutton::Back;	// Switches to the Engine button
+			m_buttonSelected = (upgradebutton)m_currentBtn;
+			m_buttons[m_currentBtn]->getFocus();
+			m_backButton->loseFocus();
 		}
-		break;
-	case upgradebutton::Turbo: // The turbo button 
-
-						 // Sets the turbo button to be highlighted and the other buttons to be not
-		m_buttons[0]->loseFocus();
-		m_buttons[1]->getFocus();
-		m_buttons[2]->loseFocus();
-		m_buttons[3]->loseFocus();
-		m_backButton->loseFocus();
-
-		// Checks if the down button has been pressed
-		if ((m_state.dpadRight && !m_controller.m_previousState.dpadRight) || (m_state.LeftThumbStick.x > 50 && m_controller.m_previousState.LeftThumbStick.x < 50))
-		{
-			m_buttonSelected = upgradebutton::Handling;	// Switches to the handling button
-		}
-
-		// Checks if the up button has been pressed
-		if ((m_state.dpadLeft && !m_controller.m_previousState.dpadLeft) || (m_state.LeftThumbStick.x < -50 && m_controller.m_previousState.LeftThumbStick.x > -50))
-		{
-			m_buttonSelected = upgradebutton::Engine;	// Switches to the engine button
-		}
-
-		// Checks if the down button has been pressed
-		if ((m_state.dpadDown && !m_controller.m_previousState.dpadDown) || (m_state.LeftThumbStick.y > 50 && m_controller.m_previousState.LeftThumbStick.y < 50))
-		{
-			m_buttonSelected = upgradebutton::Back;	// Switches to the Engine button
-		}
-
-		// Checks if the up button has been pressed
-		if ((m_state.dpadUp && !m_controller.m_previousState.dpadUp) || (m_state.LeftThumbStick.y < -50 && m_controller.m_previousState.LeftThumbStick.y > -50))
-		{
-			m_buttonSelected = upgradebutton::Back;	// Switches to the Engine button
-		}
-		break;
-	case upgradebutton::Handling:	// The handling button
-
-							// Sets the options button to be highlighted and the other buttons to be not
-		m_buttons[0]->loseFocus();
-		m_buttons[1]->loseFocus();
-		m_buttons[2]->getFocus();
-		m_buttons[3]->loseFocus();
-		m_backButton->loseFocus();
-
-		// Checks if the down button has been pressed
-		if ((m_state.dpadRight && !m_controller.m_previousState.dpadRight) || (m_state.LeftThumbStick.x > 50 && m_controller.m_previousState.LeftThumbStick.x < 50))
-		{
-			m_buttonSelected = upgradebutton::Tires;	// Switches to the tires button
-		}
-
-		// Checks if the up button has been pressed
-		if ((m_state.dpadLeft && !m_controller.m_previousState.dpadLeft) || (m_state.LeftThumbStick.x < -50 && m_controller.m_previousState.LeftThumbStick.x > -50))
-		{
-			m_buttonSelected = upgradebutton::Turbo;	// Switches to the turbo button
-		}
-
-		// Checks if the down button has been pressed
-		if ((m_state.dpadDown && !m_controller.m_previousState.dpadDown) || (m_state.LeftThumbStick.y > 50 && m_controller.m_previousState.LeftThumbStick.y < 50))
-		{
-			m_buttonSelected = upgradebutton::Back;	// Switches to the Engine button
-		}
-
-		// Checks if the up button has been pressed
-		if ((m_state.dpadUp && !m_controller.m_previousState.dpadUp) || (m_state.LeftThumbStick.y < -50 && m_controller.m_previousState.LeftThumbStick.y > -50))
-		{
-			m_buttonSelected = upgradebutton::Back;	// Switches to the Engine button
-		}
-		break;
-	case upgradebutton::Tires:	// The tire button
-
-						// Sets the exit button to be highlighted and the other buttons to be not
-		m_buttons[0]->loseFocus();
-		m_buttons[1]->loseFocus();
-		m_buttons[2]->loseFocus();
-		m_buttons[3]->getFocus();
-		m_backButton->loseFocus();
-
-		// Checks if the down button has been pressed
-		if ((m_state.dpadRight && !m_controller.m_previousState.dpadRight) || (m_state.LeftThumbStick.x > 50 && m_controller.m_previousState.LeftThumbStick.x < 50))
-		{
-			m_buttonSelected = upgradebutton::Engine;	// Switches to the engine button
-		}
-
-		// Checks if the up button has been pressed
-		if ((m_state.dpadLeft && !m_controller.m_previousState.dpadLeft) || (m_state.LeftThumbStick.x < -50 && m_controller.m_previousState.LeftThumbStick.x > -50))
-		{
-			m_buttonSelected = upgradebutton::Handling;	// Switches to the handling button
-		}
-
-		// Checks if the down button has been pressed
-		if ((m_state.dpadDown && !m_controller.m_previousState.dpadDown) || (m_state.LeftThumbStick.y > 50 && m_controller.m_previousState.LeftThumbStick.y < 50))
-		{
-			m_buttonSelected = upgradebutton::Back;	// Switches to the Engine button
-		}
-
-		// Checks if the up button has been pressed
-		if ((m_state.dpadUp && !m_controller.m_previousState.dpadUp) || (m_state.LeftThumbStick.y < -50 && m_controller.m_previousState.LeftThumbStick.y > -50))
-		{
-			m_buttonSelected = upgradebutton::Back;	// Switches to the Engine button
-		}
-		break;
-	case upgradebutton::Back:
-		m_buttons[0]->loseFocus();
-		m_buttons[1]->loseFocus();
-		m_buttons[2]->loseFocus();
-		m_buttons[3]->loseFocus();
-		m_backButton->getFocus();
-
-		// Checks if the down button has been pressed
-		if ((m_state.dpadDown && !m_controller.m_previousState.dpadDown) || (m_state.LeftThumbStick.y > 50 && m_controller.m_previousState.LeftThumbStick.y < 50))
-		{
-			m_buttonSelected = upgradebutton::Engine;	// Switches to the Engine button
-		}
-
-		// Checks if the up button has been pressed
-		if ((m_state.dpadUp && !m_controller.m_previousState.dpadUp) || (m_state.LeftThumbStick.y < -50 && m_controller.m_previousState.LeftThumbStick.y > -50))
-		{
-			m_buttonSelected = upgradebutton::Engine;	// Switches to the Engine button
-		}
-
-	default:
-		break;
 	}
 }
 

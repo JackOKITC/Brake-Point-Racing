@@ -8,6 +8,8 @@ Menu::Menu(sf::Font & font, GameState *gameState) :
 	{
 		m_buttons[i] = new Button(&m_strings[i], &sf::Vector2f(450, 200 + (i * 100)), &m_font);
 	}
+	
+	m_currentButton = 0;
 
 }
 
@@ -34,6 +36,12 @@ void Menu::render(sf::RenderWindow & window)
 // Function to check which button is selected
 void Menu::checkButtonSelected(GamePadState m_state, Xbox360Controller m_controller)
 {
+
+	for (int i = 0; i < 4; i++)
+	{
+		m_buttons[m_currentButton]->getFocus();
+
+	}
 	switch (m_buttonSelected)	// Switch statement for every button
 	{
 
