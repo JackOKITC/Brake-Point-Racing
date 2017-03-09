@@ -1,6 +1,7 @@
 #include "Game.h"
 
 Game::Game(sf::Font &font) :
+
 	m_window(sf::VideoMode(900,600,32), "Brake Point Racing", sf::Style::Default),
 	m_font(font)
 {
@@ -10,6 +11,7 @@ Game::Game(sf::Font &font) :
 	m_splashScreen = new Splash(m_currentGameState);
 	m_menuScreen = new Menu(font, m_currentGameState);
 	m_upgradeScreen = new Garage(font, m_currentGameState);
+
 }
 
 Game::~Game()
@@ -57,7 +59,7 @@ void Game::update(sf::Time deltaTime)
 		m_upgradeScreen->update(m_controller, deltaTime);
 		break;
 	case GameState::OPTIONS_STATE:
-
+		m_optionsScreen->update(m_controller.m_currentState, m_controller);
 		break;
 	case GameState::CREDITS_STATE:
 
@@ -85,7 +87,7 @@ void Game::render(sf::RenderWindow &window)
 		m_upgradeScreen->render(window);
 		break;
 	case GameState::OPTIONS_STATE:
-
+		m_optionsScreen->render(window);
 		break;
 	case GameState::CREDITS_STATE:
 

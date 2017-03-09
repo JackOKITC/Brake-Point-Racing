@@ -38,6 +38,10 @@ private:
 
 	Splash *m_splashScreen;
 	Menu *m_menuScreen;
+
 	Garage *m_upgradeScreen;
+
+	Options *m_optionsScreen;
+
 };
 #endif // !GAME_H

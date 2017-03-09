@@ -3,6 +3,7 @@
 Menu::Menu(sf::Font & font, GameState *gameState) :
 	m_font(font)
 {
+
 	m_state = gameState;
 	for (int i = 0; i < BUTTON_COUNT; i++)
 	{
@@ -29,6 +30,8 @@ void Menu::render(sf::RenderWindow & window)
 		m_buttons[i]->render(window);
 	}
 }
+
+
 
 
 // Function to check which button is selected

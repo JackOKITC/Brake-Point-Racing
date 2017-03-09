@@ -46,4 +46,6 @@ void Splash::update(Xbox360Controller * controller, sf::Time dt)
 void Splash::render(sf::RenderWindow & window)
 {
 	window.draw(m_backgroundSprite);
+
 }
+
