@@ -31,8 +31,10 @@ public:
 
 private:
 
-	GameState *m_state;
+	GameState *m_gameState;
 	bool m_transitionToNext = false;
+
+
 	sf::Time currentTime;
 
 	sf::Texture m_backgroundTex;
@@ -40,17 +42,15 @@ private:
 
 	sf::Font m_font;
 
-	const int BUTTON_COUNT = 4;
+	const int BUTTON_COUNT = 5;
+	int m_currentBtn;
 
 	Xbox360Controller * m_controller;
 
 	upgradebutton m_buttonSelected = upgradebutton::Engine; // The button enum which starts on the engine button
 
-	std::string m_strings[4] = { "Engine", "Turbo", "Handling", "Tires" };
-	std::string m_backString = "Back";
+	std::string m_strings[5] = { "Engine", "Turbo", "Handling", "Tires", "Back" };
 
-	Button *m_buttons[4];
-
-	Button *m_backButton;
+	Button *m_buttons[5];
 };
 #endif // !GARAGE

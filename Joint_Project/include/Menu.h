@@ -29,8 +29,9 @@ public:
 
 
 private:
-	GameState *m_state;
+	GameState *m_gameState;
 	const int BUTTON_COUNT = 4;
+	int m_currentBtn;
 
 	sf::Texture m_backgroundTex;
 	sf::Sprite m_backgroundSprite;

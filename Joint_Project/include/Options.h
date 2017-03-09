@@ -30,8 +30,6 @@ private:
 	void checkButtonSelected(GamePadState m_state, Xbox360Controller m_controller);	// Function to check which button is selected
 	void selectedButton(GamePadState m_state, Xbox360Controller m_controller);	// Function to check if the selected button is clicked
 
-
-
 	optionsButton m_buttonSelected = optionsButton::Option1; // The button enum which starts on the play button
 	std::string m_string = "Option1";
 
@@ -40,7 +38,11 @@ private:
 	Button *m_button;
 	Slider *m_slider;
 
+	Widget *widgets[2];
+
 	int m_sliderValue;
+	int m_currentBtn = 0;
+	const int BUTTON_COUNT = 2;
 
 };
 #endif // !OPTIONS_H
