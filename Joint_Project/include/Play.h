@@ -23,5 +23,7 @@ private:
 
 	Xbox360Controller * m_controller;
 	Car * car;
+
+	sf::View followPlayer; //private member in class
 };
 #endif // !PLAY_H

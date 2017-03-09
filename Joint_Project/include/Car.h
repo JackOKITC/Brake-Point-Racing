@@ -16,6 +16,8 @@ public:
 
 	void moveCar(Xbox360Controller & controller);
 
+	sf::Vector2f m_position;
+
 private:
 
 	sf::Texture m_carTex;
@@ -23,11 +25,14 @@ private:
 
 	Xbox360Controller * m_controller;
 
-	sf::Vector2f m_position;
+	
 	sf::Vector2f m_velocity;
 	float m_rotation;
 	float m_speed = 0.0f;
 
 	const double DEG_TO_RAD = 3.14159 / 180.0f;
+
+	
+	
 };
 #endif // !CAR_H
