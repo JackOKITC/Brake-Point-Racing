@@ -145,7 +145,7 @@ void Menu::selectedButton(GamePadState m_gamePadState, Xbox360Controller m_contr
 	case button::Options:	// The options button 
 		if (m_gamePadState.A && !m_controller.m_previousState.A)	// If the A button has been pressed
 		{
-			
+			*m_state = GameState::OPTIONS_STATE;
 		}
 		break;
 	case button::Exit:	// The exit button 

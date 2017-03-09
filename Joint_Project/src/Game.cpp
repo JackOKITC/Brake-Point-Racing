@@ -11,7 +11,7 @@ Game::Game(sf::Font &font) :
 	m_splashScreen = new Splash(m_currentGameState);
 	m_menuScreen = new Menu(font, m_currentGameState);
 	m_upgradeScreen = new Garage(font, m_currentGameState);
-
+	m_optionsScreen = new Options(font, m_currentGameState);
 }
 
 Game::~Game()
@@ -43,7 +43,7 @@ void Game::run()
 void Game::update(sf::Time deltaTime)
 {
 	m_controller.update();
-	checkGameStateChange();
+
 	switch (*m_currentGameState)
 	{
 	case GameState::SPLASH_STATE:

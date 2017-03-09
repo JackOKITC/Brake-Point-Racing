@@ -16,7 +16,7 @@ class Options
 {
 public:
 
-	Options(GameState *gameState);
+	Options(sf::Font font, GameState *gameState);
 
 	~Options();
 
@@ -26,8 +26,6 @@ public:
 
 private:
 	GameState *m_state;
-
-	GameState changeGameState();
 
 	void checkButtonSelected(GamePadState m_state, Xbox360Controller m_controller);	// Function to check which button is selected
 	void selectedButton(GamePadState m_state, Xbox360Controller m_controller);	// Function to check if the selected button is clicked

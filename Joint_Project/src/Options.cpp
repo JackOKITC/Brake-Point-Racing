@@ -1,7 +1,8 @@
 #include "Options.h"
 
 
-Options::Options(GameState *gameState)
+Options::Options(sf::Font font, GameState *gameState) :
+	m_font(font)
 {
 	m_sliderValue = 5;
 	m_button = new Button(&m_string, &sf::Vector2f(450, 200), &m_font);
@@ -21,7 +22,6 @@ void Options::update(GamePadState m_state, Xbox360Controller & m_controller)
 
 void Options::render(sf::RenderWindow & window)
 {
-
 	window.clear(sf::Color::White);
 	m_button->render(window);
 	m_slider->render(window);
