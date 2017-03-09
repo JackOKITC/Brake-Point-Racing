@@ -42,5 +42,9 @@ private:
 
 	Options *m_optionsScreen;
 
+	Play *m_playScreen;
+
+	
+
 };
 #endif // !GAME_H

@@ -122,6 +122,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Car.cpp" />
     <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="src\Garage.cpp" />
     <ClCompile Include="src\main.cpp" />
@@ -133,6 +134,7 @@
     <ClCompile Include="src\Xbox360Controller.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\Car.h" />
     <ClInclude Include="include\Game.h" />
     <ClInclude Include="include\GameState.h" />
     <ClInclude Include="include\Garage.h" />
