@@ -13,17 +13,15 @@ class Splash
 	const sf::Time TIME_PER_UPDATE = sf::microseconds(1000);
 
 public:
-	Splash(sf::Font font);
+
+	Splash(GameState *gameState, sf::Font font);
 	~Splash();
 
 	void update(Xbox360Controller * controller, sf::Time dt);
 	void render(sf::RenderWindow & window);
 
-	bool changeGameState();
-
 private:
-
-	bool m_changeState;
+	GameState *m_state;
 	bool m_transitionToNext = false;
 	sf::Time currentTime;
 

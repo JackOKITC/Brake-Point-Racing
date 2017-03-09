@@ -6,15 +6,13 @@
 class Play
 {
 public:
-	Play();
+	Play(GameState *gameState);
 	~Play();
 
 	void update();
 	void render();
 
-	GameState changeGameState();
-
 private:
-	GameState m_changeState;
+	GameState *m_state;
 };
 #endif // !PLAY_H

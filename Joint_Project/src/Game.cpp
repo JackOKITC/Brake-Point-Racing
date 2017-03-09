@@ -1,13 +1,17 @@
 #include "Game.h"
 
 Game::Game(sf::Font &font, sf::Font &titleFont) :
-	m_window(sf::VideoMode(900,600,32), "Team J", sf::Style::Default),
-	m_font(font),
 	m_titleFont(titleFont),
-	m_currentGameState(GameState::SPLASH_STATE)
+	m_window(sf::VideoMode(900,600,32), "Brake Point Racing", sf::Style::Default),
+	m_font(font)
 {
-	m_splashScreen = new Splash(titleFont);
-	m_menuScreen = new Menu(font);
+	// pointer to GameState object, will be passed to each menu state so
+	// they can change the state in their own source files
+	m_currentGameState = new GameState(); 
+	m_splashScreen = new Splash(m_currentGameState, m_titleFont);
+	m_menuScreen = new Menu(font, m_currentGameState);
+	m_upgradeScreen = new Garage(font, m_currentGameState);
+	m_optionsScreen = new Options(font, m_currentGameState);
 }
 
 Game::~Game()
@@ -39,8 +43,8 @@ void Game::run()
 void Game::update(sf::Time deltaTime)
 {
 	m_controller.update();
-	checkGameStateChange();
-	switch (m_currentGameState)
+
+	switch (*m_currentGameState)
 	{
 	case GameState::SPLASH_STATE:
 		m_splashScreen->update(&m_controller, deltaTime);
@@ -51,8 +55,11 @@ void Game::update(sf::Time deltaTime)
 	case GameState::PLAY_STATE:
 
 		break;
+	case GameState::UPGRADE_STATE:
+		m_upgradeScreen->update(m_controller, deltaTime);
+		break;
 	case GameState::OPTIONS_STATE:
-
+		m_optionsScreen->update(m_controller.m_currentState, m_controller);
 		break;
 	case GameState::CREDITS_STATE:
 
@@ -64,8 +71,8 @@ void Game::update(sf::Time deltaTime)
 
 void Game::render(sf::RenderWindow &window)
 {
-	window.clear(sf::Color(0,0,0));
-	switch (m_currentGameState)
+	window.clear(sf::Color(0, 0, 0));
+	switch (*m_currentGameState)
 	{
 	case GameState::SPLASH_STATE:
 		m_splashScreen->render(window);
@@ -76,8 +83,11 @@ void Game::render(sf::RenderWindow &window)
 	case GameState::PLAY_STATE:
 
 		break;
+	case GameState::UPGRADE_STATE:
+		m_upgradeScreen->render(window);
+		break;
 	case GameState::OPTIONS_STATE:
-
+		m_optionsScreen->render(window);
 		break;
 	case GameState::CREDITS_STATE:
 
@@ -87,12 +97,4 @@ void Game::render(sf::RenderWindow &window)
 		break;
 	}
 	window.display();
-}
-
-void Game::checkGameStateChange()
-{
-	if (m_splashScreen->changeGameState())
-	{
-		m_currentGameState = GameState::MENU_STATE;
-	}
 }

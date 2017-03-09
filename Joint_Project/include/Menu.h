@@ -11,7 +11,7 @@ enum class button	// Enum for the buttons
 {
 	Play,
 	Garage,
-	Settings,
+	Options,
 	Exit
 };
 
@@ -20,20 +20,20 @@ class Menu
 	const sf::Time TIME_PER_UPDATE;
 
 public:
-	Menu(sf::Font & font);
+	Menu(sf::Font & font, GameState *gameState);
 	~Menu();
 
 	void update(GamePadState m_state, Xbox360Controller & m_controller, sf::Time deltaTime);
 	void render(sf::RenderWindow & window);
-
-	GameState changeGameState();
 
 	void checkButtonSelected(GamePadState m_state, Xbox360Controller m_controller);	// Function to check which button is selected
 	void selectedButton(GamePadState m_state, Xbox360Controller m_controller);	// Function to check if the selected button is clicked
 
 
 private:
-	GameState m_changeState;
+	GameState *m_gameState;
+	const int BUTTON_COUNT = 4;
+	int m_currentBtn;
 
 	bool m_timeStop;
 	bool m_transitionStop;
@@ -46,7 +46,8 @@ private:
 
 	sf::Font m_font;
 	button m_buttonSelected = button::Play; // The button enum which starts on the play button
-	std::string m_strings[4] = { "Race", "Garage", "Settings", "Exit" };
+
+	std::string m_strings[4] = { "Race", "Garage", "Options", "Exit" };
 
 	Button *m_buttons[4];
 };

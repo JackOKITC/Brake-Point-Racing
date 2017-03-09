@@ -7,6 +7,7 @@
 #include "Menu.h"
 #include "Options.h"
 #include "Play.h"
+#include "Garage.h"
 #include "Splash.h"
 #include "GameState.h"
 #include <iostream>
@@ -19,7 +20,6 @@ public:
 
 	void run();
 
-	void checkGameStateChange();
 
 private:
 
@@ -32,11 +32,16 @@ private:
 	sf::Font m_font;
 	sf::Font m_titleFont;
 
-	GameState m_currentGameState;
+	GameState *m_currentGameState;
 
 	Xbox360Controller m_controller;
 
 	Splash *m_splashScreen;
 	Menu *m_menuScreen;
+
+	Garage *m_upgradeScreen;
+
+	Options *m_optionsScreen;
+
 };
 #endif // !GAME_H

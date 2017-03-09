@@ -1,6 +1,6 @@
 #include "Splash.h"
 
-Splash::Splash(sf::Font font)
+Splash::Splash(GameState *gameState, sf::Font font)
 	: m_font(font)
 {
 	// Loading in the background texture
@@ -14,7 +14,6 @@ Splash::Splash(sf::Font font)
 	m_backgroundSprite.setOrigin(m_backgroundTex.getSize().x / 2, m_backgroundTex.getSize().y / 2); // Setting the background sprite's origin
 	m_backgroundSprite.setPosition(450, 300); // Setting the background sprite's position
 	m_backgroundSprite.setRotation(90); // rotating the background sprite 90 degrees to make it horizontal
-	m_changeState = false;
 
 	// The Title Screen text
 	m_text.setFont(m_font);
@@ -44,6 +43,9 @@ Splash::Splash(sf::Font font)
 	m_startText.setString("PRESS START");
 	
 	m_licenseText.setString("By Team J");
+
+	m_state = gameState;
+
 }
 
 Splash::~Splash()
@@ -54,7 +56,7 @@ void Splash::update(Xbox360Controller * controller, sf::Time dt)
 {
 	m_controller = controller;
 
-	// Begins trasnition if "Start" is pressed
+	// Begins transition if "Start" is pressed
 	if (m_controller->m_currentState.Start)
 	{
 		m_transitionToNext = true;
@@ -63,16 +65,17 @@ void Splash::update(Xbox360Controller * controller, sf::Time dt)
 	if (m_transitionToNext)
 	{
 		sf::Color color = m_backgroundSprite.getColor();
+
 		m_backgroundSprite.setRotation(m_backgroundSprite.getRotation() + 2); //Rotates the sprite
 		m_backgroundSprite.scale(.999, .999); // Scales the sprite down
+
 
 		currentTime += TIME_PER_UPDATE;
 
 		// Changes to the menu screen after 3 seconds of transitioning
 		if (currentTime.asSeconds() > 3)
 		{
-			m_changeState = true;
-			changeGameState();
+			*m_state = GameState::MENU_STATE;
 			m_transitionToNext = false;
 		}
 	}
@@ -92,15 +95,3 @@ void Splash::render(sf::RenderWindow & window)
 	}	
 }
 
-// Changing gamestates
-bool Splash::changeGameState()
-{
-	if (m_changeState)
-	{
-		return true;
-	}
-	else
-	{
-		return false;
-	}
-}
