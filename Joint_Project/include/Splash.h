@@ -9,6 +9,7 @@
 
 class Splash
 {
+	// Initialising the TIME_PER_UPDATE variable for the splash transition
 	const sf::Time TIME_PER_UPDATE = sf::microseconds(1000);
 
 public:
@@ -27,10 +28,13 @@ private:
 	sf::Time currentTime;
 
 	sf::Font m_font;
-	sf::Text m_text;
-	sf::Text m_outline;
-	std::stringstream m_ss;
 
+	// Text variables
+	sf::Text m_text;
+	sf::Text m_startText;
+	sf::Text m_licenseText;
+
+	// Background variables
 	sf::Texture m_backgroundTex;
 	sf::Sprite m_backgroundSprite;
 

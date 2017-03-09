@@ -64,7 +64,7 @@ void Game::update(sf::Time deltaTime)
 
 void Game::render(sf::RenderWindow &window)
 {
-	window.clear(sf::Color(235, 233, 247));
+	window.clear(sf::Color(0,0,0));
 	switch (m_currentGameState)
 	{
 	case GameState::SPLASH_STATE:

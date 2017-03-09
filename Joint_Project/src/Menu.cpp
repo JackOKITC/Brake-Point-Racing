@@ -2,16 +2,18 @@
 
 Menu::Menu(sf::Font & font) :
 	m_font(font)
-	, TIME_PER_UPDATE(sf::microseconds(1500))
+	, TIME_PER_UPDATE(sf::microseconds(650))
 {
-	if (!m_backgroundTex.loadFromFile(".//resources//images//UI//bg.jpg"))
+	// Loading in the main menu background texture
+	if (!m_backgroundTex.loadFromFile(".//resources//images//UI//bg2.png"))
 	{
-		std::cout << "Problem loading Texture for splash screen";
+		std::cout << "Problem loading Texture for menu screen";
 	}
+
 	m_backgroundSprite.setTexture(m_backgroundTex);
 	m_backgroundSprite.setScale(0.01f, 0.01f);
 	m_backgroundSprite.setOrigin(m_backgroundTex.getSize().x / 2, m_backgroundTex.getSize().y / 2);
-	m_backgroundSprite.setPosition(450, 300);
+	m_backgroundSprite.setPosition(450, 310);
 
 	m_timeStop = false;
 	m_transitionStop = false;
@@ -44,7 +46,7 @@ void Menu::update(GamePadState m_state, Xbox360Controller & m_controller, sf::Ti
 	if (m_time.asSeconds() <= 3.6)
 	{
 		m_backgroundSprite.setRotation(m_backgroundSprite.getRotation() - 2);
-		m_backgroundSprite.scale(1.00185, 1.00185);
+		m_backgroundSprite.scale(1.003, 1.003);
 		m_time += TIME_PER_UPDATE;
 	}
 	else
@@ -56,7 +58,7 @@ void Menu::update(GamePadState m_state, Xbox360Controller & m_controller, sf::Ti
 
 void Menu::render(sf::RenderWindow & window)
 {
-	window.clear(sf::Color(235, 233, 247));
+	window.clear(sf::Color(0,0,0));
 	window.draw(m_backgroundSprite);
 	if (m_transitionStop)
 	{
