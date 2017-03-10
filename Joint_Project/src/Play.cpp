@@ -24,8 +24,9 @@ Play::Play(GameState *gameState)
 
 	car = new Car();
 
-	followPlayer.setCenter(car->m_position);
-	followPlayer.setSize(900, 600); //in constructor
+	m_followPlayer.setCenter(car->m_position);
+	m_followPlayer.setSize(900, 600); //in constructor
+
 }
 
 Play::~Play()
@@ -44,13 +45,16 @@ void Play::render(sf::RenderWindow & window)
 	{
 		for (std::unique_ptr<RoadTile> &roadTile : m_roadTiles)
 		{
-			roadTile->render(window);
+			if (roadTile->culling(car->m_position))
+			{
+				roadTile->render(window);
+			}
 		}
 	}
 	car->render(window);
 
-	followPlayer.setCenter(car->m_position);
-	window.setView(followPlayer);
+	m_followPlayer.setCenter(car->m_position);
+	window.setView(m_followPlayer);
 }
 
 void Play::generateRoad()

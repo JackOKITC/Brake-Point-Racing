@@ -6,7 +6,7 @@ RoadTile::RoadTile()
 
 RoadTile::RoadTile(const std::string & image, const sf::Vector2f &pos, const double &rotation, const double &scale)
 {
-	if (!m_roadTex.loadFromFile(".//resources//images//road//road_parts//" + image))
+	if (!m_roadTex.loadFromFile(".//resources//images//road//OurRoad//" + image))
 	{
 		std::cout << "Problem loading Texture for splash screen";
 	}
@@ -35,4 +35,17 @@ void RoadTile::update(double dt)
 void RoadTile::render(sf::RenderWindow & window)
 {
 	window.draw(m_roadSprite);
+}
+
+bool RoadTile::culling(sf::Vector2f & centreScreen)
+{
+	if (centreScreen.x > m_position.x -450  &&
+		centreScreen.x < m_position.x + m_roadSprite.getLocalBounds().width + 450 &&
+		centreScreen.y > m_position.y - 300 &&
+		centreScreen.y < m_position.y + m_roadSprite.getLocalBounds().height + 300)
+	{
+		return true;
+	}
+	else
+		return false;
 }

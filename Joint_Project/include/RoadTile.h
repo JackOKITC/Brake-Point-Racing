@@ -14,6 +14,8 @@ public:
 	void update(double dt);
 	void render(sf::RenderWindow & window);
 
+	bool culling(sf::Vector2f & centreScreen);
+
 	sf::Vector2f m_position;
 
 private:

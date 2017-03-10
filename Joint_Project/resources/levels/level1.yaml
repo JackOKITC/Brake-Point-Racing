@@ -1,33 +1,33 @@
 tile:
-   - file: road (1).png
+   - file: 1.png
      position: {x: 250, y: 100}
-     rotation: 90
-     scale: 0.5
-   - file: road (1).png
-     position: {x: 700, y: 100}
-     rotation: 90
-     scale: 0.5
-   - file: road (1).png
-     position: {x: 1497.40, y: 100}
-     rotation: 90
-     scale: 0.5
-   - file: road (1).png
-     position: {x: 2000, y: 100}
-     rotation: 90
-     scale: 0.5
-   - file: road (1).png
-     position: {x: 2500, y: 100}
-     rotation: 90
-     scale: 0.5
-   - file: road (1).png
-     position: {x: 3000, y: 100}
-     rotation: 90
-     scale: 0.5
-   - file: road (1).png
-     position: {x: 3500, y: 100}
-     rotation: 90
-     scale: 0.5
-   - file: road (1).png
-     position: {x: 4000, y: 100}
-     rotation: 90
-     scale: 0.5
+     rotation: 0
+     scale: 1
+   - file: 1.png
+     position: {x: 750, y: 100}
+     rotation: 0
+     scale: 1
+   - file: 1.png
+     position: {x: 1250.40, y: 100}
+     rotation: 0
+     scale: 1
+   - file: 1.png
+     position: {x: 1750, y: 100}
+     rotation: 0
+     scale: 1
+   - file: 1.png
+     position: {x: 2250, y: 100}
+     rotation: 0
+     scale: 1
+   - file: 1.png
+     position: {x: 2750, y: 100}
+     rotation: 0
+     scale: 1
+   - file: 1.png
+     position: {x: 3250, y: 100}
+     rotation: 0
+     scale: 1
+   - file: 1.png
+     position: {x: 3750, y: 100}
+     rotation: 0
+     scale: 1

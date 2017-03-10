@@ -46,17 +46,17 @@ void Car::moveCar(Xbox360Controller & controller)
 {
 	if (controller.m_currentState.Y)
 	{
-		if (m_speed < 40)
+		if (m_speed < 60)
 		{
-			m_speed += 0.01;
+			m_speed += 0.03;
 		}
 	}
 
 	if (controller.m_currentState.B)
 	{
-		if (m_speed > -20)
+		if (m_speed > -30)
 		{
-			m_speed -= 0.01;
+			m_speed -= 0.03;
 		}
 	}
 

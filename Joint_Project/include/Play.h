@@ -32,6 +32,6 @@ private:
 
 	std::vector<std::unique_ptr<RoadTile>> m_roadTiles;
 
-	sf::View followPlayer; //private member in class
+	sf::View m_followPlayer; //private member in class
 };
 #endif // !PLAY_H
