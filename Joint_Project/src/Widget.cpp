@@ -207,13 +207,17 @@ void Slider::render(sf::RenderWindow & window)
 
 void Slider::getFocus()
 {
-	m_slider.setFillColor(sf::Color(236, 0, 24));	// Sets the colour of the slider to red.
+	m_circle.setFillColor(sf::Color(105,185,205));
+	m_slider.setFillColor(sf::Color(m_seaBlue));	// Sets the colour of the slider to sea blue.
+	m_sliderBackground.setFillColor(sf::Color(m_deepGrey));
 	m_hasFocus = true;	// Gives the slider focus.
 }
 
 void Slider::loseFocus()
 {
+	m_circle.setFillColor(sf::Color(0, 0, 0));
 	m_slider.setFillColor(sf::Color(0, 0, 0));	// Sets the colour of the slider to black.
+	m_sliderBackground.setFillColor(sf::Color(m_grey));
 	m_hasFocus = false;	// takes focus from the slider
 }
 
