@@ -53,6 +53,7 @@ Button::Button(std::string *text, sf::Vector2f *position, sf::Font *font) :
 	m_text.setOrigin(m_textRectangle.width / 2.0f, m_textRectangle.height / 2.0f);	// Centres the origin of the text.
 	m_text.setPosition(m_position.x, m_position.y - 5);	// Sets the position of the text with its centre now being its origin.
 	m_text.setColor(m_gold);	// Sets the colour of the text to black.
+	m_hasFocus = false;
 }
 
 Button::~Button()

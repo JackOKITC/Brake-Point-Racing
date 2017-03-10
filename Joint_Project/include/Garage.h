@@ -43,6 +43,7 @@ private:
 	sf::Font m_font;
 
 	const int BUTTON_COUNT = 5;
+
 	int m_currentBtn;
 
 	Xbox360Controller * m_controller;

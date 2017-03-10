@@ -11,11 +11,13 @@ Garage::Garage(sf::Font font, GameState * gameState) :
 	m_backgroundSprite.setTexture(m_backgroundTex);
 	m_backgroundSprite.setOrigin(m_backgroundTex.getSize().x / 2, m_backgroundTex.getSize().y / 2);
 	m_backgroundSprite.setPosition(450, 300);
+	m_currentBtn = 0;
 
 	m_currentBtn = 0;
 
 	for (int i = 0; i < BUTTON_COUNT; i++)
 	{
+
 		if (m_strings[i] != "Back")
 		{
 			m_buttons[i] = new Button(&m_strings[i], &sf::Vector2f(150 + (i * 200), 400), &m_font);
@@ -41,7 +43,7 @@ void Garage::update(Xbox360Controller & controller, sf::Time dt)
 	selectedButton(controller.m_currentState, controller);
 }
 
-void Garage::render(sf::RenderWindow & window)
+void Garage::render(sf::RenderWindow &window)
 {
 	window.draw(m_backgroundSprite);
 	for (int i = 0; i < BUTTON_COUNT; i++)
@@ -57,7 +59,6 @@ void Garage::checkButtonSelected(GamePadState m_state, Xbox360Controller m_contr
 	//if the currently selected button is not the back button run this series of code
 	if (m_buttonSelected != (upgradebutton)4)
 	{
-
 		// if right toggled
 		if ((m_state.dpadRight && !m_controller.m_previousState.dpadRight) || (m_state.LeftThumbStick.x > 50 && m_controller.m_previousState.LeftThumbStick.x < 50))
 		{
