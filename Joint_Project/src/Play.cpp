@@ -41,8 +41,7 @@ void Play::update(Xbox360Controller & controller, double dt)
 void Play::render(sf::RenderWindow & window)
 {
 	window.clear(sf::Color(1, 165, 18));
-	for (RoadData const &road : m_level.m_roads)
-	{
+
 		for (std::unique_ptr<RoadTile> &roadTile : m_roadTiles)
 		{
 			if (roadTile->culling(car->m_position))
@@ -50,7 +49,7 @@ void Play::render(sf::RenderWindow & window)
 				roadTile->render(window);
 			}
 		}
-	}
+
 	car->render(window);
 
 	m_followPlayer.setCenter(car->m_position);
