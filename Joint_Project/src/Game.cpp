@@ -1,5 +1,7 @@
 #include "Game.h"
 
+static double const MS_PER_UPDATE = 10.0;
+
 Game::Game(sf::Font &font, sf::Font &titleFont) :
 	m_titleFont(titleFont),
 	m_window(sf::VideoMode(900,600,32), "Brake Point Racing", sf::Style::Default),
@@ -12,6 +14,7 @@ Game::Game(sf::Font &font, sf::Font &titleFont) :
 	m_menuScreen = new Menu(font, m_currentGameState);
 	m_upgradeScreen = new Garage(font, m_currentGameState);
 	m_optionsScreen = new Options(font, m_currentGameState);
+	m_playScreen = new Play(m_currentGameState);
 }
 
 Game::~Game()
@@ -20,7 +23,7 @@ Game::~Game()
 
 void Game::run()
 {
-	static double const MS_PER_UPDATE = 10.0;
+	
 	sf::Clock clock;
 	sf::Int32 lag = 0;
 
@@ -53,7 +56,7 @@ void Game::update(sf::Time deltaTime)
 		m_menuScreen->update(m_controller.m_currentState, m_controller, deltaTime);
 		break;
 	case GameState::PLAY_STATE:
-
+		m_playScreen->update(m_controller, MS_PER_UPDATE);
 		break;
 	case GameState::UPGRADE_STATE:
 		m_upgradeScreen->update(m_controller, deltaTime);
@@ -81,7 +84,7 @@ void Game::render(sf::RenderWindow &window)
 		m_menuScreen->render(window);
 		break;
 	case GameState::PLAY_STATE:
-
+		m_playScreen->render(window);
 		break;
 	case GameState::UPGRADE_STATE:
 		m_upgradeScreen->render(window);
