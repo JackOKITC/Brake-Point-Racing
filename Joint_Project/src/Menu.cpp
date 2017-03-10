@@ -91,18 +91,6 @@ void Menu::checkButtonSelected(GamePadState m_state, Xbox360Controller m_control
 		m_buttons[m_currentBtn]->getFocus(); // newly seleted button highlighted
 		m_buttonSelected = (button)m_currentBtn; // enum for buttons set to current int value of current button
 	}
-<<<<<<< HEAD
-
-	// if Up toggled, same behaviour as above except the counter is decremented
-	if ((m_state.dpadUp && !m_controller.m_previousState.dpadUp) || (m_state.LeftThumbStick.y < -50 && m_controller.m_previousState.LeftThumbStick.y > -50))
-	{
-		m_buttons[m_currentBtn]->loseFocus();
-		m_currentBtn = m_currentBtn - 1;
-		if (m_currentBtn < 0)
-		{
-			m_currentBtn = 0;
-		}
-=======
 
 	// if Up toggled, same behaviour as above except the counter is decremented
 	if ((m_state.dpadUp && !m_controller.m_previousState.dpadUp) || (m_state.LeftThumbStick.y < -50 && m_controller.m_previousState.LeftThumbStick.y > -50))
@@ -114,7 +102,6 @@ void Menu::checkButtonSelected(GamePadState m_state, Xbox360Controller m_control
 			m_currentBtn = 0;
 		}
 
->>>>>>> 0fc21aa904a577b57da0146e09884987b7529d9f
 		m_buttons[m_currentBtn]->getFocus();
 		m_buttonSelected = (button)m_currentBtn;
 	}
@@ -128,7 +115,7 @@ void Menu::selectedButton(GamePadState m_gamePadState, Xbox360Controller m_contr
 	case button::Play:	// The play button 
 		if (m_gamePadState.A && !m_controller.m_previousState.A)	// If the A button has been pressed
 		{
-			*m_state = GameState::PLAY_STATE;
+			*m_gameState = GameState::PLAY_STATE;
 		}
 		break;
 	case button::Garage:
