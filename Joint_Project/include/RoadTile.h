@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include "SFML\Graphics.hpp"
+#include "ResouceManager.h"
 
 class RoadTile
 {

@@ -6,6 +6,7 @@
 #include "Widget.h"
 #include "GameState.h"
 #include "Xbox360Controller.h"
+#include "ResouceManager.h"
 
 enum class button	// Enum for the buttons
 {

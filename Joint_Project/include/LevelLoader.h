@@ -11,15 +11,30 @@
 struct RoadData
 {
 	std::string m_fileName;
+	std::string m_fileID;
 	sf::Vector2f m_position;
 	double m_rotation;
 	double m_scale;
 };
 
+struct BackgroundData
+{
+	std::string m_fileName;
+	std::string m_fileID;
+};
+
+struct CarData
+{
+	std::string m_fileName;
+	std::string m_fileID;
+};
+
 
 struct LevelData
 {
+	std::vector<CarData> m_car;
 	std::vector<RoadData> m_roads;
+	std::vector<BackgroundData> m_bg;
 };
 
 class LevelLoader

@@ -7,14 +7,17 @@ Game::Game(sf::Font &font, sf::Font &titleFont) :
 	m_window(sf::VideoMode(900,600,32), "Brake Point Racing", sf::Style::Default),
 	m_font(font)
 {
+
+	ResourceManager g_manager;
 	// pointer to GameState object, will be passed to each menu state so
 	// they can change the state in their own source files
-	m_currentGameState = new GameState(); 
+	m_currentGameState = new GameState();
+
+	m_playScreen = new Play(m_currentGameState);
 	m_splashScreen = new Splash(m_currentGameState, m_titleFont);
 	m_menuScreen = new Menu(font, m_currentGameState);
 	m_upgradeScreen = new Garage(font, m_currentGameState);
 	m_optionsScreen = new Options(font, m_currentGameState);
-	m_playScreen = new Play(m_currentGameState);
 }
 
 Game::~Game()

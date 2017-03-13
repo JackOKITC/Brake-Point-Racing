@@ -11,6 +11,7 @@
 #include "Splash.h"
 #include "GameState.h"
 #include <iostream>
+#include "ResouceManager.h"
 
 class Game
 {
@@ -22,6 +23,7 @@ public:
 
 
 private:
+	
 
 	void update(sf::Time deltaTime);
 	void render(sf::RenderWindow & window);
@@ -36,13 +38,10 @@ private:
 
 	Xbox360Controller m_controller;
 
-	Splash *m_splashScreen;
 	Menu *m_menuScreen;
-
 	Garage *m_upgradeScreen;
-
 	Options *m_optionsScreen;
-
+	Splash *m_splashScreen;
 	Play *m_playScreen;
 };
 #endif // !GAME_H

@@ -6,10 +6,8 @@ RoadTile::RoadTile()
 
 RoadTile::RoadTile(const std::string & image, const sf::Vector2f &pos, const double &rotation, const double &scale)
 {
-	if (!m_roadTex.loadFromFile(".//resources//images//road//OurRoad//" + image))
-	{
-		std::cout << "Problem loading Texture for splash screen";
-	}
+	std::string temp = image;
+	m_roadTex = g_manager.m_holder["Road1"];
 
 	m_roadSprite.setTexture(m_roadTex);
 

@@ -1,33 +1,51 @@
 tile:
-   - file: 1.png
+   - file: .\resources\images\road\OurRoad\1.png
+     ID: Road1
      position: {x: 250, y: 100}
      rotation: 0
      scale: 1
-   - file: 1.png
+   - file: .\resources\images\road\OurRoad\1.png
+     ID: Road2
      position: {x: 750, y: 100}
      rotation: 0
      scale: 1
-   - file: 1.png
+   - file: .\resources\images\road\OurRoad\1.png
+     ID: Road3
      position: {x: 1250.40, y: 100}
      rotation: 0
      scale: 1
-   - file: 1.png
+   - file: .\resources\images\road\OurRoad\1.png
+     ID: Road4
      position: {x: 1750, y: 100}
      rotation: 0
      scale: 1
-   - file: 1.png
+   - file: .\resources\images\road\OurRoad\1.png
+     ID: Road5
      position: {x: 2250, y: 100}
      rotation: 0
      scale: 1
-   - file: 1.png
+   - file: .\resources\images\road\OurRoad\1.png
+     ID: Road6
      position: {x: 2750, y: 100}
      rotation: 0
      scale: 1
-   - file: 1.png
+   - file: .\resources\images\road\OurRoad\1.png
+     ID: Road7
      position: {x: 3250, y: 100}
      rotation: 0
      scale: 1
-   - file: 1.png
+   - file: .\resources\images\road\OurRoad\1.png
+     ID: Road8
      position: {x: 3750, y: 100}
      rotation: 0
      scale: 1
+
+background:
+   - file: .\resources\images\UI\bg.jpg
+     ID: SplashBG
+   - file: .\resources\images\UI\bg2.png
+     ID: MenuBG
+
+car:
+   - file: .\resources\images\cars\Bus.png
+     ID: BusTex

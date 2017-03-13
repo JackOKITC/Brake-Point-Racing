@@ -2,11 +2,7 @@
 
 Car::Car()
 {
-	if (!m_carTex.loadFromFile(".//resources//images//cars//Bus.png"))
-	{
-		std::cout << "Problem loading Texture for splash screen";
-	}
-	
+	m_carTex = g_manager.m_holder["BusTex"];
 	m_carSprite.setTexture(m_carTex);
 	
 	m_position = sf::Vector2f(100, 300);

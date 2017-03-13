@@ -6,11 +6,7 @@ Menu::Menu(sf::Font & font, GameState *gameState) :
 {
 	m_gameState = gameState;
 
-	// Loading in the main menu background texture
-	if (!m_backgroundTex.loadFromFile(".//resources//images//UI//bg2.png"))
-	{
-		std::cout << "Problem loading Texture for menu screen";
-	}
+	m_backgroundTex = g_manager.m_holder["MenuBG"];
 
 	m_backgroundSprite.setTexture(m_backgroundTex);
 	m_backgroundSprite.setScale(0.01f, 0.01f);

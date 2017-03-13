@@ -19,7 +19,9 @@ Play::Play(GameState *gameState)
 	{
 		std::cout << "Level not loaded" << std::endl;
 	}
+	//g_manager.loadData(m_level);
 
+	g_manager.loadData(m_level);
 	generateRoad();
 
 	car = new Car();
@@ -60,7 +62,7 @@ void Play::generateRoad()
 {
 	for (RoadData const &road : m_level.m_roads)
 	{
-		std::unique_ptr<RoadTile> roadTile(new RoadTile(road.m_fileName, road.m_position, road.m_rotation, road.m_scale));
+		std::unique_ptr<RoadTile> roadTile(new RoadTile(road.m_fileID, road.m_position, road.m_rotation, road.m_scale));
 		m_roadTiles.push_back(std::move(roadTile));
 	}
 }
