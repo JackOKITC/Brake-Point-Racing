@@ -28,6 +28,8 @@ private:
 
 	sf::Vector2f m_velocity;
 
+	sf::Vector2f m_steering;
+
 	sf::Vector2f m_followPath() const;
 
 	std::vector<sf::CircleShape> & m_nodes;

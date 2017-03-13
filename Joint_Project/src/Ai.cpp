@@ -3,6 +3,7 @@
 Ai::Ai(std::vector<sf::CircleShape> & nodes)
 	: m_nodes(nodes)
 	, m_currentNode(0)
+	, m_steering(0,0)
 {
 	if (!m_carTex.loadFromFile(".//resources//images//cars//car_4.png"))
 	{
@@ -37,6 +38,14 @@ void Ai::update(double dt)
 										* m_speed * (dt / 1000));
 
 	sf::Vector2f vectorToNode = m_followPath();
+
+	if (thor::length(vectorToNode) < = (m_nodes.at(m_currentNode).getRadius() * 2))
+	{
+		int x = 0;
+		m_currentNode++;
+	}
+
+	m_steering += thor::unitVector(vectorToNode);
 
 	m_position = newPos;
 }
