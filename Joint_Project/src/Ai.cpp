@@ -1,8 +1,8 @@
 #include "Ai.h"
 
-Ai::Ai(std::vector<sf::CircleShape> & nodes)
-	: m_nodes(nodes)
-	, m_currentNode(0)
+Ai::Ai(std::vector<std::unique_ptr<Node>> nodes) :
+	m_nodes(nodes), 
+	m_currentNode(0)
 {
 	if (!m_carTex.loadFromFile(".//resources//images//cars//car_4.png"))
 	{
@@ -15,7 +15,7 @@ Ai::Ai(std::vector<sf::CircleShape> & nodes)
 	m_rotation = 90.0f;
 
 	m_carSprite.setPosition(m_position);
-	m_carSprite.setScale(0.4, 0.4);
+	m_carSprite.setScale(0.3, 0.3);
 	m_carSprite.setRotation(m_rotation);
 
 	m_carSprite.setOrigin(m_carSprite.getLocalBounds().width / 2, m_carSprite.getLocalBounds().height / 2);
@@ -31,10 +31,8 @@ void Ai::update(double dt)
 	m_carSprite.setPosition(m_position);
 	m_carSprite.setRotation(m_rotation);
 	
-	sf::Vector2f newPos = sf::Vector2f(m_position.x + std::cos(DEG_TO_RAD *(m_rotation - 90))
-										* m_speed * (dt / 1000), 
-									   m_position.y + std::sin(DEG_TO_RAD *(m_rotation - 90)) 
-										* m_speed * (dt / 1000));
+	sf::Vector2f newPos = sf::Vector2f(m_position.x + std::cos(DEG_TO_RAD *(m_rotation - 90)) * m_speed * (dt / 1000), 
+									   m_position.y + std::sin(DEG_TO_RAD *(m_rotation - 90)) * m_speed * (dt / 1000));
 
 	sf::Vector2f vectorToNode = m_followPath();
 

@@ -3,11 +3,15 @@
 
 #include <SFML\Graphics.hpp>
 #include <iostream>
+#include <vector>
+#include <memory>
+#include "Node.h"
+
 
 class Ai
 {
 public:
-	Ai(std::vector<sf::CircleShape> & nodes);
+	Ai(std::vector<std::unique_ptr<Node>> nodes);
 	~Ai();
 
 	void update(double dt);
@@ -30,7 +34,7 @@ private:
 
 	sf::Vector2f m_followPath() const;
 
-	std::vector<sf::CircleShape> & m_nodes;
+	std::vector<std::unique_ptr<Node>> &m_nodes;
 
 	float m_rotation;
 	float m_speed = 0.0f;

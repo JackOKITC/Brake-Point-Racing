@@ -8,10 +8,11 @@ class Node
 {
 public:
 	Node();
+	Node(const int &number, const sf::Vector2f &pos);
 	~Node();
 
+	sf::Vector2f m_position;
 private:
 	int m_nodeNumber;
-	sf::Vector2f m_position;
  };
 #endif // !NODE_H

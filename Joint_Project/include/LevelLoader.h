@@ -16,15 +16,16 @@ struct RoadData
 	double m_scale;
 };
 
-struct LevelData
-{
-	std::vector<RoadData> m_roads;
-};
-
 struct NodeData
 {
 	int m_number;
 	sf::Vector2f m_position;
+};
+
+struct LevelData
+{
+	std::vector<RoadData> m_roads;
+	std::vector<NodeData> m_nodes;
 };
 
 class LevelLoader

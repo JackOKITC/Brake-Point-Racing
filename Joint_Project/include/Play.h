@@ -23,6 +23,7 @@ public:
 	void render(sf::RenderWindow & window);
 
 	void generateRoad();
+	void generateNode();
 
 private:
 	GameState *m_state;
@@ -32,13 +33,12 @@ private:
 	Xbox360Controller * m_controller;
 	Car * car;
 
-	Ai * aiCars[5];
-	const int MAX_AI = 5;
-
-	Node * m_nodes[8];
-	const int MAX_NODES = 8;
+	static const int MAX_AI = 5;
+	Ai * aiCars[MAX_AI];
 
 	std::vector<std::unique_ptr<RoadTile>> m_roadTiles;
+	std::vector<std::unique_ptr<Node>> m_nodes;
+
 
 	sf::View m_followPlayer; //private member in class
 };
