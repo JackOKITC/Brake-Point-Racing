@@ -4,7 +4,7 @@ Car::Car()
 {
 	if (!m_carTex.loadFromFile(".//resources//images//cars//Bus.png"))
 	{
-		std::cout << "Problem loading Texture for splash screen";
+		std::cout << "Problem loading Texture for player car" << std::endl;
 	}
 	
 	m_carSprite.setTexture(m_carTex);
@@ -15,7 +15,7 @@ Car::Car()
 
 	m_carSprite.setPosition(m_position);
 	m_carSprite.scale(0.4, 0.4);
-	m_carSprite.setRotation(90);
+	m_carSprite.setRotation(m_rotation);
 
 }
 

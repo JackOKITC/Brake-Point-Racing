@@ -2,6 +2,7 @@
 #define AI_H
 
 #include <SFML\Graphics.hpp>
+#include <iostream>
 
 class Ai
 {
@@ -11,13 +12,13 @@ class Ai
 	void update(double dt);
 	void render(sf::RenderWindow & window);
 
-	void moveCar();
+	void Seek(int nodeNumber);
 
 	sf::Vector2f m_position;
 
 private:
 
-	int m_nextNode;
+	int m_nodeNumber;
 
 	sf::Texture m_carTex;
 	sf::Sprite m_carSprite;

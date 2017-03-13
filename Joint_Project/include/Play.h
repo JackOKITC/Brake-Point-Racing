@@ -5,6 +5,7 @@
 #include "Xbox360Controller.h"
 #include <iostream>
 #include "Car.h"
+#include "Ai.h"
 #include "LevelLoader.h"
 #include "RoadTile.h"
 #include <vector>
@@ -29,6 +30,9 @@ private:
 	sf::Sprite m_backgroundSprite;
 	Xbox360Controller * m_controller;
 	Car * car;
+
+	Ai * aiCars[5];
+	const int MAX_AI = 5;
 
 	std::vector<std::unique_ptr<RoadTile>> m_roadTiles;
 

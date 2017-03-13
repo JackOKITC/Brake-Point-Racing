@@ -24,6 +24,11 @@ Play::Play(GameState *gameState)
 
 	car = new Car();
 
+	for (int i = 0; i < MAX_AI; i++)
+	{
+		aiCars[i] = new Ai();
+	}
+
 	m_followPlayer.setCenter(car->m_position);
 	m_followPlayer.setSize(900, 600); //in constructor
 
@@ -36,6 +41,12 @@ Play::~Play()
 void Play::update(Xbox360Controller & controller, double dt)
 {
 	car->update(controller, dt);
+
+	for (int i = 0; i < MAX_AI; i++)
+	{
+		aiCars[i]->update(dt);
+	}
+	
 }
 
 void Play::render(sf::RenderWindow & window)
@@ -51,6 +62,11 @@ void Play::render(sf::RenderWindow & window)
 		}
 
 	car->render(window);
+
+	for (int i = 0; i < MAX_AI; i++)
+	{
+		aiCars[i]->render(window);
+	}
 
 	m_followPlayer.setCenter(car->m_position);
 	window.setView(m_followPlayer);
