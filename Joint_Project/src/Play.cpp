@@ -26,7 +26,7 @@ Play::Play(GameState *gameState)
 
 	for (int i = 0; i < MAX_AI; i++)
 	{
-		aiCars[i] = new Ai();
+		aiCars[i] = new Ai(* m_nodes);
 	}
 
 	m_followPlayer.setCenter(car->m_position);

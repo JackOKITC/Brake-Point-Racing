@@ -6,6 +6,7 @@
 #include <iostream>
 #include "Car.h"
 #include "Ai.h"
+#include "Node.h"
 #include "LevelLoader.h"
 #include "RoadTile.h"
 #include <vector>
@@ -33,6 +34,9 @@ private:
 
 	Ai * aiCars[5];
 	const int MAX_AI = 5;
+
+	Node * m_nodes[8];
+	const int MAX_NODES = 8;
 
 	std::vector<std::unique_ptr<RoadTile>> m_roadTiles;
 

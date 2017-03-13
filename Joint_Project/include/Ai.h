@@ -7,7 +7,7 @@
 class Ai
 {
 public:
-	Ai();
+	Ai(std::vector<sf::CircleShape> & nodes);
 	~Ai();
 
 	void update(double dt);
@@ -21,10 +21,17 @@ private:
 
 	int m_nodeNumber;
 
+	int m_currentNode;
+
 	sf::Texture m_carTex;
 	sf::Sprite m_carSprite;
 
 	sf::Vector2f m_velocity;
+
+	sf::Vector2f m_followPath() const;
+
+	std::vector<sf::CircleShape> & m_nodes;
+
 	float m_rotation;
 	float m_speed = 0.0f;
 

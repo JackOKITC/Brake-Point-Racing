@@ -1,6 +1,8 @@
 #include "Ai.h"
 
-Ai::Ai()
+Ai::Ai(std::vector<sf::CircleShape> & nodes)
+	: m_nodes(nodes)
+	, m_currentNode(0)
 {
 	if (!m_carTex.loadFromFile(".//resources//images//cars//car_4.png"))
 	{
@@ -29,7 +31,12 @@ void Ai::update(double dt)
 	m_carSprite.setPosition(m_position);
 	m_carSprite.setRotation(m_rotation);
 	
-	sf::Vector2f newPos = sf::Vector2f(m_position.x + std::cos(DEG_TO_RAD *(m_rotation - 90)) * m_speed * (dt / 1000), m_position.y + std::sin(DEG_TO_RAD *(m_rotation - 90)) * m_speed * (dt / 1000));
+	sf::Vector2f newPos = sf::Vector2f(m_position.x + std::cos(DEG_TO_RAD *(m_rotation - 90))
+										* m_speed * (dt / 1000), 
+									   m_position.y + std::sin(DEG_TO_RAD *(m_rotation - 90)) 
+										* m_speed * (dt / 1000));
+
+	sf::Vector2f vectorToNode = m_followPath();
 
 	m_position = newPos;
 }
@@ -41,4 +48,13 @@ void Ai::render(sf::RenderWindow & window)
 
 void Ai::Seek(int nodeNumber)
 {
+}
+
+sf::Vector2f Ai::m_followPath() const
+{
+	sf::Vector2f dist;
+
+	dist = m_nodes.at(m_currentNode).getPosition() - m_position;
+
+	return dist;
 }
