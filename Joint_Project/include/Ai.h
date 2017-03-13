@@ -32,6 +32,8 @@ private:
 
 	sf::Vector2f m_velocity;
 
+	sf::Vector2f m_steering;
+
 	sf::Vector2f m_followPath() const;
 
 	std::vector<std::unique_ptr<Node>> &m_nodes;
