@@ -3,15 +3,14 @@
 Splash::Splash(GameState *gameState, sf::Font font)
 	: m_font(font)
 {
-	// Loading in the background texture
-	if (!m_backgroundTex.loadFromFile(".//resources//images//UI//bg.jpg"))
-	{
-		std::cout << "Problem loading Texture for splash screen";
-	}
 
-	m_backgroundSprite.setTexture(m_backgroundTex);
+	holder.acquire("SplashID", m_backgroundTex);
+	m_backgroundSprite.setTexture(holder["SplashID"]);
+
+
 	m_backgroundSprite.setScale(0.4f, 0.575f); // Setting the scale of the background sprite
-	m_backgroundSprite.setOrigin(m_backgroundTex.getSize().x / 2, m_backgroundTex.getSize().y / 2); // Setting the background sprite's origin
+	m_backgroundSprite.setOrigin(1280, 800); // Setting the background sprite's origin
+
 	m_backgroundSprite.setPosition(450, 300); // Setting the background sprite's position
 	m_backgroundSprite.setRotation(90); // rotating the background sprite 90 degrees to make it horizontal
 
@@ -83,6 +82,7 @@ void Splash::update(Xbox360Controller * controller, sf::Time dt)
 
 void Splash::render(sf::RenderWindow & window)
 {
+	window.clear(sf::Color::Black);
 	window.draw(m_backgroundSprite);
 	
 	// Drawing the text objects only if the screen is not transitioning

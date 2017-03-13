@@ -6,6 +6,8 @@
 #include "Xbox360Controller.h"
 #include "GameState.h"
 #include <sstream>
+#include <Thor\Resources.hpp>
+#include <Aurora/Config.hpp>
 
 class Splash
 {
@@ -33,9 +35,12 @@ private:
 	sf::Text m_licenseText;
 
 	// Background variables
-	sf::Texture m_backgroundTex;
+	//sf::Texture m_backgroundTex;
 	sf::Sprite m_backgroundSprite;
 
 	Xbox360Controller * m_controller;
+
+	thor::ResourceLoader<sf::Texture> m_backgroundTex = thor::Resources::fromFile<sf::Texture>(".//resources//images//UI//bg.jpg");
+	thor::ResourceHolder<sf::Texture, std::string> holder;
 };
 #endif // !SPLASH_H
