@@ -2,7 +2,7 @@
 
 Ai::Ai()
 {
-	if (!m_carTex.loadFromFile(".//resources//images//cars//car_4"))
+	if (!m_carTex.loadFromFile(".//resources//images//cars//car_4.png"))
 	{
 		std::cout << "Problem loading texture for ai car" << std::endl;
 	}
