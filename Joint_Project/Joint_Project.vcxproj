@@ -131,6 +131,7 @@
     <ClCompile Include="src\LevelLoader.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Menu.cpp" />
+    <ClCompile Include="src\Node.cpp" />
     <ClCompile Include="src\Options.cpp" />
     <ClCompile Include="src\Play.cpp" />
     <ClCompile Include="src\RoadTile.cpp" />
@@ -146,6 +147,7 @@
     <ClInclude Include="include\Garage.h" />
     <ClInclude Include="include\LevelLoader.h" />
     <ClInclude Include="include\Menu.h" />
+    <ClInclude Include="include\Node.h" />
     <ClInclude Include="include\Options.h" />
     <ClInclude Include="include\Play.h" />
     <ClInclude Include="include\RoadTile.h" />

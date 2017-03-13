@@ -21,6 +21,13 @@ void operator >> (const YAML::Node& levelNode, LevelData& level)
 	}
 }
 
+void operator >> (const YAML::Node& nodeNode, NodeData& node)
+{
+	node.m_number = nodeNode["number"].as<int>();
+	node.m_position.x = nodeNode["position"]["x"].as<float>();
+	node.m_position.y = nodeNode["position"]["y"].as<float>();
+}
+
 LevelLoader::LevelLoader()
 {
 }
