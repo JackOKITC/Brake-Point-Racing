@@ -49,3 +49,7 @@ background:
 car:
    - file: .\resources\images\cars\Bus.png
      ID: BusTex
+
+node:
+   - number: 1
+     position: {x: 250, y: 100}

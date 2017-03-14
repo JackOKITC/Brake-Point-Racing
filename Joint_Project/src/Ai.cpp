@@ -1,7 +1,7 @@
 #include "Ai.h"
 
 
-Ai::Ai(std::vector<std::unique_ptr<Node>> nodes) :
+Ai::Ai(std::vector<std::unique_ptr<Node>> & nodes) :
 	m_nodes(nodes),
 	m_currentNode(0),
 	m_steering(0,0)
@@ -29,7 +29,6 @@ Ai::~Ai()
 
 void Ai::update(double dt)
 {
-	Seek(m_nodeNumber);
 	m_carSprite.setPosition(m_position);
 	m_carSprite.setRotation(m_rotation);
 	
@@ -38,7 +37,7 @@ void Ai::update(double dt)
 
 	sf::Vector2f vectorToNode = m_followPath();
 
-	if (thor::length(vectorToNode) < = (m_nodes.at(m_currentNode).getRadius() * 2))
+	if (thor::length(vectorToNode) <= 3)
 	{
 		m_currentNode++;
 	}
@@ -53,15 +52,13 @@ void Ai::render(sf::RenderWindow & window)
 	window.draw(m_carSprite);
 }
 
-void Ai::Seek(int nodeNumber)
-{
-}
+
 
 sf::Vector2f Ai::m_followPath() const
 {
 	sf::Vector2f dist;
 
-	dist = m_nodes.at(m_currentNode).getPosition() - m_position;
+	dist = m_nodes.at(m_currentNode)->m_position - m_position;
 
 	return dist;
 }

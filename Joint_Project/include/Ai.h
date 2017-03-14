@@ -6,24 +6,21 @@
 #include <vector>
 #include <memory>
 #include "Node.h"
+#include <Thor\Vectors.hpp>
 
 
 class Ai
 {
 public:
-	Ai(std::vector<std::unique_ptr<Node>> nodes);
+	Ai(std::vector<std::unique_ptr<Node>> & nodes);
 	~Ai();
 
 	void update(double dt);
 	void render(sf::RenderWindow & window);
 
-	void Seek(int nodeNumber);
-
 	sf::Vector2f m_position;
 
 private:
-
-	int m_nodeNumber;
 
 	int m_currentNode;
 
