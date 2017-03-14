@@ -51,7 +51,14 @@
     <ClCompile Include="src\LevelLoader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+<<<<<<< HEAD
     <ClCompile Include="src\ResourceManager.cpp">
+=======
+    <ClCompile Include="src\Ai.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Node.cpp">
+>>>>>>> origin/Ai_System
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -93,6 +100,10 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\ResouceManager.h">
+    <ClInclude Include="include\Ai.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Node.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

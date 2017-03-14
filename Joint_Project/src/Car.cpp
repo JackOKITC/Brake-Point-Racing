@@ -3,6 +3,7 @@
 Car::Car()
 {
 	m_carTex = g_manager.m_holder["BusTex"];
+
 	m_carSprite.setTexture(m_carTex);
 	
 	m_position = sf::Vector2f(100, 300);
@@ -11,7 +12,7 @@ Car::Car()
 
 	m_carSprite.setPosition(m_position);
 	m_carSprite.scale(0.4, 0.4);
-	m_carSprite.setRotation(90);
+	m_carSprite.setRotation(m_rotation);
 
 }
 

@@ -29,12 +29,20 @@ struct CarData
 	std::string m_fileID;
 };
 
+struct NodeData
+{
+	int m_number;
+	sf::Vector2f m_position;
+};
+
 
 struct LevelData
 {
 	std::vector<CarData> m_car;
 	std::vector<RoadData> m_roads;
 	std::vector<BackgroundData> m_bg;
+	std::vector<NodeData> m_nodes;
+
 };
 
 class LevelLoader

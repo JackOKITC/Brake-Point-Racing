@@ -48,7 +48,20 @@ void operator >> (const YAML::Node& levelNode, LevelData& level)
 		carNode[i] >> car;
 		level.m_car.push_back(car);
 	}
-	
+	const YAML::Node& nodesNode = levelNode["node"].as<YAML::Node>();
+	for (unsigned i = 0; i < nodesNode.size(); i++)
+	{
+		NodeData node;
+		nodesNode[i] >> node;
+		level.m_nodes.push_back(node);
+	}
+}
+
+void operator >> (const YAML::Node& nodeNode, NodeData& node)
+{
+	node.m_number = nodeNode["number"].as<int>();
+	node.m_position.x = nodeNode["position"]["x"].as<float>();
+	node.m_position.y = nodeNode["position"]["y"].as<float>();
 }
 
 LevelLoader::LevelLoader()
