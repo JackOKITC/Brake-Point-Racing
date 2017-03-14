@@ -53,3 +53,17 @@ car:
 node:
    - number: 1
      position: {x: 250, y: 100}
+   - number: 2
+     position: {x: 750, y: 200}
+   - number: 3
+     position: {x: 1250.40, y: 100}
+   - number: 4
+     position: {x: 1750, y: 200}
+   - number: 5
+     position: {x: 2250, y: 100}
+   - number: 6
+     position: {x: 2750, y: 200}
+   - number: 7
+     position: {x: 3250, y: 100}
+   - number: 8
+     position: {x: 3750, y: 200}
