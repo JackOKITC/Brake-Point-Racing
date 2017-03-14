@@ -1,7 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+<<<<<<< 4b82fd844271780ff29f3529c38548bd88192168
 <<<<<<< b75bf3fa04b13fc5151391a15710c269b26b1c49
+=======
+>>>>>>> Added trigger acceleration for player
     <ClCompile Include="src\Ai.cpp">
       <Filter>src</Filter>
     </ClCompile>
@@ -14,12 +17,19 @@
     <ClCompile Include="src\Game.cpp">
       <Filter>src</Filter>
     </ClCompile>
+<<<<<<< 4b82fd844271780ff29f3529c38548bd88192168
+=======
+    <ClCompile Include="src\Garage.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+>>>>>>> Added trigger acceleration for player
     <ClCompile Include="src\LevelLoader.cpp">
       <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="src\main.cpp">
       <Filter>src</Filter>
     </ClCompile>
+<<<<<<< 4b82fd844271780ff29f3529c38548bd88192168
     <ClCompile Include="src\Node.cpp">
       <Filter>src</Filter>
     </ClCompile>
@@ -136,6 +146,85 @@
     <ClInclude Include="include\Xbox360Controller.h" />
     <ClInclude Include="include\BTMath.h" />
 >>>>>>> added functionality for AI following nodes
+=======
+    <ClCompile Include="src\Menu.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Node.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Options.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Play.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ResourceManager.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RoadTile.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Splash.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Widget.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Xbox360Controller.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\Ai.h">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="include\BTMath.h">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Car.h">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Game.h">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GameState.h">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Garage.h">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="include\LevelLoader.h">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Menu.h">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Node.h">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Options.h">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Play.h">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ResouceManager.h">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RoadTile.h">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Splash.h">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Widget.h">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Xbox360Controller.h">
+      <Filter>header</Filter>
+    </ClInclude>
+>>>>>>> Added trigger acceleration for player
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -144,11 +233,14 @@
     <Filter Include="header">
       <UniqueIdentifier>{2a1b5bda-f5ba-417f-8043-7488ebec29cc}</UniqueIdentifier>
     </Filter>
+<<<<<<< 4b82fd844271780ff29f3529c38548bd88192168
     <Filter Include="src\Screens">
       <UniqueIdentifier>{19f9999e-94ef-43e7-8720-3e1bf4b296b0}</UniqueIdentifier>
     </Filter>
     <Filter Include="header\Screens">
       <UniqueIdentifier>{3d32bb50-a2d9-4eca-84e2-774491f9b6eb}</UniqueIdentifier>
     </Filter>
+=======
+>>>>>>> Added trigger acceleration for player
   </ItemGroup>
 </Project>
