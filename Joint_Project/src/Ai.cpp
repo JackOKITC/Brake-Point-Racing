@@ -26,6 +26,7 @@ Ai::~Ai()
 
 void Ai::update(double dt)
 {
+
 	m_carSprite.setPosition(m_position);
 	m_carSprite.setRotation(m_rotation);
 
@@ -64,7 +65,9 @@ void Ai::update(double dt)
 
 	m_speed = thor::length(m_velocity);
 
+
 	m_position = newPos;
+
 }
 
 void Ai::render(sf::RenderWindow & window)

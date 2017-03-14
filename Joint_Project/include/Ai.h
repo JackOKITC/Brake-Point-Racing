@@ -30,6 +30,7 @@ private:
 
 	const int NODE_TOLERANCE = 100.0f;
 
+
 	sf::Texture m_carTex;
 	sf::Sprite m_carSprite;
 
