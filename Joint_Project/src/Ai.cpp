@@ -1,6 +1,6 @@
 #include "Ai.h"
 
-<<<<<<< HEAD
+
 Ai::Ai(std::vector<std::unique_ptr<Node>> nodes) :
 	m_nodes(nodes),
 	m_currentNode(0),
@@ -40,7 +40,6 @@ void Ai::update(double dt)
 
 	if (thor::length(vectorToNode) < = (m_nodes.at(m_currentNode).getRadius() * 2))
 	{
-		int x = 0;
 		m_currentNode++;
 	}
 
