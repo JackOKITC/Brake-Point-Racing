@@ -69,7 +69,7 @@ void Play::render(sf::RenderWindow & window)
 	for (int i = 0; i < MAX_AI; i++)
 	{
 		aiCars[i]->render(window);
-	}
+	}	
 
 	m_followPlayer.setCenter(car->m_position);
 	window.setView(m_followPlayer);

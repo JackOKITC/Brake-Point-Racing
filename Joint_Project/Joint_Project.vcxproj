@@ -125,6 +125,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\Ai.cpp" />
+    <ClCompile Include="src\BTMath.cpp" />
     <ClCompile Include="src\Car.cpp" />
     <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="src\Garage.cpp" />
@@ -142,6 +143,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Ai.h" />
+    <ClInclude Include="include\BTMath.h" />
     <ClInclude Include="include\Car.h" />
     <ClInclude Include="include\Game.h" />
     <ClInclude Include="include\GameState.h" />

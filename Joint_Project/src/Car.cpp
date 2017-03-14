@@ -41,7 +41,7 @@ void Car::render(sf::RenderWindow & window)
 
 void Car::moveCar(Xbox360Controller & controller)
 {
-	if (controller.m_currentState.Y)
+	if (controller.m_currentState.RTrigger)
 	{
 		if (m_speed < 40)
 		{
@@ -49,7 +49,7 @@ void Car::moveCar(Xbox360Controller & controller)
 		}
 	}
 
-	if (controller.m_currentState.B)
+	if (controller.m_currentState.LTrigger)
 	{
 		if (m_speed > -20)
 		{
