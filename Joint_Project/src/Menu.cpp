@@ -6,7 +6,7 @@ Menu::Menu(sf::Font & font, GameState *gameState) :
 {
 	m_gameState = gameState;
 
-	m_backgroundTex = g_manager.m_holder["MenuBG"];
+	m_backgroundTex = ResourceManager::instance().m_holder["MenuBG"];
 
 	m_backgroundSprite.setTexture(m_backgroundTex);
 	m_backgroundSprite.setScale(0.01f, 0.01f);

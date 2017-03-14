@@ -7,7 +7,7 @@ RoadTile::RoadTile()
 RoadTile::RoadTile(const std::string & image, const sf::Vector2f &pos, const double &rotation, const double &scale)
 {
 	std::string temp = image;
-	m_roadTex = g_manager.m_holder["Road1"];
+	m_roadTex = ResourceManager::instance().m_holder["Road1"];
 
 	m_roadSprite.setTexture(m_roadTex);
 

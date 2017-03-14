@@ -1,6 +1,7 @@
 #include "ResouceManager.h"
 
-ResourceManager g_manager;
+
+ResourceManager ResourceManager::m_instance;
 
 ResourceManager::ResourceManager()
 {
@@ -32,3 +33,4 @@ void ResourceManager::loadData(LevelData &level)
 		std::cout << "Error: " << e.what() << std::endl;
 	}
 }
+

@@ -3,7 +3,7 @@
 Splash::Splash(GameState *gameState, sf::Font font)
 	: m_font(font)
 {
-	m_backgroundTex = g_manager.m_holder["SplashBG"];
+	m_backgroundTex = ResourceManager::instance().m_holder["SplashBG"];
 	m_backgroundSprite.setTexture(m_backgroundTex);
 	m_backgroundSprite.setScale(0.4f, 0.575f); // Setting the scale of the background sprite
 	m_backgroundSprite.setOrigin(m_backgroundTex.getSize().x / 2, m_backgroundTex.getSize().y / 2); // Setting the background sprite's origin

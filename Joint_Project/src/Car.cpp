@@ -2,7 +2,7 @@
 
 Car::Car()
 {
-	m_carTex = g_manager.m_holder["BusTex"];
+	m_carTex = ResourceManager::instance().m_holder["BusTex"];
 
 	m_carSprite.setTexture(m_carTex);
 	

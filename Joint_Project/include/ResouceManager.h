@@ -9,14 +9,15 @@
 class ResourceManager
 {
 public:
-	ResourceManager();
+	static ResourceManager& instance() { return m_instance; }
 	void loadData(LevelData &level);
 	thor::ResourceHolder<sf::Texture, std::string> m_holder;
 
 private: 
-	
+	ResourceManager();
+	static ResourceManager m_instance;
 };
 
-extern ResourceManager g_manager;
+
 #endif // !RESOURCEMANAGER_H
 

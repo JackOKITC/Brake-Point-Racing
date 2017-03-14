@@ -19,9 +19,9 @@ Play::Play(GameState *gameState)
 	{
 		std::cout << "Level not loaded" << std::endl;
 	}
-	//g_manager.loadData(m_level);
+	
 
-	g_manager.loadData(m_level);
+	ResourceManager::instance().loadData(m_level);
 	generateRoad();
 	generateNode();
 

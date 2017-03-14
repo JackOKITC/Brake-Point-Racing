@@ -8,7 +8,6 @@ Game::Game(sf::Font &font, sf::Font &titleFont) :
 	m_font(font)
 {
 
-	ResourceManager g_manager;
 	// pointer to GameState object, will be passed to each menu state so
 	// they can change the state in their own source files
 	m_currentGameState = new GameState();
