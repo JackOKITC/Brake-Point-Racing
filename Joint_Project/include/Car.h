@@ -31,8 +31,12 @@ private:
 	float m_speed = 0.0f;
 
 	const double DEG_TO_RAD = 3.14159 / 180.0f;
-
 	
+	/// <summary>
+	/// coefficient of friction from this site.
+	/// http://hyperphysics.phy-astr.gsu.edu/hbase/Mechanics/frictire.html
+	/// </summary>
+	const float DECCELERATION_CAUSED_BY_FRICTION = (0.7 * 9.81) / 1000;
 	
 };
 #endif // !CAR_H
