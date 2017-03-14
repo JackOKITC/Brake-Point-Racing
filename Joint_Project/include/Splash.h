@@ -25,7 +25,18 @@ public:
 
 private:
 	GameState *m_state;
+	
 	bool m_transitionToNext = false;
+	bool m_startPressed = false;
+	bool m_highlight = true;
+	
+	int alpha;
+	int r;
+	int g;
+	int b;
+
+	int charSize;
+	
 	sf::Time currentTime;
 
 	sf::Font m_font;
