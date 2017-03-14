@@ -2,7 +2,7 @@
 
 Menu::Menu(sf::Font & font, GameState *gameState) :
 	m_font(font)
-	, TIME_PER_UPDATE(sf::microseconds(650))
+	, TIME_PER_UPDATE(sf::microseconds(1450))
 {
 	m_gameState = gameState;
 
@@ -18,7 +18,7 @@ Menu::Menu(sf::Font & font, GameState *gameState) :
 
 	for (int i = 0; i < BUTTON_COUNT; i++)
 	{
-		m_buttons[i] = new Button(&m_strings[i], &sf::Vector2f(450, 200 + (i * 100)), &m_font);
+		m_buttons[i] = new Button(&m_strings[i], &sf::Vector2f(450, 150 + (i * 100)), &m_font);
 		m_buttons[i]->loseFocus();
 	}
 
