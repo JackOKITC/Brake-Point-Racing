@@ -8,11 +8,19 @@ Play::Play(GameState *gameState)
 {
 	m_state = gameState;
 
-	if (!m_backgroundTex.loadFromFile(".//resources//images//car_parts//all.png"))
+	if (!m_backgroundTex.loadFromFile(".//resources//images//road//OurRoad//back_tex.jpg"))
 	{
 		std::cout << "Problem loading Texture for splash screen";
 	}
-	m_backgroundSprite.setTexture(m_backgroundTex);
+	for (int i = 0; i < 4; i++)
+	{
+		m_backgroundSprite[i].setTexture(m_backgroundTex);
+		m_backgroundSprite[i].setScale(sf::Vector2f(1.3, 1.3));
+	}
+	m_backgroundSprite[0].setPosition(sf::Vector2f(-600, -600));
+	m_backgroundSprite[1].setPosition(sf::Vector2f(1000, -600));
+	m_backgroundSprite[2].setPosition(sf::Vector2f(-600, 1000));
+	m_backgroundSprite[3].setPosition(sf::Vector2f(1000, 1000));
 
 	int currentLevel = 1;
 	if (!LevelLoader::load(currentLevel, m_level))
@@ -33,7 +41,7 @@ Play::Play(GameState *gameState)
 	}
 
 	m_followPlayer.setCenter(car->m_position);
-	m_followPlayer.setSize(900, 600); //in constructor
+	m_followPlayer.setSize(3000, 3000); //in constructor
 
 }
 
@@ -55,16 +63,20 @@ void Play::update(Xbox360Controller & controller, double dt)
 void Play::render(sf::RenderWindow & window)
 {
 	window.clear(sf::Color(1, 165, 18));
-
+	for (int i = 0; i < 4; i++)
+	{
+		window.draw(m_backgroundSprite[i]);
+	}
 		for (std::unique_ptr<RoadTile> &roadTile : m_roadTiles)
 		{
-			if (roadTile->culling(car->m_position))
+			if (roadTile->culling(car->m_position, window))
 			{
 				roadTile->render(window);
 			}
 		}
 
 	car->render(window);
+
 
 	//for (int i = 0; i < MAX_AI; i++)
 	//{

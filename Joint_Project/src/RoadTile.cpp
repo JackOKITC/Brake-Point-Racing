@@ -36,15 +36,29 @@ void RoadTile::render(sf::RenderWindow & window)
 	window.draw(m_roadSprite);
 }
 
-bool RoadTile::culling(sf::Vector2f & centreScreen)
+bool RoadTile::culling(sf::Vector2f & centreScreen, sf::RenderWindow & window)												/*centreScreen.x > m_position.x &&
+																															centreScreen.x < m_position.x + m_roadTex.getSize().x / 2 &&
+																															centreScreen.y > m_position.y &&
+																															centreScreen.y < m_position.y + m_roadTex.getSize().y / 2*/
+																															/*m_position.x < centreScreen.x + halfWidth &&
+																																m_position.x > centreScreen.x &&
+																															m_position.y < centreScreen.y + halfHeight &&
+																																m_position.y > centreScreen.y*/
 {
-	if (centreScreen.x > m_position.x -1000  &&
-		centreScreen.x < m_position.x + m_roadSprite.getLocalBounds().width + 1000 &&
-		centreScreen.y > m_position.y - 700 &&
-		centreScreen.y < m_position.y + m_roadSprite.getLocalBounds().height + 700)
+
+	double halfHeight = window.getSize().y / 2;
+	double halfWidth = window.getSize().x / 2;
+
+	if (centreScreen.x > m_position.x - 450 - (m_roadSprite.getLocalBounds().width / 2 * 1.5) &&
+		centreScreen.x < m_position.x + (m_roadSprite.getLocalBounds().width / 2 * 1.5) + 450 &&
+		centreScreen.y > m_position.y - 300 - (m_roadSprite.getLocalBounds().height / 2 * 1.5) &&
+		centreScreen.y < m_position.y + (m_roadSprite.getLocalBounds().height / 2 * 1.5) + 300)
 	{
 		return true;
 	}
 	else
+	{
 		return false;
+	}
+		
 }
