@@ -10,11 +10,15 @@
 #include "BTMath.h"
 #include <Thor\Math.hpp>
 #include <Thor\Math\Trigonometry.hpp>
+#include "ResouceManager.h"
+
 class Ai
 {
 public:
 	Ai();
-	Ai(std::vector<std::unique_ptr<Node>> & nodes, float m_speed, float m_rotation, sf::Vector2f velocity, sf::Texture &carTexture, sf::Sprite &carSprite);
+	
+	Ai(std::vector<std::unique_ptr<Node>> & nodes);
+	
 	~Ai();
 
 	void update(double dt);
@@ -24,11 +28,13 @@ public:
 
 private:
 
+	const int NODE_TOLERANCE = 100.0f;
+
 	sf::Texture m_carTex;
 	sf::Sprite m_carSprite;
 
-	float const MAX_FORCE;
-	float MAX_SPEED;
+	float const MAX_FORCE = 10.0f;
+	float const MAX_SPEED = 40.0f;
 
 	int m_currentNode;
 
@@ -38,10 +44,11 @@ private:
 
 	sf::Vector2f m_steering;
 
-	sf::Vector2f m_followPath() const;
+	sf::Vector2f m_followPath();
 
 	std::vector<std::unique_ptr<Node>> &m_nodes;
 
-	const double DEG_TO_RAD = 3.14159 / 180.0f;
+	const double PI = atan(1) * 4;
+	const double DEG_TO_RAD = PI / 180.0f;
 };
 #endif // !AI_H

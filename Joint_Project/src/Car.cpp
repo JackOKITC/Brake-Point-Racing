@@ -7,7 +7,6 @@ Car::Car(bool isAi, std::vector<std::unique_ptr<Node>> & nodes) :
 	if (!m_isAi)
 	{
 		m_carTex = g_manager.m_holder["BusTex"];
-
 		m_carSprite.setTexture(m_carTex);
 
 		m_position = sf::Vector2f(100, 300);
@@ -22,10 +21,7 @@ Car::Car(bool isAi, std::vector<std::unique_ptr<Node>> & nodes) :
 	}
 	else
 	{
-		m_carTex = ResourceManager::instance().m_holder["BusTex"];
-		m_carSprite.setTexture(m_carTex);
-
-		m_aiCar = new Ai(m_nodes, m_speed, m_rotation, m_velocity, m_carTex, m_carSprite);
+		m_aiCar = new Ai(m_nodes);
 	}
 }
 
