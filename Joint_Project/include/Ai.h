@@ -18,7 +18,7 @@ public:
 	Ai();
 	
 	Ai(std::vector<std::unique_ptr<Node>> & nodes);
-	
+
 	~Ai();
 
 	void update(double dt);
@@ -29,7 +29,6 @@ public:
 private:
 
 	const int NODE_TOLERANCE = 100.0f;
-
 
 	sf::Texture m_carTex;
 	sf::Sprite m_carSprite;

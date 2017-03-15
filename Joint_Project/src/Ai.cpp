@@ -1,13 +1,12 @@
 #include "Ai.h"
 
+
 Ai::Ai(std::vector<std::unique_ptr<Node>> & nodes) :
 	m_nodes(nodes),
 	m_currentNode(0),
 	m_steering(0, 0)
 {
 	m_carTex = g_manager.m_holder["BusTex"];
-	m_carSprite.setTexture(m_carTex);
-
 	m_carSprite.setTexture(m_carTex);
 	m_position = sf::Vector2f(100,300);
 	m_velocity = sf::Vector2f(0, 0);
@@ -26,7 +25,6 @@ Ai::~Ai()
 
 void Ai::update(double dt)
 {
-
 	m_carSprite.setPosition(m_position);
 	m_carSprite.setRotation(m_rotation);
 
@@ -65,9 +63,7 @@ void Ai::update(double dt)
 
 	m_speed = thor::length(m_velocity);
 
-
 	m_position = newPos;
-
 }
 
 void Ai::render(sf::RenderWindow & window)

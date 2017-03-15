@@ -36,7 +36,6 @@ private:
 
 	std::vector<std::unique_ptr<Node>> &m_nodes;
 
-
 	const double DEG_TO_RAD = 3.14159 / 180.0f;
 	
 	/// <summary>
