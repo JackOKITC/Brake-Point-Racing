@@ -19,11 +19,11 @@ Play::Play(GameState *gameState)
 	generateRoad();
 	generateNode();
 
-	car = new Car();
+	car = new Car(false, m_nodes);
 
 	for (int i = 0; i < MAX_AI; i++)
 	{
-		aiCars[i] = new Ai(m_nodes);
+		aiCars[i] = new Car(true, m_nodes);
 	}
 
 	m_followPlayer.setCenter(car->m_position);
@@ -41,7 +41,7 @@ void Play::update(Xbox360Controller & controller, double dt)
 
 	for (int i = 0; i < MAX_AI; i++)
 	{
-		aiCars[i]->update(dt);
+		aiCars[i]->update(controller, dt);
 	}
 	
 	for (std::unique_ptr<RoadTile> &roadTile : m_roadTiles)

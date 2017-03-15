@@ -33,7 +33,7 @@ private:
 	Car * car;
 
 	static const int MAX_AI = 5;
-	Ai * aiCars[MAX_AI];
+	Car * aiCars[MAX_AI];
 
 	std::vector<std::unique_ptr<RoadTile>> m_roadTiles;
 	std::vector<std::unique_ptr<Node>> m_nodes;

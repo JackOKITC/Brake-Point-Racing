@@ -74,7 +74,6 @@ void Splash::update(Xbox360Controller * controller, sf::Time dt)
 			m_transitionToNext = false;
 		}
 	}
-
 }
 
 void Splash::render(sf::RenderWindow & window)
