@@ -7,6 +7,7 @@ Menu::Menu(sf::Font & font, GameState *gameState) :
 	m_gameState = gameState;
 
 #pragma region Convex Lines
+
 	m_raceLine.setPointCount(4);
 	m_raceLine.setPoint(0, sf::Vector2f(144.5, 140));
 	m_raceLine.setPoint(1, sf::Vector2f(243, 105));
@@ -35,10 +36,8 @@ Menu::Menu(sf::Font & font, GameState *gameState) :
 	m_exitLine.setPoint(3, sf::Vector2f(147, 458));
 	m_exitLine.setFillColor(sf::Color(m_unselect));
 
-
-
-
 #pragma endregion
+
 	m_backgroundTex = ResourceManager::instance().m_holder["MenuBG"];
 
 	m_backgroundSprite.setTexture(m_backgroundTex);

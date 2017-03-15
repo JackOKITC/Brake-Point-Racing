@@ -28,11 +28,11 @@
     <ClInclude Include="include\Node.h" />
     <ClInclude Include="include\Options.h" />
     <ClInclude Include="include\Play.h" />
-    <ClInclude Include="include\ResouceManager.h" />
     <ClInclude Include="include\RoadTile.h" />
     <ClInclude Include="include\Splash.h" />
     <ClInclude Include="include\Widget.h" />
     <ClInclude Include="include\Xbox360Controller.h" />
+    <ClInclude Include="include\ResourceManager.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="resources\images\UI\menu.jpg" />

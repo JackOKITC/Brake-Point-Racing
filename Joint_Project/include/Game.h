@@ -11,7 +11,7 @@
 #include "Splash.h"
 #include "GameState.h"
 #include <iostream>
-#include "ResouceManager.h"
+#include "ResourceManager.h"
 
 class Game
 {

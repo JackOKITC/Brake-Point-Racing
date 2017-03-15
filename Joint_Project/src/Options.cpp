@@ -4,15 +4,24 @@
 Options::Options(sf::Font font, GameState *gameState) :
 	m_font(font)
 {
-	m_sliderValue = 5;
-	m_button = new Button(&m_string, &sf::Vector2f(450, 200), &m_font);
-	m_slider = new Slider(&sf::Vector2f(380, 300), m_sliderValue);
+	m_radioTex = ResourceManager::instance().m_holder["Radio"];
+	
 
-	widgets[0] = m_button;
-	widgets[1] = m_slider;
+	m_sliderValue = 5;
+	m_helpButton = new Button(&m_helpString, &sf::Vector2f(450, 200), &m_font);
+	m_volSlider = new Slider(&sf::Vector2f(380, 300), m_sliderValue);
+	m_exitButton = new Button(&m_exitString, &sf::Vector2f(450, 400), &m_font);
+	m_screenRadio = new RadioButton(&m_radioTex, &sf::Vector2f(450, 500));
+
+	widgets[0] = m_helpButton;
+	widgets[1] = m_volSlider;
+	widgets[2] = m_exitButton;
+	widgets[3] = m_screenRadio;
 
 	widgets[0]->getFocus();
 	widgets[1]->loseFocus();
+	widgets[2]->loseFocus();
+	widgets[3]->loseFocus();
 }
 
 Options::~Options()
@@ -21,7 +30,7 @@ Options::~Options()
 
 void Options::update(GamePadState m_state, Xbox360Controller & m_controller)
 {
-	m_slider->update();
+	m_volSlider->update();
 	checkButtonSelected(m_state, m_controller);
 	selectedButton(m_state, m_controller);
 }
@@ -29,8 +38,10 @@ void Options::update(GamePadState m_state, Xbox360Controller & m_controller)
 void Options::render(sf::RenderWindow & window)
 {
 	window.clear(sf::Color::White);
-	m_button->render(window);
-	m_slider->render(window);
+	m_helpButton->render(window);
+	m_volSlider->render(window);
+	m_exitButton->render(window);
+	m_screenRadio->render(window);
 }
 
 // Function to check which button is selected
@@ -47,7 +58,7 @@ void Options::checkButtonSelected(GamePadState m_state, Xbox360Controller m_cont
 			}
 
 			widgets[m_currentBtn]->getFocus(); // newly seleted button highlighted
-			m_buttonSelected = (optionsButton)m_currentBtn; // enum for buttons set to current int value of current button
+			m_buttonSelected = (optionsSelection)m_currentBtn; // enum for buttons set to current int value of current button
 		}
 
 		// if Up toggled, same behaviour as above except the counter is decremented
@@ -61,20 +72,20 @@ void Options::checkButtonSelected(GamePadState m_state, Xbox360Controller m_cont
 			}
 
 			widgets[m_currentBtn]->getFocus();
-			m_buttonSelected = (optionsButton)m_currentBtn;
+			m_buttonSelected = (optionsSelection)m_currentBtn;
 		}
 
 		// if the currently selected button is the slider button before these actions only of left and right pressed
-		if (m_buttonSelected == optionsButton::Option2)
+		if (m_buttonSelected == optionsSelection::Option2)
 		{
 			if ((m_state.dpadLeft && !m_controller.m_previousState.dpadLeft) || (m_state.LeftThumbStick.x < -50 && m_controller.m_previousState.LeftThumbStick.x > -50))	// Decrements the slider if the player pushes the d-pad or thumbstick left.
 			{
-				m_sliderValue = m_slider->decrementSlider();
+				m_sliderValue = m_volSlider->decrementSlider();
 			}
 
 			if ((m_state.dpadRight && !m_controller.m_previousState.dpadRight) || (m_state.LeftThumbStick.x > 50 && m_controller.m_previousState.LeftThumbStick.x < 50))	// Increments the slider if the player pushes the d - pad or thumbstick left.
 			{
-				m_sliderValue = m_slider->incrementSlider();
+				m_sliderValue = m_volSlider->incrementSlider();
 			}
 		}
 }
@@ -84,19 +95,19 @@ void Options::selectedButton(GamePadState m_state, Xbox360Controller m_controlle
 {
 	switch (m_buttonSelected) // Switch statement for the buttons
 	{
-	case optionsButton::Option1:	// The play button 
+	case optionsSelection::Option1:	// The play button 
 		if (m_state.A && !m_controller.m_previousState.A)	// If the A button has been pressed
 		{
 
 		}
 		break;
-	case optionsButton::Option2:	// The options button 
+	case optionsSelection::Option2:	// The options button 
 		if (m_state.A && !m_controller.m_previousState.A)	// If the A button has been pressed
 		{
 
 		}
 		break;
-	case optionsButton::Option3:	// The exit button 
+	case optionsSelection::Option3:	// The exit button 
 		if (m_state.A && !m_controller.m_previousState.A)	// If the A button has been pressed
 		{
 			

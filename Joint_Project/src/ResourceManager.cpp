@@ -1,4 +1,4 @@
-#include "ResouceManager.h"
+#include "ResourceManager.h"
 
 
 ResourceManager ResourceManager::m_instance;

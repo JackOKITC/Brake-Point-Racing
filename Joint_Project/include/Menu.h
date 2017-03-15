@@ -6,7 +6,7 @@
 #include "Widget.h"
 #include "GameState.h"
 #include "Xbox360Controller.h"
-#include "ResouceManager.h"
+#include "ResourceManager.h"
 
 enum class button	// Enum for the buttons
 {
@@ -55,6 +55,7 @@ private:
 	sf::Color m_unselect = sf::Color(170, 50, 50);
 
 #pragma endregion
+
 	sf::Font m_font;
 	button m_buttonSelected = button::Play; // The button enum which starts on the play button
 

@@ -8,7 +8,7 @@
 #include <sstream>
 #include <Thor\Resources.hpp>
 #include <Aurora/Config.hpp>
-#include "ResouceManager.h"
+#include "ResourceManager.h"
 
 class Splash
 {

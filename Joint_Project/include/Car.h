@@ -3,7 +3,7 @@
 
 #include "Xbox360Controller.h"
 #include <iostream>
-#include "ResouceManager.h"
+#include "ResourceManager.h"
 
 class Car
 {
