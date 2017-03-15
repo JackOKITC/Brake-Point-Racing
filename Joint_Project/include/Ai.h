@@ -9,7 +9,8 @@
 #include <Thor\Vectors.hpp>
 #include "BTMath.h"
 #include <Thor\Math.hpp>
-#include <Thor\Math\Trigonometry.hpp>
+#include <Thor\Shapes.hpp>
+#include <Thor\Vectors.hpp>
 #include "ResouceManager.h"
 
 class Ai
@@ -38,7 +39,7 @@ private:
 
 	sf::Vector2f m_velocity;
 	float m_rotation;
-	float m_speed = 0.0f;
+	float m_speed = 10.0f;
 
 	sf::Vector2f m_steering;
 
@@ -46,7 +47,7 @@ private:
 
 	std::vector<std::unique_ptr<Node>> &m_nodes;
 
-	const double PI = atan(1) * 4;
+	const double PI = 3.1415926;
 	const double DEG_TO_RAD = PI / 180.0f;
 };
 #endif // !AI_H
