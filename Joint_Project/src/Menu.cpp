@@ -12,28 +12,28 @@ Menu::Menu(sf::Font & font, GameState *gameState) :
 	m_raceLine.setPoint(1, sf::Vector2f(243, 105));
 	m_raceLine.setPoint(2, sf::Vector2f(247.6, 115));
 	m_raceLine.setPoint(3, sf::Vector2f(153, 160));
-	m_raceLine.setFillColor(sf::Color(sf::Color(170,50,50)));
+	m_raceLine.setFillColor(sf::Color(m_unselect));
 	
 	m_garLine.setPointCount(4);
 	m_garLine.setPoint(0, sf::Vector2f(175.5, 240));
 	m_garLine.setPoint(1, sf::Vector2f(278.5, 225));
 	m_garLine.setPoint(2, sf::Vector2f(280.75, 235));
 	m_garLine.setPoint(3, sf::Vector2f(179, 260));
-	m_garLine.setFillColor(sf::Color(sf::Color(170, 50, 50)));
+	m_garLine.setFillColor(sf::Color(m_unselect));
 
 	m_optLine.setPointCount(4);
 	m_optLine.setPoint(0, sf::Vector2f(179, 340));
 	m_optLine.setPoint(1, sf::Vector2f(282.5, 350));
 	m_optLine.setPoint(2, sf::Vector2f(280.5, 360));
 	m_optLine.setPoint(3, sf::Vector2f(176, 360));
-	m_optLine.setFillColor(sf::Color(sf::Color(170, 50, 50)));
+	m_optLine.setFillColor(sf::Color(m_unselect));
 	
 	m_exitLine.setPointCount(4);
 	m_exitLine.setPoint(0, sf::Vector2f(155.5, 438));
 	m_exitLine.setPoint(1, sf::Vector2f(252, 475));
 	m_exitLine.setPoint(2, sf::Vector2f(248, 485));
 	m_exitLine.setPoint(3, sf::Vector2f(147, 458));
-	m_exitLine.setFillColor(sf::Color(sf::Color(170, 50, 50)));
+	m_exitLine.setFillColor(sf::Color(m_unselect));
 
 
 
@@ -120,29 +120,29 @@ void Menu::checkButtonSelected(GamePadState m_state, Xbox360Controller m_control
 	switch (m_currentLab)
 	{
 	case 0:
-		m_raceLine.setFillColor(sf::Color(sf::Color(225, 30, 30)));
-		m_garLine.setFillColor(sf::Color(sf::Color(170, 50, 50)));
-		m_optLine.setFillColor(sf::Color(sf::Color(170, 50, 50)));
-		m_exitLine.setFillColor(sf::Color(sf::Color(170, 50, 50)));
+		m_raceLine.setFillColor(sf::Color(m_select));
+		m_garLine.setFillColor(sf::Color(m_unselect));
+		m_optLine.setFillColor(sf::Color(m_unselect));
+		m_exitLine.setFillColor(sf::Color(m_unselect));
 		
 		break;
 	case 1:
-		m_raceLine.setFillColor(sf::Color(sf::Color(170, 50, 50)));
-		m_garLine.setFillColor(sf::Color(sf::Color(225, 30, 30)));
-		m_optLine.setFillColor(sf::Color(sf::Color(170, 50, 50)));
-		m_exitLine.setFillColor(sf::Color(sf::Color(170, 50, 50)));
+		m_raceLine.setFillColor(sf::Color(m_unselect));
+		m_garLine.setFillColor(sf::Color(m_select));
+		m_optLine.setFillColor(sf::Color(m_unselect));
+		m_exitLine.setFillColor(sf::Color(m_unselect));
 		break;
 	case 2:
-		m_raceLine.setFillColor(sf::Color(sf::Color(170, 50, 50)));
-		m_garLine.setFillColor(sf::Color(sf::Color(170, 50, 50)));
-		m_optLine.setFillColor(sf::Color(sf::Color(225, 30, 30)));
-		m_exitLine.setFillColor(sf::Color(sf::Color(170, 50, 50)));
+		m_raceLine.setFillColor(sf::Color(m_unselect));
+		m_garLine.setFillColor(sf::Color(m_unselect));
+		m_optLine.setFillColor(sf::Color(m_select));
+		m_exitLine.setFillColor(sf::Color(m_unselect));
 		break;
 	case 3:
-		m_raceLine.setFillColor(sf::Color(sf::Color(170, 50, 50)));
-		m_garLine.setFillColor(sf::Color(sf::Color(170, 50, 50)));
-		m_optLine.setFillColor(sf::Color(sf::Color(170, 50, 50)));
-		m_exitLine.setFillColor(sf::Color(sf::Color(225, 30, 30)));
+		m_raceLine.setFillColor(sf::Color(m_unselect));
+		m_garLine.setFillColor(sf::Color(m_unselect));
+		m_optLine.setFillColor(sf::Color(m_unselect));
+		m_exitLine.setFillColor(sf::Color(m_select));
 		break;
 	}
 	// if Down toggled

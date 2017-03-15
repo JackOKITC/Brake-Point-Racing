@@ -51,6 +51,9 @@ private:
 	sf::ConvexShape m_optLine;
 	sf::ConvexShape m_exitLine;
 
+	sf::Color m_select = sf::Color(225, 30, 30);
+	sf::Color m_unselect = sf::Color(170, 50, 50);
+
 #pragma endregion
 	sf::Font m_font;
 	button m_buttonSelected = button::Play; // The button enum which starts on the play button
