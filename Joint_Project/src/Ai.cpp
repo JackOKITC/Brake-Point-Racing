@@ -25,11 +25,7 @@ Ai::~Ai()
 }
 
 void Ai::update(double dt)
-{
-	m_carSprite.setPosition(m_position);
-	m_carSprite.setRotation(m_rotation);
-
-	sf::Vector2f newPos = m_position;			/*sf::Vector2f(m_position.x + std::cos(DEG_TO_RAD *(m_rotation - 90)) * m_speed * (dt / 1000),
+{													/*sf::Vector2f(m_position.x + std::cos(DEG_TO_RAD *(m_rotation - 90)) * m_speed * (dt / 1000),
 													m_position.y + std::sin(DEG_TO_RAD *(m_rotation - 90)) * m_speed * (dt / 1000));*/
 	sf::Vector2f vectorToNode = m_followPath();
 
@@ -45,26 +41,31 @@ void Ai::update(double dt)
 	// Note: we add 180 degrees below to convert the final angle into a range 0 to 359 instead of -PI to +PI
 	auto dest = atan2(-1 * m_velocity.y, -1 * m_velocity.x) / PI * 180 + 180;
 
+	float currentRotation = m_rotation;
+
 	// Find the shortest way to rotate towards the player (clockwise or anti-clockwise)
-	if (std::round(m_rotation - dest) == 0.0)
+	if (std::round(currentRotation - dest) == 0.0)
 	{
 		m_steering.x = 0;
 		m_steering.y = 0;
 	}
-	else if ((static_cast<int>(std::round(dest - m_rotation + 360))) % 360 < 180)
+	else if ((static_cast<int>(std::round(dest - currentRotation + 360))) % 360 < 180)
 	{
 		// rotate clockwise
-		m_rotation += 1;
+		m_rotation = static_cast<int>((m_rotation) + 1) % 360;
 	}
 	else
 	{
 		// rotate anti-clockwise
-		m_rotation -= 1;
+		m_rotation = static_cast<int>((m_rotation)-1) % 360;
 	}
 
 	m_speed = thor::length(m_velocity);
 
-	m_position = newPos;
+	m_carSprite.setRotation(m_rotation);
+	m_carSprite.setPosition(sf::Vector2f(m_position.x + std::cos(DEG_TO_RAD *(m_rotation - 90)) * m_speed * (dt / 1000),
+	m_position.y + std::sin(DEG_TO_RAD *(m_rotation - 90)) * m_speed * (dt / 1000)));
+	
 }
 
 void Ai::render(sf::RenderWindow & window)
