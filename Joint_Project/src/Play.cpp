@@ -6,8 +6,8 @@ Play::Play()
 
 Play::Play(GameState *gameState)
 {
-	m_state = gameState;
-
+	m_state = gameState;	
+	
 	if (!m_backgroundTex.loadFromFile(".//resources//images//road//OurRoad//back_tex.jpg"))
 	{
 		std::cout << "Problem loading Texture for splash screen";
@@ -41,7 +41,7 @@ Play::Play(GameState *gameState)
 	}
 
 	m_followPlayer.setCenter(car->m_position);
-	m_followPlayer.setSize(3000, 3000); //in constructor
+	m_followPlayer.setSize(900, 600); //in constructor
 
 }
 
@@ -58,6 +58,10 @@ void Play::update(Xbox360Controller & controller, double dt)
 		aiCars[i]->update(dt);
 	}
 	
+	for (std::unique_ptr<RoadTile> &roadTile : m_roadTiles)
+	{
+		roadTile->whichTile(car->m_position);
+	}
 }
 
 void Play::render(sf::RenderWindow & window)
@@ -89,10 +93,12 @@ void Play::render(sf::RenderWindow & window)
 
 void Play::generateRoad()
 {
+	int i = 0;
 	for (RoadData const &road : m_level.m_roads)
 	{
-		std::unique_ptr<RoadTile> roadTile(new RoadTile(road.m_fileID, road.m_position, road.m_rotation, road.m_scale));
+		std::unique_ptr<RoadTile> roadTile(new RoadTile(road.m_fileID, road.m_position, road.m_rotation, road.m_scale, i));
 		m_roadTiles.push_back(std::move(roadTile));
+		i++;
 	}
 }
 

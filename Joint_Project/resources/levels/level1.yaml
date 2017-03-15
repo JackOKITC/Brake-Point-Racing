@@ -56,32 +56,32 @@ tile:
      scale: 1.5
    - file: .\resources\images\road\OurRoad\corner_tile_topleft.png
      ID: Road12
-     position: {x: 1729.5, y: 1293.5}
+     position: {x: 1729.5, y: 1368.5}
      rotation: 0
      scale: 1.5
    - file: .\resources\images\road\OurRoad\straight_tile_top.png
      ID: Road13
-     position: {x: 2250.5, y: 1282}
+     position: {x: 2050.5, y: 1357}
      rotation: 0
      scale: 1.5
-   - file: .\resources\images\road\OurRoad\corner_tile_bottomright.png
+   - file: .\resources\images\road\OurRoad\u_tile.png
      ID: Road14
-     position: {x: 2600.5, y: 1475}
+     position: {x: 2400.5, y: 1031}
      rotation: 0
      scale: 1.5     
-   - file: .\resources\images\road\OurRoad\straight_tile_left.png
+   - file: .\resources\images\road\OurRoad\straight_tile_bottom.png
      ID: Road15
-     position: {x: 236.5, y: 1300}
+     position: {x: 1900, y: 710}
      rotation: 0
      scale: 1.5
-   - file: .\resources\images\road\OurRoad\corner_tile_bottomleft.png
+   - file: .\resources\images\road\OurRoad\straight_tile_bottom.png
      ID: Road16
-     position: {x: 248.5, y: 1818.5}
+     position: {x: 1500, y: 710}
      rotation: 0
      scale: 1.5
    - file: .\resources\images\road\OurRoad\straight_tile_bottom.png
      ID: Road17
-     position: {x: 775.5, y: 1830.5}
+     position: {x: 1100, y: 710}
      rotation: 0
      scale: 1.5
 

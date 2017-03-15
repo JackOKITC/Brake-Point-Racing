@@ -11,6 +11,7 @@
 #include "LevelLoader.h"
 #include "RoadTile.h"
 #include <vector>
+#include "ResouceManager.h"
 
 class Play
 {
@@ -42,5 +43,6 @@ private:
 
 
 	sf::View m_followPlayer; //private member in class
+	
 };
 #endif // !PLAY_H
