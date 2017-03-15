@@ -6,24 +6,63 @@ Menu::Menu(sf::Font & font, GameState *gameState) :
 {
 	m_gameState = gameState;
 
+#pragma region Convex Lines
+	m_raceLine.setPointCount(4);
+	m_raceLine.setPoint(0, sf::Vector2f(144.5, 140));
+	m_raceLine.setPoint(1, sf::Vector2f(243, 105));
+	m_raceLine.setPoint(2, sf::Vector2f(247.6, 115));
+	m_raceLine.setPoint(3, sf::Vector2f(153, 160));
+	m_raceLine.setFillColor(sf::Color(sf::Color(170,50,50)));
+	
+	m_garLine.setPointCount(4);
+	m_garLine.setPoint(0, sf::Vector2f(175.5, 240));
+	m_garLine.setPoint(1, sf::Vector2f(278.5, 225));
+	m_garLine.setPoint(2, sf::Vector2f(280.75, 235));
+	m_garLine.setPoint(3, sf::Vector2f(179, 260));
+	m_garLine.setFillColor(sf::Color(sf::Color(170, 50, 50)));
+
+	m_optLine.setPointCount(4);
+	m_optLine.setPoint(0, sf::Vector2f(179, 340));
+	m_optLine.setPoint(1, sf::Vector2f(282.5, 350));
+	m_optLine.setPoint(2, sf::Vector2f(280.5, 360));
+	m_optLine.setPoint(3, sf::Vector2f(176, 360));
+	m_optLine.setFillColor(sf::Color(sf::Color(170, 50, 50)));
+	
+	m_exitLine.setPointCount(4);
+	m_exitLine.setPoint(0, sf::Vector2f(155.5, 438));
+	m_exitLine.setPoint(1, sf::Vector2f(252, 475));
+	m_exitLine.setPoint(2, sf::Vector2f(248, 485));
+	m_exitLine.setPoint(3, sf::Vector2f(147, 458));
+	m_exitLine.setFillColor(sf::Color(sf::Color(170, 50, 50)));
+
+
+
+
+#pragma endregion
 	m_backgroundTex = ResourceManager::instance().m_holder["MenuBG"];
 
 	m_backgroundSprite.setTexture(m_backgroundTex);
-	m_backgroundSprite.setScale(0.01f, 0.01f);
-	m_backgroundSprite.setOrigin(m_backgroundTex.getSize().x / 2, m_backgroundTex.getSize().y / 2);
-	m_backgroundSprite.setPosition(450, 310);
+	m_backgroundSprite.setPosition(-700, -200);
 
 	m_timeStop = false;
 	m_transitionStop = false;
 
-	for (int i = 0; i < BUTTON_COUNT; i++)
+	for (int i = 0; i < LABEL_COUNT; i++)
 	{
-		m_buttons[i] = new Button(&m_strings[i], &sf::Vector2f(450, 200 + (i * 100)), &m_font);
-		m_buttons[i]->loseFocus();
+		if (i < 1 || i > 2)
+		{
+			m_labels[i] = new Label(&m_strings[i], &m_font, &sf::Vector2f(300, 100 + (i * 130)));
+		}
+		else
+		{
+			m_labels[i] = new Label(&m_strings[i], &m_font, &sf::Vector2f(355, 100 + (i * 130)));
+		}
+		
+		m_labels[i]->loseFocus();
 	}
 
-	m_currentBtn = 0;
-	m_buttons[m_currentBtn]->getFocus();
+	m_currentLab = 0;
+	m_labels[m_currentLab]->getFocus();
 }
 
 Menu::~Menu()
@@ -32,11 +71,11 @@ Menu::~Menu()
 
 void Menu::update(GamePadState m_state, Xbox360Controller & m_controller, sf::Time deltaTime)
 {
-	if (m_transitionStop)
-	{
+	//if (m_transitionStop)
+	//{
 		checkButtonSelected(m_state, m_controller);
 		selectedButton(m_state, m_controller);
-	}
+	//}
 
 	if (!m_timeStop)
 	{
@@ -44,62 +83,94 @@ void Menu::update(GamePadState m_state, Xbox360Controller & m_controller, sf::Ti
 		m_timeStop = true;
 	}
 
-	if (m_time.asSeconds() <= 3.6)
-	{
-		m_backgroundSprite.setRotation(m_backgroundSprite.getRotation() - 2);
-		m_backgroundSprite.scale(1.003, 1.003);
-		m_time += TIME_PER_UPDATE;
-	}
-	else
-	{
-		m_transitionStop = true;
-	}
+	//if (m_time.asSeconds() <= 3.6)
+	//{
+	//	m_time += TIME_PER_UPDATE;
+	//}
+	//else
+	//{
+	//	m_transitionStop = true;
+	//}
 }
 
 void Menu::render(sf::RenderWindow & window)
 {
 	window.clear(sf::Color(0,0,0));
 	window.draw(m_backgroundSprite);
-	if (m_transitionStop)
-	{
-		for (int i = 0; i < BUTTON_COUNT; i++)
+	
+	window.draw(m_raceLine);
+	window.draw(m_garLine);
+	window.draw(m_optLine);
+	window.draw(m_exitLine);
+	
+	//if (m_transitionStop)
+	//{
+		for (int i = 0; i < LABEL_COUNT; i++)
 		{
-			m_buttons[i]->render(window);
+			m_labels[i]->render(window);
 
 		}
-	}
+	//}
 }
 
 
 // Function to check which button is selected
 void Menu::checkButtonSelected(GamePadState m_state, Xbox360Controller m_controller)
 {
+	switch (m_currentLab)
+	{
+	case 0:
+		m_raceLine.setFillColor(sf::Color(sf::Color(225, 30, 30)));
+		m_garLine.setFillColor(sf::Color(sf::Color(170, 50, 50)));
+		m_optLine.setFillColor(sf::Color(sf::Color(170, 50, 50)));
+		m_exitLine.setFillColor(sf::Color(sf::Color(170, 50, 50)));
+		
+		break;
+	case 1:
+		m_raceLine.setFillColor(sf::Color(sf::Color(170, 50, 50)));
+		m_garLine.setFillColor(sf::Color(sf::Color(225, 30, 30)));
+		m_optLine.setFillColor(sf::Color(sf::Color(170, 50, 50)));
+		m_exitLine.setFillColor(sf::Color(sf::Color(170, 50, 50)));
+		break;
+	case 2:
+		m_raceLine.setFillColor(sf::Color(sf::Color(170, 50, 50)));
+		m_garLine.setFillColor(sf::Color(sf::Color(170, 50, 50)));
+		m_optLine.setFillColor(sf::Color(sf::Color(225, 30, 30)));
+		m_exitLine.setFillColor(sf::Color(sf::Color(170, 50, 50)));
+		break;
+	case 3:
+		m_raceLine.setFillColor(sf::Color(sf::Color(170, 50, 50)));
+		m_garLine.setFillColor(sf::Color(sf::Color(170, 50, 50)));
+		m_optLine.setFillColor(sf::Color(sf::Color(170, 50, 50)));
+		m_exitLine.setFillColor(sf::Color(sf::Color(225, 30, 30)));
+		break;
+	}
 	// if Down toggled
 	if ((m_state.dpadDown && !m_controller.m_previousState.dpadDown) || (m_state.LeftThumbStick.y > 50 && m_controller.m_previousState.LeftThumbStick.y < 50))
 	{
-		m_buttons[m_currentBtn]->loseFocus(); // currently selected button loses focus, unhighlighted
-		m_currentBtn = m_currentBtn + 1; // currentBtn selected incremented
-		if (m_currentBtn > BUTTON_COUNT - 1)
+		m_labels[m_currentLab]->loseFocus(); // currently selected button loses focus, unhighlighted
+		m_currentLab = m_currentLab + 1; // currentBtn selected incremented
+		if (m_currentLab > LABEL_COUNT - 1)
 		{
-			m_currentBtn = m_currentBtn - 1; // safe guard to stop out of bound behaviour
+			m_currentLab = m_currentLab - 1; // safe guard to stop out of bound behaviour
 		}
 
-		m_buttons[m_currentBtn]->getFocus(); // newly seleted button highlighted
-		m_buttonSelected = (button)m_currentBtn; // enum for buttons set to current int value of current button
+		m_labels[m_currentLab]->getFocus(); // newly seleted button highlighted
+		m_buttonSelected = (button)m_currentLab; // enum for buttons set to current int value of current button
 	}
 
 	// if Up toggled, same behaviour as above except the counter is decremented
 	if ((m_state.dpadUp && !m_controller.m_previousState.dpadUp) || (m_state.LeftThumbStick.y < -50 && m_controller.m_previousState.LeftThumbStick.y > -50))
 	{
-		m_buttons[m_currentBtn]->loseFocus();
-		m_currentBtn = m_currentBtn - 1;
-		if (m_currentBtn < 0)
+		m_labels[m_currentLab]->loseFocus();
+		m_currentLab = m_currentLab - 1;
+		if (m_currentLab < 0)
 		{
-			m_currentBtn = 0;
+			m_currentLab = 0;
 		}
 
-		m_buttons[m_currentBtn]->getFocus();
-		m_buttonSelected = (button)m_currentBtn;
+		m_labels[m_currentLab]->getFocus();
+		m_buttonSelected = (button)m_currentLab;
 	}
 }
 

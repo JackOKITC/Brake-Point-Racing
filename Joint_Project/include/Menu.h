@@ -33,8 +33,8 @@ public:
 
 private:
 	GameState *m_gameState;
-	const int BUTTON_COUNT = 4;
-	int m_currentBtn;
+	const int LABEL_COUNT = 4;
+	int m_currentLab;
 
 	bool m_timeStop;
 	bool m_transitionStop;
@@ -44,11 +44,19 @@ private:
 	sf::Texture m_backgroundTex;
 	sf::Sprite m_backgroundSprite;
 
+#pragma region Convex Lines
+	
+	sf::ConvexShape m_raceLine;
+	sf::ConvexShape m_garLine;
+	sf::ConvexShape m_optLine;
+	sf::ConvexShape m_exitLine;
+
+#pragma endregion
 	sf::Font m_font;
 	button m_buttonSelected = button::Play; // The button enum which starts on the play button
 
 	std::string m_strings[4] = { "Race", "Garage", "Options", "Exit" };
 
-	Button *m_buttons[4];
+	Label *m_labels[4];
 };
 #endif // !MENU_H

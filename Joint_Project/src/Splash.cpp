@@ -29,11 +29,8 @@ Splash::Splash(GameState *gameState, sf::Font font)
 	m_licenseText.setPosition(670, 150);
 	m_licenseText.setScale(0.5f, 0.5f);
 
-	alpha = 255;
-	charSize = m_startText.getCharacterSize();
-	r = 255;
-	g = 255;
-	b = 255;
+	alpha = 255;	// an alpha variable to allow the alpha value to be incremented/decremented in the loop
+	b = 255;	// a 'b' varabile from RGB to allow the B value to be incremented/decremented in the loop
 
 	/// <summary>
 	/// These set the strings for all text files
@@ -65,21 +62,22 @@ void Splash::update(Xbox360Controller * controller, sf::Time dt)
 	}
 	else if (!m_startPressed)
 	{
-		m_startText.setColor(sf::Color(r, g, b));
+		m_startText.setColor(sf::Color(255, 255, b));
 
+		// highlights the text yellow and scales it slightly up.
 		if (m_highlight)
 		{		
 			currentTime += TIME_PER_UPDATE;
 			m_startText.scale(1.0002, 1.0002);
-			m_startText.move(-0.02, 0);
+			m_startText.move(-0.02, 0);	// this is so the text doesn't only scale out to the right
 			
-			if (/*r != 255 && *//*g != 20 && */b != 20)
+			// decrement b if it is not 20
+			if (b != 20)
 			{
-				//r--;
-				/*g--;*/
 				b--;
 			}
 			
+			// changes highlight to false and resets the clock
 			if (currentTime.asSeconds() >= 0.5)
 			{
 				m_highlight = false;
@@ -87,19 +85,19 @@ void Splash::update(Xbox360Controller * controller, sf::Time dt)
 			}
 		}
 
+		// "unhighlights" the text and changes the text to white
 		if (!m_highlight)
 		{
 			currentTime += TIME_PER_UPDATE;
 			m_startText.scale(0.9998, 0.9998);
-			m_startText.move(0.02, 0);
+			m_startText.move(0.02, 0);	// again so the text doesn't scale too far out to the left
 			
-			if (/*r != 255 && *//*g != 255 && */b != 255)
+			if (b != 255)
 			{
-				//r++;
-				/*g++;*/
 				b++;
 			}
 
+			// changes highlight to false and resets the clock, so it can keep looping the colour change and scaling
 			if (currentTime.asSeconds() >= 0.5)
 			{
 				m_highlight = true;
@@ -108,6 +106,7 @@ void Splash::update(Xbox360Controller * controller, sf::Time dt)
 		}
 
 	}
+
 	if (m_startPressed)
 	{
 

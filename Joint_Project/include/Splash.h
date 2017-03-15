@@ -31,8 +31,6 @@ private:
 	bool m_highlight = true;
 	
 	int alpha;
-	int r;
-	int g;
 	int b;
 
 	int charSize;

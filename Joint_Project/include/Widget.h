@@ -54,7 +54,7 @@ protected:
 
 	// "Yellow" palette
 	sf::Color m_gold = sf::Color(255, 205, 0);
-	sf::Color m_paleBanana = sf::Color(245, 245, 130);
+	sf::Color m_paleBanana = sf::Color(245, 245, 230);
 
 
 private:
@@ -232,7 +232,7 @@ public:
 	/// <param name="font"></param>
 	/// <param name="position"></param>
 	/// <param name="size"></param>
-	Label(std::string *text, sf::Font *font, sf::Vector2f *position, int size);
+	Label(std::string *text, sf::Font *font, sf::Vector2f *position/*, int size*/);
 	~Label();	// Deconstructor for the Label object.
 
 	virtual void update() override;	// "update" method for the Label object, Overrides the "update" method in the widget.
