@@ -32,7 +32,6 @@ private:
 	Xbox360Controller * m_controller;
 	Car * car;
 
-
 	static const int MAX_AI = 1;
 	Car * aiCars[MAX_AI];
 

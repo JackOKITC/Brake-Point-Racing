@@ -16,9 +16,7 @@ class Ai
 {
 public:
 	Ai();
-	
 	Ai(std::vector<std::unique_ptr<Node>> & nodes);
-
 	~Ai();
 
 	void update(double dt);

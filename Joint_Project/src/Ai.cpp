@@ -1,6 +1,5 @@
 #include "Ai.h"
 
-
 Ai::Ai(std::vector<std::unique_ptr<Node>> & nodes) :
 	m_nodes(nodes),
 	m_currentNode(0),
