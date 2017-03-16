@@ -5,12 +5,15 @@
 #include "GameState.h"
 #include "Widget.h"
 #include "ResourceManager.h"
+#include "SFML\Audio.hpp"
+#include "SFML\Audio\SoundSource.hpp"
 
 enum class optionsSelection	// Enum for the buttons
 {
 	Option1,
 	Option2,
-	Option3
+	Option3,
+	Option4
 };
 
 class Options
@@ -24,6 +27,7 @@ public:
 	void update(GamePadState m_state, Xbox360Controller & m_controller);
 	void render(sf::RenderWindow & window);
 
+	
 
 private:
 	GameState *m_state;
@@ -39,10 +43,16 @@ private:
 
 	sf::Font m_font;
 
+	GameState *m_gameState;
+
 	Button *m_helpButton;
 	Button *m_exitButton;
 	Slider *m_volSlider;
 	RadioButton *m_screenRadio;
+
+	sf::SoundSource *volume;
+
+	float m_volume;
 
 	Widget *widgets[4];
 
@@ -50,6 +60,6 @@ private:
 
 	int m_sliderValue;
 	int m_currentBtn = 0;
-	const int BUTTON_COUNT = 2;
+	const int BUTTON_COUNT = 4;
 };
 #endif // !OPTIONS_H

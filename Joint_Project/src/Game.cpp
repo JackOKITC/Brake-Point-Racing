@@ -7,7 +7,6 @@ Game::Game(sf::Font &font, sf::Font &titleFont) :
 	m_window(sf::VideoMode(900,600,32), "Brake Point Racing", sf::Style::Default),
 	m_font(font)
 {
-
 	// pointer to GameState object, will be passed to each menu state so
 	// they can change the state in their own source files
 	m_currentGameState = new GameState();

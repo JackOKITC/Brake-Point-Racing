@@ -6,17 +6,18 @@ Options::Options(sf::Font font, GameState *gameState) :
 {
 	m_radioTex = ResourceManager::instance().m_holder["Radio"];
 	
+	m_gameState = gameState;
 
 	m_sliderValue = 5;
 	m_helpButton = new Button(&m_helpString, &sf::Vector2f(450, 200), &m_font);
 	m_volSlider = new Slider(&sf::Vector2f(380, 300), m_sliderValue);
-	m_exitButton = new Button(&m_exitString, &sf::Vector2f(450, 400), &m_font);
-	m_screenRadio = new RadioButton(&m_radioTex, &sf::Vector2f(450, 500));
+	m_screenRadio = new RadioButton(&m_radioTex, &sf::Vector2f(450, 400));
+	m_exitButton = new Button(&m_exitString, &sf::Vector2f(450, 500), &m_font);
 
 	widgets[0] = m_helpButton;
 	widgets[1] = m_volSlider;
-	widgets[2] = m_exitButton;
-	widgets[3] = m_screenRadio;
+	widgets[2] = m_screenRadio;
+	widgets[3] = m_exitButton;
 
 	widgets[0]->getFocus();
 	widgets[1]->loseFocus();
@@ -40,8 +41,8 @@ void Options::render(sf::RenderWindow & window)
 	window.clear(sf::Color::White);
 	m_helpButton->render(window);
 	m_volSlider->render(window);
-	m_exitButton->render(window);
 	m_screenRadio->render(window);
+	m_exitButton->render(window);
 }
 
 // Function to check which button is selected
@@ -81,11 +82,25 @@ void Options::checkButtonSelected(GamePadState m_state, Xbox360Controller m_cont
 			if ((m_state.dpadLeft && !m_controller.m_previousState.dpadLeft) || (m_state.LeftThumbStick.x < -50 && m_controller.m_previousState.LeftThumbStick.x > -50))	// Decrements the slider if the player pushes the d-pad or thumbstick left.
 			{
 				m_sliderValue = m_volSlider->decrementSlider();
+
+				//if (startVolume != 0)
+				//{
+				//	//volume.setVolume(startVolume-20);
+				//}
+
+				//std::cout << startVolume;
 			}
 
 			if ((m_state.dpadRight && !m_controller.m_previousState.dpadRight) || (m_state.LeftThumbStick.x > 50 && m_controller.m_previousState.LeftThumbStick.x < 50))	// Increments the slider if the player pushes the d - pad or thumbstick left.
 			{
 				m_sliderValue = m_volSlider->incrementSlider();
+
+				//if (startVolume != 100)
+				//{
+				//	//volume.setVolume(startVolume+20);
+				//}
+
+				//std::cout << startVolume;
 			}
 		}
 }
@@ -95,22 +110,28 @@ void Options::selectedButton(GamePadState m_state, Xbox360Controller m_controlle
 {
 	switch (m_buttonSelected) // Switch statement for the buttons
 	{
-	case optionsSelection::Option1:	// The play button 
+	case optionsSelection::Option1:	// The help button 
 		if (m_state.A && !m_controller.m_previousState.A)	// If the A button has been pressed
 		{
 
 		}
 		break;
-	case optionsSelection::Option2:	// The options button 
+	case optionsSelection::Option2:	// The volume slider 
 		if (m_state.A && !m_controller.m_previousState.A)	// If the A button has been pressed
 		{
 
 		}
 		break;
-	case optionsSelection::Option3:	// The exit button 
+	case optionsSelection::Option3:	// The mute button 
 		if (m_state.A && !m_controller.m_previousState.A)	// If the A button has been pressed
 		{
-			
+
+		}
+		break;
+	case optionsSelection::Option4:	// The exit button 
+		if (m_state.A && !m_controller.m_previousState.A)	// If the A button has been pressed
+		{
+			*m_gameState = GameState::MENU_STATE;
 		}
 		break;
 	default:
