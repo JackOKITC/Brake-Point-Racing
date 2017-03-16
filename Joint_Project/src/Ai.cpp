@@ -5,13 +5,16 @@ Ai::Ai(std::vector<std::unique_ptr<Node>> & nodes) :
 	m_currentNode(0),
 	m_steering(0, 0)
 {
+
 	m_carTex = ResourceManager::instance().m_holder["BusTex"];
+
 	m_carSprite.setTexture(m_carTex);
 	m_position = sf::Vector2f(100,300);
 	m_velocity = sf::Vector2f(0, 0);
 	m_rotation = 0.0f;
 
 	m_carSprite.setPosition(m_position);
+
 	m_carSprite.setScale(0.2, 0.2);
 	m_carSprite.setRotation(m_rotation);
 
@@ -30,6 +33,10 @@ void Ai::update(double dt)
 
 	sf::Vector2f newPos = m_position;
 
+
+	sf::Vector2f newPos = m_position;			/*sf::Vector2f(m_position.x + std::cos(DEG_TO_RAD *(m_rotation - 90)) * m_speed * (dt / 1000),
+
+													m_position.y + std::sin(DEG_TO_RAD *(m_rotation - 90)) * m_speed * (dt / 1000));*/
 	sf::Vector2f vectorToNode = m_followPath();
 
 	m_steering += thor::unitVector(vectorToNode);
