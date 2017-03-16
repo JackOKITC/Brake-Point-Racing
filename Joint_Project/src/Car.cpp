@@ -6,12 +6,12 @@ Car::Car()
 
 	m_carSprite.setTexture(m_carTex);
 	
-	m_position = sf::Vector2f(100, 300);
+	m_position = sf::Vector2f(100, 100);
 	m_velocity = sf::Vector2f(0, 0);
 	m_rotation = 90.0f;
 
 	m_carSprite.setPosition(m_position);
-	m_carSprite.scale(0.4, 0.4);
+	m_carSprite.scale(0.2, 0.2);
 	m_carSprite.setRotation(m_rotation);
 
 }

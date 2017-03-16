@@ -1,89 +1,129 @@
 tile:
-   - file: .\resources\images\road\OurRoad\corner_tile_topleft.png
+   - file: .\resources\images\road\OurRoad\1.png
      ID: Road1
-     position: {x: 250, y: 100}
+     position: {x: 0, y: 0}
      rotation: 0
-     scale: 1.5
-   - file: .\resources\images\road\OurRoad\straight_tile_top.png
+     scale: 0
+   - file: .\resources\images\road\OurRoad\2.png
      ID: Road2
-     position: {x: 750, y: 88}
+     position: {x: 600, y: 0}
      rotation: 0
-     scale: 1.5
-   - file: .\resources\images\road\OurRoad\u_tile.png
+     scale: 0
+   - file: .\resources\images\road\OurRoad\3.png
      ID: Road3
-     position: {x: 1250, y: 185.5}
+     position: {x: 1200, y: 0}
      rotation: 0
-     scale: 1.5
-   - file: .\resources\images\road\OurRoad\u_tile_flipped.png
+     scale: 0
+   - file: .\resources\images\road\OurRoad\4.png
      ID: Road4
-     position: {x: 780, y: 613}
+     position: {x: 1800, y: 0}
      rotation: 0
-     scale: 1.5
-   - file: .\resources\images\road\OurRoad\straight_tile_left.png
+     scale: 0
+   - file: .\resources\images\road\OurRoad\5.png
      ID: Road5
-     position: {x: 236.5, y: 600}
+     position: {x: 2400, y: 0}
      rotation: 0
-     scale: 1.5
-   - file: .\resources\images\road\OurRoad\straight_tile_left.png
+     scale: 0
+   - file: .\resources\images\road\OurRoad\6.png
      ID: Road6
-     position: {x: 236.5, y: 950}
+     position: {x: 0, y: 600}
      rotation: 0
-     scale: 1.5     
-   - file: .\resources\images\road\OurRoad\straight_tile_left.png
+     scale: 0     
+   - file: .\resources\images\road\OurRoad\7.png
      ID: Road7
-     position: {x: 236.5, y: 1300}
+     position: {x: 600, y: 600}
      rotation: 0
-     scale: 1.5
-   - file: .\resources\images\road\OurRoad\corner_tile_bottomleft.png
+     scale: 0
+   - file: .\resources\images\road\OurRoad\8.png
      ID: Road8
-     position: {x: 248.5, y: 1818.5}
+     position: {x: 1200, y: 600}
      rotation: 0
-     scale: 1.5
-   - file: .\resources\images\road\OurRoad\straight_tile_bottom.png
+     scale: 0
+   - file: .\resources\images\road\OurRoad\9.png
      ID: Road9
-     position: {x: 775.5, y: 1830.5}
+     position: {x: 1800, y: 600}
      rotation: 0
-     scale: 1.5
-   - file: .\resources\images\road\OurRoad\straight_tile_bottom.png
+     scale: 0
+   - file: .\resources\images\road\OurRoad\10.png
      ID: Road10
-     position: {x: 1130.5, y: 1830.5}
+     position: {x: 2400, y: 600}
      rotation: 0
-     scale: 1.5     
-   - file: .\resources\images\road\OurRoad\corner_tile_bottomright.png
+     scale: 0    
+   - file: .\resources\images\road\OurRoad\11.png
      ID: Road11
-     position: {x: 1480.5, y: 1818.5}
+     position: {x: 0, y: 1200}
      rotation: 0
-     scale: 1.5
-   - file: .\resources\images\road\OurRoad\corner_tile_topleft.png
+     scale: 0
+   - file: .\resources\images\road\OurRoad\12.png
      ID: Road12
-     position: {x: 1729.5, y: 1368.5}
+     position: {x: 600, y: 1200}
      rotation: 0
-     scale: 1.5
-   - file: .\resources\images\road\OurRoad\straight_tile_top.png
+     scale: 0
+   - file: .\resources\images\road\OurRoad\13.png
      ID: Road13
-     position: {x: 2050.5, y: 1357}
+     position: {x: 1200, y: 1200}
      rotation: 0
-     scale: 1.5
-   - file: .\resources\images\road\OurRoad\u_tile.png
+     scale: 0
+   - file: .\resources\images\road\OurRoad\14.png
      ID: Road14
-     position: {x: 2400.5, y: 1031}
+     position: {x: 1800, y: 1200}
      rotation: 0
-     scale: 1.5     
-   - file: .\resources\images\road\OurRoad\straight_tile_bottom.png
+     scale: 0     
+   - file: .\resources\images\road\OurRoad\15.png
      ID: Road15
-     position: {x: 1900, y: 710}
+     position: {x: 2400, y: 1200}
      rotation: 0
-     scale: 1.5
-   - file: .\resources\images\road\OurRoad\straight_tile_bottom.png
+     scale: 0
+   - file: .\resources\images\road\OurRoad\16.png
      ID: Road16
-     position: {x: 1500, y: 710}
+     position: {x: 0, y: 1800}
      rotation: 0
-     scale: 1.5
-   - file: .\resources\images\road\OurRoad\straight_tile_bottom.png
+     scale: 0
+   - file: .\resources\images\road\OurRoad\17.png
      ID: Road17
-     position: {x: 1100, y: 710}
+     position: {x: 600, y: 1800}
      rotation: 0
-     scale: 1.5
+     scale: 0
+   - file: .\resources\images\road\OurRoad\18.png
+     ID: Road18
+     position: {x: 1200, y: 1800}
+     rotation: 0
+     scale: 0
+   - file: .\resources\images\road\OurRoad\19.png
+     ID: Road19
+     position: {x: 1800, y: 1800}
+     rotation: 0
+     scale: 0
+   - file: .\resources\images\road\OurRoad\20.png
+     ID: Road20
+     position: {x: 2400, y: 1800}
+     rotation: 0
+     scale: 0
+   - file: .\resources\images\road\OurRoad\21.png
+     ID: Road21
+     position: {x: 0, y: 2400}
+     rotation: 0
+     scale: 0
+   - file: .\resources\images\road\OurRoad\22.png
+     ID: Road22
+     position: {x: 600, y: 2400}
+     rotation: 0
+     scale: 0
+   - file: .\resources\images\road\OurRoad\23.png
+     ID: Road23
+     position: {x: 1200, y: 2400}
+     rotation: 0
+     scale: 0
+   - file: .\resources\images\road\OurRoad\24.png
+     ID: Road24
+     position: {x: 1800, y: 2400}
+     rotation: 0
+     scale: 0
+   - file: .\resources\images\road\OurRoad\25.png
+     ID: Road25
+     position: {x: 2400, y: 2400}
+     rotation: 0
+     scale: 0
 
 
 

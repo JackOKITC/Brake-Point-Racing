@@ -9,7 +9,7 @@ class RoadTile
 {
 public:
 	RoadTile();
-	RoadTile(const std::string &image, const sf::Vector2f &pos, const double &rotation, const double &scale, int num);
+	RoadTile(const std::string &image, const sf::Vector2f &pos, const double &rotation, const double &scale, int num, const std::string &path);
 	~RoadTile();
 
 	void update(double dt);
@@ -32,7 +32,7 @@ private:
 	float m_rotation;
 
 	const double DEG_TO_RAD = 3.14159 / 180.0f;
-	sf::Image m_collisonImage;
+	sf::Image * m_collisonImage;
 	int m_roadNumber;
 };
 #endif // !ROADTILE_H

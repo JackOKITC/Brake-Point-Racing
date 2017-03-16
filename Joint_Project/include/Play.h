@@ -29,9 +29,6 @@ public:
 
 private:
 	GameState *m_state;
-
-	sf::Texture m_backgroundTex;
-	sf::Sprite m_backgroundSprite[4];
 	Xbox360Controller * m_controller;
 	Car * car;
 
