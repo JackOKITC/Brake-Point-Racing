@@ -41,7 +41,7 @@ Menu::Menu(sf::Font & font, GameState *gameState) :
 	m_backgroundTex = ResourceManager::instance().m_holder["MenuBG"];
 
 	m_backgroundSprite.setTexture(m_backgroundTex);
-	m_backgroundSprite.setPosition(-700, -200);
+	m_backgroundSprite.setPosition(-1400, -200);
 
 	m_timeStop = false;
 	m_transitionStop = false;
@@ -70,11 +70,11 @@ Menu::~Menu()
 
 void Menu::update(GamePadState m_state, Xbox360Controller & m_controller, sf::Time deltaTime)
 {
-	//if (m_transitionStop)
-	//{
+	if (m_transitionStop)
+	{
 		checkButtonSelected(m_state, m_controller);
 		selectedButton(m_state, m_controller);
-	//}
+	}
 
 	if (!m_timeStop)
 	{
@@ -82,34 +82,40 @@ void Menu::update(GamePadState m_state, Xbox360Controller & m_controller, sf::Ti
 		m_timeStop = true;
 	}
 
-	//if (m_time.asSeconds() <= 3.6)
-	//{
-	//	m_time += TIME_PER_UPDATE;
-	//}
-	//else
-	//{
-	//	m_transitionStop = true;
-	//}
+	if (m_time.asSeconds() <= 1.0)
+	{
+		if (m_backgroundSprite.getPosition().x < -700)
+		{
+			m_backgroundSprite.move(0.6, 0);
+		}
+		
+		m_time += TIME_PER_UPDATE;
+	}
+	else
+	{
+		m_transitionStop = true;
+	}
 }
 
 void Menu::render(sf::RenderWindow & window)
 {
-	window.clear(sf::Color(0,0,0));
+	window.clear(sf::Color(30, 50, 90));
 	window.draw(m_backgroundSprite);
 	
-	window.draw(m_raceLine);
-	window.draw(m_garLine);
-	window.draw(m_optLine);
-	window.draw(m_exitLine);
 	
-	//if (m_transitionStop)
-	//{
+	
+	if (m_transitionStop)
+	{
+		window.draw(m_raceLine);
+		window.draw(m_garLine);
+		window.draw(m_optLine);
+		window.draw(m_exitLine);
 		for (int i = 0; i < LABEL_COUNT; i++)
 		{
 			m_labels[i]->render(window);
 
 		}
-	//}
+	}
 }
 
 

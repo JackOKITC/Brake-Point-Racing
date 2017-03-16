@@ -12,8 +12,7 @@ enum class optionsSelection	// Enum for the buttons
 {
 	Option1,
 	Option2,
-	Option3,
-	Option4
+	Option3
 };
 
 class Options
@@ -37,30 +36,32 @@ private:
 
 	optionsSelection m_buttonSelected = optionsSelection::Option1; // The button enum which starts on the first option
 	
-	std::string m_helpString = "Help";
 	std::string m_exitString = "Back";
 	std::string m_screenString = "Fullscreen:";
+	std::string m_volString = "Volume:";
+	std::string m_muteString = "Mute:";
 
 	sf::Font m_font;
 
 	GameState *m_gameState;
 
-	Button *m_helpButton;
 	Button *m_exitButton;
 	Slider *m_volSlider;
 	RadioButton *m_screenRadio;
+	Label *m_volLabel;
+	Label *m_muteLabel;
 
 	sf::Sound vol;
 
 	float m_volume;
 	int m_volDif;
 
-	Widget *widgets[4];
+	Widget *widgets[5];
 
 	sf::Texture m_radioTex;
 
 	int m_sliderValue;
 	int m_currentBtn = 0;
-	const int BUTTON_COUNT = 4;
+	const int BUTTON_COUNT = 3;
 };
 #endif // !OPTIONS_H
