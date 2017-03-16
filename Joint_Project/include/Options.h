@@ -50,9 +50,10 @@ private:
 	Slider *m_volSlider;
 	RadioButton *m_screenRadio;
 
-	sf::SoundSource *volume;
+	sf::Sound vol;
 
 	float m_volume;
+	int m_volDif;
 
 	Widget *widgets[4];
 

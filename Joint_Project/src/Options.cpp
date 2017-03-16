@@ -8,6 +8,9 @@ Options::Options(sf::Font font, GameState *gameState) :
 	
 	m_gameState = gameState;
 
+	m_volDif = 20;
+	m_volume = vol.getVolume();
+
 	m_sliderValue = 5;
 	m_helpButton = new Button(&m_helpString, &sf::Vector2f(450, 200), &m_font);
 	m_volSlider = new Slider(&sf::Vector2f(380, 300), m_sliderValue);
@@ -83,24 +86,24 @@ void Options::checkButtonSelected(GamePadState m_state, Xbox360Controller m_cont
 			{
 				m_sliderValue = m_volSlider->decrementSlider();
 
-				//if (startVolume != 0)
-				//{
-				//	//volume.setVolume(startVolume-20);
-				//}
+				if (m_volume != 0)
+				{
+					vol.setVolume(m_volume -= m_volDif);
+				}
 
-				//std::cout << startVolume;
+				std::cout << m_volume;
 			}
 
 			if ((m_state.dpadRight && !m_controller.m_previousState.dpadRight) || (m_state.LeftThumbStick.x > 50 && m_controller.m_previousState.LeftThumbStick.x < 50))	// Increments the slider if the player pushes the d - pad or thumbstick left.
 			{
 				m_sliderValue = m_volSlider->incrementSlider();
 
-				//if (startVolume != 100)
-				//{
-				//	//volume.setVolume(startVolume+20);
-				//}
+				if (m_volume != 100)
+				{
+					vol.setVolume(m_volume += m_volDif);
+				}
 
-				//std::cout << startVolume;
+				std::cout << m_volume;
 			}
 		}
 }
