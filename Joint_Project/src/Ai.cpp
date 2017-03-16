@@ -33,10 +33,6 @@ void Ai::update(double dt)
 
 	sf::Vector2f newPos = m_position;
 
-
-	sf::Vector2f newPos = m_position;			/*sf::Vector2f(m_position.x + std::cos(DEG_TO_RAD *(m_rotation - 90)) * m_speed * (dt / 1000),
-
-													m_position.y + std::sin(DEG_TO_RAD *(m_rotation - 90)) * m_speed * (dt / 1000));*/
 	sf::Vector2f vectorToNode = m_followPath();
 
 	m_steering += thor::unitVector(vectorToNode);
