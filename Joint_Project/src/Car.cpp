@@ -14,7 +14,7 @@ Car::Car(bool isAi, std::vector<std::unique_ptr<Node>> & nodes) :
 		m_rotation = 0.0f;
 
 		m_carSprite.setPosition(m_position);
-		m_carSprite.scale(0.4, 0.4);
+		m_carSprite.scale(0.2, 0.2);
 		m_carSprite.setRotation(m_rotation);
 
 		m_carSprite.setOrigin(m_carSprite.getLocalBounds().width / 2, m_carSprite.getLocalBounds().height / 2);
@@ -39,8 +39,8 @@ void Car::update(Xbox360Controller & controller, double dt)
 		m_carSprite.setRotation(m_rotation);
 
 
-		sf::Vector2f newPos = sf::Vector2f(m_position.x + std::cos(DEG_TO_RAD  * (m_rotation - 90)) * m_speed * (dt / 1000),
-			m_position.y + std::sin(DEG_TO_RAD * (m_rotation - 90)) * m_speed * (dt / 1000));
+		sf::Vector2f newPos = sf::Vector2f(m_position.x + std::cos(DEG_TO_RAD  * (m_rotation)) * m_speed * (dt / 1000),
+			m_position.y + std::sin(DEG_TO_RAD * (m_rotation)) * m_speed * (dt / 1000));
 
 
 		m_position = newPos;

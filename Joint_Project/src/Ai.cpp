@@ -12,7 +12,7 @@ Ai::Ai(std::vector<std::unique_ptr<Node>> & nodes) :
 	m_rotation = 0.0f;
 
 	m_carSprite.setPosition(m_position);
-	m_carSprite.setScale(0.4, 0.4);
+	m_carSprite.setScale(0.2, 0.2);
 	m_carSprite.setRotation(m_rotation);
 
 	m_carSprite.setOrigin(m_carSprite.getLocalBounds().width / 2, m_carSprite.getLocalBounds().height / 2);
@@ -35,8 +35,6 @@ void Ai::update(double dt)
 	m_steering += thor::unitVector(vectorToNode);
 	m_steering = Math::truncate(m_steering, MAX_FORCE);
 	m_velocity = Math::truncate(m_velocity + m_steering, MAX_SPEED);
-
-	std::cout << "Current node : " << m_currentNode << std::endl;
 
 	// Now we need to convert our velocity vector into a rotation angle between 0 and 359 degrees.
 	// The m_velocity vector works like this: vector(1,0) is 0 degrees, while vector(0, 1) is 90 degrees.
