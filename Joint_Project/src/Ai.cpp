@@ -5,11 +5,11 @@ Ai::Ai(std::vector<std::unique_ptr<Node>> & nodes) :
 	m_currentNode(0),
 	m_steering(0, 0)
 {
-	m_carTex = g_manager.m_holder["BusTex"];
+	m_carTex = ResourceManager::instance().m_holder["BusTex"];
 	m_carSprite.setTexture(m_carTex);
 	m_position = sf::Vector2f(100,300);
 	m_velocity = sf::Vector2f(0, 0);
-	m_rotation = 90.0f;
+	m_rotation = 0.0f;
 
 	m_carSprite.setPosition(m_position);
 	m_carSprite.setScale(0.4, 0.4);
@@ -25,6 +25,11 @@ Ai::~Ai()
 void Ai::update(double dt)
 {													/*sf::Vector2f(m_position.x + std::cos(DEG_TO_RAD *(m_rotation - 90)) * m_speed * (dt / 1000),
 													m_position.y + std::sin(DEG_TO_RAD *(m_rotation - 90)) * m_speed * (dt / 1000));*/
+	m_carSprite.setPosition(m_position);
+	m_carSprite.setRotation(m_rotation);
+
+	sf::Vector2f newPos = m_position;
+
 	sf::Vector2f vectorToNode = m_followPath();
 
 	m_steering += thor::unitVector(vectorToNode);
@@ -55,15 +60,18 @@ void Ai::update(double dt)
 	else
 	{
 		// rotate anti-clockwise
-		m_rotation = static_cast<int>((m_rotation)-1) % 360;
+		m_rotation--;
+		if (m_rotation < 0)
+		{
+			m_rotation = 359;
+		}
 	}
 
 	m_speed = thor::length(m_velocity);
 
 	m_carSprite.setRotation(m_rotation);
-	m_carSprite.setPosition(sf::Vector2f(m_position.x + std::cos(DEG_TO_RAD *(m_rotation - 90)) * m_speed * (dt / 1000),
-	m_position.y + std::sin(DEG_TO_RAD *(m_rotation - 90)) * m_speed * (dt / 1000)));
-	
+	m_position.x += m_velocity.x * m_speed * (dt / 50000);
+	m_position.y += m_velocity.y * m_speed * (dt / 50000);
 }
 
 void Ai::render(sf::RenderWindow & window)

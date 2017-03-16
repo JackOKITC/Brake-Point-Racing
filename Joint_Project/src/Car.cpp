@@ -6,12 +6,12 @@ Car::Car(bool isAi, std::vector<std::unique_ptr<Node>> & nodes) :
 {
 	if (!m_isAi)
 	{
-		m_carTex = g_manager.m_holder["BusTex"];
+		m_carTex = ResourceManager::instance().m_holder["BusTex"];
 		m_carSprite.setTexture(m_carTex);
 
 		m_position = sf::Vector2f(100, 300);
 		m_velocity = sf::Vector2f(0, 0);
-		m_rotation = 90.0f;
+		m_rotation = 0.0f;
 
 		m_carSprite.setPosition(m_position);
 		m_carSprite.scale(0.4, 0.4);
@@ -38,8 +38,10 @@ void Car::update(Xbox360Controller & controller, double dt)
 		m_carSprite.setPosition(m_position);
 		m_carSprite.setRotation(m_rotation);
 
+
 		sf::Vector2f newPos = sf::Vector2f(m_position.x + std::cos(DEG_TO_RAD  * (m_rotation - 90)) * m_speed * (dt / 1000),
 			m_position.y + std::sin(DEG_TO_RAD * (m_rotation - 90)) * m_speed * (dt / 1000));
+
 
 		m_position = newPos;
 	}
