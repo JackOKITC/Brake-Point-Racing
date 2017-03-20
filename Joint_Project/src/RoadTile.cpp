@@ -16,7 +16,7 @@ RoadTile::RoadTile(const std::string & image, const sf::Vector2f &pos, const dou
 	m_collisonImage = new sf::Image;
 	m_roadSprite.setPosition(m_position);
 	m_roadSprite.setRotation(m_rotation);
-
+	m_roadSprite.setColor(sf::Color(125, 125, 125, 255));
 	
 	m_collisonImage->loadFromFile(path);
 }

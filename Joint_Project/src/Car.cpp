@@ -6,9 +6,9 @@ Car::Car(bool isAi, std::vector<std::unique_ptr<Node>> & nodes) :
 {
 	if (!m_isAi)
 	{
-
 		m_carTex = ResourceManager::instance().m_holder["BusTex"];
 		m_carSprite.setTexture(m_carTex);
+		//renTex.create(252, 87);
 
 		m_position = sf::Vector2f(100, 300);
 		m_velocity = sf::Vector2f(0, 0);
@@ -57,6 +57,12 @@ void Car::render(sf::RenderWindow & window)
 {
 	if (!m_isAi)
 	{
+		//renTex.clear(sf::Color::Black);
+		//sf::Sprite temp;
+		//temp = m_carSprite;
+		//temp.setColor(sf::Color(255, 255, 255, 255));
+		//renTex.draw(temp);
+		//renTex.display();
 		window.draw(m_carSprite);
 	}
 	else

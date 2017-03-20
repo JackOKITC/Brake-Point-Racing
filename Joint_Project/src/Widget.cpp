@@ -42,17 +42,17 @@ Button::Button(std::string *text, sf::Vector2f *position, sf::Font *font) :
 	m_position(*position),	// Sets m_position to the de-referenced value of the position argument.
 	m_text(*text, *font, 20)	// Sets m_text to the de-referenced value of the text argument as well as the de-referenced value of the font argument and then sets the size of the text to 28.
 {
-	m_buttonRectangle.setOutlineColor(m_seaBlue);
+	m_buttonRectangle.setOutlineColor(sf::Color::Red);
 	m_buttonRectangle.setOutlineThickness(5.0f);
 	m_buttonRectangle.setPosition(m_position);
-	m_buttonRectangle.setFillColor(m_deepGrey);
+	m_buttonRectangle.setFillColor(m_seaBlue);
 	m_buttonRectangle.setSize(sf::Vector2f(150, 50));
 	m_buttonRectangle.setOrigin(sf::Vector2f(75, 25));
 
 	m_textRectangle = m_text.getLocalBounds();	// Gets the dimensions of the rectangle that contains the text.
 	m_text.setOrigin(m_textRectangle.width / 2.0f, m_textRectangle.height / 2.0f);	// Centres the origin of the text.
 	m_text.setPosition(m_position.x, m_position.y - 5);	// Sets the position of the text with its centre now being its origin.
-	m_text.setColor(m_gold);	// Sets the colour of the text to black.
+	m_text.setColor(m_white);	// Sets the colour of the text to black.
 	m_hasFocus = false;
 }
 
@@ -66,8 +66,8 @@ void Button::update()
 
 void Button::getFocus()
 {
-	m_buttonRectangle.setFillColor(m_deepGrey);
-	m_buttonRectangle.setOutlineColor(m_seaBlue);
+	m_buttonRectangle.setFillColor(sf::Color::Red);
+	m_buttonRectangle.setOutlineColor(m_white);
 	m_text.setColor(m_gold);	// Sets the colour of the text to red.
 	m_hasFocus = true;	// Sets the variable m_hasFocus to true.
 }
@@ -310,5 +310,64 @@ void Label::render(sf::RenderWindow & window)
 {
 	//window.draw(m_buttonRectangle);	// Draws the button rectangle to the screen.
 	window.draw(m_text);	// Draws the text on top of the sprite.
+}
+#pragma endregion
+
+#pragma region BarRegion
+Bar::Bar()
+{
+}
+
+Bar::Bar(sf::Vector2f position, int size)
+{
+	recBar.setSize(sf::Vector2f(size * 3, size));
+	recBar.setPosition(position);
+	recBar.setOrigin(sf::Vector2f((size * 3) / 2, size / 2));
+	recBar.setFillColor(sf::Color(0,0,0,0));
+	recBar.setOutlineThickness(1.5f);
+	recBar.setOutlineColor(m_white);
+
+	for (int i = 0; i < 3; i++)
+	{
+		innerRecs[i].setSize(sf::Vector2f(size-2, size-2));
+		innerRecs[i].setOrigin(sf::Vector2f(size / 2, size / 2));
+		innerRecs[i].setPosition(sf::Vector2f((position.x - size) + size * i, position.y));
+		innerRecs[i].setFillColor(m_gold);
+		innerRecs[i].setOutlineThickness(2);
+		innerRecs[i].setOutlineColor(sf::Color(0, 0, 0, 0));
+	}
+}
+
+Bar::~Bar()
+{
+}
+
+void Bar::update()
+{
+}
+
+void Bar::render(sf::RenderWindow & window)
+{
+	window.draw(recBar);
+	for (int i = 0; i < 3; i++)
+	{
+		window.draw(innerRecs[i]);
+	}
+}
+
+void Bar::getFocus()
+{
+}
+
+void Bar::loseFocus()
+{
+}
+
+void Bar::moveRight()
+{
+}
+
+void Bar::moveLeft()
+{
 }
 #pragma endregion

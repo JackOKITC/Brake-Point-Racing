@@ -10,7 +10,7 @@ Game::Game(sf::Font &font, sf::Font &titleFont) :
 	// pointer to GameState object, will be passed to each menu state so
 	// they can change the state in their own source files
 
-	m_currentGameState = new GameState(GameState::SPLASH_STATE);
+	m_currentGameState = new GameState(GameState::MENU_STATE);
 
 	m_playScreen = new Play(m_currentGameState);
 	m_splashScreen = new Splash(m_currentGameState, m_titleFont);

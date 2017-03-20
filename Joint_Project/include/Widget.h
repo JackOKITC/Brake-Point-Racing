@@ -260,3 +260,46 @@ private:
 };
 
 #endif // !LABEL_H
+
+#ifndef BAR_H
+#define BAR_H
+
+class Bar : public Widget
+{
+public:
+	Bar();	// Default constructor for the Label object.
+				/// <summary>
+				/// Overloaded constructor fothe Label object.
+				/// Takes a string of text that is to drawn on screen, the font that the text will be, 
+				/// the position the text will be on-screen and the size of the font as arguments.
+				/// </summary>
+				/// <param name="text"></param>
+				/// <param name="font"></param>
+				/// <param name="position"></param>
+				/// <param name="size"></param>
+	Bar(sf::Vector2f position, int size);
+	~Bar();	// Deconstructor for the Label object.
+
+	virtual void update() override;	// "update" method for the Label object, Overrides the "update" method in the widget.
+									/// <summary>
+									/// "render" method for the Label object, Overrides the "render" method in the widget.
+									/// Takes the address of the game window as a argument.
+									/// </summary>
+									/// <param name="window"></param>
+	virtual void render(sf::RenderWindow& window) override;
+
+	virtual void getFocus() override;	// Sets hasFocus to "True" as well as changes the colour of the text to show the player that the Label hasFocus.
+	virtual void loseFocus() override;	// Sets hasFocus to "False" as well as changes the colour of the text to show the player that the label no longer hasFocus.
+
+	void moveRight();	// Moves the Label right, This is used for transitioning between screens.
+	void moveLeft();	// Moves the Label left, This is used for transitioning between screens.
+
+	sf::Vector2f m_position;	// Stores the on-screen positon of the Label.
+private:
+	bool m_hasFocus;	// Determines whether or not the Label hasFocus.
+
+	sf::RectangleShape recBar;
+	sf::RectangleShape innerRecs[3];
+};
+
+#endif // !BAR_H

@@ -137,7 +137,7 @@ background:
    - file: .\resources\images\UI\finish.jpg
      ID: Flag
 car:
-   - file: .\resources\images\cars\Bus.png
+   - file: .\resources\images\cars\bus.png
      ID: BusTex
 
 node:

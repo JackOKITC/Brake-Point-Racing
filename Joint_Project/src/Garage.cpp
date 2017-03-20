@@ -11,26 +11,23 @@ Garage::Garage(sf::Font font, GameState * gameState) :
 	m_backgroundSprite.setTexture(m_backgroundTex);
 	m_backgroundSprite.setOrigin(m_backgroundTex.getSize().x / 2, m_backgroundTex.getSize().y / 2);
 	m_backgroundSprite.setPosition(450, 300);
-	m_currentBtn = 0;
-
-	m_currentBtn = 0;
-
-	for (int i = 0; i < BUTTON_COUNT; i++)
+	m_backgroundSprite.setScale(.1 , .1);
+	
+	for (int i = 0; i < 4; i ++)
 	{
-
-		if (m_strings[i] != "Back")
+		if (!m_upgradeText[i].loadFromFile(".//resources//images//car_parts//upgrade" + std::to_string(i) + ".png"))
 		{
-			m_buttons[i] = new Button(&m_strings[i], &sf::Vector2f(150 + (i * 200), 400), &m_font);
+			std::cout << "Problem loading Texture for splash screen";
 		}
 
-		else
-		{
-			m_buttons[i] = new Button(&m_strings[i], &sf::Vector2f(450, 500), &m_font);
-		}
-		m_buttons[i]->loseFocus();
+		m_uprgradeSpr[i].setTexture(m_upgradeText[i]);
+		m_uprgradeSpr[i].setOrigin(m_upgradeText[i].getSize().x / 2, m_upgradeText[i].getSize().y / 2);
+		m_uprgradeSpr[i].setPosition(180 + (i * 180), 500);
+		m_uprgradeSpr[i].setScale(.1, .1);
+
+		m_upgradeBars[i] = new Bar(sf::Vector2f(180 + (i * 180), 550), 25);
 	}
 
-	m_buttons[m_currentBtn]->getFocus(); // sets the first button to be highlighted
 }
 
 Garage::~Garage()
@@ -39,16 +36,18 @@ Garage::~Garage()
 
 void Garage::update(Xbox360Controller & controller, sf::Time dt)
 {
-	checkButtonSelected(controller.m_currentState, controller);
-	selectedButton(controller.m_currentState, controller);
+	//checkButtonSelected(controller.m_currentState, controller);
+	//selectedButton(controller.m_currentState, controller);
 }
 
 void Garage::render(sf::RenderWindow &window)
 {
 	window.draw(m_backgroundSprite);
-	for (int i = 0; i < BUTTON_COUNT; i++)
+
+	for (int i = 0; i < 4; i++)
 	{
-		m_buttons[i]->render(window);
+		window.draw(m_uprgradeSpr[i]);
+		m_upgradeBars[i]->render(window);
 	}
 }
 

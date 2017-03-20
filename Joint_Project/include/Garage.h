@@ -53,5 +53,10 @@ private:
 	std::string m_strings[5] = { "Engine", "Turbo", "Handling", "Tires", "Back" };
 
 	Button *m_buttons[5];
+	Bar *m_upgradeBars[4];
+
+	sf::Texture m_upgradeText[4];
+	sf::Sprite m_uprgradeSpr[4];
+	
 };
 #endif // !GARAGE

@@ -24,6 +24,7 @@ private:
 
 	sf::Texture m_carTex;
 	sf::Sprite m_carSprite;
+	sf::RenderTexture renTex;
 
 	Xbox360Controller * m_controller;
 
