@@ -27,7 +27,7 @@ public:
 
 private:
 
-	const int NODE_TOLERANCE = 100.0f;
+	const int NODE_TOLERANCE = 40.0f;
 
 	sf::Texture m_carTex;
 	sf::Sprite m_carSprite;
@@ -47,6 +47,7 @@ private:
 	sf::Vector2f m_followPath();
 
 	std::vector<std::unique_ptr<Node>> &m_nodes;
+	std::vector<sf::CircleShape> m_circles;
 
 	const double PI = atan(1) * 4;
 	const double DEG_TO_RAD = PI / 180.0f;

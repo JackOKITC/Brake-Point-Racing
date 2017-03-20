@@ -9,7 +9,7 @@ Ai::Ai(std::vector<std::unique_ptr<Node>> & nodes) :
 	m_carTex = ResourceManager::instance().m_holder["BusTex"];
 
 	m_carSprite.setTexture(m_carTex);
-	m_position = sf::Vector2f(100,300);
+	m_position = sf::Vector2f(2200,909);
 	m_velocity = sf::Vector2f(0, 0);
 	m_rotation = 0.0f;
 
@@ -19,6 +19,16 @@ Ai::Ai(std::vector<std::unique_ptr<Node>> & nodes) :
 	m_carSprite.setRotation(m_rotation);
 
 	m_carSprite.setOrigin(m_carSprite.getLocalBounds().width / 2, m_carSprite.getLocalBounds().height / 2);
+
+	for (int i = 0; i < nodes.size(); i++)
+	{
+		sf::CircleShape circle;
+		m_circles.push_back(std::move(circle));
+		m_circles.at(i).setOrigin(NODE_TOLERANCE / 2, NODE_TOLERANCE / 2);
+		m_circles.at(i).setPosition(m_nodes.at(i)->m_position.x - NODE_TOLERANCE / 2, m_nodes.at(i)->m_position.y - NODE_TOLERANCE / 2);
+		m_circles.at(i).setRadius(NODE_TOLERANCE);
+		m_circles.at(i).setFillColor(sf::Color(0,0,255,126));
+	}
 }
 
 Ai::~Ai()
@@ -78,6 +88,11 @@ void Ai::update(double dt)
 void Ai::render(sf::RenderWindow & window)
 {
 	window.draw(m_carSprite);
+	
+	for (int i = 0; i < m_circles.size(); i++)
+	{
+		window.draw(m_circles.at(i));
+	}
 }
 
 sf::Vector2f Ai::m_followPath()
