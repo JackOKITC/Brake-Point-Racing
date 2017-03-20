@@ -49,6 +49,9 @@
     <ClCompile Include="src\Garage.cpp">
       <Filter>src\Screens</Filter>
     </ClCompile>
+    <ClCompile Include="src\PreRace.cpp">
+      <Filter>src\Screens</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Ai.h">
@@ -70,9 +73,6 @@
       <Filter>header</Filter>
     </ClInclude>
     <ClInclude Include="include\Node.h">
-      <Filter>header</Filter>
-    </ClInclude>
-    <ClInclude Include="include\ResouceManager.h">
       <Filter>header</Filter>
     </ClInclude>
     <ClInclude Include="include\RoadTile.h">
@@ -102,6 +102,12 @@
     <ClCompile Include="src\Menu.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClInclude Include="include\ResourceManager.h">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PreRace.h">
+      <Filter>header\Screens</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">

@@ -137,6 +137,7 @@
     <ClCompile Include="src\Node.cpp" />
     <ClCompile Include="src\Options.cpp" />
     <ClCompile Include="src\Play.cpp" />
+    <ClCompile Include="src\PreRace.cpp" />
     <ClCompile Include="src\ResourceManager.cpp" />
     <ClCompile Include="src\RoadTile.cpp" />
     <ClCompile Include="src\Splash.cpp" />
@@ -155,6 +156,7 @@
     <ClInclude Include="include\Node.h" />
     <ClInclude Include="include\Options.h" />
     <ClInclude Include="include\Play.h" />
+    <ClInclude Include="include\PreRace.h" />
     <ClInclude Include="include\ResourceManager.h" />
     <ClInclude Include="include\RoadTile.h" />
     <ClInclude Include="include\Splash.h" />
