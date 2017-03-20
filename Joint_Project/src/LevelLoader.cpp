@@ -1,11 +1,21 @@
 #include "LevelLoader.h"
 
-void operator >> (const YAML::Node& roadNode, RoadData& road)
+void operator >> (const YAML::Node& roadNode, Road1Data& road)
 {
 	road.m_fileName = roadNode["file"].as<std::string>();
 	road.m_fileID = roadNode["ID"].as<std::string>();
 	road.m_position.x = roadNode["position"]["x"].as<float>();
 	road.m_position.y= roadNode["position"]["y"].as<float>();
+	road.m_rotation = roadNode["rotation"].as<double>();
+	road.m_scale = roadNode["scale"].as<double>();
+}
+
+void operator >> (const YAML::Node& roadNode, Road2Data& road)
+{
+	road.m_fileName = roadNode["file"].as<std::string>();
+	road.m_fileID = roadNode["ID"].as<std::string>();
+	road.m_position.x = roadNode["position"]["x"].as<float>();
+	road.m_position.y = roadNode["position"]["y"].as<float>();
 	road.m_rotation = roadNode["rotation"].as<double>();
 	road.m_scale = roadNode["scale"].as<double>();
 }
@@ -38,12 +48,20 @@ void operator >> (const YAML::Node& nodeNode, NodeData& node)
 void operator >> (const YAML::Node& levelNode, LevelData& level)
 {
 	// load in the data from the yaml file to the level load system
-	const YAML::Node& roadsNode = levelNode["tile"].as<YAML::Node>();
-	for (unsigned i = 0; i < roadsNode.size(); i++)
+	const YAML::Node& roadsNode1 = levelNode["tile1"].as<YAML::Node>();
+	for (unsigned i = 0; i < roadsNode1.size(); i++)
 	{
-		RoadData road;
-		roadsNode[i] >> road;
-		level.m_roads.push_back(road);
+		Road1Data road;
+		roadsNode1[i] >> road;
+		level.m_roads1.push_back(road);
+	}
+
+	const YAML::Node& roadsNode2 = levelNode["tile2"].as<YAML::Node>();
+	for (unsigned i = 0; i < roadsNode2.size(); i++)
+	{
+		Road2Data road;
+		roadsNode2[i] >> road;
+		level.m_roads2.push_back(road);
 	}
 
 	const YAML::Node& bgNode = levelNode["background"].as<YAML::Node>();

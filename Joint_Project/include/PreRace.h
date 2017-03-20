@@ -29,6 +29,8 @@ public:
 
 	raceSelection m_buttonSelected = raceSelection::Option1; // The button enum which starts on the first option
 
+	bool m_whichLabel;
+
 private: 
 
 	GameState *m_gameState;
@@ -52,7 +54,7 @@ private:
 
 	std::string m_icyString = "Icy Wasteland";
 	
-	bool m_whichLabel = false;
+	
 	int m_currentBtn = 0;
 	const int WIDGET_COUNT = 4;
 };

@@ -4,7 +4,8 @@ Play::Play()
 {
 }
 
-Play::Play(GameState *gameState)
+Play::Play(GameState *gameState, bool whichMap) :
+	m_whichMap(whichMap)
 {
 	m_state = gameState;	
 
@@ -14,11 +15,10 @@ Play::Play(GameState *gameState)
 		std::cout << "Level not loaded" << std::endl;
 	}
 	
-
 	ResourceManager::instance().loadData(m_level);
-	generateRoad();
 	generateNode();
-
+	generateRoad();
+	
 	car = new Car(false, m_nodes);
 
 	for (int i = 0; i < MAX_AI; i++)
@@ -35,21 +35,38 @@ Play::~Play()
 {
 }
 
-void Play::update(Xbox360Controller & controller, double dt)
+void Play::update(Xbox360Controller & controller, double dt, bool whichMap)
 {
 	car->update(controller, dt);
+	m_whichMap = whichMap;
+
 
 	for (int i = 0; i < MAX_AI; i++)
 	{
 		aiCars[i]->update(controller, dt);
 	}
-	
-	for (std::unique_ptr<RoadTile> &roadTile : m_roadTiles)
+	if (!m_whichMap)
 	{
-		roadTile->whichTile(car->m_position);
-		if (roadTile->carIsOn)
+		for (std::unique_ptr<RoadTile> &roadTile : m_roadTiles1)
 		{
-			roadTile->checkOffRoad(car->m_position);
+			roadTile->whichTile(car->m_position);
+			if (roadTile->carIsOn)
+			{
+				roadTile->checkOffRoad(car->m_position);
+			}
+		}
+	}
+
+	if (m_whichMap)
+	{
+
+		for (std::unique_ptr<RoadTile> &roadTile : m_roadTiles2)
+		{
+			roadTile->whichTile(car->m_position);
+			if (roadTile->carIsOn)
+			{
+				roadTile->checkOffRoad(car->m_position);
+			}
 		}
 	}
 }
@@ -57,11 +74,25 @@ void Play::update(Xbox360Controller & controller, double dt)
 void Play::render(sf::RenderWindow & window)
 {
 	window.clear(sf::Color::White);
-	for (std::unique_ptr<RoadTile> &roadTile : m_roadTiles)
+	if (!m_whichMap)
 	{
-		if (roadTile->culling(car->m_position, window))
+		for (std::unique_ptr<RoadTile> &roadTile : m_roadTiles1)
 		{
-			roadTile->render(window);
+			if (roadTile->culling(car->m_position, window))
+			{
+				roadTile->render(window);
+			}
+		}
+	}
+
+	if (m_whichMap)
+	{
+		for (std::unique_ptr<RoadTile> &roadTile : m_roadTiles2)
+		{
+			if (roadTile->culling(car->m_position, window))
+			{
+				roadTile->render(window);
+			}
 		}
 	}
 
@@ -79,12 +110,22 @@ void Play::render(sf::RenderWindow & window)
 void Play::generateRoad()
 {
 	int i = 0;
-	for (RoadData const &road : m_level.m_roads)
+	for (Road1Data const &road : m_level.m_roads1)
 	{
 		std::unique_ptr<RoadTile> roadTile(new RoadTile(road.m_fileID, road.m_position, road.m_rotation, road.m_scale, i, road.m_fileName));
-		m_roadTiles.push_back(std::move(roadTile));
+		m_roadTiles1.push_back(std::move(roadTile));
 		i++;
 	}
+
+
+	int e = 0;
+	for (Road2Data const &road : m_level.m_roads2)
+	{
+		std::unique_ptr<RoadTile> roadTile(new RoadTile(road.m_fileID, road.m_position, road.m_rotation, road.m_scale, e, road.m_fileName));
+		m_roadTiles2.push_back(std::move(roadTile));
+		e++;
+	}
+	
 }
 
 void Play::generateNode()

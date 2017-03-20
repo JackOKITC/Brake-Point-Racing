@@ -12,7 +12,12 @@ void ResourceManager::loadData(LevelData &level)
 {
 	try
 	{
-		for (RoadData data : level.m_roads)
+		for (Road1Data data : level.m_roads1)
+		{
+			m_holder.acquire(data.m_fileID, thor::Resources::fromFile<sf::Texture>(data.m_fileName));
+		}
+
+		for (Road2Data data : level.m_roads2)
 		{
 			m_holder.acquire(data.m_fileID, thor::Resources::fromFile<sf::Texture>(data.m_fileName));
 		}

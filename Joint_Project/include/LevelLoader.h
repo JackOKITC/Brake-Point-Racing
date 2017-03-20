@@ -8,7 +8,16 @@
 #include <iostream>
 #include "yaml-cpp\yaml.h"
 
-struct RoadData
+struct Road1Data
+{
+	std::string m_fileName;
+	std::string m_fileID;
+	sf::Vector2f m_position;
+	double m_rotation;
+	double m_scale;
+};
+
+struct Road2Data
 {
 	std::string m_fileName;
 	std::string m_fileID;
@@ -44,7 +53,8 @@ struct AudioData
 struct LevelData
 {
 	std::vector<CarData> m_car;
-	std::vector<RoadData> m_roads;
+	std::vector<Road1Data> m_roads1;
+	std::vector<Road2Data> m_roads2;
 	std::vector<BackgroundData> m_bg;
 	std::vector<NodeData> m_nodes;
 	std::vector<AudioData> m_sound;

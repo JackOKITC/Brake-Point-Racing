@@ -22,6 +22,8 @@ PreRace::PreRace(sf::Font font, GameState *gameState) :
 	widgets[1]->loseFocus();
 	widgets[2]->loseFocus();
 	widgets[3]->loseFocus();
+
+	m_whichLabel = false;
 }
 
 PreRace::~PreRace() {}
@@ -152,6 +154,7 @@ void PreRace::selectedButton(GamePadState m_state, Xbox360Controller m_controlle
 		if (m_state.A && !m_controller.m_previousState.A)	// If the A button has been pressed
 		{
 			*m_gameState = GameState::PLAY_STATE;
+
 		}
 		break;
 	default:
