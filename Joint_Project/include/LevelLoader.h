@@ -35,6 +35,12 @@ struct NodeData
 	sf::Vector2f m_position;
 };
 
+struct CheckpointData
+{
+	int m_number;
+	sf::Vector2f m_position;
+};
+
 struct AudioData
 {
 	std::string m_fileName;
@@ -47,6 +53,7 @@ struct LevelData
 	std::vector<RoadData> m_roads;
 	std::vector<BackgroundData> m_bg;
 	std::vector<NodeData> m_nodes;
+	std::vector<CheckpointData> m_checkpoints;
 	std::vector<AudioData> m_sound;
 };
 

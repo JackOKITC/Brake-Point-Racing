@@ -49,6 +49,7 @@
     <ClCompile Include="src\Garage.cpp">
       <Filter>src\Screens</Filter>
     </ClCompile>
+    <ClCompile Include="src\Checkpoint.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Ai.h">
@@ -70,9 +71,6 @@
       <Filter>header</Filter>
     </ClInclude>
     <ClInclude Include="include\Node.h">
-      <Filter>header</Filter>
-    </ClInclude>
-    <ClInclude Include="include\ResouceManager.h">
       <Filter>header</Filter>
     </ClInclude>
     <ClInclude Include="include\RoadTile.h">
@@ -102,6 +100,8 @@
     <ClCompile Include="src\Menu.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClInclude Include="include\ResourceManager.h" />
+    <ClInclude Include="include\Checkpoint.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">

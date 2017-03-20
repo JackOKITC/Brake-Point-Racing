@@ -35,6 +35,13 @@ void operator >> (const YAML::Node& nodeNode, NodeData& node)
 	node.m_position.y = nodeNode["position"]["y"].as<float>();
 }
 
+void operator >> (const YAML::Node& checkpointNode, CheckpointData& checkpoint)
+{
+	checkpoint.m_number = checkpointNode["number"].as<int>();
+	checkpoint.m_position.x = checkpointNode["position"]["x"].as<float>();
+	checkpoint.m_position.y = checkpointNode["position"]["y"].as<float>();
+}
+
 void operator >> (const YAML::Node& levelNode, LevelData& level)
 {
 	// load in the data from the yaml file to the level load system
@@ -69,6 +76,14 @@ void operator >> (const YAML::Node& levelNode, LevelData& level)
 		level.m_nodes.push_back(node);
 	}
 	
+	const YAML::Node& checkpointNode = levelNode["checkpoint"].as<YAML::Node>();
+	for (unsigned i = 0; i < checkpointNode.size(); i++)
+	{
+		CheckpointData checkpoint;
+		checkpointNode[i] >> checkpoint;
+		level.m_checkpoints.push_back(checkpoint);
+	}
+
 	const YAML::Node& audioNode = levelNode["audio"].as<YAML::Node>();
 	for (unsigned i = 0; i < audioNode.size(); i++)
 	{
