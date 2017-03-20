@@ -97,9 +97,13 @@ void Car::moveCar(Xbox360Controller & controller)
 			m_speed += -controller.m_currentState.triggers / 4000;
 		}
 	}
-	else if (!controller.m_currentState.RTrigger && m_speed > 0)
+	else if (!controller.m_currentState.RTrigger && m_speed > 0.01f)
 	{
 		m_speed -= DECCELERATION_CAUSED_BY_FRICTION;
+	}
+	else
+	{
+		m_speed = 0;
 	}
 
 	if (controller.m_currentState.LTrigger)
@@ -117,16 +121,43 @@ void Car::moveCar(Xbox360Controller & controller)
 	// Checks if the down button has been pressed
 	if ((controller.m_currentState.dpadRight) || (controller.m_currentState.LeftThumbStick.x > 50))
 	{
-		if(((m_speed < -1 && m_speed < 0) || (m_speed > 1 && m_speed > 0)))
-		m_rotation += 0.1;
+		if (m_speed == 0)
+		{
+		}
+		else if (((m_speed > -5 && m_speed < 0) || (m_speed < 5 && m_speed > 0)))
+		{
+			m_rotation += 0.01;
+		}
+		else if (m_speed < 10 && m_speed > 0)
+		{
+			m_rotation += 0.075;
+		}
+		else if (m_speed >= 10 && m_speed > 0)
+		{
+			m_rotation += 0.15;
+		}
 	}
 
 	// Checks if the up button has been pressed
 	if ((controller.m_currentState.dpadLeft) || (controller.m_currentState.LeftThumbStick.x < -50))
 	{
-		if (((m_speed < -2 && m_speed < 0) || (m_speed > 2 && m_speed > 0)))
-		m_rotation -= 0.1;
+		if (m_speed == 0)
+		{
+		}
+		else if (((m_speed > -5 && m_speed < 0) || (m_speed < 5 && m_speed > 0)))
+		{
+			m_rotation -= 0.01;
+		}
+		else if (m_speed < 10 && m_speed > 0)
+		{
+			m_rotation -= 0.075;
+		}
+		else if (m_speed >= 10 && m_speed > 0)
+		{
+			m_rotation -= 0.15;
+		}
 	}
+	
 
 	sf::Vector2f dist;
 	dist = m_checkpoints.at(m_currentCheckpoint)->m_position - m_position;
