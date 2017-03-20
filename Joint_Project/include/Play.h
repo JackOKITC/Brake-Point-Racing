@@ -8,6 +8,7 @@
 #include "ResourceManager.h"
 #include "Ai.h"
 #include "Node.h"
+#include "Checkpoint.h"
 #include "LevelLoader.h"
 #include "RoadTile.h"
 #include <vector>
@@ -26,6 +27,7 @@ public:
 
 	void generateRoad();
 	void generateNode();
+	void generateCheckpoint();
 
 private:
 	GameState *m_state;
@@ -38,7 +40,10 @@ private:
 	std::vector<std::unique_ptr<RoadTile>> m_roadTiles1;
 	std::vector<std::unique_ptr<RoadTile>> m_roadTiles2;
 	std::vector<std::unique_ptr<Node>> m_nodes;
+	std::vector<std::unique_ptr<Checkpoint>> m_checkpoints;
+
 	bool m_callOnce = true;
+
 
 	sf::View m_followPlayer; //private member in class
 	bool m_whichMap;
