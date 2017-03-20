@@ -30,7 +30,8 @@ Game::~Game()
 
 void Game::run()
 {
-	//music.play();
+	music.play();
+	music.setLoop(true);
 	
 	sf::Clock clock;
 	sf::Int32 lag = 0;
