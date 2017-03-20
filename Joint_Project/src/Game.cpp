@@ -7,7 +7,6 @@ Game::Game(sf::Font &font, sf::Font &titleFont) :
 	m_window(sf::VideoMode(900,600,32), "Brake Point Racing", sf::Style::Default),
 	m_font(font)
 {
-
 	// pointer to GameState object, will be passed to each menu state so
 	// they can change the state in their own source files
 
@@ -68,7 +67,6 @@ void Game::update(sf::Time deltaTime)
 		m_optionsScreen->update(m_controller.m_currentState, m_controller);
 		break;
 	case GameState::CREDITS_STATE:
-
 		break;
 	default:
 		break;
@@ -77,13 +75,13 @@ void Game::update(sf::Time deltaTime)
 
 void Game::render(sf::RenderWindow &window)
 {
-	window.clear(sf::Color(0, 0, 0));
+	window.clear(sf::Color(30, 50, 90));
 	switch (*m_currentGameState)
 	{
 	case GameState::SPLASH_STATE:
 		m_splashScreen->render(window);
 		break;
-	case GameState::MENU_STATE:
+	case GameState::MENU_STATE:	
 		m_menuScreen->render(window);
 		break;
 	case GameState::PLAY_STATE:

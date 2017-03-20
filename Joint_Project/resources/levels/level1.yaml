@@ -132,7 +132,8 @@ background:
      ID: SplashBG
    - file: .\resources\images\UI\bg2.png
      ID: MenuBG
-
+   - file: .\resources\images\UI\radio.png
+     ID: Radio
 car:
    - file: .\resources\images\cars\Bus.png
      ID: BusTex

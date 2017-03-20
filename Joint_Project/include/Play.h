@@ -5,7 +5,7 @@
 #include "Xbox360Controller.h"
 #include <iostream>
 #include "Car.h"
-#include "ResouceManager.h"
+#include "ResourceManager.h"
 #include "Ai.h"
 #include "Node.h"
 #include "LevelLoader.h"

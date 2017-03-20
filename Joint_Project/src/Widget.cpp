@@ -263,19 +263,16 @@ int Slider::decrementSlider()
 
 #pragma region LabelRegion
 
-Label::Label()
-{
-}
-
-Label::Label(std::string * text, sf::Font * font, sf::Vector2f *position, int size) :
+Label::Label(std::string * text, sf::Font * font, sf::Vector2f *position/*, int size*/) :
 	m_font(*font),	// Sets the value of m_font to that of the de-referenced value stored in the font argument.
 	m_position(*position),	// Sets the value of m_position to that of the de-referenced value stored in the position argument.
-	m_text(*text, *font, size)	// Sets m_text to use the de-referenced value in the text argument as the string, the de-referenced value in the font argument as the font and uses the text size of 38. 
+	m_text(*text, *font/*, size*/)	// Sets m_text to use the de-referenced value in the text argument as the string, the de-referenced value in the font argument as the font and uses the text size of 38. 
 {
 	m_textRectangle = m_text.getLocalBounds();	// Gets the dimensions of the rectangle that contains the text.
 	m_text.setOrigin(m_textRectangle.left + m_textRectangle.width / 2.0f, m_textRectangle.top + m_textRectangle.height / 2.0f);	// Centres the origin of the text.
 	m_text.setPosition(m_position);	// Sets the position of the text using its centre as the origin.
-	m_text.setColor(sf::Color(0, 0, 0));	// Sets the colour of the text to black.
+	m_text.setColor(sf::Color(m_gold));
+	m_hasFocus = false;	// Sets the colour of the text to black.
 }
 
 Label::~Label()
@@ -287,31 +284,31 @@ void Label::update()
 {
 }
 
-void Label::render(sf::RenderWindow & window)
-{
-	window.draw(m_text);	// Draws the text to the screen.
-}
-
 void Label::getFocus()
 {
-	m_text.setColor(sf::Color(236, 0, 24));	// Sets the colour of the text to red.
+	m_text.setColor(sf::Color(m_gold));	// Sets the colour of the text to red.
 	m_hasFocus = true;	// Gives the text focus, this will be shared with what the label is referencing.
 }
 
 void Label::loseFocus()
 {
-	m_text.setColor(sf::Color(0, 0, 0));	// Sets the colour of the text to black.
+	m_text.setColor(sf::Color(m_paleBanana));	// Sets the colour of the text to pale yellow.
 	m_hasFocus = false;	// Takes focus from the text, this will be shared with what the label is referencing.
 }
 
 void Label::moveRight()
 {
-	m_text.setPosition(m_text.getPosition().x + 1, m_text.getPosition().y);	// Moves the text by positive one along the x-axis, the y-axis is unchanged.
+	//m_text.setPosition(m_text.getPosition().x + 1, m_text.getPosition().y);	// Moves the text by positive one along the x-axis, the y-axis is unchanged.
 }
 
 void Label::moveLeft()
 {
-	m_text.setPosition(m_text.getPosition().x - 1, m_text.getPosition().y);	// Moves the text by negative one along the x-axis, the y-axis is unchanged.
+	//m_text.setPosition(m_text.getPosition().x - 1, m_text.getPosition().y);	// Moves the text by negative one along the x-axis, the y-axis is unchanged.
 }
 
+void Label::render(sf::RenderWindow & window)
+{
+	//window.draw(m_buttonRectangle);	// Draws the button rectangle to the screen.
+	window.draw(m_text);	// Draws the text on top of the sprite.
+}
 #pragma endregion

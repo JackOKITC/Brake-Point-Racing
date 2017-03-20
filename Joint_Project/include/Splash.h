@@ -8,7 +8,7 @@
 #include <sstream>
 #include <Thor\Resources.hpp>
 #include <Aurora/Config.hpp>
-#include "ResouceManager.h"
+#include "ResourceManager.h"
 
 class Splash
 {
@@ -25,7 +25,16 @@ public:
 
 private:
 	GameState *m_state;
+	
 	bool m_transitionToNext = false;
+	bool m_startPressed = false;
+	bool m_highlight = true;
+	
+	int alpha;
+	int b;
+
+	int charSize;
+	
 	sf::Time currentTime;
 
 	sf::Font m_font;
