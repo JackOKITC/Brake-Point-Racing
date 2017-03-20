@@ -134,6 +134,8 @@ background:
      ID: MenuBG
    - file: .\resources\images\UI\radio.png
      ID: Radio
+   - file: .\resources\images\UI\finish.jpg
+     ID: Flag
 car:
    - file: .\resources\images\cars\Bus.png
      ID: BusTex

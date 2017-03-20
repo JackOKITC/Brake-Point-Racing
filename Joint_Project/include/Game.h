@@ -47,5 +47,7 @@ private:
 
 	sf::SoundBuffer sBuffer;
 	sf::Sound music;
+
+	sf::Clock m_clock;
 };
 #endif // !GAME_H

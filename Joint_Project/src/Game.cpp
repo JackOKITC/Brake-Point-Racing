@@ -14,7 +14,7 @@ Game::Game(sf::Font &font, sf::Font &titleFont) :
 
 	m_playScreen = new Play(m_currentGameState);
 	m_splashScreen = new Splash(m_currentGameState, m_titleFont);
-	m_menuScreen = new Menu(font, m_currentGameState);
+	m_menuScreen = new Menu(m_titleFont, m_currentGameState);
 	m_upgradeScreen = new Garage(font, m_currentGameState);
 	
 	sBuffer = ResourceManager::instance().m_soundHolder["MusicBG"];
@@ -33,6 +33,7 @@ void Game::run()
 	
 	sf::Clock clock;
 	sf::Int32 lag = 0;
+	m_clock.restart();
 
 	while (m_window.isOpen())
 	{
@@ -87,7 +88,7 @@ void Game::render(sf::RenderWindow &window)
 		m_splashScreen->render(window);
 		break;
 	case GameState::MENU_STATE:	
-		m_menuScreen->render(window);
+		m_menuScreen->render(window, m_clock);
 		break;
 	case GameState::PLAY_STATE:
 		m_playScreen->render(window);

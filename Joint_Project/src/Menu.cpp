@@ -43,8 +43,24 @@ Menu::Menu(sf::Font & font, GameState *gameState) :
 	m_backgroundSprite.setTexture(m_backgroundTex);
 	m_backgroundSprite.setPosition(-1400, -200);
 
+	m_flagTex = ResourceManager::instance().m_holder["Flag"];
+
+	m_flagSprite.setTexture(m_flagTex);
+	m_flagSprite.setPosition(0, 0);
+	m_flagSprite.setScale(0.5, 0.6);
+
 	m_timeStop = false;
 	m_transitionStop = false;
+
+	if (!m_shader.loadFromFile(".\\resources\\Shader\\Vert.txt", ".\\resources\\Shader\\Frag.txt"))
+	{
+		std::cout << "Error loading shader" << std::endl;
+	}
+
+	m_shader.setParameter("uTexture", m_flagTex);
+	m_shader.setParameter("uPositionFreq", 0.1f);
+	m_shader.setParameter("uSpeed", 10);
+	m_shader.setParameter("uStrength", 0.01f);
 
 	for (int i = 0; i < LABEL_COUNT; i++)
 	{
@@ -70,6 +86,8 @@ Menu::~Menu()
 
 void Menu::update(GamePadState m_state, Xbox360Controller & m_controller, sf::Time deltaTime)
 {
+	
+
 	if (m_transitionStop)
 	{
 		checkButtonSelected(m_state, m_controller);
@@ -97,12 +115,14 @@ void Menu::update(GamePadState m_state, Xbox360Controller & m_controller, sf::Ti
 	}
 }
 
-void Menu::render(sf::RenderWindow & window)
+void Menu::render(sf::RenderWindow & window, sf::Clock clock)
 {
 	window.clear(sf::Color(30, 50, 90));
+	window.draw(m_flagSprite, &m_shader);
 	window.draw(m_backgroundSprite);
 	
 	
+	m_shader.setParameter("uTime", clock.getElapsedTime().asSeconds());
 	
 	if (m_transitionStop)
 	{

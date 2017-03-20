@@ -292,7 +292,7 @@ void Label::getFocus()
 
 void Label::loseFocus()
 {
-	m_text.setColor(sf::Color(m_paleBanana));	// Sets the colour of the text to pale yellow.
+	m_text.setColor(sf::Color(m_lilac));	// Sets the colour of the text to pale yellow.
 	m_hasFocus = false;	// Takes focus from the text, this will be shared with what the label is referencing.
 }
 
