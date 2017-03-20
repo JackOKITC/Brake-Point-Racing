@@ -293,13 +293,16 @@ public:
 
 	void moveRight();	// Moves the Label right, This is used for transitioning between screens.
 	void moveLeft();	// Moves the Label left, This is used for transitioning between screens.
+	void increment();
+	void decrement();
 
 	sf::Vector2f m_position;	// Stores the on-screen positon of the Label.
 private:
 	bool m_hasFocus;	// Determines whether or not the Label hasFocus.
+	int m_currentNode;
 
-	sf::RectangleShape recBar;
-	sf::RectangleShape innerRecs[3];
+	sf::RectangleShape m_recBar;
+	sf::RectangleShape m_innerRecs[3];
 };
 
 #endif // !BAR_H

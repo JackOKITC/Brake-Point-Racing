@@ -28,6 +28,12 @@ void operator >> (const YAML::Node& carNode, CarData& car)
 	car.m_fileID = carNode["ID"].as<std::string>();
 }
 
+void operator >> (const YAML::Node& upgradeNode, UpgradeData& upgrade)
+{
+	upgrade.m_fileName = upgradeNode["file"].as<std::string>();
+	upgrade.m_fileID = upgradeNode["ID"].as<std::string>();
+}
+
 void operator >> (const YAML::Node& nodeNode, NodeData& node)
 {
 	node.m_number = nodeNode["number"].as<int>();
@@ -61,6 +67,15 @@ void operator >> (const YAML::Node& levelNode, LevelData& level)
 		carNode[i] >> car;
 		level.m_car.push_back(car);
 	}
+
+	const YAML::Node& upgradeNode = levelNode["upgrade"].as<YAML::Node>();
+	for (unsigned i = 0; i < upgradeNode.size(); i++)
+	{
+		UpgradeData upgrade;
+		upgradeNode[i] >> upgrade;
+		level.m_upgrades.push_back(upgrade);
+	}
+
 	const YAML::Node& nodesNode = levelNode["node"].as<YAML::Node>();
 	for (unsigned i = 0; i < nodesNode.size(); i++)
 	{

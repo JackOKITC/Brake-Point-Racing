@@ -16,7 +16,6 @@ RoadTile::RoadTile(const std::string & image, const sf::Vector2f &pos, const dou
 	m_collisonImage = new sf::Image;
 	m_roadSprite.setPosition(m_position);
 	m_roadSprite.setRotation(m_rotation);
-	m_roadSprite.setColor(sf::Color(125, 125, 125, 255));
 	
 	m_collisonImage->loadFromFile(path);
 }
@@ -74,11 +73,11 @@ void RoadTile::checkOffRoad(sf::Vector2f carPos)
 
 	if (m_collisonImage->getPixel(relativePos.x, relativePos.y).g > 110)
 	{
-		std::cout << "Slow Down/n/n" << relativePos.x << "," << relativePos.y << std::endl;
+		std::cout << "Slow Down" << relativePos.x << "," << relativePos.y << std::endl;
 	}
 	else
 	{
-		std::cout << "/n/nyay" << std::endl;
+		std::cout << "yay" << std::endl;
 	}
 
 }

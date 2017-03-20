@@ -125,8 +125,6 @@ tile:
      rotation: 0
      scale: 0
 
-
-
 background:
    - file: .\resources\images\UI\bg.jpg
      ID: SplashBG
@@ -136,6 +134,17 @@ background:
      ID: Radio
    - file: .\resources\images\UI\finish.jpg
      ID: Flag
+
+upgrade:
+   - file: .\resources\images\car_parts\brake.png
+     ID: Upgrade0
+   - file: .\resources\images\car_parts\handling.png
+     ID: Upgrade1
+   - file: .\resources\images\car_parts\turbo.png
+     ID: Upgrade2
+   - file: .\resources\images\car_parts\gears.png
+     ID: Upgrade3
+
 car:
    - file: .\resources\images\cars\bus.png
      ID: BusTex

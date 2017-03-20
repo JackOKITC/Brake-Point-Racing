@@ -23,6 +23,12 @@ struct BackgroundData
 	std::string m_fileID;
 };
 
+struct UpgradeData
+{
+	std::string m_fileName;
+	std::string m_fileID;
+};
+
 struct CarData
 {
 	std::string m_fileName;
@@ -48,6 +54,7 @@ struct LevelData
 	std::vector<BackgroundData> m_bg;
 	std::vector<NodeData> m_nodes;
 	std::vector<AudioData> m_sound;
+	std::vector<UpgradeData> m_upgrades;
 };
 
 class LevelLoader

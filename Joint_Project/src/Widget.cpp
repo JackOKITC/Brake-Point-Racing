@@ -320,21 +320,21 @@ Bar::Bar()
 
 Bar::Bar(sf::Vector2f position, int size)
 {
-	recBar.setSize(sf::Vector2f(size * 3, size));
-	recBar.setPosition(position);
-	recBar.setOrigin(sf::Vector2f((size * 3) / 2, size / 2));
-	recBar.setFillColor(sf::Color(0,0,0,0));
-	recBar.setOutlineThickness(1.5f);
-	recBar.setOutlineColor(m_white);
+	m_recBar.setSize(sf::Vector2f(size * 3, size));
+	m_recBar.setPosition(position);
+	m_recBar.setOrigin(sf::Vector2f((size * 3) / 2, size / 2));
+	m_recBar.setFillColor(sf::Color(0,0,0,0));
+	m_recBar.setOutlineThickness(1.5f);
+	m_recBar.setOutlineColor(m_white);
 
 	for (int i = 0; i < 3; i++)
 	{
-		innerRecs[i].setSize(sf::Vector2f(size-2, size-2));
-		innerRecs[i].setOrigin(sf::Vector2f(size / 2, size / 2));
-		innerRecs[i].setPosition(sf::Vector2f((position.x - size) + size * i, position.y));
-		innerRecs[i].setFillColor(m_gold);
-		innerRecs[i].setOutlineThickness(2);
-		innerRecs[i].setOutlineColor(sf::Color(0, 0, 0, 0));
+		m_innerRecs[i].setSize(sf::Vector2f(size-2, size-2));
+		m_innerRecs[i].setOrigin(sf::Vector2f(size / 2, size / 2));
+		m_innerRecs[i].setPosition(sf::Vector2f((position.x - size) + size * i, position.y));
+		m_innerRecs[i].setFillColor(sf::Color(0,0,0,0));
+		m_innerRecs[i].setOutlineThickness(2);
+		m_innerRecs[i].setOutlineColor(sf::Color(0, 0, 0, 0));
 	}
 }
 
@@ -348,10 +348,10 @@ void Bar::update()
 
 void Bar::render(sf::RenderWindow & window)
 {
-	window.draw(recBar);
+	window.draw(m_recBar);
 	for (int i = 0; i < 3; i++)
 	{
-		window.draw(innerRecs[i]);
+		window.draw(m_innerRecs[i]);
 	}
 }
 
@@ -369,5 +369,23 @@ void Bar::moveRight()
 
 void Bar::moveLeft()
 {
+}
+
+void Bar::increment()
+{
+	m_innerRecs[m_currentNode].setFillColor(m_gold);
+	if (m_currentNode != 2)
+	{
+		m_currentNode++;
+	}
+}
+
+void Bar::decrement()
+{
+	m_innerRecs[m_currentNode].setFillColor(sf::Color(0,0,0,0));
+	if (m_currentNode != 0)
+	{
+		m_currentNode--;
+	}
 }
 #pragma endregion
