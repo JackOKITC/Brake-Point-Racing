@@ -146,8 +146,12 @@ upgrade:
      ID: Upgrade3
 
 car:
-   - file: .\resources\images\cars\bus.png
-     ID: BusTex
+   - file: .\resources\images\cars\Bus0.png
+     ID: Bus0
+   - file: .\resources\images\cars\Bus1.png
+     ID: Bus1
+   - file: .\resources\images\cars\Bus2.png
+     ID: Bus2
 
 node:
    - number: 1

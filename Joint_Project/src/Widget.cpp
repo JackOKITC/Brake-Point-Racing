@@ -326,6 +326,7 @@ Bar::Bar(sf::Vector2f position, int size)
 	m_recBar.setFillColor(sf::Color(0,0,0,0));
 	m_recBar.setOutlineThickness(1.5f);
 	m_recBar.setOutlineColor(m_white);
+	m_currentNode = 0;
 
 	for (int i = 0; i < 3; i++)
 	{

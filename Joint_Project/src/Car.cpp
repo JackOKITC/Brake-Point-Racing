@@ -6,7 +6,7 @@ Car::Car(bool isAi, std::vector<std::unique_ptr<Node>> & nodes) :
 {
 	if (!m_isAi)
 	{
-		m_carTex = ResourceManager::instance().m_holder["BusTex"];
+		m_carTex = ResourceManager::instance().m_holder["Bus0"];
 		m_carSprite.setTexture(m_carTex);
 		//renTex.create(252, 87);
 

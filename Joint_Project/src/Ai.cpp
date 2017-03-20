@@ -6,7 +6,7 @@ Ai::Ai(std::vector<std::unique_ptr<Node>> & nodes) :
 	m_steering(0, 0)
 {
 
-	m_carTex = ResourceManager::instance().m_holder["BusTex"];
+	m_carTex = ResourceManager::instance().m_holder["Bus2"];
 
 	m_carSprite.setTexture(m_carTex);
 	m_position = sf::Vector2f(100,300);

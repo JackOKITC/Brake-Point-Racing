@@ -49,6 +49,7 @@ private:
 	Bar *m_upgradeBars[4];
 	sf::Texture m_upgradeText[4];
 	sf::Sprite m_uprgradeSpr[4];
+
 	sf::Texture m_carOptions[3];
 	sf::Sprite m_cars[3];
 };
