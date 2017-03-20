@@ -10,7 +10,7 @@ Car::Car(bool isAi, std::vector<std::unique_ptr<Node>> & nodes) :
 		m_carSprite.setTexture(m_carTex);
 		//renTex.create(252, 87);
 
-		m_position = sf::Vector2f(100, 300);
+		m_position = sf::Vector2f(2200, 909);
 		m_velocity = sf::Vector2f(0, 0);
 		m_rotation = 0.0f;
 
@@ -46,6 +46,7 @@ void Car::update(Xbox360Controller & controller, double dt)
 
 
 		m_position = newPos;
+		std::cout << "Player Position = x : " << m_position.x << " y : " << m_position.y << std::endl;
 	}
 	else
 	{
