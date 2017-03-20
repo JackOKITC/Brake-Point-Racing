@@ -35,7 +35,7 @@ private:
 
 	sf::Vector2f m_velocity;
 	float m_rotation;
-	float m_speed = 0.0f;
+	float m_speed;
 
 	Ai *m_aiCar;
 
@@ -43,7 +43,7 @@ private:
 	std::vector<std::unique_ptr<Checkpoint>> &m_checkpoints;
 	std::vector<sf::RectangleShape> m_checkpointRectangles;
 
-	const double MAX_FORWARD_SPEED = 30;
+	const double MAX_FORWARD_SPEED = 15;
 	const double MAX_REVERSE_SPEED = -10;
 	const double DEG_TO_RAD = 3.14159 / 180.0f;
 	const float CHECKPOINT_TOLERANCE = 50.0f;
