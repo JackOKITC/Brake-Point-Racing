@@ -1,4 +1,4 @@
-tile:
+tile1:
    - file: .\resources\images\road\OurRoad\1.png
      ID: Road1
      position: {x: 0, y: 0}
@@ -121,6 +121,133 @@ tile:
      scale: 0
    - file: .\resources\images\road\OurRoad\25.png
      ID: Road25
+     position: {x: 2400, y: 2400}
+     rotation: 0
+     scale: 0
+
+tile2:
+   - file: .\resources\images\road\OurRoad\snow1.png
+     ID: RoadA
+     position: {x: 0, y: 0}
+     rotation: 0
+     scale: 0
+   - file: .\resources\images\road\OurRoad\snow2.png
+     ID: RoadB
+     position: {x: 600, y: 0}
+     rotation: 0
+     scale: 0
+   - file: .\resources\images\road\OurRoad\snow3.png
+     ID: RoadC
+     position: {x: 1200, y: 0}
+     rotation: 0
+     scale: 0
+   - file: .\resources\images\road\OurRoad\snow4.png
+     ID: RoadD
+     position: {x: 1800, y: 0}
+     rotation: 0
+     scale: 0
+   - file: .\resources\images\road\OurRoad\snow5.png
+     ID: RoadE
+     position: {x: 2400, y: 0}
+     rotation: 0
+     scale: 0
+   - file: .\resources\images\road\OurRoad\snow6.png
+     ID: RoadF
+     position: {x: 0, y: 600}
+     rotation: 0
+     scale: 0     
+   - file: .\resources\images\road\OurRoad\snow7.png
+     ID: RoadG
+     position: {x: 600, y: 600}
+     rotation: 0
+     scale: 0
+   - file: .\resources\images\road\OurRoad\snow8.png
+     ID: RoadH
+     position: {x: 1200, y: 600}
+     rotation: 0
+     scale: 0
+   - file: .\resources\images\road\OurRoad\snow9.png
+     ID: RoadI
+     position: {x: 1800, y: 600}
+     rotation: 0
+     scale: 0
+   - file: .\resources\images\road\OurRoad\snow10.png
+     ID: RoadJ
+     position: {x: 2400, y: 600}
+     rotation: 0
+     scale: 0    
+   - file: .\resources\images\road\OurRoad\snow11.png
+     ID: RoadK
+     position: {x: 0, y: 1200}
+     rotation: 0
+     scale: 0
+   - file: .\resources\images\road\OurRoad\snow12.png
+     ID: RoadL
+     position: {x: 600, y: 1200}
+     rotation: 0
+     scale: 0
+   - file: .\resources\images\road\OurRoad\snow13.png
+     ID: RoadM
+     position: {x: 1200, y: 1200}
+     rotation: 0
+     scale: 0
+   - file: .\resources\images\road\OurRoad\snow14.png
+     ID: RoadN
+     position: {x: 1800, y: 1200}
+     rotation: 0
+     scale: 0     
+   - file: .\resources\images\road\OurRoad\snow15.png
+     ID: RoadO
+     position: {x: 2400, y: 1200}
+     rotation: 0
+     scale: 0
+   - file: .\resources\images\road\OurRoad\snow16.png
+     ID: RoadP
+     position: {x: 0, y: 1800}
+     rotation: 0
+     scale: 0
+   - file: .\resources\images\road\OurRoad\snow17.png
+     ID: RoadQ
+     position: {x: 600, y: 1800}
+     rotation: 0
+     scale: 0
+   - file: .\resources\images\road\OurRoad\snow18.png
+     ID: RoadR
+     position: {x: 1200, y: 1800}
+     rotation: 0
+     scale: 0
+   - file: .\resources\images\road\OurRoad\snow19.png
+     ID: RoadS
+     position: {x: 1800, y: 1800}
+     rotation: 0
+     scale: 0
+   - file: .\resources\images\road\OurRoad\snow20.png
+     ID: RoadT
+     position: {x: 2400, y: 1800}
+     rotation: 0
+     scale: 0
+   - file: .\resources\images\road\OurRoad\snow21.png
+     ID: RoadU
+     position: {x: 0, y: 2400}
+     rotation: 0
+     scale: 0
+   - file: .\resources\images\road\OurRoad\snow22.png
+     ID: RoadV
+     position: {x: 600, y: 2400}
+     rotation: 0
+     scale: 0
+   - file: .\resources\images\road\OurRoad\snow23.png
+     ID: RoadW
+     position: {x: 1200, y: 2400}
+     rotation: 0
+     scale: 0
+   - file: .\resources\images\road\OurRoad\snow24.png
+     ID: RoadX
+     position: {x: 1800, y: 2400}
+     rotation: 0
+     scale: 0
+   - file: .\resources\images\road\OurRoad\snow25.png
+     ID: RoadY
      position: {x: 2400, y: 2400}
      rotation: 0
      scale: 0

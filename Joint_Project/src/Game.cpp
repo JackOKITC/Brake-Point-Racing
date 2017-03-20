@@ -11,11 +11,12 @@ Game::Game(sf::Font &font, sf::Font &titleFont) :
 	// they can change the state in their own source files
 
 	m_currentGameState = new GameState(GameState::SPLASH_STATE);
-
-	m_playScreen = new Play(m_currentGameState);
+	m_preRaceScreen = new PreRace(m_titleFont, m_currentGameState);
+	m_playScreen = new Play(m_currentGameState, m_preRaceScreen->m_whichLabel);
 	m_splashScreen = new Splash(m_currentGameState, m_titleFont);
 	m_menuScreen = new Menu(m_titleFont, m_currentGameState);
-	m_upgradeScreen = new Garage(font, m_currentGameState);
+	m_upgradeScreen = new Garage(m_titleFont, m_currentGameState);
+	
 	
 	sBuffer = ResourceManager::instance().m_soundHolder["MusicBG"];
 	music.setBuffer(sBuffer);
@@ -29,7 +30,7 @@ Game::~Game()
 
 void Game::run()
 {
-	music.play();
+	//music.play();
 	
 	sf::Clock clock;
 	sf::Int32 lag = 0;
@@ -64,7 +65,7 @@ void Game::update(sf::Time deltaTime)
 		m_menuScreen->update(m_controller.m_currentState, m_controller, deltaTime);
 		break;
 	case GameState::PLAY_STATE:
-		m_playScreen->update(m_controller, MS_PER_UPDATE);
+		m_playScreen->update(m_controller, MS_PER_UPDATE, m_preRaceScreen->m_whichLabel);
 		break;
 	case GameState::UPGRADE_STATE:
 		m_upgradeScreen->update(m_controller, deltaTime);
@@ -73,6 +74,9 @@ void Game::update(sf::Time deltaTime)
 		m_optionsScreen->update(m_controller.m_currentState, m_controller, music);
 		break;
 	case GameState::CREDITS_STATE:
+		break;
+	case GameState::PRERACE_STATE:
+		m_preRaceScreen->update(m_controller.m_currentState, m_controller);
 		break;
 	default:
 		break;
@@ -102,7 +106,9 @@ void Game::render(sf::RenderWindow &window)
 	case GameState::CREDITS_STATE:
 
 		break;
-
+	case GameState::PRERACE_STATE:
+		m_preRaceScreen->render(window);
+		break;
 	default:
 		break;
 	}

@@ -207,7 +207,7 @@ void Menu::selectedButton(GamePadState m_gamePadState, Xbox360Controller m_contr
 	case button::Play:	// The play button 
 		if (m_gamePadState.A && !m_controller.m_previousState.A)	// If the A button has been pressed
 		{
-			*m_gameState = GameState::PLAY_STATE;
+			*m_gameState = GameState::PRERACE_STATE;
 		}
 		break;
 	case button::Garage:
