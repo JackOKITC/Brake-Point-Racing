@@ -10,6 +10,12 @@ void operator >> (const YAML::Node& roadNode, RoadData& road)
 	road.m_scale = roadNode["scale"].as<double>();
 }
 
+void operator >> (const YAML::Node& audioNode, AudioData& audio)
+{
+	audio.m_fileName = audioNode["file"].as<std::string>();
+	audio.m_fileID = audioNode["ID"].as<std::string>();
+}
+
 void operator >> (const YAML::Node& bgNode, BackgroundData& bg)
 {
 	bg.m_fileName = bgNode["file"].as<std::string>();
@@ -61,6 +67,14 @@ void operator >> (const YAML::Node& levelNode, LevelData& level)
 		NodeData node;
 		nodesNode[i] >> node;
 		level.m_nodes.push_back(node);
+	}
+	
+	const YAML::Node& audioNode = levelNode["audio"].as<YAML::Node>();
+	for (unsigned i = 0; i < audioNode.size(); i++)
+	{
+		AudioData audio;
+		audioNode[i] >> audio;
+		level.m_sound.push_back(audio);
 	}
 }
 

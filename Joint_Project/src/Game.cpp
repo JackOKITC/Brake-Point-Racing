@@ -16,7 +16,11 @@ Game::Game(sf::Font &font, sf::Font &titleFont) :
 	m_splashScreen = new Splash(m_currentGameState, m_titleFont);
 	m_menuScreen = new Menu(font, m_currentGameState);
 	m_upgradeScreen = new Garage(font, m_currentGameState);
-	m_optionsScreen = new Options(font, m_currentGameState);
+	
+	sBuffer = ResourceManager::instance().m_soundHolder["MusicBG"];
+	music.setBuffer(sBuffer);
+
+	m_optionsScreen = new Options(m_titleFont, m_currentGameState, music);
 }
 
 Game::~Game()
@@ -25,6 +29,7 @@ Game::~Game()
 
 void Game::run()
 {
+	music.play();
 	
 	sf::Clock clock;
 	sf::Int32 lag = 0;
@@ -64,7 +69,7 @@ void Game::update(sf::Time deltaTime)
 		m_upgradeScreen->update(m_controller, deltaTime);
 		break;
 	case GameState::OPTIONS_STATE:
-		m_optionsScreen->update(m_controller.m_currentState, m_controller);
+		m_optionsScreen->update(m_controller.m_currentState, m_controller, music);
 		break;
 	case GameState::CREDITS_STATE:
 		break;

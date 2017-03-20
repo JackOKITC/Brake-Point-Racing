@@ -35,6 +35,11 @@ struct NodeData
 	sf::Vector2f m_position;
 };
 
+struct AudioData
+{
+	std::string m_fileName;
+	std::string m_fileID;
+};
 
 struct LevelData
 {
@@ -42,7 +47,7 @@ struct LevelData
 	std::vector<RoadData> m_roads;
 	std::vector<BackgroundData> m_bg;
 	std::vector<NodeData> m_nodes;
-
+	std::vector<AudioData> m_sound;
 };
 
 class LevelLoader

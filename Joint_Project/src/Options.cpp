@@ -1,22 +1,22 @@
 #include "Options.h"
 
 
-Options::Options(sf::Font font, GameState *gameState) :
+Options::Options(sf::Font font, GameState *gameState, sf::Sound &music) :
 	m_font(font)
 {
 	m_radioTex = ResourceManager::instance().m_holder["Radio"];
-	
+
 	m_gameState = gameState;
 
 	m_volDif = 25;
-	m_volume = vol.getVolume();
+	m_volume = music.getVolume();
 
 	m_sliderValue = 5;
 	m_volSlider = new Slider(&sf::Vector2f(380, 150), m_sliderValue);
 	m_screenRadio = new RadioButton(&m_radioTex, &sf::Vector2f(450, 300));
 	m_exitButton = new Button(&m_exitString, &sf::Vector2f(450, 450), &m_font);
 	m_muteLabel = new Label(&m_muteString, &m_font, &sf::Vector2f(350, 297));
-	m_volLabel = new Label(&m_volString, &m_font, &sf::Vector2f(280, 145));
+	m_volLabel = new Label(&m_volString, &m_font, &sf::Vector2f(280, 155));
 
 	widgets[0] = m_volSlider;
 	widgets[1] = m_screenRadio;
@@ -35,11 +35,11 @@ Options::~Options()
 {
 }
 
-void Options::update(GamePadState m_state, Xbox360Controller & m_controller)
+void Options::update(GamePadState m_state, Xbox360Controller & m_controller, sf::Sound &music)
 {
 	m_volSlider->update();
-	checkButtonSelected(m_state, m_controller);
-	selectedButton(m_state, m_controller);
+	checkButtonSelected(m_state, m_controller, music);
+	selectedButton(m_state, m_controller, music);
 }
 
 void Options::render(sf::RenderWindow & window)
@@ -53,79 +53,73 @@ void Options::render(sf::RenderWindow & window)
 }
 
 // Function to check which button is selected
-void Options::checkButtonSelected(GamePadState m_state, Xbox360Controller m_controller)
+void Options::checkButtonSelected(GamePadState m_state, Xbox360Controller m_controller, sf::Sound & music)
 {
-		// if Down toggled
-		if ((m_state.dpadDown && !m_controller.m_previousState.dpadDown) || (m_state.LeftThumbStick.y > 50 && m_controller.m_previousState.LeftThumbStick.y < 50))
+	// if Down toggled
+	if ((m_state.dpadDown && !m_controller.m_previousState.dpadDown) || (m_state.LeftThumbStick.y > 50 && m_controller.m_previousState.LeftThumbStick.y < 50))
+	{
+		widgets[m_currentBtn]->loseFocus(); // currently selected button loses focus, unhighlighted
+		m_currentBtn = m_currentBtn + 1; // currentBtn selected incremented
+		if (m_currentBtn > BUTTON_COUNT - 1)
 		{
-			widgets[m_currentBtn]->loseFocus(); // currently selected button loses focus, unhighlighted
-			m_currentBtn = m_currentBtn + 1; // currentBtn selected incremented
-			if (m_currentBtn > BUTTON_COUNT - 1)
-			{
-				m_currentBtn = m_currentBtn - 1; // safe guard to stop out of bound behaviour
-			}
-
-			widgets[m_currentBtn]->getFocus(); // newly seleted button highlighted
-			m_buttonSelected = (optionsSelection)m_currentBtn; // enum for buttons set to current int value of current button
+			m_currentBtn = m_currentBtn - 1; // safe guard to stop out of bound behaviour
 		}
 
-		// if Up toggled, same behaviour as above except the counter is decremented
-		if ((m_state.dpadUp && !m_controller.m_previousState.dpadUp) || (m_state.LeftThumbStick.y < -50 && m_controller.m_previousState.LeftThumbStick.y > -50))
-		{
-			widgets[m_currentBtn]->loseFocus();
-			m_currentBtn = m_currentBtn - 1;
-			if (m_currentBtn < 0)
-			{
-				m_currentBtn = 0;
-			}
+		widgets[m_currentBtn]->getFocus(); // newly seleted button highlighted
+		m_buttonSelected = (optionsSelection)m_currentBtn; // enum for buttons set to current int value of current button
+	}
 
-			widgets[m_currentBtn]->getFocus();
-			m_buttonSelected = (optionsSelection)m_currentBtn;
+	// if Up toggled, same behaviour as above except the counter is decremented
+	if ((m_state.dpadUp && !m_controller.m_previousState.dpadUp) || (m_state.LeftThumbStick.y < -50 && m_controller.m_previousState.LeftThumbStick.y > -50))
+	{
+		widgets[m_currentBtn]->loseFocus();
+		m_currentBtn = m_currentBtn - 1;
+		if (m_currentBtn < 0)
+		{
+			m_currentBtn = 0;
 		}
 
-		// if the currently selected button is the slider button before these actions only of left and right pressed
-		if (m_buttonSelected == optionsSelection::Option1)
+		widgets[m_currentBtn]->getFocus();
+		m_buttonSelected = (optionsSelection)m_currentBtn;
+	}
+
+	// if the currently selected button is the slider button before these actions only of left and right pressed
+	if (m_buttonSelected == optionsSelection::Option1)
+	{
+		if ((m_state.dpadLeft && !m_controller.m_previousState.dpadLeft) || (m_state.LeftThumbStick.x < -50 && m_controller.m_previousState.LeftThumbStick.x > -50))	// Decrements the slider if the player pushes the d-pad or thumbstick left.
 		{
-			if ((m_state.dpadLeft && !m_controller.m_previousState.dpadLeft) || (m_state.LeftThumbStick.x < -50 && m_controller.m_previousState.LeftThumbStick.x > -50))	// Decrements the slider if the player pushes the d-pad or thumbstick left.
+			m_sliderValue = m_volSlider->decrementSlider();
+
+			if (m_volume != 0)
 			{
-				m_sliderValue = m_volSlider->decrementSlider();
-
-				if (m_volume != 0)
-				{
-					vol.setVolume(m_volume -= m_volDif);
-				}
-			}
-
-			if ((m_state.dpadRight && !m_controller.m_previousState.dpadRight) || (m_state.LeftThumbStick.x > 50 && m_controller.m_previousState.LeftThumbStick.x < 50))	// Increments the slider if the player pushes the d - pad or thumbstick left.
-			{
-				m_sliderValue = m_volSlider->incrementSlider();
-
-				if (m_volume != 100)
-				{
-					vol.setVolume(m_volume += m_volDif);
-				}
+				music.setVolume(m_volume -= m_volDif);
 			}
 		}
+
+		if ((m_state.dpadRight && !m_controller.m_previousState.dpadRight) || (m_state.LeftThumbStick.x > 50 && m_controller.m_previousState.LeftThumbStick.x < 50))	// Increments the slider if the player pushes the d - pad or thumbstick left.
+		{
+			m_sliderValue = m_volSlider->incrementSlider();
+
+			if (m_volume != 100)
+			{
+				music.setVolume(m_volume += m_volDif);
+			}
+		}
+	}
 }
 
 // Function to check if the selected button has been pressed
-void Options::selectedButton(GamePadState m_state, Xbox360Controller m_controller)
+void Options::selectedButton(GamePadState m_state, Xbox360Controller m_controller, sf::Sound &music)
 {
 	switch (m_buttonSelected) // Switch statement for the buttons
 	{
-	//case optionsSelection::Option1:	// The slider 
-	//	if (m_state.A && !m_controller.m_previousState.A)	// If the A button has been pressed
-	//	{
-
-	//	}
-	//	break;
-	case optionsSelection::Option2:	// The volume slider 
+	case optionsSelection::Option2:	// The mute button 
 		if (m_state.A && !m_controller.m_previousState.A)	// If the A button has been pressed
 		{
-			vol.setVolume(0);
+			music.setVolume(0);
 		}
 		break;
-	case optionsSelection::Option3:	// The mute button 
+	case optionsSelection::Option3:	// The back button 
 		if (m_state.A && !m_controller.m_previousState.A)	// If the A button has been pressed
 		{
 			*m_gameState = GameState::MENU_STATE;

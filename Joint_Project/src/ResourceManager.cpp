@@ -26,6 +26,10 @@ void ResourceManager::loadData(LevelData &level)
 		{
 			m_holder.acquire(data.m_fileID, thor::Resources::fromFile<sf::Texture>(data.m_fileName));
 		}
+		for (AudioData data : level.m_sound)
+		{
+			m_soundHolder.acquire(data.m_fileID, thor::Resources::fromFile<sf::SoundBuffer>(data.m_fileName));
+		}
 	}
 
 	catch (thor::ResourceLoadingException& e)

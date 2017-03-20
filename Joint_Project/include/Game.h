@@ -12,6 +12,7 @@
 #include "GameState.h"
 #include <iostream>
 #include "ResourceManager.h"
+#include "SFML\Audio.hpp"
 
 class Game
 {
@@ -43,5 +44,8 @@ private:
 	Options *m_optionsScreen;
 	Splash *m_splashScreen;
 	Play *m_playScreen;
+
+	sf::SoundBuffer sBuffer;
+	sf::Sound music;
 };
 #endif // !GAME_H

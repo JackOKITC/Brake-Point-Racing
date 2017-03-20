@@ -155,3 +155,6 @@ node:
      position: {x: 3250, y: 100}
    - number: 8
      position: {x: 3750, y: 200}
+audio:
+   - file: .\resources\audio\bgMusic.wav
+     ID: MusicBG

@@ -82,7 +82,7 @@ void Menu::update(GamePadState m_state, Xbox360Controller & m_controller, sf::Ti
 		m_timeStop = true;
 	}
 
-	if (m_time.asSeconds() <= 1.0)
+	if (m_time.asSeconds() <= 2.0)
 	{
 		if (m_backgroundSprite.getPosition().x < -700)
 		{

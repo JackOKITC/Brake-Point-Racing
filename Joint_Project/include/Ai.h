@@ -11,7 +11,7 @@
 #include <Thor\Math.hpp>
 #include <Thor\Shapes.hpp>
 #include <Thor\Vectors.hpp>
-#include "ResouceManager.h"
+#include "ResourceManager.h"
 
 class Ai
 {

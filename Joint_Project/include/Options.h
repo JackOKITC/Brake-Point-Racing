@@ -19,23 +19,23 @@ class Options
 {
 public:
 
-	Options(sf::Font font, GameState *gameState);
+	Options(sf::Font font, GameState *gameState, sf::Sound &music);
 
 	~Options();
 
-	void update(GamePadState m_state, Xbox360Controller & m_controller);
+	void update(GamePadState m_state, Xbox360Controller & m_controller, sf::Sound &music);
 	void render(sf::RenderWindow & window);
 
-	
+
 
 private:
 	GameState *m_state;
 
-	void checkButtonSelected(GamePadState m_state, Xbox360Controller m_controller);	// Function to check which button is selected
-	void selectedButton(GamePadState m_state, Xbox360Controller m_controller);	// Function to check if the selected button is clicked
+	void checkButtonSelected(GamePadState m_state, Xbox360Controller m_controller, sf::Sound &music);	// Function to check which button is selected
+	void selectedButton(GamePadState m_state, Xbox360Controller m_controller, sf::Sound &music);	// Function to check if the selected button is clicked
 
 	optionsSelection m_buttonSelected = optionsSelection::Option1; // The button enum which starts on the first option
-	
+
 	std::string m_exitString = "Back";
 	std::string m_screenString = "Fullscreen:";
 	std::string m_volString = "Volume:";
