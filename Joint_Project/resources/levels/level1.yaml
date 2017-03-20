@@ -284,6 +284,10 @@ audio:
    - file: .\resources\audio\bgMusic.wav
      ID: MusicBG
 
+audio:
+   - file: .\resources\audio\bgMusic.wav
+     ID: MusicBG
+
 node:
    - number: 1
      position: {x: 2169, y: 909}
