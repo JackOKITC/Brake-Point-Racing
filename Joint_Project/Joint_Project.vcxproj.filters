@@ -53,12 +53,18 @@
     <ClCompile Include="src\PreRace.cpp">
       <Filter>src\Screens</Filter>
     </ClCompile>
+<<<<<<< 96b66466acaa2ff8630bbafc7f26086846c5b587
     <ClCompile Include="src\Checkpoint.cpp" />
       <Filter>src</Filter>
     </ClCompile>
 =======
     <ClCompile Include="src\Checkpoint.cpp" />
 >>>>>>> cf1e810e1d5d0f95e85ee06315d9782f7c49ebfe
+=======
+    <ClCompile Include="src\Player.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+>>>>>>> Adding player class for multiple cars
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Ai.h">
@@ -116,6 +122,7 @@
     <ClInclude Include="include\PreRace.h">
       <Filter>header\Screens</Filter>
     </ClInclude>
+<<<<<<< 96b66466acaa2ff8630bbafc7f26086846c5b587
     <ClInclude Include="include\ResourceManager.h" />
     <Filter>header</Filter>
     </ClInclude>
@@ -126,6 +133,11 @@
     <ClInclude Include="include\ResourceManager.h" />
     <ClInclude Include="include\Checkpoint.h" />
 >>>>>>> cf1e810e1d5d0f95e85ee06315d9782f7c49ebfe
+=======
+    <ClInclude Include="include\Player.h">
+      <Filter>header</Filter>
+    </ClInclude>
+>>>>>>> Adding player class for multiple cars
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
