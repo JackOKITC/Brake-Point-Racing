@@ -7,15 +7,6 @@
 #include "GameState.h"
 #include "Widget.h"
 
-enum class upgradebutton	// Enum for the buttons
-{
-	Engine,
-	Turbo,
-	Handling,
-	Tires,
-	Back
-};
-
 class Garage
 {
 	const sf::Time TIME_PER_UPDATE = sf::microseconds(1000);
@@ -34,28 +25,29 @@ private:
 
 	GameState *m_gameState;
 	bool m_transitionToNext = false;
-
 	sf::Time currentTime;
-	sf::Color m_dim = sf::Color(125, 125, 125, 255);
-
 	sf::Texture m_backgroundTex;
 	sf::Sprite m_backgroundSprite;
 	sf::Font m_font;
 
-	int m_currentCar;
-	int m_currentStat;
-
 	Xbox360Controller * m_controller;
 
-	Bar *m_upgradeBars[3];
-	Slider *m_statValues[3];
-	Label *m_statLabel[3];
-	std::string m_strings[3] = { "Brakes", "Handling", "Acceleration" };
+	// stat elements
+	std::string m_strings[3] = { "Brakes", "Handling", "Acceleration" }; 	// strings to apply to labels
+	Label *m_statLabel[3]; // label for each stat element of cars
+	Slider *m_statValues[3]; // sliders which indicate the current "value" of the car stat
+	int m_currentStat; // keeps track of the currently selected stat for upgrading
 
-	sf::Texture m_upgradeText[3];
-	sf::Sprite m_uprgradeSpr[3];
+	// upgrade elements
+	Bar *m_upgradeBars[3]; // creating pointer to upgrade bars which will track the current level of the upgrade
+	sf::Texture m_upgradeText[3]; //upgrade Texture loaded with the resource manage
+	sf::Sprite m_uprgradeSpr[3]; // sprite used to represent position and texture of each upgrade
 
-	sf::Texture m_carOptions[3];
-	sf::Sprite m_cars[3];
+	// car selection elements
+	sf::Color m_dim = sf::Color(125, 125, 125, 255); // setting the color for being unseleted, makes the sprite slightly dimmer
+	sf::Color m_highlight = sf::Color(255, 255, 255, 255); // setting the "selected" color
+	sf::Texture m_carOptions[3]; // loading textures for each player car
+	sf::Sprite m_cars[3]; // sprite container for each car 
+	int m_currentCar; // keeps track of the currently selected car for upgrading
 };
 #endif // !GARAGE
