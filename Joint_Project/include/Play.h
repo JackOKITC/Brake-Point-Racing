@@ -1,3 +1,4 @@
+
 #ifndef PLAY_H
 #define PLAY_H
 
@@ -12,14 +13,17 @@
 #include "RoadTile.h"
 #include <vector>
 #include "ResourceManager.h"
+#include "Widget.h"
 
 class Play
 {
 public:
 	Play();
-	Play(GameState *gameState, bool whichMap);
+	Play(sf::Font & font, GameState *gameState, bool whichMap);
 	~Play();
 	LevelData m_level;
+
+	const int LABEL_COUNT = 2;
 
 	void update(Xbox360Controller & controller, double dt, bool whichMap);
 	void render(sf::RenderWindow & window);
@@ -42,5 +46,15 @@ private:
 
 	sf::View m_followPlayer; //private member in class
 	bool m_whichMap;
+
+	int m_time;
+	int m_pos;
+	sf::Font m_font;
+	std::string m_strings[2] = { "Time: " + m_time, "Position: " + m_pos };
+
+	Label *m_labels[2];
+
+	
+
 };
 #endif // !PLAY_H

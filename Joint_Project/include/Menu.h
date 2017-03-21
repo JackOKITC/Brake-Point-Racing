@@ -65,6 +65,7 @@ private:
 	std::string m_strings[4] = { "Race", "Garage", "Options", "Exit" };
 
 	Label *m_labels[4];
+	Label *m_outline[4];
 
 	sf::Shader m_shader;
 };

@@ -1,14 +1,16 @@
 #include "Play.h"
 
-Play::Play()
+Play::Play()	
 {
 }
 
-Play::Play(GameState *gameState, bool whichMap) :
-	m_whichMap(whichMap)
+Play::Play(sf::Font & font, GameState *gameState, bool whichMap) :
+	m_whichMap(whichMap),
+	m_font(font)
 {
 	m_state = gameState;	
 
+	
 	int currentLevel = 1;
 	if (!LevelLoader::load(currentLevel, m_level))
 	{
@@ -28,6 +30,11 @@ Play::Play(GameState *gameState, bool whichMap) :
 
 	m_followPlayer.setCenter(car->m_position);
 	m_followPlayer.setSize(450, 300); //in constructor
+	
+	for (int i = 0; i < LABEL_COUNT; i++)
+	{
+		m_labels[i] = new Label(&m_strings[i], &m_font, &sf::Vector2f(m_followPlayer.getCenter()), 10, sf::Color(0, 255, 0));
+	}
 
 }
 
@@ -40,11 +47,13 @@ void Play::update(Xbox360Controller & controller, double dt, bool whichMap)
 	car->update(controller, dt);
 	m_whichMap = whichMap;
 
+	
 
 	for (int i = 0; i < MAX_AI; i++)
 	{
 		aiCars[i]->update(controller, dt);
 	}
+
 	if (!m_whichMap)
 	{
 		for (std::unique_ptr<RoadTile> &roadTile : m_roadTiles1)
@@ -59,7 +68,6 @@ void Play::update(Xbox360Controller & controller, double dt, bool whichMap)
 
 	if (m_whichMap)
 	{
-
 		for (std::unique_ptr<RoadTile> &roadTile : m_roadTiles2)
 		{
 			roadTile->whichTile(car->m_position);
@@ -68,6 +76,13 @@ void Play::update(Xbox360Controller & controller, double dt, bool whichMap)
 				roadTile->checkOffRoad(car->m_position);
 			}
 		}
+	}
+
+	sf::Vector2f memes = sf::Vector2f(100, 100);
+
+	for (int i = 0; i < LABEL_COUNT; i++)
+	{
+		m_labels[i] = new Label(&m_strings[i], &m_font, &sf::Vector2f(m_followPlayer.getCenter() - sf::Vector2f(175, 120 - (i* 10))), 10, sf::Color(0, 255, 0));
 	}
 }
 
@@ -94,6 +109,11 @@ void Play::render(sf::RenderWindow & window)
 				roadTile->render(window);
 			}
 		}
+	}
+
+	for (int i = 0; i < LABEL_COUNT; i++)
+	{
+		m_labels[i]->render(window);
 	}
 
 	car->render(window);
