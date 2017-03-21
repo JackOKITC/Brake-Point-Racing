@@ -1,7 +1,8 @@
 #include "Car.h"
 
 
-Car::Car(sf::Vector2f position)
+Car::Car(sf::Vector2f position) :
+	m_position(position)
 {
 		m_carTex = ResourceManager::instance().m_holder["Bus0"];
 		m_carSprite.setTexture(m_carTex);
@@ -29,7 +30,7 @@ void Car::update(Xbox360Controller & controller, double dt)
 
 
 		m_position = sf::Vector2f(m_position.x + std::cos(DEG_TO_RAD  * (m_rotation)) * m_speed * (dt / 1000),
-										   m_position.y + std::sin(DEG_TO_RAD * (m_rotation)) * m_speed * (dt / 1000));
+								  m_position.y + std::sin(DEG_TO_RAD * (m_rotation)) * m_speed * (dt / 1000));
 
 }
 
@@ -82,7 +83,7 @@ void Car::moveCar(Xbox360Controller & controller)
 		{
 			m_rotation += 0.15;
 		}
-		//m_rotation += 0.15;
+
 		if (m_rotation > 360)
 		{
 			m_rotation = 1.0f;
@@ -109,41 +110,11 @@ void Car::moveCar(Xbox360Controller & controller)
 			m_rotation -= 0.15;
 		}
 
-		//m_rotation -= 0.15;
-
 		if (m_rotation < 0)
 		{
 			m_rotation = 359.0f;
 		}
 	}
-
-	//if (controller.m_currentState.A && !controller.m_previousState.A)
-	//{
-	//	m_nodePlacementNumber++;
-	//	std::cout << "   - number: " << m_nodePlacementNumber << std::endl;
-	//	std::cout << "     position: {x: " << m_position.x << ", y: " << m_position.y << "}" << std::endl;
-	//	std::cout << "     rotation: " << m_rotation << std::endl;
-	//}
-	//
-
-	//if (m_carSprite.getGlobalBounds().intersects(m_checkpointRectangles.at(m_currentCheckpoint).getGlobalBounds()))
-	//{
-	//	m_currentCheckpoint++;
-	//	std::cout << m_currentCheckpoint << std::endl;
-
-	//	if (m_currentCheckpoint >= m_checkpoints.size())
-	//	{
-	//		m_currentCheckpoint = 0;
-	//		if (m_lap < MAX_LAPS)
-	//		{
-	//			m_lap++;
-	//		}
-	//		else if (m_lap = MAX_LAPS)
-	//		{
-	//			//finished the race.
-	//		}
-	//	}
-	//}
 }
 
 void Car::slowCar(bool slow)
