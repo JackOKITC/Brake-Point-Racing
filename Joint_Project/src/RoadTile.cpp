@@ -70,6 +70,10 @@ void RoadTile::checkOffRoad(sf::Vector2f carPos)
 	sf::Vector2f relativePos = m_roadSprite.getPosition();
 	relativePos = carPos - relativePos;
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> cf1e810e1d5d0f95e85ee06315d9782f7c49ebfe
 	//if (m_collisonImage->getPixel(relativePos.x, relativePos.y).g > 110)
 	//{
 	//	std::cout << "Slow Down" << (int)relativePos.x << "," << (int)relativePos.y << std::endl;
@@ -78,4 +82,8 @@ void RoadTile::checkOffRoad(sf::Vector2f carPos)
 	//{
 	//	std::cout << "yay" << (int)relativePos.x << "," << (int)relativePos.y << std::endl;
 	//}
+<<<<<<< HEAD
+=======
+
+>>>>>>> cf1e810e1d5d0f95e85ee06315d9782f7c49ebfe
 }

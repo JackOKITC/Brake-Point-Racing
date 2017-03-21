@@ -125,6 +125,7 @@ tile1:
      rotation: 0
      scale: 0
 
+<<<<<<< HEAD
 tile2:
    - file: .\resources\images\road\OurRoad\snow1.png
      ID: RoadA
@@ -252,6 +253,8 @@ tile2:
      rotation: 0
      scale: 0
 
+=======
+>>>>>>> cf1e810e1d5d0f95e85ee06315d9782f7c49ebfe
 background:
    - file: .\resources\images\UI\bg.jpg
      ID: SplashBG
@@ -261,6 +264,7 @@ background:
      ID: Radio
    - file: .\resources\images\UI\finish.jpg
      ID: Flag
+<<<<<<< HEAD
 
 upgrade:
    - file: .\resources\images\car_parts\brake.png
@@ -272,6 +276,9 @@ upgrade:
    - file: .\resources\images\car_parts\gears.png
      ID: Upgrade3
 
+=======
+     
+>>>>>>> cf1e810e1d5d0f95e85ee06315d9782f7c49ebfe
 car:
    - file: .\resources\images\cars\Bus0.png
      ID: Bus0
@@ -284,6 +291,7 @@ audio:
    - file: .\resources\audio\bgMusic.wav
      ID: MusicBG
 
+<<<<<<< HEAD
 node1:
    - number: 1
      position: {x: 2214.97, y: 966.814}
@@ -1003,3 +1011,208 @@ checkpoint2:
    - number: 36
      position: {x: 903.77, y: 306.203}
      rotation: 8.35
+=======
+audio:
+   - file: .\resources\audio\bgMusic.wav
+     ID: MusicBG
+
+node:
+   - number: 1
+     position: {x: 2169, y: 909}
+   - number: 2
+     position: {x: 2398, y: 1246}
+   - number: 3
+     position: {x: 2381, y: 1305}
+   - number: 4
+     position: {x: 2336, y: 1342}
+   - number: 5
+     position: {x: 2233, y: 1337}
+   - number: 6
+     position: {x: 2099, y: 1170}
+   - number: 7
+     position: {x: 2014, y: 1158}
+   - number: 8
+     position: {x: 1949, y: 1213}
+   - number: 9
+     position: {x: 1960, y: 1309}
+   - number: 10
+     position: {x: 2063, y: 1476}
+   - number: 11
+     position: {x: 2039, y: 1753}
+   - number: 12
+     position: {x: 2256, y: 2077}
+   - number: 13
+     position: {x: 2252, y: 2164}
+   - number: 14
+     position: {x: 2032, y: 2565}
+   - number: 15
+     position: {x: 1931, y: 2591}
+   - number: 16
+     position: {x: 1716, y: 2495}
+   - number: 17
+     position: {x: 1712, y: 2392}
+   - number: 18
+     position: {x: 1810, y: 2220}
+   - number: 19
+     position: {x: 1766, y: 2155}
+   - number: 20
+     position: {x: 1658, y: 2139}
+   - number: 21
+     position: {x: 1506, y: 2293}
+   - number: 22
+     position: {x: 938, y: 2291}
+   - number: 23
+     position: {x: 692, y: 1905}
+   - number: 24
+     position: {x: 752, y: 1840}
+   - number: 25
+     position: {x: 980, y: 1776}
+   - number: 26
+     position: {x: 1059, y: 1838}
+   - number: 27
+     position: {x: 1158, y: 1978}
+   - number: 28
+     position: {x: 1259, y: 1970}
+   - number: 29
+     position: {x: 1265, y: 1867}
+   - number: 30
+     position: {x: 1028, y: 1319}
+   - number: 31
+     position: {x: 1101, y: 1245}
+   - number: 32
+     position: {x: 1314, y: 1103}
+   - number: 33
+     position: {x: 1280, y: 1015}
+   - number: 34
+     position: {x: 1191, y: 1005}
+   - number: 35
+     position: {x: 815, y: 1076}
+   - number: 36
+     position: {x: 642, y: 1036}
+   - number: 37
+     position: {x: 511, y: 878}
+   - number: 38
+     position: {x: 524, y: 753}
+   - number: 39
+     position: {x: 1159, y: 392}
+   - number: 40
+     position: {x: 1242, y: 396}
+   - number: 41
+     position: {x: 1289, y: 455}
+   - number: 42
+     position: {x: 1252, y: 544}
+   - number: 43
+     position: {x: 1117, y: 646}
+   - number: 44
+     position: {x: 1122, y: 723}
+   - number: 45
+     position: {x: 1245, y: 757}
+   - number: 46
+     position: {x: 1490, y: 683}
+   - number: 47
+     position: {x: 1747, y: 735}
+   - number: 48
+     position: {x: 1941, y: 640}
+   - number: 49
+     position: {x: 2023, y: 690}
+
+checkpoint:
+   - number: 1
+     position: {x: 2169, y: 909}
+   - number: 2
+     position: {x: 2398, y: 1246}
+   - number: 3
+     position: {x: 2381, y: 1305}
+   - number: 4
+     position: {x: 2336, y: 1342}
+   - number: 5
+     position: {x: 2233, y: 1337}
+   - number: 6
+     position: {x: 2099, y: 1170}
+   - number: 7
+     position: {x: 2014, y: 1158}
+   - number: 8
+     position: {x: 1949, y: 1213}
+   - number: 9
+     position: {x: 1960, y: 1309}
+   - number: 10
+     position: {x: 2063, y: 1476}
+   - number: 11
+     position: {x: 2039, y: 1753}
+   - number: 12
+     position: {x: 2256, y: 2077}
+   - number: 13
+     position: {x: 2252, y: 2164}
+   - number: 14
+     position: {x: 2032, y: 2565}
+   - number: 15
+     position: {x: 1931, y: 2591}
+   - number: 16
+     position: {x: 1716, y: 2495}
+   - number: 17
+     position: {x: 1712, y: 2392}
+   - number: 18
+     position: {x: 1810, y: 2220}
+   - number: 19
+     position: {x: 1766, y: 2155}
+   - number: 20
+     position: {x: 1658, y: 2139}
+   - number: 21
+     position: {x: 1506, y: 2293}
+   - number: 22
+     position: {x: 938, y: 2291}
+   - number: 23
+     position: {x: 692, y: 1905}
+   - number: 24
+     position: {x: 752, y: 1840}
+   - number: 25
+     position: {x: 980, y: 1776}
+   - number: 26
+     position: {x: 1059, y: 1838}
+   - number: 27
+     position: {x: 1158, y: 1978}
+   - number: 28
+     position: {x: 1259, y: 1970}
+   - number: 29
+     position: {x: 1265, y: 1867}
+   - number: 30
+     position: {x: 1028, y: 1319}
+   - number: 31
+     position: {x: 1101, y: 1245}
+   - number: 32
+     position: {x: 1314, y: 1103}
+   - number: 33
+     position: {x: 1280, y: 1015}
+   - number: 34
+     position: {x: 1191, y: 1005}
+   - number: 35
+     position: {x: 815, y: 1076}
+   - number: 36
+     position: {x: 642, y: 1036}
+   - number: 37
+     position: {x: 511, y: 878}
+   - number: 38
+     position: {x: 524, y: 753}
+   - number: 39
+     position: {x: 1159, y: 392}
+   - number: 40
+     position: {x: 1242, y: 396}
+   - number: 41
+     position: {x: 1289, y: 455}
+   - number: 42
+     position: {x: 1252, y: 544}
+   - number: 43
+     position: {x: 1117, y: 646}
+   - number: 44
+     position: {x: 1122, y: 723}
+   - number: 45
+     position: {x: 1245, y: 757}
+   - number: 46
+     position: {x: 1490, y: 683}
+   - number: 47
+     position: {x: 1747, y: 735}
+   - number: 48
+     position: {x: 1941, y: 640}
+   - number: 49
+     position: {x: 2023, y: 690}
+>>>>>>> cf1e810e1d5d0f95e85ee06315d9782f7c49ebfe

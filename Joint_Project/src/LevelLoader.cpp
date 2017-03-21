@@ -58,11 +58,16 @@ void operator >> (const YAML::Node& nodeNode, Node2Data& node)
 	node.m_position.y = nodeNode["position"]["y"].as<float>();
 }
 
+<<<<<<< HEAD
 void operator >> (const YAML::Node& checkpointNode, Checkpoint1Data& checkpoint)
+=======
+void operator >> (const YAML::Node& checkpointNode, CheckpointData& checkpoint)
+>>>>>>> cf1e810e1d5d0f95e85ee06315d9782f7c49ebfe
 {
 	checkpoint.m_number = checkpointNode["number"].as<int>();
 	checkpoint.m_position.x = checkpointNode["position"]["x"].as<float>();
 	checkpoint.m_position.y = checkpointNode["position"]["y"].as<float>();
+<<<<<<< HEAD
 	checkpoint.m_rotation = checkpointNode["rotation"].as<double>();
 }
 
@@ -72,6 +77,8 @@ void operator >> (const YAML::Node& checkpointNode, Checkpoint2Data& checkpoint)
 	checkpoint.m_position.x = checkpointNode["position"]["x"].as<float>();
 	checkpoint.m_position.y = checkpointNode["position"]["y"].as<float>();
 	checkpoint.m_rotation = checkpointNode["rotation"].as<double>();
+=======
+>>>>>>> cf1e810e1d5d0f95e85ee06315d9782f7c49ebfe
 }
 
 void operator >> (const YAML::Node& levelNode, LevelData& level)
@@ -133,6 +140,7 @@ void operator >> (const YAML::Node& levelNode, LevelData& level)
 		level.m_nodes2.push_back(node);
 	}
 	
+<<<<<<< HEAD
 	const YAML::Node& checkpointNode1 = levelNode["checkpoint1"].as<YAML::Node>();
 	for (unsigned i = 0; i < checkpointNode1.size(); i++)
 	{
@@ -147,6 +155,14 @@ void operator >> (const YAML::Node& levelNode, LevelData& level)
 		Checkpoint2Data checkpoint;
 		checkpointNode2[i] >> checkpoint;
 		level.m_checkpoints2.push_back(checkpoint);
+=======
+	const YAML::Node& checkpointNode = levelNode["checkpoint"].as<YAML::Node>();
+	for (unsigned i = 0; i < checkpointNode.size(); i++)
+	{
+		CheckpointData checkpoint;
+		checkpointNode[i] >> checkpoint;
+		level.m_checkpoints.push_back(checkpoint);
+>>>>>>> cf1e810e1d5d0f95e85ee06315d9782f7c49ebfe
 	}
 
 	const YAML::Node& audioNode = levelNode["audio"].as<YAML::Node>();

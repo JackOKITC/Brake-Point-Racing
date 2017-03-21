@@ -10,9 +10,15 @@ Ai::Ai(std::vector<std::unique_ptr<Node>> & nodes, sf::Vector2f & position) :
 	m_carTex = ResourceManager::instance().m_holder["Bus2"];
 
 	m_carSprite.setTexture(m_carTex);
+<<<<<<< HEAD
 	m_velocity = sf::Vector2f(0, 0);
 	m_rotation = 45.0f;
 	m_speed = 0;
+=======
+	m_position = sf::Vector2f(2200,909);
+	m_velocity = sf::Vector2f(0, 0);
+	m_rotation = 45.0f;
+>>>>>>> cf1e810e1d5d0f95e85ee06315d9782f7c49ebfe
 
 	m_carSprite.setPosition(m_position);
 
@@ -64,7 +70,11 @@ void Ai::update(double dt)
 	{
 		// rotate clockwise
 		m_rotation = static_cast<int>((m_rotation) + 1) % 360;
+<<<<<<< HEAD
 		//m_carSprite.rotate(1.0f);
+=======
+		m_carSprite.rotate(1.0f);
+>>>>>>> cf1e810e1d5d0f95e85ee06315d9782f7c49ebfe
 	}
 	else
 	{
@@ -74,7 +84,11 @@ void Ai::update(double dt)
 		{
 			m_rotation = 359;
 		}
+<<<<<<< HEAD
 		//m_carSprite.rotate(-1.0f);
+=======
+		m_carSprite.rotate(-1.0f);
+>>>>>>> cf1e810e1d5d0f95e85ee06315d9782f7c49ebfe
 	}
 
 	m_speed = thor::length(m_velocity);
@@ -82,14 +96,24 @@ void Ai::update(double dt)
 	m_position.x += m_velocity.x * m_speed * (dt / 50000);
 	m_position.y += m_velocity.y * m_speed * (dt / 50000);
 	m_carSprite.setPosition(m_position);
+<<<<<<< HEAD
 	m_carSprite.setRotation(m_rotation);
+=======
+>>>>>>> cf1e810e1d5d0f95e85ee06315d9782f7c49ebfe
 }
 
 void Ai::render(sf::RenderWindow & window)
 {
 	window.draw(m_carSprite);
 	
+<<<<<<< HEAD
 	
+=======
+	for (int i = 0; i < m_circles.size(); i++)
+	{
+		window.draw(m_circles.at(i));
+	}
+>>>>>>> cf1e810e1d5d0f95e85ee06315d9782f7c49ebfe
 }
 
 sf::Vector2f Ai::m_followPath()

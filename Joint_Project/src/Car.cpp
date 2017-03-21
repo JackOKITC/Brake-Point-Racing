@@ -1,16 +1,28 @@
 #include "Car.h"
 
+<<<<<<< HEAD
 Car::Car(bool isAi, std::vector<std::unique_ptr<Node>> & nodes, std::vector<std::unique_ptr<Checkpoint>> &checkpoints, sf::Vector2f & position) :
 	m_isAi(isAi),
 	m_nodes(nodes),
 	m_checkpoints(checkpoints),
 	m_position(position)
+=======
+Car::Car(bool isAi, std::vector<std::unique_ptr<Node>> & nodes, std::vector<std::unique_ptr<Checkpoint>> &checkpoints) :
+	m_isAi(isAi),
+	m_nodes(nodes),
+	m_checkpoints(checkpoints)
+>>>>>>> cf1e810e1d5d0f95e85ee06315d9782f7c49ebfe
 {
 	if (!m_isAi)
 	{
 		m_carTex = ResourceManager::instance().m_holder["Bus0"];
 		m_carSprite.setTexture(m_carTex);
+<<<<<<< HEAD
 		//renTex.create(252, 87);
+=======
+
+		m_position = sf::Vector2f(2145, 850);
+>>>>>>> cf1e810e1d5d0f95e85ee06315d9782f7c49ebfe
 		m_velocity = sf::Vector2f(0, 0);
 		m_rotation = 45.0f;
 
@@ -21,18 +33,27 @@ Car::Car(bool isAi, std::vector<std::unique_ptr<Node>> & nodes, std::vector<std:
 
 		m_carSprite.setOrigin(m_carSprite.getLocalBounds().width / 2, m_carSprite.getLocalBounds().height / 2);
 
+<<<<<<< HEAD
 		m_nodePlacement.setSize(sf::Vector2f(10.0f, 120.0f));
 		m_nodePlacement.setOrigin(5, 60);
 		m_nodePlacement.setFillColor(sf::Color(255, 0, 0, 126));
 
+=======
+>>>>>>> cf1e810e1d5d0f95e85ee06315d9782f7c49ebfe
 		for (int i = 0; i < m_checkpoints.size(); i++)
 		{
 			sf::RectangleShape rectangle;
 			m_checkpointRectangles.push_back(std::move(rectangle));
+<<<<<<< HEAD
 			m_checkpointRectangles.at(i).setOrigin(CHECKPOINT_WIDTH / 2, CHECKPOINT_HEIGHT / 2);
 			m_checkpointRectangles.at(i).setPosition(m_checkpoints.at(i)->m_position.x, m_checkpoints.at(i)->m_position.y);
 			m_checkpointRectangles.at(i).setRotation(m_checkpoints.at(i)->m_rotation);
 			m_checkpointRectangles.at(i).setSize(sf::Vector2f(CHECKPOINT_WIDTH, CHECKPOINT_HEIGHT));
+=======
+			m_checkpointRectangles.at(i).setOrigin(CHECKPOINT_TOLERANCE / 2, CHECKPOINT_TOLERANCE / 2);
+			m_checkpointRectangles.at(i).setPosition(m_checkpoints.at(i)->m_position.x - CHECKPOINT_TOLERANCE / 2, m_checkpoints.at(i)->m_position.y - CHECKPOINT_TOLERANCE / 2);
+			m_checkpointRectangles.at(i).setSize(sf::Vector2f(CHECKPOINT_TOLERANCE, CHECKPOINT_TOLERANCE));
+>>>>>>> cf1e810e1d5d0f95e85ee06315d9782f7c49ebfe
 			m_checkpointRectangles.at(i).setFillColor(sf::Color(255, 0, 0, 126));
 		}
 	}
@@ -59,6 +80,13 @@ void Car::update(Xbox360Controller & controller, double dt)
 
 		m_position = sf::Vector2f(m_position.x + std::cos(DEG_TO_RAD  * (m_rotation)) * m_speed * (dt / 1000),
 										   m_position.y + std::sin(DEG_TO_RAD * (m_rotation)) * m_speed * (dt / 1000));
+<<<<<<< HEAD
+=======
+
+
+		m_position = newPos;
+		//std::cout << "Player Position = x : " << m_position.x << " y : " << m_position.y << std::endl;
+>>>>>>> cf1e810e1d5d0f95e85ee06315d9782f7c49ebfe
 	}
 	else
 	{
@@ -79,8 +107,15 @@ void Car::render(sf::RenderWindow & window)
 		
 		window.draw(m_carSprite);
 		
+<<<<<<< HEAD
 		
 		window.draw(m_checkpointRectangles.at(m_currentCheckpoint));
+=======
+		for (int i = 0; i < m_checkpointRectangles.size(); i++)
+		{
+			window.draw(m_checkpointRectangles.at(i));
+		}
+>>>>>>> cf1e810e1d5d0f95e85ee06315d9782f7c49ebfe
 	}
 	else
 	{
@@ -101,7 +136,15 @@ void Car::moveCar(Xbox360Controller & controller)
 	{
 		m_speed -= DECCELERATION_CAUSED_BY_FRICTION;
 	}
+<<<<<<< HEAD
 	
+=======
+	else
+	{
+		m_speed = 0;
+	}
+
+>>>>>>> cf1e810e1d5d0f95e85ee06315d9782f7c49ebfe
 	if (controller.m_currentState.LTrigger)
 	{
 		if (m_speed > MAX_REVERSE_SPEED)
@@ -117,7 +160,11 @@ void Car::moveCar(Xbox360Controller & controller)
 	// Checks if the down button has been pressed
 	if ((controller.m_currentState.dpadRight) || (controller.m_currentState.LeftThumbStick.x > 50))
 	{
+<<<<<<< HEAD
 		if (((m_speed > -1 && m_speed < 0) || (m_speed < 1 && m_speed > 0)))
+=======
+		if (m_speed == 0)
+>>>>>>> cf1e810e1d5d0f95e85ee06315d9782f7c49ebfe
 		{
 		}
 		else if (((m_speed > -5 && m_speed < 0) || (m_speed < 5 && m_speed > 0)))
@@ -132,17 +179,24 @@ void Car::moveCar(Xbox360Controller & controller)
 		{
 			m_rotation += 0.15;
 		}
+<<<<<<< HEAD
 		//m_rotation += 0.15;
 		if (m_rotation > 360)
 		{
 			m_rotation = 1.0f;
 		}
+=======
+>>>>>>> cf1e810e1d5d0f95e85ee06315d9782f7c49ebfe
 	}
 
 	// Checks if the up button has been pressed
 	if ((controller.m_currentState.dpadLeft) || (controller.m_currentState.LeftThumbStick.x < -50))
 	{
+<<<<<<< HEAD
 		if (((m_speed > -1 && m_speed < 0) || (m_speed < 1 && m_speed > 0)))
+=======
+		if (m_speed == 0)
+>>>>>>> cf1e810e1d5d0f95e85ee06315d9782f7c49ebfe
 		{
 		}
 		else if (((m_speed > -5 && m_speed < 0) || (m_speed < 5 && m_speed > 0)))
@@ -157,6 +211,7 @@ void Car::moveCar(Xbox360Controller & controller)
 		{
 			m_rotation -= 0.15;
 		}
+<<<<<<< HEAD
 		//m_rotation -= 0.15;
 
 		if (m_rotation < 0)
@@ -179,6 +234,15 @@ void Car::moveCar(Xbox360Controller & controller)
 
 	//if ((dist.x < CHECKPOINT_HEIGHT && dist.y < CHECKPOINT_WIDTH) && (dist.x > -CHECKPOINT_HEIGHT && dist.y > -CHECKPOINT_WIDTH))
 	if (m_carSprite.getGlobalBounds().intersects(m_checkpointRectangles.at(m_currentCheckpoint).getGlobalBounds()))
+=======
+	}
+	
+
+	sf::Vector2f dist;
+	dist = m_checkpoints.at(m_currentCheckpoint)->m_position - m_position;
+
+	if ((dist.x < CHECKPOINT_TOLERANCE && dist.y < CHECKPOINT_TOLERANCE) && (dist.x > -CHECKPOINT_TOLERANCE && dist.y > -CHECKPOINT_TOLERANCE))
+>>>>>>> cf1e810e1d5d0f95e85ee06315d9782f7c49ebfe
 	{
 		m_currentCheckpoint++;
 		std::cout << m_currentCheckpoint << std::endl;
