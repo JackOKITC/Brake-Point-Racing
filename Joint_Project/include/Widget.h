@@ -197,6 +197,7 @@ public:
 
 	int incrementSlider();	// Increments the Slider by one segment.
 	int decrementSlider();	// Decrements the Slider by one segment.
+	void setCurrentSegment(int segmentValue);
 
 	sf::Vector2f m_position;	// Stores the positon of the Slider object.
 
@@ -232,7 +233,7 @@ public:
 	/// <param name="font"></param>
 	/// <param name="position"></param>
 	/// <param name="size"></param>
-	Label(std::string *text, sf::Font *font, sf::Vector2f *position/*, int size*/);
+	Label(std::string *text, sf::Font *font, sf::Vector2f *position, int size);
 	~Label();	// Deconstructor for the Label object.
 
 	virtual void update() override;	// "update" method for the Label object, Overrides the "update" method in the widget.
@@ -242,10 +243,9 @@ public:
 	/// </summary>
 	/// <param name="window"></param>
 	virtual void render(sf::RenderWindow& window) override;
-	
 	virtual void getFocus() override;	// Sets hasFocus to "True" as well as changes the colour of the text to show the player that the Label hasFocus.
 	virtual void loseFocus() override;	// Sets hasFocus to "False" as well as changes the colour of the text to show the player that the label no longer hasFocus.
-
+	bool hasFocus();
 	void moveRight();	// Moves the Label right, This is used for transitioning between screens.
 	void moveLeft();	// Moves the Label left, This is used for transitioning between screens.
 
@@ -293,8 +293,9 @@ public:
 
 	void moveRight();	// Moves the Label right, This is used for transitioning between screens.
 	void moveLeft();	// Moves the Label left, This is used for transitioning between screens.
+	void assignValues(int level);
 	void increment();
-	void decrement();
+	int returnNode();
 
 	sf::Vector2f m_position;	// Stores the on-screen positon of the Label.
 private:

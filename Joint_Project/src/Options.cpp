@@ -13,10 +13,11 @@ Options::Options(sf::Font font, GameState *gameState, sf::Sound &music) :
 
 	m_sliderValue = 5;
 	m_volSlider = new Slider(&sf::Vector2f(380, 150), m_sliderValue);
+	m_volSlider->setCurrentSegment(m_sliderValue - 1);
 	m_screenRadio = new RadioButton(&m_radioTex, &sf::Vector2f(450, 300));
 	m_exitButton = new Button(&m_exitString, &sf::Vector2f(450, 450), &m_font);
-	m_muteLabel = new Label(&m_muteString, &m_font, &sf::Vector2f(350, 297));
-	m_volLabel = new Label(&m_volString, &m_font, &sf::Vector2f(280, 155));
+	m_muteLabel = new Label(&m_muteString, &m_font, &sf::Vector2f(350, 297), 20);
+	m_volLabel = new Label(&m_volString, &m_font, &sf::Vector2f(280, 155), 20);
 
 	widgets[0] = m_volSlider;
 	widgets[1] = m_screenRadio;

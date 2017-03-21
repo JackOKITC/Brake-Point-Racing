@@ -15,7 +15,7 @@ Game::Game(sf::Font &font, sf::Font &titleFont) :
 	m_playScreen = new Play(m_currentGameState);
 	m_splashScreen = new Splash(m_currentGameState, m_titleFont);
 	m_menuScreen = new Menu(m_titleFont, m_currentGameState);
-	m_upgradeScreen = new Garage(font, m_currentGameState);
+	m_upgradeScreen = new Garage(m_titleFont, m_currentGameState);
 	
 	sBuffer = ResourceManager::instance().m_soundHolder["MusicBG"];
 	music.setBuffer(sBuffer);
