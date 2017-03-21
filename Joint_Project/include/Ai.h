@@ -33,7 +33,7 @@ private:
 	sf::Sprite m_carSprite;
 
 	float const MAX_FORCE = 10.0f;
-	float const MAX_SPEED = 25.0f;
+	float const MAX_SPEED = 26.75f;
 
 	int m_currentNode;
 

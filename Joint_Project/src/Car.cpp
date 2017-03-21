@@ -22,6 +22,10 @@ Car::Car(bool isAi, std::vector<std::unique_ptr<Node>> & nodes, std::vector<std:
 
 		m_carSprite.setOrigin(m_carSprite.getLocalBounds().width / 2, m_carSprite.getLocalBounds().height / 2);
 
+		m_nodePlacement.setRadius(10);
+		m_nodePlacement.setOrigin(5, 5);
+		m_nodePlacement.setFillColor(sf::Color(0, 0, 255, 126));
+
 		for (int i = 0; i < m_checkpoints.size(); i++)
 		{
 			sf::RectangleShape rectangle;
@@ -47,7 +51,7 @@ void Car::update(Xbox360Controller & controller, double dt)
 	if (!m_isAi)
 	{
 		moveCar(controller);
-
+		m_nodePlacement.setPosition(m_position);
 		m_carSprite.setPosition(m_position);
 		m_carSprite.setRotation(m_rotation);
 
@@ -57,7 +61,6 @@ void Car::update(Xbox360Controller & controller, double dt)
 
 
 		m_position = newPos;
-		//std::cout << "Player Position = x : " << m_position.x << " y : " << m_position.y << std::endl;
 	}
 	else
 	{
@@ -75,7 +78,9 @@ void Car::render(sf::RenderWindow & window)
 		//temp.setColor(sf::Color(255, 255, 255, 255));
 		//renTex.draw(temp);
 		//renTex.display();
-		window.draw(m_carSprite);
+		
+		//window.draw(m_carSprite);
+		window.draw(m_nodePlacement);
 		
 		for (int i = 0; i < m_checkpointRectangles.size(); i++)
 		{
@@ -101,11 +106,7 @@ void Car::moveCar(Xbox360Controller & controller)
 	{
 		m_speed -= DECCELERATION_CAUSED_BY_FRICTION;
 	}
-	else
-	{
-		m_speed = 0;
-	}
-
+	
 	if (controller.m_currentState.LTrigger)
 	{
 		if (m_speed > MAX_REVERSE_SPEED)
@@ -121,41 +122,50 @@ void Car::moveCar(Xbox360Controller & controller)
 	// Checks if the down button has been pressed
 	if ((controller.m_currentState.dpadRight) || (controller.m_currentState.LeftThumbStick.x > 50))
 	{
-		if (m_speed == 0)
-		{
-		}
-		else if (((m_speed > -5 && m_speed < 0) || (m_speed < 5 && m_speed > 0)))
-		{
-			m_rotation += 0.01;
-		}
-		else if (m_speed < 10 && m_speed > 0)
-		{
-			m_rotation += 0.075;
-		}
-		else if (m_speed >= 10 && m_speed > 0)
-		{
-			m_rotation += 0.15;
-		}
+		//if (((m_speed > -1 && m_speed < 0) || (m_speed < 1 && m_speed > 0)))
+		//{
+		//}
+		//else if (((m_speed > -5 && m_speed < 0) || (m_speed < 5 && m_speed > 0)))
+		//{
+		//	m_rotation += 0.01;
+		//}
+		//else if (m_speed < 10 && m_speed > 0)
+		//{
+		//	m_rotation += 0.075;
+		//}
+		//else if (m_speed >= 10 && m_speed > 0)
+		//{
+		//	m_rotation += 0.15;
+		//}
+		m_rotation += 0.15;
 	}
 
 	// Checks if the up button has been pressed
 	if ((controller.m_currentState.dpadLeft) || (controller.m_currentState.LeftThumbStick.x < -50))
 	{
-		if (m_speed == 0)
-		{
-		}
-		else if (((m_speed > -5 && m_speed < 0) || (m_speed < 5 && m_speed > 0)))
-		{
-			m_rotation -= 0.01;
-		}
-		else if (m_speed < 10 && m_speed > 0)
-		{
-			m_rotation -= 0.075;
-		}
-		else if (m_speed >= 10 && m_speed > 0)
-		{
-			m_rotation -= 0.15;
-		}
+		//if (((m_speed > -1 && m_speed < 0) || (m_speed < 1 && m_speed > 0)))
+		//{
+		//}
+		//else if (((m_speed > -5 && m_speed < 0) || (m_speed < 5 && m_speed > 0)))
+		//{
+		//	m_rotation -= 0.01;
+		//}
+		//else if (m_speed < 10 && m_speed > 0)
+		//{
+		//	m_rotation -= 0.075;
+		//}
+		//else if (m_speed >= 10 && m_speed > 0)
+		//{
+		//	m_rotation -= 0.15;
+		//}
+		m_rotation -= 0.15;
+	}
+
+	if (controller.m_currentState.A && !controller.m_previousState.A)
+	{
+		m_nodePlacementNumber++;
+		std::cout << "   - number: " << m_nodePlacementNumber << std::endl;
+		std::cout << "     position: {x: " << m_position.x << " y: " << m_position.y << "}" << std::endl;
 	}
 	
 
