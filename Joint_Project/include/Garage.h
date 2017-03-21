@@ -36,19 +36,24 @@ private:
 	bool m_transitionToNext = false;
 
 	sf::Time currentTime;
+	sf::Color m_dim = sf::Color(125, 125, 125, 255);
 
 	sf::Texture m_backgroundTex;
 	sf::Sprite m_backgroundSprite;
-
 	sf::Font m_font;
 
-	int m_currentBtn;
+	int m_currentCar;
+	int m_currentStat;
 
 	Xbox360Controller * m_controller;
 
-	Bar *m_upgradeBars[4];
-	sf::Texture m_upgradeText[4];
-	sf::Sprite m_uprgradeSpr[4];
+	Bar *m_upgradeBars[3];
+	Slider *m_statValues[3];
+	Label *m_statLabel[3];
+	std::string m_strings[3] = { "Brakes", "Handling", "Acceleration" };
+
+	sf::Texture m_upgradeText[3];
+	sf::Sprite m_uprgradeSpr[3];
 
 	sf::Texture m_carOptions[3];
 	sf::Sprite m_cars[3];

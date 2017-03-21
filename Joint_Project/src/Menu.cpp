@@ -66,11 +66,11 @@ Menu::Menu(sf::Font & font, GameState *gameState) :
 	{
 		if (i < 1 || i > 2)
 		{
-			m_labels[i] = new Label(&m_strings[i], &m_font, &sf::Vector2f(300, 100 + (i * 130)));
+			m_labels[i] = new Label(&m_strings[i], &m_font, &sf::Vector2f(300, 100 + (i * 130)), 20);
 		}
 		else
 		{
-			m_labels[i] = new Label(&m_strings[i], &m_font, &sf::Vector2f(355, 100 + (i * 130)));
+			m_labels[i] = new Label(&m_strings[i], &m_font, &sf::Vector2f(355, 100 + (i * 130)), 20);
 		}
 		
 		m_labels[i]->loseFocus();
