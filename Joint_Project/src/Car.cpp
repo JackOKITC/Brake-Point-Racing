@@ -1,5 +1,6 @@
 #include "Car.h"
 
+
 Car::Car(sf::Vector2f position)
 {
 		m_carTex = ResourceManager::instance().m_holder["Bus0"];
@@ -29,6 +30,7 @@ void Car::update(Xbox360Controller & controller, double dt)
 
 		m_position = sf::Vector2f(m_position.x + std::cos(DEG_TO_RAD  * (m_rotation)) * m_speed * (dt / 1000),
 										   m_position.y + std::sin(DEG_TO_RAD * (m_rotation)) * m_speed * (dt / 1000));
+
 }
 
 void Car::render(sf::RenderWindow & window)

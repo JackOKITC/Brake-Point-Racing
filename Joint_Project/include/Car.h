@@ -11,7 +11,6 @@
 class Car
 {
 public:
-
 	Car(sf::Vector2f position);
 	Car(sf::Texture &carTex, int brake, int handling, int acceleration);
 	~Car();
@@ -33,10 +32,8 @@ private:
 
 	Xbox360Controller * m_controller;
 
-
 	int m_currentCheckpoint;
 	int m_lap;
-
 	sf::Vector2f m_velocity;
 	float m_rotation;
 	float m_speed;
