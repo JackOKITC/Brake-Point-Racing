@@ -10,7 +10,8 @@
 class Car
 {
 public:
-	Car(bool isAi, std::vector<std::unique_ptr<Node>> & m_nodes);
+	Car();
+	Car(sf::Texture &carTex, int brake, int handling, int acceleration);
 	~Car();
 
 	void update(Xbox360Controller & controller, double dt);
@@ -28,15 +29,10 @@ private:
 
 	Xbox360Controller * m_controller;
 
-	bool m_isAi;
-
 	sf::Vector2f m_velocity;
 	float m_rotation;
 	float m_speed = 0.0f;
 
-	Ai *m_aiCar;
-
-	std::vector<std::unique_ptr<Node>> &m_nodes;
 
 	const double DEG_TO_RAD = 3.14159 / 180.0f;
 	

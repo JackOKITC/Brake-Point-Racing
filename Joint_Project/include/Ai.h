@@ -43,7 +43,6 @@ private:
 	float m_speed = 00.0f;
 
 	sf::Vector2f m_steering;
-
 	sf::Vector2f m_followPath();
 
 	std::vector<std::unique_ptr<Node>> &m_nodes;

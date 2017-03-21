@@ -1,14 +1,9 @@
 #include "Car.h"
 
-Car::Car(bool isAi, std::vector<std::unique_ptr<Node>> & nodes) :
-	m_isAi(isAi),
-	m_nodes(nodes)
+Car::Car()
 {
-	if (!m_isAi)
-	{
 		m_carTex = ResourceManager::instance().m_holder["Bus0"];
 		m_carSprite.setTexture(m_carTex);
-		//renTex.create(252, 87);
 
 		m_position = sf::Vector2f(100, 300);
 		m_velocity = sf::Vector2f(0, 0);
@@ -20,12 +15,8 @@ Car::Car(bool isAi, std::vector<std::unique_ptr<Node>> & nodes) :
 		m_carSprite.setRotation(m_rotation);
 
 		m_carSprite.setOrigin(m_carSprite.getLocalBounds().width / 2, m_carSprite.getLocalBounds().height / 2);
-	}
-	else
-	{
-		m_aiCar = new Ai(m_nodes);
-	}
 }
+
 
 Car::~Car() 
 {
@@ -33,8 +24,6 @@ Car::~Car()
 
 void Car::update(Xbox360Controller & controller, double dt)
 {
-	if (!m_isAi)
-	{
 		moveCar(controller);
 
 		m_carSprite.setPosition(m_position);
@@ -46,29 +35,11 @@ void Car::update(Xbox360Controller & controller, double dt)
 
 
 		m_position = newPos;
-	}
-	else
-	{
-		m_aiCar->update(dt);
-	}
 }
 
 void Car::render(sf::RenderWindow & window)
 {
-	if (!m_isAi)
-	{
-		//renTex.clear(sf::Color::Black);
-		//sf::Sprite temp;
-		//temp = m_carSprite;
-		//temp.setColor(sf::Color(255, 255, 255, 255));
-		//renTex.draw(temp);
-		//renTex.display();
 		window.draw(m_carSprite);
-	}
-	else
-	{
-		m_aiCar->render(window);
-	}
 }
 
 void Car::moveCar(Xbox360Controller & controller)

@@ -19,11 +19,11 @@ Play::Play(GameState *gameState, bool whichMap) :
 	generateNode();
 	generateRoad();
 	
-	car = new Car(false, m_nodes);
+	car = new Car();
 
 	for (int i = 0; i < MAX_AI; i++)
 	{
-		aiCars[i] = new Car(true, m_nodes);
+		aiCars[i] = new Ai(m_nodes);
 	}
 
 	m_followPlayer.setCenter(car->m_position);
@@ -43,7 +43,7 @@ void Play::update(Xbox360Controller & controller, double dt, bool whichMap)
 
 	for (int i = 0; i < MAX_AI; i++)
 	{
-		aiCars[i]->update(controller, dt);
+		aiCars[i]->update(dt);
 	}
 	if (!m_whichMap)
 	{
