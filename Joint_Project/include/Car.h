@@ -11,7 +11,7 @@
 class Car
 {
 public:
-	Car(bool isAi, std::vector<std::unique_ptr<Node>> & nodes, std::vector<std::unique_ptr<Checkpoint>> &checkpoints);
+	Car(bool isAi, std::vector<std::unique_ptr<Node>> & nodes, std::vector<std::unique_ptr<Checkpoint>> &checkpoints, sf::Vector2f & position);
 	~Car();
 
 	void update(Xbox360Controller & controller, double dt);
@@ -40,17 +40,18 @@ private:
 
 	Ai *m_aiCar;
 
-	sf::CircleShape m_nodePlacement;
+	sf::RectangleShape m_nodePlacement;
 	int m_nodePlacementNumber;
 
 	std::vector<std::unique_ptr<Node>> &m_nodes;
 	std::vector<std::unique_ptr<Checkpoint>> &m_checkpoints;
 	std::vector<sf::RectangleShape> m_checkpointRectangles;
 
-	const double MAX_FORWARD_SPEED = 5;
+	const double MAX_FORWARD_SPEED = 15;
 	const double MAX_REVERSE_SPEED = -10;
 	const double DEG_TO_RAD = 3.14159 / 180.0f;
-	const float CHECKPOINT_TOLERANCE = 50.0f;
+	const float CHECKPOINT_WIDTH = 10.0f;
+	const float CHECKPOINT_HEIGHT = 120.0f;
 	const int MAX_LAPS = 3;
 
 	/// <summary>

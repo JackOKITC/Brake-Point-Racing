@@ -20,14 +20,6 @@ Play::Play(GameState *gameState, bool whichMap) :
 	generateRoad();
 	generateCheckpoint();
 
-	car = new Car(false, m_nodes, m_checkpoints);
-
-	for (int i = 0; i < MAX_AI; i++)
-	{
-		aiCars[i] = new Car(true, m_nodes, m_checkpoints);
-	}
-
-	m_followPlayer.setCenter(car->m_position);
 	m_followPlayer.setSize(450, 300); //in constructor
 
 }
@@ -38,6 +30,28 @@ Play::~Play()
 
 void Play::update(Xbox360Controller & controller, double dt, bool whichMap)
 {
+
+	if (m_callOnce)
+	{
+		if (whichMap)
+		{
+			for (int i = 0; i < MAX_AI; i++)
+			{
+				aiCars[i] = new Car(true, m_nodes2, m_checkpoints2, m_nodes2.at(0)->m_position);
+			}
+			car = new Car(false, m_nodes2, m_checkpoints2, m_nodes2.at(0)->m_position);
+		}
+		if (!whichMap)
+		{
+			for (int i = 0; i < MAX_AI; i++)
+			{
+				aiCars[i] = new Car(true, m_nodes1, m_checkpoints1, m_nodes1.at(0)->m_position);
+			}
+			car = new Car(false, m_nodes1, m_checkpoints1, m_nodes1.at(0)->m_position);
+		}
+		m_callOnce = false;
+	}
+	m_followPlayer.setCenter(car->m_position);
 	car->update(controller, dt);
 	m_whichMap = whichMap;
 
@@ -75,37 +89,40 @@ void Play::update(Xbox360Controller & controller, double dt, bool whichMap)
 void Play::render(sf::RenderWindow & window)
 {
 	window.clear(sf::Color::White);
-	if (!m_whichMap)
+	if (!m_callOnce)
 	{
-		for (std::unique_ptr<RoadTile> &roadTile : m_roadTiles1)
+		if (!m_whichMap)
 		{
-			if (roadTile->culling(car->m_position, window))
+			for (std::unique_ptr<RoadTile> &roadTile : m_roadTiles1)
 			{
-				roadTile->render(window);
+				if (roadTile->culling(car->m_position, window))
+				{
+					roadTile->render(window);
+				}
 			}
 		}
-	}
 
-	if (m_whichMap)
-	{
-		for (std::unique_ptr<RoadTile> &roadTile : m_roadTiles2)
+		if (m_whichMap)
 		{
-			if (roadTile->culling(car->m_position, window))
+			for (std::unique_ptr<RoadTile> &roadTile : m_roadTiles2)
 			{
-				roadTile->render(window);
+				if (roadTile->culling(car->m_position, window))
+				{
+					roadTile->render(window);
+				}
 			}
 		}
+
+		car->render(window);
+
+		for (int i = 0; i < MAX_AI; i++)
+		{
+			aiCars[i]->render(window);
+		}
+
+		m_followPlayer.setCenter(car->m_position);
+		window.setView(m_followPlayer);
 	}
-
-	car->render(window);
-
-	for (int i = 0; i < MAX_AI; i++)
-	{
-		aiCars[i]->render(window);
-	}	
-
-	m_followPlayer.setCenter(car->m_position);
-	window.setView(m_followPlayer);
 }
 
 void Play::generateRoad()
@@ -131,18 +148,30 @@ void Play::generateRoad()
 
 void Play::generateNode()
 {
-	for (NodeData const &node : m_level.m_nodes)
+	for (Node1Data const &node : m_level.m_nodes1)
 	{
 		std::unique_ptr<Node> node(new Node(node.m_number, node.m_position));
-		m_nodes.push_back(std::move(node));
+		m_nodes1.push_back(std::move(node));
+	}
+
+	for (Node2Data const &node : m_level.m_nodes2)
+	{
+		std::unique_ptr<Node> node(new Node(node.m_number, node.m_position));
+		m_nodes2.push_back(std::move(node));
 	}
 }
 
 void Play::generateCheckpoint()
 {
-	for (CheckpointData const &checkpoint : m_level.m_checkpoints)
+	for (Checkpoint1Data const &checkpoint : m_level.m_checkpoints1)
 	{
-		std::unique_ptr<Checkpoint> checkpoint(new Checkpoint(checkpoint.m_number, checkpoint.m_position));
-		m_checkpoints.push_back(std::move(checkpoint));
+		std::unique_ptr<Checkpoint> checkpoint(new Checkpoint(checkpoint.m_number, checkpoint.m_position, checkpoint.m_rotation));
+		m_checkpoints1.push_back(std::move(checkpoint));
+	}
+
+	for (Checkpoint2Data const &checkpoint : m_level.m_checkpoints2)
+	{
+		std::unique_ptr<Checkpoint> checkpoint(new Checkpoint(checkpoint.m_number, checkpoint.m_position, checkpoint.m_rotation));
+		m_checkpoints2.push_back(std::move(checkpoint));
 	}
 }

@@ -44,16 +44,30 @@ struct CarData
 	std::string m_fileID;
 };
 
-struct NodeData
+struct Node1Data
 {
 	int m_number;
 	sf::Vector2f m_position;
 };
 
-struct CheckpointData
+struct Node2Data
 {
 	int m_number;
 	sf::Vector2f m_position;
+};
+
+struct Checkpoint1Data
+{
+	int m_number;
+	sf::Vector2f m_position;
+	double m_rotation;
+};
+
+struct Checkpoint2Data
+{
+	int m_number;
+	sf::Vector2f m_position;
+	double m_rotation;
 };
 
 struct AudioData
@@ -68,8 +82,10 @@ struct LevelData
 	std::vector<Road1Data> m_roads1;
 	std::vector<Road2Data> m_roads2;
 	std::vector<BackgroundData> m_bg;
-	std::vector<NodeData> m_nodes;
-	std::vector<CheckpointData> m_checkpoints;
+	std::vector<Node1Data> m_nodes1;
+	std::vector<Node2Data> m_nodes2;
+	std::vector<Checkpoint1Data> m_checkpoints1;
+	std::vector<Checkpoint2Data> m_checkpoints2;
 	std::vector<AudioData> m_sound;
 	std::vector<UpgradeData> m_upgrades;
 };

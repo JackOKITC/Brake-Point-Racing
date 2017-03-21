@@ -17,7 +17,7 @@ class Ai
 {
 public:
 	Ai();
-	Ai(std::vector<std::unique_ptr<Node>> & nodes);
+	Ai(std::vector<std::unique_ptr<Node>> & nodes, sf::Vector2f & position);
 	~Ai();
 
 	void update(double dt);
@@ -38,9 +38,9 @@ private:
 	int m_currentNode;
 
 	sf::Vector2f m_velocity;
+	
 	float m_rotation;
-
-	float m_speed = 00.0f;
+	float m_speed;
 
 	sf::Vector2f m_steering;
 

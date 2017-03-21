@@ -8,10 +8,11 @@ class Checkpoint
 {
 public:
 	Checkpoint();
-	Checkpoint(const int &number, const sf::Vector2f &pos);
+	Checkpoint(const int &number, const sf::Vector2f &pos, const double &rotation);
 	~Checkpoint();
 
 	sf::Vector2f m_position;
+	double m_rotation;
 private:
 	int m_checkpointNumber;
 };
