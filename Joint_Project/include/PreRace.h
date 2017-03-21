@@ -27,7 +27,7 @@ public:
 	void checkButtonSelected(GamePadState m_state, Xbox360Controller m_controller);	// Function to check which button is selected
 	void selectedButton(GamePadState m_state, Xbox360Controller m_controller);	// Function to check if the selected button is clicked
 
-	raceSelection m_buttonSelected = raceSelection::Option1; // The button enum which starts on the first option
+	raceSelection m_buttonSelected = raceSelection::Option4; // The button enum which starts on the first option
 
 	bool m_whichLabel;
 

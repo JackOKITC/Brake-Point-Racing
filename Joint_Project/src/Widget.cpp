@@ -260,7 +260,7 @@ Label::Label()
 
 }
 
-Label::Label(std::string * text, sf::Font * font, sf::Vector2f *position, int size) :
+Label::Label(std::string * text, sf::Font * font, sf::Vector2f *position, int size, sf::Color color) :
 	m_font(*font),	// Sets the value of m_font to that of the de-referenced value stored in the font argument.
 	m_position(*position),	// Sets the value of m_position to that of the de-referenced value stored in the position argument.
 	m_text(*text, *font, size)	// Sets m_text to use the de-referenced value in the text argument as the string, the de-referenced value in the font argument as the font and uses the text size of 38. 
@@ -268,7 +268,7 @@ Label::Label(std::string * text, sf::Font * font, sf::Vector2f *position, int si
 	m_textRectangle = m_text.getLocalBounds();	// Gets the dimensions of the rectangle that contains the text.
 	m_text.setOrigin(m_textRectangle.left + m_textRectangle.width / 2.0f, m_textRectangle.top + m_textRectangle.height / 2.0f);	// Centres the origin of the text.
 	m_text.setPosition(m_position);	// Sets the position of the text using its centre as the origin.
-	m_text.setColor(sf::Color(m_gold));
+	m_text.setColor(sf::Color(color));
 	m_hasFocus = false;	// Sets the colour of the text to black.
 }
 

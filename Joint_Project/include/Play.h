@@ -1,3 +1,4 @@
+
 #ifndef PLAY_H
 #define PLAY_H
 
@@ -12,14 +13,21 @@
 #include "Checkpoint.h"
 #include "RoadTile.h"
 #include <vector>
+#include "ResourceManager.h"
+#include "Widget.h"
+
 
 class Play
 {
 public:
 	Play();
+
 	Play(GameState *gameState, bool whichMap, Player *player, LevelData *level);
+
 	~Play();
 
+
+	const int LABEL_COUNT = 2;
 
 	void update(Xbox360Controller & controller, double dt, bool whichMap);
 	void render(sf::RenderWindow & window);
@@ -55,6 +63,7 @@ private:
 	sf::View m_followPlayer; //private member in class
 	bool m_whichMap;
 
+
 	const int MAX_LAPS = 1;
 	int m_lap;
 
@@ -63,5 +72,12 @@ private:
 	const float CHECKPOINT_HEIGHT = 120;
 
 	bool m_gameOver = false;
+
+	int m_time;
+	int m_pos;
+	sf::Font m_font;
+	std::string m_strings[2] = { "Time: " + m_time, "Position: " + m_pos };
+
+	Label *m_labels[2];
 };
 #endif // !PLAY_H
