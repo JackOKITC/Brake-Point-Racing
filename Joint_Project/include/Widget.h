@@ -233,7 +233,7 @@ public:
 	/// <param name="font"></param>
 	/// <param name="position"></param>
 	/// <param name="size"></param>
-	Label(std::string *text, sf::Font *font, sf::Vector2f *position, int size);
+	Label(std::string *text, sf::Font *font, sf::Vector2f *position, int size, sf::Color color);
 	~Label();	// Deconstructor for the Label object.
 
 	virtual void update() override;	// "update" method for the Label object, Overrides the "update" method in the widget.

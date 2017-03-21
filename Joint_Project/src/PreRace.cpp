@@ -8,8 +8,10 @@ PreRace::PreRace(sf::Font font, GameState *gameState) :
 	m_leftButton = new Button(&m_leftString, &sf::Vector2f(150, 200), &m_font);
 	m_backButton = new Button(&m_backString, &sf::Vector2f(450, 500), &m_font);
 	m_raceButton = new Button(&m_raceString, &sf::Vector2f(450, 350), &m_font);
+
 	m_grassLabel = new Label(&m_grassString, &m_font, &sf::Vector2f(450, 200), 20);
 	m_icyLabel = new Label(&m_icyString, &m_font, &sf::Vector2f(450, 200), 20);
+
 
 	widgets[0] = m_rightButton;
 	widgets[1] = m_leftButton;
@@ -18,10 +20,10 @@ PreRace::PreRace(sf::Font font, GameState *gameState) :
 	widgets[4] = m_grassLabel;
 	widgets[5] = m_icyLabel;
 
-	widgets[0]->getFocus();
+	widgets[0]->loseFocus();
 	widgets[1]->loseFocus();
 	widgets[2]->loseFocus();
-	widgets[3]->loseFocus();
+	widgets[3]->getFocus();
 
 	m_whichLabel = false;
 }

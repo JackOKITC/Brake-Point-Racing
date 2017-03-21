@@ -13,7 +13,7 @@ Garage::Garage(sf::Font font, GameState * gameState) :
 
 	// set the integers for keeping track of currently highlighted options to 0 so they start off on the "first" in each list
 	m_currentCar = 0;
-	m_currentStat = 0;
+	m_currentStat = 1;
 	m_font = font;
 
 	// generate and place the images of each upgradeable car as well as the curent stats of the cars, with each upgrade bath and its current value set at the bottom of the screen
@@ -32,12 +32,13 @@ Garage::Garage(sf::Font font, GameState * gameState) :
 		m_uprgradeSpr[i].setOrigin(m_upgradeText[i].getSize().x / 2, m_upgradeText[i].getSize().y / 2);
 		m_uprgradeSpr[i].setPosition(225 + (i * 225), 500);
 		m_uprgradeSpr[i].setScale(.1, .1);
+
 		// generating bars located below upgrde sprites to track the "progression" of the upgrades
 		m_upgradeBars[i] = new Bar(sf::Vector2f(225 + (i * 225), 550), 25);
 
 		//stat value sliders to keep display the current stats of each car as well as a label for each
 		m_statValues[i] = new Slider(&sf::Vector2f(450, 150 + (i * 75)), 10);
-		m_statLabel[i] = new Label(&m_strings[i], &m_font, &sf::Vector2f(350, 160 + (i * 75)), 15);
+		m_statLabel[i] = new Label(&m_strings[i], &m_font, &sf::Vector2f(350, 160 + (i * 75)), 15, sf::Color(140, 80, 160));
 		m_statLabel[i]->loseFocus();
 	}
 
@@ -144,7 +145,7 @@ void Garage::checkButton(GamePadState m_gamePadState, Xbox360Controller m_contro
 		{
 			m_statLabel[m_currentStat]->loseFocus();
 			m_cars[m_currentCar].setColor(m_highlight);
-			m_currentStat = 0;
+			m_currentStat = 1;
 		}
 
 		else

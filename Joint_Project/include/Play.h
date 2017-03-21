@@ -1,3 +1,4 @@
+
 #ifndef PLAY_H
 #define PLAY_H
 
@@ -12,14 +13,20 @@
 #include "Checkpoint.h"
 #include "RoadTile.h"
 #include <vector>
+#include "Widget.h"
+
 
 class Play
 {
 public:
 	Play();
+
 	Play(GameState *gameState, bool whichMap, Player *player, LevelData *level);
+
 	~Play();
 
+
+	const int LABEL_COUNT = 2;
 
 	void update(Xbox360Controller & controller, double dt, bool whichMap);
 	void render(sf::RenderWindow & window);
@@ -63,5 +70,6 @@ private:
 	const float CHECKPOINT_HEIGHT = 120;
 
 	bool m_gameOver = false;
+
 };
 #endif // !PLAY_H

@@ -1,11 +1,12 @@
 #include "Play.h"
 
-Play::Play()
+Play::Play()	
 {
 }
 
 Play::Play(GameState *gameState, bool whichMap, Player *player, LevelData *level) :
 	m_whichMap(whichMap)
+
 {
 	m_state = gameState;
 	m_level = *level;
@@ -18,6 +19,11 @@ Play::Play(GameState *gameState, bool whichMap, Player *player, LevelData *level
 	m_currentCheckpoint = 0;
 	m_lap = 0;
 	m_followPlayer.setSize(450, 300); //in constructor
+	
+	for (int i = 0; i < LABEL_COUNT; i++)
+	{
+		m_labels[i] = new Label(&m_strings[i], &m_font, &sf::Vector2f(m_followPlayer.getCenter()), 10, sf::Color(0, 255, 0));
+	}
 
 }
 
@@ -74,11 +80,13 @@ void Play::update(Xbox360Controller & controller, double dt, bool whichMap)
 	m_player->update(dt, &controller);
 	m_whichMap = whichMap;
 
+	
 
 	for (int i = 0; i < MAX_AI; i++)
 	{
 		aiCars[i]->update(dt);
 	}
+
 	if (!m_whichMap)
 	{
 		for (std::unique_ptr<RoadTile> &roadTile : m_roadTiles1)
@@ -104,6 +112,7 @@ void Play::update(Xbox360Controller & controller, double dt, bool whichMap)
 	}
 
 	m_player->m_playerCar[m_currentCar]->slowCar(m_slowDown);
+
 }
 
 void Play::render(sf::RenderWindow & window)
@@ -135,6 +144,7 @@ void Play::render(sf::RenderWindow & window)
 		}
 
 		m_player->render(window);
+
 
 		for (int i = 0; i < MAX_AI; i++)
 		{
