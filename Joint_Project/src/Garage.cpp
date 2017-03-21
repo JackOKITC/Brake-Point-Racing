@@ -165,7 +165,7 @@ void Garage::checkButton(GamePadState m_gamePadState, Xbox360Controller m_contro
 		else
 		{
 			// when the "A" button is pressed whilst on the stat list, upgrade the currently selected stat
-			if (m_upgradeBars[m_currentStat]->returnNode() <= 2)
+			if (m_upgradeBars[m_currentStat]->returnNode() != 3)
 			{
 				m_upgradeBars[m_currentStat]->increment();
 				m_statValues[m_currentStat]->incrementSlider();

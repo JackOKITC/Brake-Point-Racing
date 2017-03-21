@@ -378,8 +378,9 @@ void Bar::moveLeft()
 
 void Bar::increment()
 {
+	// increments the current node of the progression bar and sets the next progress segement to a gold colour
 	m_innerRecs[m_currentNode].setFillColor(m_gold);
-	if (m_currentNode != 2)
+	if (m_currentNode != 3)
 	{
 		m_currentNode++;
 	}
@@ -387,6 +388,7 @@ void Bar::increment()
 
 void Bar::assignValues(int level)
 {
+	// sets the number of upgrades in the bar to be at a certain level
 	for (int i = 0; i < level; i++)
 	{
 		m_currentNode = i;
