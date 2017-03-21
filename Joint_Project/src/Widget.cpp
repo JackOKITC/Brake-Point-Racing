@@ -389,6 +389,7 @@ void Bar::increment()
 void Bar::assignValues(int level)
 {
 	// sets the number of upgrades in the bar to be at a certain level
+
 	for (int i = 0; i < level; i++)
 	{
 		m_currentNode = i;
