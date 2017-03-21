@@ -17,9 +17,14 @@ Play::Play(GameState *gameState, bool whichMap) :
 	
 	ResourceManager::instance().loadData(m_level);
 	generateNode();
-
 	generateRoad();
-	generateCheckpoint();
+	
+	car = new Car();
+
+	for (int i = 0; i < MAX_AI; i++)
+	{
+		aiCars[i] = new Ai(m_nodes, sf::Vector2f(0,0));
+	}
 
 	m_followPlayer.setSize(450, 300); //in constructor
 
@@ -59,7 +64,7 @@ void Play::update(Xbox360Controller & controller, double dt, bool whichMap)
 
 	for (int i = 0; i < MAX_AI; i++)
 	{
-		aiCars[i]->update(controller, dt);
+		aiCars[i]->update(dt);
 	}
 	if (!m_whichMap)
 	{

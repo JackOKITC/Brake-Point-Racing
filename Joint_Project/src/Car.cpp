@@ -1,16 +1,9 @@
 #include "Car.h"
 
 
-Car::Car(bool isAi, std::vector<std::unique_ptr<Node>> & nodes, std::vector<std::unique_ptr<Checkpoint>> &checkpoints, sf::Vector2f & position) :
-	m_isAi(isAi),
-	m_nodes(nodes),
-	m_checkpoints(checkpoints),
-	m_position(position)
+Car::Car()
 {
-	if (!m_isAi)
-	{
-		m_carTex = ResourceManager::instance().m_holder["Bus0"];
-		m_carSprite.setTexture(m_carTex);
+		m_position = sf::Vector2f(100, 300);
 		m_velocity = sf::Vector2f(0, 0);
 		m_rotation = 45.0f;
 
@@ -20,27 +13,8 @@ Car::Car(bool isAi, std::vector<std::unique_ptr<Node>> & nodes, std::vector<std:
 		m_carSprite.setRotation(m_rotation);
 
 		m_carSprite.setOrigin(m_carSprite.getLocalBounds().width / 2, m_carSprite.getLocalBounds().height / 2);
-
-		m_nodePlacement.setSize(sf::Vector2f(10.0f, 120.0f));
-		m_nodePlacement.setOrigin(5, 60);
-		m_nodePlacement.setFillColor(sf::Color(255, 0, 0, 126));
-
-		for (int i = 0; i < m_checkpoints.size(); i++)
-		{
-			sf::RectangleShape rectangle;
-			m_checkpointRectangles.push_back(std::move(rectangle));
-			m_checkpointRectangles.at(i).setOrigin(CHECKPOINT_WIDTH / 2, CHECKPOINT_HEIGHT / 2);
-			m_checkpointRectangles.at(i).setPosition(m_checkpoints.at(i)->m_position.x, m_checkpoints.at(i)->m_position.y);
-			m_checkpointRectangles.at(i).setRotation(m_checkpoints.at(i)->m_rotation);
-			m_checkpointRectangles.at(i).setSize(sf::Vector2f(CHECKPOINT_WIDTH, CHECKPOINT_HEIGHT));
-			m_checkpointRectangles.at(i).setFillColor(sf::Color(255, 0, 0, 126));
-		}
-	}
-	else
-	{
-		m_aiCar = new Ai(m_nodes, m_position);
-	}
 }
+
 
 Car::~Car() 
 {
@@ -48,8 +22,6 @@ Car::~Car()
 
 void Car::update(Xbox360Controller & controller, double dt)
 {
-	if (!m_isAi)
-	{
 		moveCar(controller);
 		m_nodePlacement.setPosition(m_position);
 		m_nodePlacement.setRotation(m_rotation);
@@ -59,24 +31,12 @@ void Car::update(Xbox360Controller & controller, double dt)
 
 		m_position = sf::Vector2f(m_position.x + std::cos(DEG_TO_RAD  * (m_rotation)) * m_speed * (dt / 1000),
 										   m_position.y + std::sin(DEG_TO_RAD * (m_rotation)) * m_speed * (dt / 1000));
-	}
-	else
-	{
-		m_aiCar->update(dt);
-	}
 }
 
 void Car::render(sf::RenderWindow & window)
 {
-	if (!m_isAi)
-	{		
+
 		window.draw(m_carSprite);
-		window.draw(m_checkpointRectangles.at(m_currentCheckpoint));
-	}
-	else
-	{
-		m_aiCar->render(window);
-	}
 }
 
 void Car::moveCar(Xbox360Controller & controller)
