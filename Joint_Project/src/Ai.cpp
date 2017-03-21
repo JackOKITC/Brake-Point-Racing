@@ -1,17 +1,20 @@
 #include "Ai.h"
 
-Ai::Ai(std::vector<std::unique_ptr<Node>> & nodes) :
+Ai::Ai(std::vector<std::unique_ptr<Node>> & nodes, sf::Vector2f & position) :
 	m_nodes(nodes),
 	m_currentNode(0),
-	m_steering(0, 0)
+	m_steering(0, 0),
+	m_position(position.x - 10, position.y) 
 {
 
 	m_carTex = ResourceManager::instance().m_holder["Bus2"];
 
 	m_carSprite.setTexture(m_carTex);
-	m_position = sf::Vector2f(100,300);
+
 	m_velocity = sf::Vector2f(0, 0);
-	m_rotation = 0.0f;
+	m_rotation = 45.0f;
+	m_speed = 0;
+
 
 	m_carSprite.setPosition(m_position);
 
@@ -19,6 +22,16 @@ Ai::Ai(std::vector<std::unique_ptr<Node>> & nodes) :
 	m_carSprite.setRotation(m_rotation);
 
 	m_carSprite.setOrigin(m_carSprite.getLocalBounds().width / 2, m_carSprite.getLocalBounds().height / 2);
+
+	for (int i = 0; i < nodes.size(); i++)
+	{
+		sf::CircleShape circle;
+		m_circles.push_back(std::move(circle));
+		m_circles.at(i).setOrigin(NODE_TOLERANCE / 2, NODE_TOLERANCE / 2);
+		m_circles.at(i).setPosition(m_nodes.at(i)->m_position.x - NODE_TOLERANCE / 2, m_nodes.at(i)->m_position.y - NODE_TOLERANCE / 2);
+		m_circles.at(i).setRadius(NODE_TOLERANCE);
+		m_circles.at(i).setFillColor(sf::Color(0,0,255,126));
+	}
 }
 
 Ai::~Ai()
@@ -26,11 +39,7 @@ Ai::~Ai()
 }
 
 void Ai::update(double dt)
-{													/*sf::Vector2f(m_position.x + std::cos(DEG_TO_RAD *(m_rotation - 90)) * m_speed * (dt / 1000),
-													m_position.y + std::sin(DEG_TO_RAD *(m_rotation - 90)) * m_speed * (dt / 1000));*/
-	m_carSprite.setPosition(m_position);
-	m_carSprite.setRotation(m_rotation);
-
+{	
 	sf::Vector2f newPos = m_position;
 
 	sf::Vector2f vectorToNode = m_followPath();
@@ -61,7 +70,7 @@ void Ai::update(double dt)
 	else
 	{
 		// rotate anti-clockwise
-		m_rotation--;
+		m_rotation -= 1;
 		if (m_rotation < 0)
 		{
 			m_rotation = 359;
@@ -70,14 +79,17 @@ void Ai::update(double dt)
 
 	m_speed = thor::length(m_velocity);
 
-	m_carSprite.setRotation(m_rotation);
 	m_position.x += m_velocity.x * m_speed * (dt / 50000);
 	m_position.y += m_velocity.y * m_speed * (dt / 50000);
+	m_carSprite.setPosition(m_position);
+	m_carSprite.setRotation(m_rotation);
+
 }
 
 void Ai::render(sf::RenderWindow & window)
 {
 	window.draw(m_carSprite);
+	
 }
 
 sf::Vector2f Ai::m_followPath()

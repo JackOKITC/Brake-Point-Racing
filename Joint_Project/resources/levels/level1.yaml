@@ -125,6 +125,7 @@ tile1:
      rotation: 0
      scale: 0
 
+
 tile2:
    - file: .\resources\images\road\OurRoad\snow1.png
      ID: RoadA
@@ -252,6 +253,7 @@ tile2:
      rotation: 0
      scale: 0
 
+
 background:
    - file: .\resources\images\UI\bg.jpg
      ID: SplashBG
@@ -261,6 +263,7 @@ background:
      ID: Radio
    - file: .\resources\images\UI\finish.jpg
      ID: Flag
+
 
 upgrade:
    - file: .\resources\images\car_parts\brake.png
@@ -272,6 +275,7 @@ upgrade:
    - file: .\resources\images\car_parts\gears.png
      ID: Upgrade3
 
+
 car:
    - file: .\resources\images\cars\Bus0.png
      ID: Bus0
@@ -280,23 +284,734 @@ car:
    - file: .\resources\images\cars\Bus2.png
      ID: Bus2
 
-node:
-   - number: 1
-     position: {x: 250, y: 100}
-   - number: 2
-     position: {x: 750, y: 200}
-   - number: 3
-     position: {x: 1250.40, y: 100}
-   - number: 4
-     position: {x: 1750, y: 200}
-   - number: 5
-     position: {x: 2250, y: 100}
-   - number: 6
-     position: {x: 2750, y: 200}
-   - number: 7
-     position: {x: 3250, y: 100}
-   - number: 8
-     position: {x: 3750, y: 200}
 audio:
    - file: .\resources\audio\bgMusic.wav
      ID: MusicBG
+
+
+node1:
+   - number: 1
+     position: {x: 2214.97, y: 966.814}
+   - number: 2
+     position: {x: 2370.02, y: 1192.61}
+   - number: 3
+     position: {x: 2394.24, y: 1232.53}
+   - number: 4
+     position: {x: 2394.27, y: 1271.79}
+   - number: 5
+     position: {x: 2373.43, y: 1301.89}
+   - number: 6
+     position: {x: 2331.05, y: 1321.4}
+   - number: 7
+     position: {x: 2284.2, y: 1340.6}
+   - number: 8
+     position: {x: 2229.4, y: 1330.43}
+   - number: 9
+     position: {x: 2193.65, y: 1295.7}
+   - number: 10
+     position: {x: 2101.54, y: 1186.5}
+   - number: 11
+     position: {x: 2071.17, y: 1162.86}
+   - number: 12
+     position: {x: 2030.15, y: 1159.16}
+   - number: 13
+     position: {x: 1989.38, y: 1178.54}
+   - number: 14
+     position: {x: 1953.99, y: 1227.61}
+   - number: 15
+     position: {x: 1945.75, y: 1273.3}
+   - number: 16
+     position: {x: 1964.88, y: 1318.66}
+   - number: 17
+     position: {x: 2036.05, y: 1419.47}
+   - number: 18
+     position: {x: 2066.87, y: 1496.21}
+   - number: 19
+     position: {x: 2042.57, y: 1588.11}
+   - number: 20
+     position: {x: 1999.54, y: 1683.84}
+   - number: 21
+     position: {x: 2060.89, y: 1787.34}
+   - number: 22
+     position: {x: 2229.06, y: 2028.96}
+   - number: 23
+     position: {x: 2250.54, y: 2077.2}
+   - number: 24
+     position: {x: 2250.26, y: 2139.01}
+   - number: 25
+     position: {x: 2226.47, y: 2202.21}
+   - number: 26
+     position: {x: 2044.97, y: 2541.3}
+   - number: 27
+     position: {x: 2025.39, y: 2574.08}
+   - number: 28
+     position: {x: 1992.72, y: 2603.34}
+   - number: 29
+     position: {x: 1951.14, y: 2602.07}
+   - number: 30
+     position: {x: 1740.97, y: 2500.95}
+   - number: 31
+     position: {x: 1692.34, y: 2473.01}
+   - number: 32
+     position: {x: 1673.45, y: 2454.69}
+   - number: 33
+     position: {x: 1681.14, y: 2420.1}
+   - number: 34
+     position: {x: 1714.17, y: 2380.02}
+   - number: 35
+     position: {x: 1782.6, y: 2276.55}
+   - number: 36
+     position: {x: 1800.44, y: 2216.06}
+   - number: 37
+     position: {x: 1788.16, y: 2173.36}
+   - number: 38
+     position: {x: 1756.63, y: 2144.17}
+   - number: 39
+     position: {x: 1711.9, y: 2124.93}
+   - number: 40
+     position: {x: 1668.46, y: 2130.49}
+   - number: 41
+     position: {x: 1628.99, y: 2159.81}
+   - number: 42
+     position: {x: 1587.17, y: 2224.6}
+   - number: 43
+     position: {x: 1522.7, y: 2288.61}
+   - number: 44
+     position: {x: 1466.14, y: 2303.57}
+   - number: 45
+     position: {x: 1311.29, y: 2314}
+   - number: 46
+     position: {x: 979.196, y: 2308.75}
+   - number: 47
+     position: {x: 895.344, y: 2277.58}
+   - number: 48
+     position: {x: 844.39, y: 2219.17}
+   - number: 49
+     position: {x: 696.715, y: 1960.26}
+   - number: 50
+     position: {x: 680.304, y: 1920.67}
+   - number: 51
+     position: {x: 684.993, y: 1876.38}
+   - number: 52
+     position: {x: 737.086, y: 1841.39}
+   - number: 53
+     position: {x: 832.643, y: 1801.33}
+   - number: 54
+     position: {x: 918.945, y: 1760.28}
+   - number: 55
+     position: {x: 965.633, y: 1745.9}
+   - number: 56
+     position: {x: 1031.7, y: 1782.91}
+   - number: 57
+     position: {x: 1118.52, y: 1941.14}
+   - number: 58
+     position: {x: 1154.84, y: 1974.44}
+   - number: 59
+     position: {x: 1193.79, y: 1984.6}
+   - number: 60
+     position: {x: 1239.4, y: 1970.16}
+   - number: 61
+     position: {x: 1274.67, y: 1940.38}
+   - number: 62
+     position: {x: 1295.8, y: 1896.43}
+   - number: 63
+     position: {x: 1286.19, y: 1843.95}
+   - number: 64
+     position: {x: 1032.82, y: 1393.13}
+   - number: 65
+     position: {x: 1007.56, y: 1355.58}
+   - number: 66
+     position: {x: 989.451, y: 1321.36}
+   - number: 67
+     position: {x: 1002.22, y: 1279}
+   - number: 68
+     position: {x: 1085.68, y: 1257.58}
+   - number: 69
+     position: {x: 1254.31, y: 1177.8}
+   - number: 70
+     position: {x: 1299.81, y: 1151.32}
+   - number: 71
+     position: {x: 1327.54, y: 1116.3}
+   - number: 72
+     position: {x: 1334.53, y: 1064.97}
+   - number: 73
+     position: {x: 1315.12, y: 1021.1}
+   - number: 74
+     position: {x: 1281.41, y: 998.117}
+   - number: 75
+     position: {x: 1233.41, y: 994.219}
+   - number: 76
+     position: {x: 1102.88, y: 1031.4}
+   - number: 77
+     position: {x: 898.966, y: 1110.21}
+   - number: 78
+     position: {x: 849.065, y: 1113.79}
+   - number: 79
+     position: {x: 787.648, y: 1114.44}
+   - number: 80
+     position: {x: 734.038, y: 1086.58}
+   - number: 81
+     position: {x: 678.397, y: 1061.79}
+   - number: 82
+     position: {x: 604.42, y: 1017.5}
+   - number: 83
+     position: {x: 530.559, y: 966.718}
+   - number: 84
+     position: {x: 487.646, y: 889.691}
+   - number: 85
+     position: {x: 478.093, y: 840.867}
+   - number: 86
+     position: {x: 498.239, y: 787.352}
+   - number: 87
+     position: {x: 537.174, y: 737.524}
+   - number: 88
+     position: {x: 602.646, y: 693.524}
+   - number: 89
+     position: {x: 1125.89, y: 390.121}
+   - number: 90
+     position: {x: 1168.8, y: 369.83}
+   - number: 91
+     position: {x: 1221.02, y: 361.566}
+   - number: 92
+     position: {x: 1271.18, y: 395.291}
+   - number: 93
+     position: {x: 1294.61, y: 434.662}
+   - number: 94
+     position: {x: 1297.27, y: 476.224}
+   - number: 95
+     position: {x: 1270.88, y: 529.792}
+   - number: 96
+     position: {x: 1221.39, y: 555.716}
+   - number: 97
+     position: {x: 1100.47, y: 626.305}
+   - number: 98
+     position: {x: 1075.76, y: 665.051}
+   - number: 99
+     position: {x: 1086.32, y: 708.118}
+   - number: 100
+     position: {x: 1119.04, y: 744.814}
+   - number: 101
+     position: {x: 1190.76, y: 764.463}
+   - number: 102
+     position: {x: 1255.75, y: 750.352}
+   - number: 103
+     position: {x: 1322.6, y: 713.589}
+   - number: 104
+     position: {x: 1363.5, y: 692.188}
+   - number: 105
+     position: {x: 1423.95, y: 663.342}
+   - number: 106
+     position: {x: 1503.56, y: 656.913}
+   - number: 107
+     position: {x: 1724.7, y: 728.073}
+   - number: 108
+     position: {x: 1772.63, y: 726.632}
+   - number: 109
+     position: {x: 1832.33, y: 696.463}
+   - number: 110
+     position: {x: 1907.46, y: 655.324}
+   - number: 111
+     position: {x: 1962.04, y: 629.608}
+   - number: 112
+     position: {x: 2013.56, y: 695.625}
+
+node2:
+   - number: 1
+     position: {x: 1628.02, y: 262.725}
+   - number: 2
+     position: {x: 2035.47, y: 285.942}
+   - number: 3
+     position: {x: 2066.18, y: 287.684}
+   - number: 4
+     position: {x: 2103.96, y: 293.011}
+   - number: 5
+     position: {x: 2157.4, y: 313.358}
+   - number: 6
+     position: {x: 2209.73, y: 371.853}
+   - number: 7
+     position: {x: 2197.23, y: 464.435}
+   - number: 8
+     position: {x: 2176.68, y: 910.953}
+   - number: 9
+     position: {x: 2144.27, y: 976.221}
+   - number: 10
+     position: {x: 2097.77, y: 1025.76}
+   - number: 11
+     position: {x: 2050.35, y: 1057.07}
+   - number: 12
+     position: {x: 1997.81, y: 1063.35}
+   - number: 13
+     position: {x: 1948.31, y: 1052.4}
+   - number: 14
+     position: {x: 1908.88, y: 1021.42}
+   - number: 15
+     position: {x: 1899.01, y: 964.46}
+   - number: 16
+     position: {x: 1885.2, y: 735.911}
+   - number: 17
+     position: {x: 1862.02, y: 666.423}
+   - number: 18
+     position: {x: 1832.26, y: 624.274}
+   - number: 19
+     position: {x: 1791.17, y: 599.159}
+   - number: 20
+     position: {x: 1742.89, y: 586.525}
+   - number: 21
+     position: {x: 1686.39, y: 592.529}
+   - number: 22
+     position: {x: 1637.43, y: 617.153}
+   - number: 23
+     position: {x: 1602.66, y: 659.08}
+   - number: 24
+     position: {x: 1591.13, y: 720.765}
+   - number: 25
+     position: {x: 1527.13, y: 986.588}
+   - number: 26
+     position: {x: 1490.27, y: 1022.38}
+   - number: 27
+     position: {x: 1448.89, y: 1040.25}
+   - number: 28
+     position: {x: 1400.9, y: 1038.19}
+   - number: 29
+     position: {x: 1364.9, y: 1007.88}
+   - number: 30
+     position: {x: 1357.61, y: 956.077}
+   - number: 31
+     position: {x: 1349.49, y: 903.599}
+   - number: 32
+     position: {x: 1325.04, y: 726.257}
+   - number: 33
+     position: {x: 1303.49, y: 682.867}
+   - number: 34
+     position: {x: 1270.63, y: 650.127}
+   - number: 35
+     position: {x: 1227.86, y: 620.502}
+   - number: 36
+     position: {x: 1181.81, y: 618.371}
+   - number: 37
+     position: {x: 1135.73, y: 634.236}
+   - number: 38
+     position: {x: 644.48, y: 770.453}
+   - number: 39
+     position: {x: 566.618, y: 809.407}
+   - number: 40
+     position: {x: 521.495, y: 869.624}
+   - number: 41
+     position: {x: 484.027, y: 983.52}
+   - number: 42
+     position: {x: 468.495, y: 1069.35}
+   - number: 43
+     position: {x: 473.01, y: 1123.31}
+   - number: 44
+     position: {x: 490.328, y: 1166.05}
+   - number: 45
+     position: {x: 524.893, y: 1195.65}
+   - number: 46
+     position: {x: 565.357, y: 1208.29}
+   - number: 47
+     position: {x: 615.48, y: 1202.78}
+   - number: 48
+     position: {x: 661.998, y: 1191.18}
+   - number: 49
+     position: {x: 692.285, y: 1162.44}
+   - number: 50
+     position: {x: 726.737, y: 1120.21}
+   - number: 51
+     position: {x: 793.932, y: 982.092}
+   - number: 52
+     position: {x: 820.42, y: 945.3}
+   - number: 53
+     position: {x: 854.971, y: 922.779}
+   - number: 54
+     position: {x: 896.729, y: 918.014}
+   - number: 55
+     position: {x: 937.877, y: 927.202}
+   - number: 56
+     position: {x: 978.56, y: 947.033}
+   - number: 57
+     position: {x: 1006.69, y: 983.646}
+   - number: 58
+     position: {x: 1016.85, y: 1024.33}
+   - number: 59
+     position: {x: 1012, y: 1069.89}
+   - number: 60
+     position: {x: 999.436, y: 1111.27}
+   - number: 61
+     position: {x: 986.125, y: 1155.1}
+   - number: 62
+     position: {x: 867.411, y: 1371.97}
+   - number: 63
+     position: {x: 858.03, y: 1421.73}
+   - number: 64
+     position: {x: 864.339, y: 1472.36}
+   - number: 65
+     position: {x: 875.389, y: 1529.27}
+   - number: 66
+     position: {x: 896.264, y: 1580.17}
+   - number: 67
+     position: {x: 949.672, y: 1646.45}
+   - number: 68
+     position: {x: 1138.04, y: 1761.01}
+   - number: 69
+     position: {x: 1196.17, y: 1793.3}
+   - number: 70
+     position: {x: 1576.79, y: 1827.84}
+   - number: 71
+     position: {x: 1927.42, y: 1865.47}
+   - number: 72
+     position: {x: 1973.14, y: 1863.66}
+   - number: 73
+     position: {x: 2014.24, y: 1838.95}
+   - number: 74
+     position: {x: 2051.12, y: 1806.32}
+   - number: 75
+     position: {x: 2081.15, y: 1766.96}
+   - number: 76
+     position: {x: 2101.68, y: 1719.23}
+   - number: 77
+     position: {x: 2120.13, y: 1676.33}
+   - number: 78
+     position: {x: 2139.35, y: 1631.64}
+   - number: 79
+     position: {x: 2165.85, y: 1587.21}
+   - number: 80
+     position: {x: 2200.85, y: 1563.14}
+   - number: 81
+     position: {x: 2248.96, y: 1551.97}
+   - number: 82
+     position: {x: 2294.4, y: 1565.06}
+   - number: 83
+     position: {x: 2333.15, y: 1602.23}
+   - number: 84
+     position: {x: 2350.96, y: 1647.2}
+   - number: 85
+     position: {x: 2346.08, y: 1699.29}
+   - number: 86
+     position: {x: 2321.83, y: 1748.91}
+   - number: 87
+     position: {x: 2317.36, y: 1813.26}
+   - number: 88
+     position: {x: 2320.8, y: 1877.06}
+   - number: 89
+     position: {x: 2306.71, y: 1926.43}
+   - number: 90
+     position: {x: 2290.69, y: 1980.11}
+   - number: 91
+     position: {x: 2286.86, y: 2051.88}
+   - number: 92
+     position: {x: 2290.09, y: 2101.73}
+   - number: 93
+     position: {x: 2277.07, y: 2217.04}
+   - number: 94
+     position: {x: 2268.92, y: 2289.24}
+   - number: 95
+     position: {x: 2263.9, y: 2333.69}
+   - number: 96
+     position: {x: 2271.69, y: 2378.01}
+   - number: 97
+     position: {x: 2291.55, y: 2426.23}
+   - number: 98
+     position: {x: 2321.8, y: 2449.23}
+   - number: 99
+     position: {x: 2364.68, y: 2462.15}
+   - number: 100
+     position: {x: 2405.03, y: 2471.01}
+   - number: 101
+     position: {x: 2492.08, y: 2455.59}
+   - number: 102
+     position: {x: 2552.09, y: 2451.77}
+   - number: 103
+     position: {x: 2596.97, y: 2479.8}
+   - number: 104
+     position: {x: 2626.02, y: 2527.7}
+   - number: 105
+     position: {x: 2628.79, y: 2582.74}
+   - number: 106
+     position: {x: 2621.45, y: 2601.45}
+   - number: 107
+     position: {x: 2598.6, y: 2640.95}
+   - number: 108
+     position: {x: 2520.48, y: 2651.35}
+   - number: 109
+     position: {x: 2464.21, y: 2666.28}
+   - number: 110
+     position: {x: 2393.92, y: 2689.53}
+   - number: 111
+     position: {x: 1887.83, y: 2721.55}
+   - number: 112
+     position: {x: 692.88, y: 2742.37}
+   - number: 113
+     position: {x: 648.137, y: 2742.3}
+   - number: 114
+     position: {x: 601.718, y: 2736.36}
+   - number: 115
+     position: {x: 560.424, y: 2719.54}
+   - number: 116
+     position: {x: 511.157, y: 2690.74}
+   - number: 117
+     position: {x: 483.703, y: 2655.57}
+   - number: 118
+     position: {x: 466.805, y: 2606.53}
+   - number: 119
+     position: {x: 457.379, y: 2560.67}
+   - number: 120
+     position: {x: 448.073, y: 2515.4}
+   - number: 121
+     position: {x: 438.677, y: 2469.69}
+   - number: 122
+     position: {x: 428.979, y: 2422.52}
+   - number: 123
+     position: {x: 418.949, y: 2373.72}
+   - number: 124
+     position: {x: 118.071, y: 1165.26}
+   - number: 125
+     position: {x: 120.861, y: 1117.15}
+   - number: 126
+     position: {x: 142.062, y: 1063.92}
+   - number: 127
+     position: {x: 142.251, y: 1005.53}
+   - number: 128
+     position: {x: 156.252, y: 953.288}
+   - number: 129
+     position: {x: 182.488, y: 908.483}
+   - number: 130
+     position: {x: 228.33, y: 876.945}
+   - number: 131
+     position: {x: 282.417, y: 813.716}
+   - number: 132
+     position: {x: 300.071, y: 768.146}
+   - number: 133
+     position: {x: 293.712, y: 724.257}
+   - number: 134
+     position: {x: 266.775, y: 677.661}
+   - number: 135
+     position: {x: 222.76, y: 627.527}
+   - number: 136
+     position: {x: 179.078, y: 600.351}
+   - number: 137
+     position: {x: 147.669, y: 555.298}
+   - number: 138
+     position: {x: 142.369, y: 510.131}
+   - number: 139
+     position: {x: 155.774, y: 450.734}
+   - number: 140
+     position: {x: 187.938, y: 406.346}
+   - number: 141
+     position: {x: 252.205, y: 370.321}
+   - number: 142
+     position: {x: 306.85, y: 350.085}
+   - number: 143
+     position: {x: 364.313, y: 328.806}
+   - number: 144
+     position: {x: 408.536, y: 312.429}
+   - number: 145
+     position: {x: 460.747, y: 295.198}
+   - number: 146
+     position: {x: 503.544, y: 301.455}
+   - number: 147
+     position: {x: 656.833, y: 299.102}
+   - number: 148
+     position: {x: 749.809, y: 315.548}
+   - number: 149
+     position: {x: 866.425, y: 310.758}
+   - number: 150
+     position: {x: 1009.31, y: 304.89}
+
+
+
+checkpoint1:
+   - number: 1
+     position: {x: 2212.02, y: 969.343}
+     rotation: 54.0001
+   - number: 2
+     position: {x: 2354.64, y: 1187.65}
+     rotation: 57.7501
+   - number: 3
+     position: {x: 2349.15, y: 1331.2}
+     rotation: 146.25
+   - number: 4
+     position: {x: 2133.41, y: 1203.13}
+     rotation: 232.197
+   - number: 5
+     position: {x: 1986.96, y: 1184.46}
+     rotation: 159.15
+   - number: 6
+     position: {x: 2060.11, y: 1496.28}
+     rotation: 76.3503
+   - number: 7
+     position: {x: 2026.13, y: 1702.21}
+     rotation: 90.6005
+   - number: 8
+     position: {x: 2150.55, y: 1931.18}
+     rotation: 61.0502
+   - number: 9
+     position: {x: 2243.43, y: 2187.82}
+     rotation: 96.0005
+   - number: 10
+     position: {x: 2077.4, y: 2504}
+     rotation: 118.801
+   - number: 11
+     position: {x: 1864.55, y: 2563.22}
+     rotation: 202.198
+   - number: 12
+     position: {x: 1708.99, y: 2425.16}
+     rotation: 282.745
+   - number: 13
+     position: {x: 1758.02, y: 2137.59}
+     rotation: 217.947
+   - number: 14
+     position: {x: 1442.66, y: 2315.51}
+     rotation: 168.449
+   - number: 15
+     position: {x: 849.68, y: 2222.75}
+     rotation: 237.296
+   - number: 16
+     position: {x: 687.28, y: 1874.39}
+     rotation: 299.544
+   - number: 17
+     position: {x: 991.429, y: 1769.57}
+     rotation: 25.94
+   - number: 18
+     position: {x: 1240.94, y: 1976.32}
+     rotation: 347.692
+   - number: 19
+     position: {x: 1023.09, y: 1282.02}
+     rotation: 299.994
+   - number: 20
+     position: {x: 1299.72, y: 1028.41}
+     rotation: 230.397
+   - number: 21
+     position: {x: 816.126, y: 1114.94}
+     rotation: 180.899
+   - number: 22
+     position: {x: 516.265, y: 782.4}
+     rotation: 285.294
+   - number: 23
+     position: {x: 1283.06, y: 433.551}
+     rotation: 63.589
+   - number: 24
+     position: {x: 1145.74, y: 753.098}
+     rotation: 39.44
+   - number: 25
+     position: {x: 1724.46, y: 727.44}
+     rotation: 359.091
+   - number: 26
+     position: {x: 1995.94, y: 667.272}
+     rotation: 39.89
+
+checkpoint2: 
+   - number: 1
+     position: {x: 1709.88, y: 276.277}
+     rotation: 7.6
+   - number: 2
+     position: {x: 2140.69, y: 291.282}
+     rotation: 5.65
+   - number: 3
+     position: {x: 2143.26, y: 861.949}
+     rotation: 98.0515
+   - number: 4
+     position: {x: 1913.84, y: 1057.24}
+     rotation: 223.898
+   - number: 5
+     position: {x: 1877.71, y: 713.752}
+     rotation: 265.446
+   - number: 6
+     position: {x: 1584.85, y: 788.7}
+     rotation: 73.4514
+   - number: 7
+     position: {x: 1517.45, y: 1043.92}
+     rotation: 151.601
+   - number: 8
+     position: {x: 1306.13, y: 888.967}
+     rotation: 270.246
+   - number: 9
+     position: {x: 1306.88, y: 713.685}
+     rotation: 270.246
+   - number: 10
+     position: {x: 975.144, y: 655.848}
+     rotation: 156.373
+   - number: 11
+     position: {x: 517.973, y: 830.666}
+     rotation: 127.424
+   - number: 12
+     position: {x: 406.709, y: 1099.01}
+     rotation: 127.434
+   - number: 13
+     position: {x: 629.631, y: 1195.97}
+     rotation: 332.975
+   - number: 14
+     position: {x: 797.504, y: 950.394}
+     rotation: 299.226
+   - number: 15
+     position: {x: 1032.69, y: 1090.26}
+     rotation: 87.1005
+   - number: 16
+     position: {x: 892.942, y: 1359.67}
+     rotation: 94.4511
+   - number: 17
+     position: {x: 1003.74, y: 1653.19}
+     rotation: 52.0759
+   - number: 18
+     position: {x: 1559.54, y: 1845.15}
+     rotation: 8.875
+   - number: 19
+     position: {x: 1921.65, y: 1901.73}
+     rotation: 8.875
+   - number: 20
+     position: {x: 2095.98, y: 1693.44}
+     rotation: 281.003
+   - number: 21
+     position: {x: 2368.28, y: 1763.75}
+     rotation: 99.4738
+   - number: 22
+     position: {x: 2313.58, y: 2091.87}
+     rotation: 99.4738
+   - number: 23
+     position: {x: 2282.43, y: 2278.75}
+     rotation: 99.4738
+   - number: 24
+     position: {x: 2465.07, y: 2442.57}
+     rotation: 1.5232
+   - number: 25
+     position: {x: 2515.87, y: 2746.82}
+     rotation: 165.923
+   - number: 26
+     position: {x: 1920.79, y: 2736.32}
+     rotation: 162.923
+   - number: 27
+     position: {x: 952.957, y: 2754.72}
+     rotation: 186.922
+   - number: 28
+     position: {x: 613.266, y: 2750.07}
+     rotation: 186.172
+   - number: 29
+     position: {x: 438.294, y: 2525.88}
+     rotation: 259.069
+   - number: 30
+     position: {x: 310.036, y: 1955.12}
+     rotation: 261.319
+   - number: 31
+     position: {x: 212.346, y: 1549.71}
+     rotation: 258.619
+   - number: 32
+     position: {x: 130.454, y: 1157.01}
+     rotation: 261.319
+   - number: 33
+     position: {x: 187.566, y: 922.885}
+     rotation: 291.917
+   - number: 34
+     position: {x: 245.205, y: 678.493}
+     rotation: 228.17
+   - number: 35
+     position: {x: 317.507, y: 363.963}
+     rotation: 320.116
+   - number: 36
+     position: {x: 903.77, y: 306.203}
+     rotation: 8.35
+
+audio:
+   - file: .\resources\audio\bgMusic.wav
+     ID: MusicBG
+
+
+

@@ -17,7 +17,7 @@ class Ai
 {
 public:
 	Ai();
-	Ai(std::vector<std::unique_ptr<Node>> & nodes);
+	Ai(std::vector<std::unique_ptr<Node>> & nodes, sf::Vector2f & position);
 	~Ai();
 
 	void update(double dt);
@@ -27,26 +27,29 @@ public:
 
 private:
 
-	const int NODE_TOLERANCE = 100.0f;
+	const int NODE_TOLERANCE = 40.0f;
 
 	sf::Texture m_carTex;
 	sf::Sprite m_carSprite;
 
 	float const MAX_FORCE = 10.0f;
-	float const MAX_SPEED = 40.0f;
+
+	float const MAX_SPEED = 26.75f;
+
 
 	int m_currentNode;
 
 	sf::Vector2f m_velocity;
+	
 	float m_rotation;
-
-	float m_speed = 00.0f;
+	float m_speed;
 
 	sf::Vector2f m_steering;
 
 	sf::Vector2f m_followPath();
 
 	std::vector<std::unique_ptr<Node>> &m_nodes;
+	std::vector<sf::CircleShape> m_circles;
 
 	const double PI = atan(1) * 4;
 	const double DEG_TO_RAD = PI / 180.0f;

@@ -1,6 +1,7 @@
 #include "Game.h"
 
-static double const MS_PER_UPDATE = 10.0;
+// Updates per milliseconds
+static sf::Int32 MS_PER_UPDATE = 10.0;;
 
 Game::Game(sf::Font &font, sf::Font &titleFont) :
 	m_titleFont(titleFont),
@@ -29,11 +30,11 @@ Game::~Game()
 
 void Game::run()
 {
-	//music.play();
+	music.play();
+	music.setLoop(true);
 	
 	sf::Clock clock;
 	sf::Int32 lag = 0;
-	m_clock.restart();
 
 	while (m_window.isOpen())
 	{

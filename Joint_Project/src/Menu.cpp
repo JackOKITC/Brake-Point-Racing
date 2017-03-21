@@ -70,6 +70,7 @@ Menu::Menu(sf::Font & font, GameState *gameState) :
 		}
 		else
 		{
+
 			m_labels[i] = new Label(&m_strings[i], &m_font, &sf::Vector2f(355, 100 + (i * 130)), 20);
 		}
 		

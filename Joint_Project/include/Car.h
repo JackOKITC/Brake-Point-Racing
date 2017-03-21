@@ -5,12 +5,13 @@
 #include <iostream>
 #include "Ai.h"
 #include "ResourceManager.h"
+#include "Checkpoint.h"
 
 
 class Car
 {
 public:
-	Car(bool isAi, std::vector<std::unique_ptr<Node>> & m_nodes);
+	Car(bool isAi, std::vector<std::unique_ptr<Node>> & nodes, std::vector<std::unique_ptr<Checkpoint>> &checkpoints, sf::Vector2f & position);
 	~Car();
 
 	void update(Xbox360Controller & controller, double dt);
@@ -30,16 +31,31 @@ private:
 
 	bool m_isAi;
 
+	int m_currentCheckpoint;
+	int m_lap;
+
 	sf::Vector2f m_velocity;
 	float m_rotation;
-	float m_speed = 0.0f;
+	float m_speed;
 
 	Ai *m_aiCar;
 
-	std::vector<std::unique_ptr<Node>> &m_nodes;
+	sf::RectangleShape m_nodePlacement;
+	int m_nodePlacementNumber;
 
+	std::vector<std::unique_ptr<Node>> &m_nodes;
+	std::vector<std::unique_ptr<Checkpoint>> &m_checkpoints;
+	std::vector<sf::RectangleShape> m_checkpointRectangles;
+
+	const double MAX_FORWARD_SPEED = 15;
+	const double MAX_REVERSE_SPEED = -10;
 	const double DEG_TO_RAD = 3.14159 / 180.0f;
-	
+
+	const float CHECKPOINT_WIDTH = 10.0f;
+	const float CHECKPOINT_HEIGHT = 180.0f;
+
+	const int MAX_LAPS = 3;
+
 	/// <summary>
 	/// coefficient of friction from this site.
 	/// http://hyperphysics.phy-astr.gsu.edu/hbase/Mechanics/frictire.html
