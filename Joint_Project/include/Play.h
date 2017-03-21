@@ -13,8 +13,13 @@
 #include "Checkpoint.h"
 #include "RoadTile.h"
 #include <vector>
+<<<<<<< 67cf7a49d7ec959b20e2125e951e4454049a556b
 #include "Widget.h"
 #include "SFML\Graphics.hpp"
+=======
+#include "ResourceManager.h"
+#include "Widget.h"
+>>>>>>> added hud functionality
 
 
 class Play
@@ -27,6 +32,8 @@ public:
 
 	~Play();
 
+
+	const int LABEL_COUNT = 2;
 
 	void update(Xbox360Controller & controller, double dt, bool whichMap);
 	void render(sf::RenderWindow & window);
@@ -62,6 +69,7 @@ private:
 	sf::View m_followPlayer; //private member in class
 	bool m_whichMap;
 
+
 	const int MAX_LAPS = 1;
 	int m_lap;
 
@@ -76,5 +84,6 @@ private:
 
 	Label *m_labels;
 	Label *m_timeLabel;
+
 };
 #endif // !PLAY_H
