@@ -24,6 +24,7 @@ Garage::Garage(sf::Font font, GameState * gameState) :
 		m_cars[i].setTexture(m_carOptions[i]);
 		m_cars[i].setPosition(50, 100 + (i * 100));
 		m_cars[i].setScale(.75,.75);
+		m_cars[i].setColor(m_dim);
 
 		// loading textures from resource manager for upgrade sprites
 		m_upgradeText[i] = ResourceManager::instance().m_holder["Upgrade" + std::to_string(i)];
@@ -39,6 +40,8 @@ Garage::Garage(sf::Font font, GameState * gameState) :
 		m_statLabel[i] = new Label(&m_strings[i], &m_font, &sf::Vector2f(350, 160 + (i * 75)), 15);
 		m_statLabel[i]->loseFocus();
 	}
+
+	m_cars[m_currentCar].setColor(m_highlight);
 
 	// test values
 	int value1 = 5, value2 = 3, value3 = 6, value4 = 8;
@@ -151,7 +154,6 @@ void Garage::checkButton(GamePadState m_gamePadState, Xbox360Controller m_contro
 		}
 	}
 	
-
 	if (m_controller.m_currentState.A && !m_controller.m_previousState.A)
 	{
 		// when the "A" button is pressed and the "cursor" is not currenlty on a stat label/bar switch to the stat selection list
