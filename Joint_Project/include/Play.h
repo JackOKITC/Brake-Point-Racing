@@ -36,7 +36,7 @@ private:
 	static const int MAX_AI = 1;
 	Car * aiCars[MAX_AI];
 
-<<<<<<< HEAD
+
 	std::vector<std::unique_ptr<RoadTile>> m_roadTiles1;
 	std::vector<std::unique_ptr<RoadTile>> m_roadTiles2;
 	std::vector<std::unique_ptr<Node>> m_nodes1;
@@ -45,12 +45,6 @@ private:
 	std::vector<std::unique_ptr<Checkpoint>> m_checkpoints2;
 
 	bool m_callOnce = true;
-=======
-	std::vector<std::unique_ptr<RoadTile>> m_roadTiles;
-	std::vector<std::unique_ptr<Node>> m_nodes;
-	std::vector<std::unique_ptr<Checkpoint>> m_checkpoints;
->>>>>>> cf1e810e1d5d0f95e85ee06315d9782f7c49ebfe
-
 
 	sf::View m_followPlayer; //private member in class
 	bool m_whichMap;

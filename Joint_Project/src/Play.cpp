@@ -17,22 +17,10 @@ Play::Play(GameState *gameState, bool whichMap) :
 	
 	ResourceManager::instance().loadData(m_level);
 	generateNode();
-<<<<<<< HEAD
+
 	generateRoad();
 	generateCheckpoint();
 
-=======
-	generateCheckpoint();
-
-	car = new Car(false, m_nodes, m_checkpoints);
-
-	for (int i = 0; i < MAX_AI; i++)
-	{
-		aiCars[i] = new Car(true, m_nodes, m_checkpoints);
-	}
-
-	m_followPlayer.setCenter(car->m_position);
->>>>>>> cf1e810e1d5d0f95e85ee06315d9782f7c49ebfe
 	m_followPlayer.setSize(450, 300); //in constructor
 
 }
@@ -189,11 +177,3 @@ void Play::generateCheckpoint()
 	}
 }
 
-void Play::generateCheckpoint()
-{
-	for (CheckpointData const &checkpoint : m_level.m_checkpoints)
-	{
-		std::unique_ptr<Checkpoint> checkpoint(new Checkpoint(checkpoint.m_number, checkpoint.m_position));
-		m_checkpoints.push_back(std::move(checkpoint));
-	}
-}

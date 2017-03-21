@@ -88,15 +88,11 @@ struct LevelData
 	std::vector<Road1Data> m_roads1;
 	std::vector<Road2Data> m_roads2;
 	std::vector<BackgroundData> m_bg;
-<<<<<<< HEAD
 	std::vector<Node1Data> m_nodes1;
 	std::vector<Node2Data> m_nodes2;
 	std::vector<Checkpoint1Data> m_checkpoints1;
 	std::vector<Checkpoint2Data> m_checkpoints2;
-=======
-	std::vector<NodeData> m_nodes;
-	std::vector<CheckpointData> m_checkpoints;
->>>>>>> cf1e810e1d5d0f95e85ee06315d9782f7c49ebfe
+
 	std::vector<AudioData> m_sound;
 	std::vector<UpgradeData> m_upgrades;
 };

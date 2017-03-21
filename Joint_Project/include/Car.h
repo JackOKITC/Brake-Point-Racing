@@ -11,11 +11,7 @@
 class Car
 {
 public:
-<<<<<<< HEAD
 	Car(bool isAi, std::vector<std::unique_ptr<Node>> & nodes, std::vector<std::unique_ptr<Checkpoint>> &checkpoints, sf::Vector2f & position);
-=======
-	Car(bool isAi, std::vector<std::unique_ptr<Node>> & nodes, std::vector<std::unique_ptr<Checkpoint>> &checkpoints);
->>>>>>> cf1e810e1d5d0f95e85ee06315d9782f7c49ebfe
 	~Car();
 
 	void update(Xbox360Controller & controller, double dt);
@@ -54,12 +50,10 @@ private:
 	const double MAX_FORWARD_SPEED = 15;
 	const double MAX_REVERSE_SPEED = -10;
 	const double DEG_TO_RAD = 3.14159 / 180.0f;
-<<<<<<< HEAD
+
 	const float CHECKPOINT_WIDTH = 10.0f;
-	const float CHECKPOINT_HEIGHT = 120.0f;
-=======
-	const float CHECKPOINT_TOLERANCE = 50.0f;
->>>>>>> cf1e810e1d5d0f95e85ee06315d9782f7c49ebfe
+	const float CHECKPOINT_HEIGHT = 180.0f;
+
 	const int MAX_LAPS = 3;
 
 	/// <summary>
