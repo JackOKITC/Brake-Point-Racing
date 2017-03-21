@@ -24,20 +24,20 @@ public:
 	void slowCar(bool slow);
 
 	sf::Vector2f m_position;
+	sf::Sprite m_carSprite;
 
 private:
 
 	sf::Texture m_carTex;
-	sf::Sprite m_carSprite;
 	sf::RenderTexture renTex;
 
 	Xbox360Controller * m_controller;
 	int m_currentCheckpoint;
 	int m_lap;
+
 	sf::Vector2f m_velocity;
 	float m_rotation;
 	float m_speed;
-
 
 	//sf::RectangleShape m_nodePlacement;
 	//int m_nodePlacementNumber;
@@ -48,11 +48,8 @@ private:
 	const double MAX_FORWARD_SPEED = 15;
 	const double MAX_REVERSE_SPEED = -10;
 	const double DEG_TO_RAD = 3.14159 / 180.0f;
-
 	const float CHECKPOINT_WIDTH = 10.0f;
 	const float CHECKPOINT_HEIGHT = 180.0f;
-
-	const int MAX_LAPS = 3;
 
 	/// <summary>
 	/// coefficient of friction from this site.

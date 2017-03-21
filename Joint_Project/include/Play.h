@@ -28,6 +28,8 @@ public:
 	void generateNode();
 	void generateCheckpoint();
 
+	void checkCheckpoint();
+
 private:
 	GameState *m_state;
 	Xbox360Controller * m_controller;
@@ -43,11 +45,20 @@ private:
 	std::vector<std::unique_ptr<Node>> m_nodes2;
 	std::vector<std::unique_ptr<Checkpoint>> m_checkpoints1;
 	std::vector<std::unique_ptr<Checkpoint>> m_checkpoints2;
+	std::vector<sf::RectangleShape> m_checkpointRectangles1;
+	std::vector<sf::RectangleShape> m_checkpointRectangles2;
 
 	bool m_callOnce = true;
 	bool m_slowDown = false;
 
 	sf::View m_followPlayer; //private member in class
 	bool m_whichMap;
+
+	const int MAX_LAPS = 3;
+	int m_lap;
+
+	int m_currentCheckpoint;
+	const float CHECKPOINT_WIDTH = 10;
+	const float CHECKPOINT_HEIGHT = 120;
 };
 #endif // !PLAY_H

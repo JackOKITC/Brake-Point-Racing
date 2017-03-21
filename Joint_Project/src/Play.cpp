@@ -26,6 +26,8 @@ Play::Play(GameState *gameState, bool whichMap) :
 		aiCars[i] = new Ai(m_nodes1, sf::Vector2f(0,0));
 	}
 
+	int m_currentCheckpoint = 0;
+
 	m_followPlayer.setSize(450, 300); //in constructor
 
 }
@@ -43,17 +45,39 @@ void Play::update(Xbox360Controller & controller, double dt, bool whichMap)
 		{
 			for (int i = 0; i < MAX_AI; i++)
 			{
-				aiCars[i] = new Ai(m_nodes2, sf::Vector2f(250, 250));
+				aiCars[i] = new Ai(m_nodes2, m_nodes2.at(0)->m_position);
 			}
-			car = new Car(sf::Vector2f(250, 250));
+			car = new Car(m_checkpoints2.at(0)->m_position);
+
+			for (int i = 0; i < m_checkpoints2.size(); i++)
+			{
+				sf::RectangleShape rectangle;
+				m_checkpointRectangles2.push_back(std::move(rectangle));
+				m_checkpointRectangles2.at(i).setOrigin(CHECKPOINT_WIDTH / 2, CHECKPOINT_HEIGHT / 2);
+				m_checkpointRectangles2.at(i).setPosition(m_checkpoints1.at(i)->m_position.x, m_checkpoints1.at(i)->m_position.y);
+				m_checkpointRectangles2.at(i).setRotation(m_checkpoints1.at(i)->m_rotation);
+				m_checkpointRectangles2.at(i).setSize(sf::Vector2f(CHECKPOINT_WIDTH, CHECKPOINT_HEIGHT));
+				m_checkpointRectangles2.at(i).setFillColor(sf::Color(255, 0, 0, 126));
+			}
 		}
 		if (!whichMap)
 		{
 			for (int i = 0; i < MAX_AI; i++)
 			{
-				aiCars[i] = new Ai(m_nodes1, sf::Vector2f(250, 250));
+				aiCars[i] = new Ai(m_nodes1, m_nodes1.at(0)->m_position);
 			}
-			car = new Car(sf::Vector2f(250, 250));
+			car = new Car(m_checkpoints1.at(0)->m_position);
+
+			for (int i = 0; i < m_checkpoints1.size(); i++)
+			{
+				sf::RectangleShape rectangle;
+				m_checkpointRectangles1.push_back(std::move(rectangle));
+				m_checkpointRectangles1.at(i).setOrigin(CHECKPOINT_WIDTH / 2, CHECKPOINT_HEIGHT / 2);
+				m_checkpointRectangles1.at(i).setPosition(m_checkpoints1.at(i)->m_position.x, m_checkpoints1.at(i)->m_position.y);
+				m_checkpointRectangles1.at(i).setRotation(m_checkpoints1.at(i)->m_rotation);
+				m_checkpointRectangles1.at(i).setSize(sf::Vector2f(CHECKPOINT_WIDTH, CHECKPOINT_HEIGHT));
+				m_checkpointRectangles1.at(i).setFillColor(sf::Color(255, 0, 0, 126));
+			}
 		}
 		m_callOnce = false;
 	}
@@ -92,6 +116,7 @@ void Play::update(Xbox360Controller & controller, double dt, bool whichMap)
 	}
 
 	car->slowCar(m_slowDown);
+	checkCheckpoint();
 }
 
 void Play::render(sf::RenderWindow & window)
@@ -108,9 +133,9 @@ void Play::render(sf::RenderWindow & window)
 					roadTile->render(window);
 				}
 			}
+			window.draw(m_checkpointRectangles1.at(m_currentCheckpoint));
 		}
-
-		if (m_whichMap)
+		else if (m_whichMap)
 		{
 			for (std::unique_ptr<RoadTile> &roadTile : m_roadTiles2)
 			{
@@ -119,7 +144,10 @@ void Play::render(sf::RenderWindow & window)
 					roadTile->render(window);
 				}
 			}
+			window.draw(m_checkpointRectangles2.at(m_currentCheckpoint));
 		}
+
+
 
 		car->render(window);
 
@@ -184,3 +212,48 @@ void Play::generateCheckpoint()
 	}
 }
 
+void Play::checkCheckpoint()
+{
+	if (m_whichMap)
+	{
+		if (car->m_carSprite.getGlobalBounds().intersects(m_checkpointRectangles2.at(m_currentCheckpoint).getGlobalBounds()))
+		{
+			m_currentCheckpoint++;
+			std::cout << m_currentCheckpoint << std::endl;
+
+			if (m_currentCheckpoint >= m_checkpoints2.size())
+			{
+				m_currentCheckpoint = 0;
+				if (m_lap < MAX_LAPS)
+				{
+					m_lap++;
+				}
+				else if (m_lap = MAX_LAPS)
+				{
+					*m_state = GameState::PRERACE_STATE;
+				}
+			}
+		}
+	}
+	else if (!m_whichMap)
+	{
+		if (car->m_carSprite.getGlobalBounds().intersects(m_checkpointRectangles1.at(m_currentCheckpoint).getGlobalBounds()))
+		{
+			m_currentCheckpoint++;
+			std::cout << m_currentCheckpoint << std::endl;
+
+			if (m_currentCheckpoint >= m_checkpoints1.size())
+			{
+				m_currentCheckpoint = 0;
+				if (m_lap < MAX_LAPS)
+				{
+					m_lap++;
+				}
+				else if (m_lap = MAX_LAPS)
+				{
+					*m_state = GameState::PRERACE_STATE;
+				}
+			}
+		}
+	}
+}

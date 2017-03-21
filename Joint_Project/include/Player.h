@@ -15,8 +15,6 @@ public:
 
 	Car *m_playerCar[3];
 
-protected:
-
 private:
 
 };
