@@ -65,18 +65,33 @@ void RoadTile::whichTile(sf::Vector2f carPos)
 		carIsOn = false;
 }
 
-void RoadTile::checkOffRoad(sf::Vector2f carPos)
+bool RoadTile::checkOffRoad(sf::Vector2f carPos, bool whichMap)
 {
 	sf::Vector2f relativePos = m_roadSprite.getPosition();
 	relativePos = carPos - relativePos;
 
-	//if (m_collisonImage->getPixel(relativePos.x, relativePos.y).g > 110)
-	//{
-	//	std::cout << "Slow Down" << (int)relativePos.x << "," << (int)relativePos.y << std::endl;
-	//}
-	//else
-	//{
-	//	std::cout << "yay" << (int)relativePos.x << "," << (int)relativePos.y << std::endl;
-	//}
+	if(!whichMap)
+	{
+		if (m_collisonImage->getPixel(relativePos.x, relativePos.y).g > 110 && m_collisonImage->getPixel(relativePos.x, relativePos.y).r < 100)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	else
+	{
+		if(m_collisonImage->getPixel(relativePos.x, relativePos.y).r > 230)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+		
+	}
 
 }

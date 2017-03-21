@@ -186,3 +186,11 @@ void Car::moveCar(Xbox360Controller & controller)
 		}
 	}
 }
+
+void Car::slowCar(bool slow)
+{
+	if (slow && m_speed > 5)
+	{
+		m_speed--;
+	}
+}

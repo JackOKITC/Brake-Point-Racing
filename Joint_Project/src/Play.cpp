@@ -68,7 +68,7 @@ void Play::update(Xbox360Controller & controller, double dt, bool whichMap)
 			roadTile->whichTile(car->m_position);
 			if (roadTile->carIsOn)
 			{
-				roadTile->checkOffRoad(car->m_position);
+				m_slowDown = roadTile->checkOffRoad(car->m_position, m_whichMap);
 			}
 		}
 	}
@@ -81,10 +81,12 @@ void Play::update(Xbox360Controller & controller, double dt, bool whichMap)
 			roadTile->whichTile(car->m_position);
 			if (roadTile->carIsOn)
 			{
-				roadTile->checkOffRoad(car->m_position);
+				m_slowDown = roadTile->checkOffRoad(car->m_position, m_whichMap);
 			}
 		}
 	}
+
+	car->slowCar(m_slowDown);
 }
 
 void Play::render(sf::RenderWindow & window)

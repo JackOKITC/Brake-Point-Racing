@@ -19,6 +19,8 @@ public:
 
 	void moveCar(Xbox360Controller & controller);
 
+	void slowCar(bool slow);
+
 	sf::Vector2f m_position;
 
 private:

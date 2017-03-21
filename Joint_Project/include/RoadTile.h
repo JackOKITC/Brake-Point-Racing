@@ -20,7 +20,7 @@ public:
 	sf::Vector2f m_position;
 
 	void whichTile(sf::Vector2f carPos); // Function to find out which tile the car is on
-	void checkOffRoad(sf::Vector2f carPos);
+	bool checkOffRoad(sf::Vector2f carPos, bool whichMap);
 
 	bool carIsOn = false;
 
