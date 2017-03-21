@@ -1,9 +1,10 @@
 #include "Car.h"
 
 
-Car::Car()
+Car::Car(sf::Vector2f position)
 {
-		m_position = sf::Vector2f(100, 300);
+		m_carTex = ResourceManager::instance().m_holder["Bus0"];
+		m_carSprite.setTexture(m_carTex);
 		m_velocity = sf::Vector2f(0, 0);
 		m_rotation = 45.0f;
 
@@ -23,8 +24,6 @@ Car::~Car()
 void Car::update(Xbox360Controller & controller, double dt)
 {
 		moveCar(controller);
-		m_nodePlacement.setPosition(m_position);
-		m_nodePlacement.setRotation(m_rotation);
 		m_carSprite.setPosition(m_position);
 		m_carSprite.setRotation(m_rotation);
 
@@ -35,7 +34,6 @@ void Car::update(Xbox360Controller & controller, double dt)
 
 void Car::render(sf::RenderWindow & window)
 {
-
 		window.draw(m_carSprite);
 }
 
@@ -118,33 +116,33 @@ void Car::moveCar(Xbox360Controller & controller)
 		}
 	}
 
-	if (controller.m_currentState.A && !controller.m_previousState.A)
-	{
-		m_nodePlacementNumber++;
-		std::cout << "   - number: " << m_nodePlacementNumber << std::endl;
-		std::cout << "     position: {x: " << m_position.x << ", y: " << m_position.y << "}" << std::endl;
-		std::cout << "     rotation: " << m_rotation << std::endl;
-	}
-	
+	//if (controller.m_currentState.A && !controller.m_previousState.A)
+	//{
+	//	m_nodePlacementNumber++;
+	//	std::cout << "   - number: " << m_nodePlacementNumber << std::endl;
+	//	std::cout << "     position: {x: " << m_position.x << ", y: " << m_position.y << "}" << std::endl;
+	//	std::cout << "     rotation: " << m_rotation << std::endl;
+	//}
+	//
 
-	if (m_carSprite.getGlobalBounds().intersects(m_checkpointRectangles.at(m_currentCheckpoint).getGlobalBounds()))
-	{
-		m_currentCheckpoint++;
-		std::cout << m_currentCheckpoint << std::endl;
+	//if (m_carSprite.getGlobalBounds().intersects(m_checkpointRectangles.at(m_currentCheckpoint).getGlobalBounds()))
+	//{
+	//	m_currentCheckpoint++;
+	//	std::cout << m_currentCheckpoint << std::endl;
 
-		if (m_currentCheckpoint >= m_checkpoints.size())
-		{
-			m_currentCheckpoint = 0;
-			if (m_lap < MAX_LAPS)
-			{
-				m_lap++;
-			}
-			else if (m_lap = MAX_LAPS)
-			{
-				//finished the race.
-			}
-		}
-	}
+	//	if (m_currentCheckpoint >= m_checkpoints.size())
+	//	{
+	//		m_currentCheckpoint = 0;
+	//		if (m_lap < MAX_LAPS)
+	//		{
+	//			m_lap++;
+	//		}
+	//		else if (m_lap = MAX_LAPS)
+	//		{
+	//			//finished the race.
+	//		}
+	//	}
+	//}
 }
 
 void Car::slowCar(bool slow)

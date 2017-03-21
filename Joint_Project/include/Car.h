@@ -11,7 +11,8 @@
 class Car
 {
 public:
-	Car();
+
+	Car(sf::Vector2f position);
 	Car(sf::Texture &carTex, int brake, int handling, int acceleration);
 	~Car();
 
@@ -31,18 +32,18 @@ private:
 	sf::RenderTexture renTex;
 
 	Xbox360Controller * m_controller;
-
 	int m_currentCheckpoint;
 	int m_lap;
 	sf::Vector2f m_velocity;
 	float m_rotation;
 	float m_speed;
 
-	sf::RectangleShape m_nodePlacement;
-	int m_nodePlacementNumber;
 
-	std::vector<std::unique_ptr<Checkpoint>> &m_checkpoints;
-	std::vector<sf::RectangleShape> m_checkpointRectangles;
+	//sf::RectangleShape m_nodePlacement;
+	//int m_nodePlacementNumber;
+
+	//std::vector<std::unique_ptr<Checkpoint>> &m_checkpoints;
+	//std::vector<sf::RectangleShape> m_checkpointRectangles;
 
 	const double MAX_FORWARD_SPEED = 15;
 	const double MAX_REVERSE_SPEED = -10;

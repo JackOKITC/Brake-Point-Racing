@@ -14,7 +14,7 @@ Play::Play(GameState *gameState, bool whichMap) :
 	{
 		std::cout << "Level not loaded" << std::endl;
 	}
-	
+
 	ResourceManager::instance().loadData(m_level);
 	generateNode();
 	generateRoad();
@@ -23,7 +23,7 @@ Play::Play(GameState *gameState, bool whichMap) :
 
 	for (int i = 0; i < MAX_AI; i++)
 	{
-		aiCars[i] = new Ai(m_nodes, sf::Vector2f(0,0));
+		aiCars[i] = new Ai(m_nodes1, sf::Vector2f(0,0));
 	}
 
 	m_followPlayer.setSize(450, 300); //in constructor
@@ -43,17 +43,17 @@ void Play::update(Xbox360Controller & controller, double dt, bool whichMap)
 		{
 			for (int i = 0; i < MAX_AI; i++)
 			{
-				aiCars[i] = new Car(true, m_nodes2, m_checkpoints2, m_nodes2.at(0)->m_position);
+				aiCars[i] = new Ai(m_nodes2, sf::Vector2f(250, 250));
 			}
-			car = new Car(false, m_nodes2, m_checkpoints2, m_nodes2.at(0)->m_position);
+			car = new Car(sf::Vector2f(250, 250));
 		}
 		if (!whichMap)
 		{
 			for (int i = 0; i < MAX_AI; i++)
 			{
-				aiCars[i] = new Car(true, m_nodes1, m_checkpoints1, m_nodes1.at(0)->m_position);
+				aiCars[i] = new Ai(m_nodes1, sf::Vector2f(250, 250));
 			}
-			car = new Car(false, m_nodes1, m_checkpoints1, m_nodes1.at(0)->m_position);
+			car = new Car(sf::Vector2f(250, 250));
 		}
 		m_callOnce = false;
 	}
