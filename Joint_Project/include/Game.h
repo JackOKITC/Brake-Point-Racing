@@ -10,6 +10,7 @@
 #include "Garage.h"
 #include "Splash.h"
 #include "PreRace.h"
+#include "EndScreen.h"
 #include "GameState.h"
 #include <iostream>
 #include "ResourceManager.h"
@@ -46,6 +47,7 @@ private:
 	Splash *m_splashScreen;
 	Play *m_playScreen;
 	PreRace *m_preRaceScreen;
+	EndScreen *m_endScreen;
 
 	sf::SoundBuffer sBuffer;
 	sf::Sound music;

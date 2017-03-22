@@ -54,11 +54,13 @@ private:
 	sf::View m_followPlayer; //private member in class
 	bool m_whichMap;
 
-	const int MAX_LAPS = 3;
+	const int MAX_LAPS = 1;
 	int m_lap;
 
 	int m_currentCheckpoint;
 	const float CHECKPOINT_WIDTH = 10;
 	const float CHECKPOINT_HEIGHT = 120;
+
+	bool m_gameOver = false;
 };
 #endif // !PLAY_H
