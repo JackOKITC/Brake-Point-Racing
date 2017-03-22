@@ -32,6 +32,7 @@ Ai::Ai(std::vector<std::unique_ptr<Node>> & nodes, sf::Vector2f & position) :
 		m_circles.at(i).setRadius(NODE_TOLERANCE);
 		m_circles.at(i).setFillColor(sf::Color(0,0,255,126));
 	}
+	
 }
 
 Ai::~Ai()
@@ -96,11 +97,20 @@ void Ai::render(sf::RenderWindow & window)
 sf::Vector2f Ai::m_followPath()
 {
 	sf::Vector2f dist;
+	std::random_device rd;
+	std::mt19937 gen(rd());
+	std::uniform_int_distribution<> dis(1, 359);
+	if (m_setCarCounter < 2)
+	{
+		m_random = dis(gen);
+		m_setCarCounter++;
+	}
 
-	dist = m_nodes.at(m_currentNode)->m_position - m_position;
+	dist = sf::Vector2f(m_nodes.at(m_currentNode)->m_position.x + (NODE_TOLERANCE * std::sin(m_random)), m_nodes.at(m_currentNode)->m_position.y + (NODE_TOLERANCE * std::cos(m_random))) - m_position;
 
 	if ((dist.x < NODE_TOLERANCE && dist.y < NODE_TOLERANCE) && (dist.x > -NODE_TOLERANCE && dist.y > -NODE_TOLERANCE))
 	{
+		m_setCarCounter = 0;
 		m_currentNode++;
 
 		if (m_currentNode >= m_nodes.size())
@@ -141,9 +151,9 @@ const sf::CircleShape Ai::findMostThreateningObstacle(sf::Sprite carSprite)
 	sf::CircleShape mostThreatening = sf::CircleShape();
 	mostThreatening.setRadius(0.0f);
 
-	sf::CircleShape playerCircle = sf::CircleShape(5.0f);
-	playerCircle.setPosition(carSprite.getPosition());
+	sf::CircleShape playerCircle = sf::CircleShape(20.0f);
 	playerCircle.setOrigin(carSprite.getOrigin());
+	playerCircle.setPosition(carSprite.getPosition());
 
 	bool collision = Math::lineIntersectsCircle(m_ahead, m_halfAhead, playerCircle);
 	
