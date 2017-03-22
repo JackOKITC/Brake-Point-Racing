@@ -12,7 +12,7 @@ Player::Player(LevelData &level)
 		m_playerCar[i] = new Car(m_temp, level.m_car.at(i).brake, level.m_car.at(i).handling, level.m_car.at(i).acceleration);
 	}
 
-	m_currentCar = 2;
+	m_currentCar = 0;
 }
 
 Player::~Player()

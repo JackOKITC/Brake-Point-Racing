@@ -278,10 +278,19 @@ upgrade:
 car:
    - file: .\resources\images\cars\Bus0.png
      ID: Bus0
+     Brake: 5
+     Handling: 7
+     Acceleration: 3
    - file: .\resources\images\cars\Bus1.png
      ID: Bus1
+     Brake: 6
+     Handling: 4
+     Acceleration: 5
    - file: .\resources\images\cars\Bus2.png
      ID: Bus2
+     Brake: 3
+     Handling: 5
+     Acceleration: 7
 
 audio:
    - file: .\resources\audio\bgMusic.wav
