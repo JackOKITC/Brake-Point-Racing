@@ -23,7 +23,7 @@ class Play
 public:
 	Play();
 
-	Play(GameState *gameState, bool whichMap, Player *player, LevelData *level);
+	Play(sf::Font & font, GameState *gameState, bool whichMap, Player *player, LevelData *level);
 
 	~Play();
 
@@ -70,7 +70,6 @@ private:
 	const float CHECKPOINT_HEIGHT = 120;
 
 	bool m_gameOver = false;
-
 	std::stringstream ss;
 	std::string count;
 
