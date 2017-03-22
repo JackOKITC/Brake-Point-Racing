@@ -93,5 +93,4 @@ bool RoadTile::checkOffRoad(sf::Vector2f carPos, bool whichMap)
 		}
 		
 	}
-
 }
