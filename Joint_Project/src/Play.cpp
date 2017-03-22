@@ -20,8 +20,8 @@ Play::Play(GameState *gameState, bool whichMap) :
 	generateRoad();
 	generateCheckpoint();
 
-	int m_currentCheckpoint = 0;
-
+	m_currentCheckpoint = 0;
+	m_lap = 0;
 	m_followPlayer.setSize(450, 300); //in constructor
 
 }
@@ -48,8 +48,8 @@ void Play::update(Xbox360Controller & controller, double dt, bool whichMap)
 				sf::RectangleShape rectangle;
 				m_checkpointRectangles2.push_back(std::move(rectangle));
 				m_checkpointRectangles2.at(i).setOrigin(CHECKPOINT_WIDTH / 2, CHECKPOINT_HEIGHT / 2);
-				m_checkpointRectangles2.at(i).setPosition(m_checkpoints1.at(i)->m_position.x, m_checkpoints1.at(i)->m_position.y);
-				m_checkpointRectangles2.at(i).setRotation(m_checkpoints1.at(i)->m_rotation);
+				m_checkpointRectangles2.at(i).setPosition(m_checkpoints2.at(i)->m_position.x, m_checkpoints2.at(i)->m_position.y);
+				m_checkpointRectangles2.at(i).setRotation(m_checkpoints2.at(i)->m_rotation);
 				m_checkpointRectangles2.at(i).setSize(sf::Vector2f(CHECKPOINT_WIDTH, CHECKPOINT_HEIGHT));
 				m_checkpointRectangles2.at(i).setFillColor(sf::Color(255, 0, 0, 126));
 			}
@@ -98,7 +98,6 @@ void Play::update(Xbox360Controller & controller, double dt, bool whichMap)
 
 	if (m_whichMap)
 	{
-
 		for (std::unique_ptr<RoadTile> &roadTile : m_roadTiles2)
 		{
 			roadTile->whichTile(car->m_position);
@@ -215,16 +214,16 @@ void Play::checkCheckpoint()
 			m_currentCheckpoint++;
 			std::cout << m_currentCheckpoint << std::endl;
 
-			if (m_currentCheckpoint >= m_checkpoints2.size())
+			if (m_currentCheckpoint >= m_checkpoints2.size() || m_currentCheckpoint > 35)
 			{
 				m_currentCheckpoint = 0;
 				if (m_lap < MAX_LAPS)
 				{
 					m_lap++;
 				}
-				else if (m_lap = MAX_LAPS)
+				if (m_lap == MAX_LAPS)
 				{
-					*m_state = GameState::PRERACE_STATE;
+					*m_state = GameState::END_STATE;
 				}
 			}
 		}
@@ -236,16 +235,17 @@ void Play::checkCheckpoint()
 			m_currentCheckpoint++;
 			std::cout << m_currentCheckpoint << std::endl;
 
-			if (m_currentCheckpoint >= m_checkpoints1.size())
+		
+			if (m_currentCheckpoint >= (m_checkpoints1.size()) || m_currentCheckpoint > 25)
 			{
 				m_currentCheckpoint = 0;
 				if (m_lap < MAX_LAPS)
 				{
 					m_lap++;
 				}
-				else if (m_lap = MAX_LAPS)
+				if (m_lap == MAX_LAPS)
 				{
-					*m_state = GameState::PRERACE_STATE;
+					*m_state = GameState::END_STATE;
 				}
 			}
 		}
