@@ -13,7 +13,6 @@
 #include "EndScreen.h"
 #include "GameState.h"
 #include <iostream>
-#include "ResourceManager.h"
 #include "SFML\Audio.hpp"
 
 class Game
@@ -23,7 +22,6 @@ public:
 	~Game();
 
 	void run();
-
 
 private:
 	
@@ -38,7 +36,6 @@ private:
 	sf::Font m_titleFont;
 
 	GameState *m_currentGameState;
-
 	Xbox360Controller m_controller;
 
 	Menu *m_menuScreen;

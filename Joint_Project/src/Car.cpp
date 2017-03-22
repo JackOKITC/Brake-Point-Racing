@@ -1,22 +1,21 @@
 #include "Car.h"
 
-
-Car::Car(sf::Vector2f position) :
-	m_position(position)
+Car::Car()
 {
-		m_carTex = ResourceManager::instance().m_holder["Bus0"];
-		m_carSprite.setTexture(m_carTex);
-		m_velocity = sf::Vector2f(0, 0);
-		m_rotation = 45.0f;
-
-		m_carSprite.setPosition(m_position);
-		m_carSprite.scale(0.2, 0.2);
-
-		m_carSprite.setRotation(m_rotation);
-
-		m_carSprite.setOrigin(m_carSprite.getLocalBounds().width / 2, m_carSprite.getLocalBounds().height / 2);
 }
 
+Car::Car(sf::Texture & carTex, int brake, int handling, int acceleration)
+{
+	m_carTex = carTex;
+	m_carSprite.setTexture(m_carTex);
+	m_velocity = sf::Vector2f(0, 0);
+	m_deceleration = brake;
+	m_handling = handling;
+	m_acceleration = acceleration;
+
+	m_carSprite.setOrigin(m_carSprite.getLocalBounds().width / 2, m_carSprite.getLocalBounds().height / 2);
+	m_carSprite.setScale(.25, .25);
+}
 
 Car::~Car() 
 {
@@ -28,10 +27,8 @@ void Car::update(Xbox360Controller & controller, double dt)
 		m_carSprite.setPosition(m_position);
 		m_carSprite.setRotation(m_rotation);
 
-
 		m_position = sf::Vector2f(m_position.x + std::cos(DEG_TO_RAD  * (m_rotation)) * m_speed * (dt / 1000),
 								  m_position.y + std::sin(DEG_TO_RAD * (m_rotation)) * m_speed * (dt / 1000));
-
 }
 
 void Car::render(sf::RenderWindow & window)
@@ -123,4 +120,10 @@ void Car::slowCar(bool slow)
 	{
 		m_speed--;
 	}
+}
+
+void Car::initCar()
+{
+	m_rotation = 45;
+	m_velocity = sf::Vector2f(0, 0);
 }

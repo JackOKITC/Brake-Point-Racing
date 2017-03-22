@@ -16,6 +16,9 @@ Play::Play(GameState *gameState, bool whichMap) :
 	}
 
 	ResourceManager::instance().loadData(m_level);
+	m_player = new Player(m_level);
+	m_currentCar = m_player->m_currentCar;
+
 	generateNode();
 	generateRoad();
 	
@@ -47,7 +50,6 @@ void Play::update(Xbox360Controller & controller, double dt, bool whichMap)
 			{
 				aiCars[i] = new Ai(m_nodes2, m_nodes2.at(0)->m_position);
 			}
-			car = new Car(m_checkpoints2.at(0)->m_position);
 
 			for (int i = 0; i < m_checkpoints2.size(); i++)
 			{
@@ -66,7 +68,7 @@ void Play::update(Xbox360Controller & controller, double dt, bool whichMap)
 			{
 				aiCars[i] = new Ai(m_nodes1, m_nodes1.at(0)->m_position);
 			}
-			car = new Car(m_checkpoints1.at(0)->m_position);
+			
 
 			for (int i = 0; i < m_checkpoints1.size(); i++)
 			{
@@ -81,8 +83,8 @@ void Play::update(Xbox360Controller & controller, double dt, bool whichMap)
 		}
 		m_callOnce = false;
 	}
-	m_followPlayer.setCenter(car->m_position);
-	car->update(controller, dt);
+	m_followPlayer.setCenter(m_player->m_playerCar[m_currentCar]->m_position);
+	m_player->update(dt, &controller);
 	m_whichMap = whichMap;
 
 
@@ -94,10 +96,10 @@ void Play::update(Xbox360Controller & controller, double dt, bool whichMap)
 	{
 		for (std::unique_ptr<RoadTile> &roadTile : m_roadTiles1)
 		{
-			roadTile->whichTile(car->m_position);
+			roadTile->whichTile(m_player->m_playerCar[m_currentCar]->m_position);
 			if (roadTile->carIsOn)
 			{
-				m_slowDown = roadTile->checkOffRoad(car->m_position, m_whichMap);
+				m_slowDown = roadTile->checkOffRoad(m_player->m_playerCar[m_currentCar]->m_position, m_whichMap);
 			}
 		}
 	}
@@ -106,16 +108,15 @@ void Play::update(Xbox360Controller & controller, double dt, bool whichMap)
 	{
 		for (std::unique_ptr<RoadTile> &roadTile : m_roadTiles2)
 		{
-			roadTile->whichTile(car->m_position);
+			roadTile->whichTile(m_player->m_playerCar[m_currentCar]->m_position);
 			if (roadTile->carIsOn)
 			{
-				m_slowDown = roadTile->checkOffRoad(car->m_position, m_whichMap);
+				m_slowDown = roadTile->checkOffRoad(m_player->m_playerCar[m_currentCar]->m_position, m_whichMap);
 			}
 		}
 	}
 
-	car->slowCar(m_slowDown);
-	checkCheckpoint();
+	m_player->m_playerCar[m_currentCar]->slowCar(m_slowDown);
 }
 
 void Play::render(sf::RenderWindow & window)
@@ -127,7 +128,7 @@ void Play::render(sf::RenderWindow & window)
 		{
 			for (std::unique_ptr<RoadTile> &roadTile : m_roadTiles1)
 			{
-				if (roadTile->culling(car->m_position, window))
+				if (roadTile->culling(m_player->m_playerCar[m_currentCar]->m_position, window))
 				{
 					roadTile->render(window);
 				}
@@ -138,7 +139,7 @@ void Play::render(sf::RenderWindow & window)
 		{
 			for (std::unique_ptr<RoadTile> &roadTile : m_roadTiles2)
 			{
-				if (roadTile->culling(car->m_position, window))
+				if (roadTile->culling(m_player->m_playerCar[m_currentCar]->m_position, window))
 				{
 					roadTile->render(window);
 				}
@@ -146,16 +147,14 @@ void Play::render(sf::RenderWindow & window)
 			window.draw(m_checkpointRectangles2.at(m_currentCheckpoint));
 		}
 
-
-
-		car->render(window);
+		m_player->render(window);
 
 		for (int i = 0; i < MAX_AI; i++)
 		{
 			aiCars[i]->render(window);
 		}
 
-		m_followPlayer.setCenter(car->m_position);
+		m_followPlayer.setCenter(m_player->m_playerCar[m_currentCar]->m_position);
 		window.setView(m_followPlayer);
 	}
 }
@@ -215,7 +214,7 @@ void Play::checkCheckpoint()
 {
 	if (m_whichMap)
 	{
-		if (car->m_carSprite.getGlobalBounds().intersects(m_checkpointRectangles2.at(m_currentCheckpoint).getGlobalBounds()))
+		if (m_player->m_playerCar[m_currentCar]->m_carSprite.getGlobalBounds().intersects(m_checkpointRectangles2.at(m_currentCheckpoint).getGlobalBounds()))
 		{
 			m_currentCheckpoint++;
 			std::cout << m_currentCheckpoint << std::endl;
@@ -236,7 +235,7 @@ void Play::checkCheckpoint()
 	}
 	else if (!m_whichMap)
 	{
-		if (car->m_carSprite.getGlobalBounds().intersects(m_checkpointRectangles1.at(m_currentCheckpoint).getGlobalBounds()))
+		if (m_player->m_playerCar[m_currentCar]->m_carSprite.getGlobalBounds().intersects(m_checkpointRectangles1.at(m_currentCheckpoint).getGlobalBounds()))
 		{
 			m_currentCheckpoint++;
 			std::cout << m_currentCheckpoint << std::endl;

@@ -3,16 +3,13 @@
 
 #include "Xbox360Controller.h"
 #include <iostream>
-#include "Ai.h"
-#include "ResourceManager.h"
 #include "Checkpoint.h"
-
 
 class Car
 {
 public:
 
-	Car(sf::Vector2f position);
+	Car();
 	Car(sf::Texture &carTex, int brake, int handling, int acceleration);
 	~Car();
 
@@ -20,8 +17,8 @@ public:
 	void render(sf::RenderWindow & window);
 
 	void moveCar(Xbox360Controller & controller);
-
 	void slowCar(bool slow);
+	void initCar();
 
 	sf::Vector2f m_position;
 	sf::Sprite m_carSprite;
@@ -44,6 +41,10 @@ private:
 
 	//std::vector<std::unique_ptr<Checkpoint>> &m_checkpoints;
 	//std::vector<sf::RectangleShape> m_checkpointRectangles;
+
+	float m_handling;
+	float m_deceleration;
+	float m_acceleration;
 
 	const double MAX_FORWARD_SPEED = 15;
 	const double MAX_REVERSE_SPEED = -10;
