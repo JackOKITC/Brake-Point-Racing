@@ -17,13 +17,14 @@
 
 class Play
 {
+	const sf::Time TIME_PER_UPDATE = sf::microseconds(1000);
 public:
 	Play();
 	Play(sf::Font & font, GameState *gameState, bool whichMap);
 	~Play();
 	LevelData m_level;
 
-	const int LABEL_COUNT = 2;
+	const int LABEL_COUNT = 1;
 
 	void update(Xbox360Controller & controller, double dt, bool whichMap);
 	void render(sf::RenderWindow & window);
@@ -47,14 +48,12 @@ private:
 	sf::View m_followPlayer; //private member in class
 	bool m_whichMap;
 
-	int m_time;
-	int m_pos;
+	sf::Time currentTime;
+	double m_time;
+
 	sf::Font m_font;
-	std::string m_strings[2] = { "Time: " + m_time, "Position: " + m_pos };
+	std::string time;
 
-	Label *m_labels[2];
-
-	
-
+	Label *m_labels[1];
 };
 #endif // !PLAY_H

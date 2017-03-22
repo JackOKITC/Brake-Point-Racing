@@ -10,6 +10,9 @@ Play::Play(sf::Font & font, GameState *gameState, bool whichMap) :
 {
 	m_state = gameState;	
 
+	m_time = 0.0;
+
+	time = std::string("Time " + std::to_string(m_time));
 	
 	int currentLevel = 1;
 	if (!LevelLoader::load(currentLevel, m_level))
@@ -33,7 +36,7 @@ Play::Play(sf::Font & font, GameState *gameState, bool whichMap) :
 	
 	for (int i = 0; i < LABEL_COUNT; i++)
 	{
-		m_labels[i] = new Label(&m_strings[i], &m_font, &sf::Vector2f(m_followPlayer.getCenter()), 10, sf::Color(0, 255, 0));
+		m_labels[i] = new Label(&time, &m_font, &sf::Vector2f(m_followPlayer.getCenter()), 10, sf::Color(0, 255, 0));
 	}
 
 }
@@ -77,12 +80,12 @@ void Play::update(Xbox360Controller & controller, double dt, bool whichMap)
 			}
 		}
 	}
-
-	sf::Vector2f memes = sf::Vector2f(100, 100);
-
+	currentTime += TIME_PER_UPDATE;
+	m_time = currentTime.asSeconds();
 	for (int i = 0; i < LABEL_COUNT; i++)
 	{
-		m_labels[i] = new Label(&m_strings[i], &m_font, &sf::Vector2f(m_followPlayer.getCenter() - sf::Vector2f(175, 120 - (i* 10))), 10, sf::Color(0, 255, 0));
+		m_labels[i]->updatePosition(m_followPlayer.getCenter().x - 185, m_followPlayer.getCenter().y - 140);
+		m_labels[i]->updateText(m_time);
 	}
 }
 
