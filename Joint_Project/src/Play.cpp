@@ -7,12 +7,17 @@ Play::Play()
 Play::Play(GameState *gameState, bool whichMap, Player *player, LevelData *level) :
 	m_whichMap(whichMap)
 {
-
 	m_state = gameState;
 	m_level = *level;
 	m_player = player;
 
+	m_state = gameState;	
+	m_time = 0.0;
+
+	time = std::string("Time: ");
 	
+	ss << m_time;
+
 	int currentLevel = 1;
 	if (!LevelLoader::load(currentLevel, m_level))
 	{
@@ -27,13 +32,18 @@ Play::Play(GameState *gameState, bool whichMap, Player *player, LevelData *level
 
 	m_currentCheckpoint = 0;
 	m_lap = 0;
+
+	//for (int i = 0; i < MAX_AI; i++)
+	//{ 
+	//	aiCars[i] = new Car(true, m_nodes);
+	//}
+
+	m_followPlayer.setCenter(car->m_position);
+
 	m_followPlayer.setSize(450, 300); //in constructor
 	
-	for (int i = 0; i < LABEL_COUNT; i++)
-	{
-		m_labels[i] = new Label(&time, &m_font, &sf::Vector2f(m_followPlayer.getCenter()), 10, sf::Color(0, 255, 0));
-	}
-
+	m_labels = new Label(&time, &m_font, &sf::Vector2f(0, 0), 10, sf::Color(0, 255, 0));
+	m_timeLabel = new Label(&time, &m_font, &sf::Vector2f(0, 0), 10, sf::Color(0, 255, 0));
 }
 
 Play::~Play()
@@ -87,9 +97,15 @@ void Play::update(Xbox360Controller & controller, double dt, bool whichMap)
 	}
 	m_followPlayer.setCenter(m_player->m_playerCar[m_currentCar]->m_position);
 	m_player->update(dt, &controller);
+
 	m_whichMap = whichMap;
 
-	
+	currentTime += TIME_PER_UPDATE;
+
+	if (m_controller->m_currentState.Start)
+	{
+		*m_state = GameState::MENU_STATE;
+	}
 
 	for (int i = 0; i < MAX_AI; i++)
 	{
@@ -122,11 +138,15 @@ void Play::update(Xbox360Controller & controller, double dt, bool whichMap)
 
 	m_player->m_playerCar[m_currentCar]->slowCar(m_slowDown);
 
-	for (int i = 0; i < LABEL_COUNT; i++)
-	{
-		m_labels[i]->updatePosition(m_followPlayer.getCenter().x - 185, m_followPlayer.getCenter().y - 140);
-		m_labels[i]->updateText(m_time);
-	}
+
+	
+	m_time = currentTime.asSeconds();
+	m_labels->updatePosition(m_followPlayer.getCenter().x - 185, m_followPlayer.getCenter().y - 140);
+	
+	m_timeLabel->updatePosition(m_followPlayer.getCenter().x - 185, m_followPlayer.getCenter().y - 110);
+	m_timeLabel->updateText(ss);
+
+	std::cout << m_time << std::endl;
 }
 
 void Play::render(sf::RenderWindow & window)
@@ -160,11 +180,8 @@ void Play::render(sf::RenderWindow & window)
 
 	m_player->render(window);
 
-	for (int i = 0; i < LABEL_COUNT; i++)
-	{
-		m_labels[i]->render(window);
-	}
-
+	m_labels->render(window);
+	m_timeLabel->render(window);
 	car->render(window);
 
 

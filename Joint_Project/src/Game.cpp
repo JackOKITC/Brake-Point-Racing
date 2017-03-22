@@ -23,9 +23,7 @@ Game::Game(sf::Font &font, sf::Font &titleFont) :
 
 	m_currentGameState = new GameState(GameState::SPLASH_STATE);
 	m_preRaceScreen = new PreRace(m_titleFont, m_currentGameState);
-
 	m_playScreen = new Play(m_currentGameState, m_preRaceScreen->m_whichLabel, m_player, &m_level);
-
 	m_splashScreen = new Splash(m_currentGameState, m_titleFont);
 	m_menuScreen = new Menu(m_titleFont, m_currentGameState);
 	m_upgradeScreen = new Garage(m_titleFont, m_currentGameState);
@@ -35,6 +33,8 @@ Game::Game(sf::Font &font, sf::Font &titleFont) :
 	music.setBuffer(sBuffer);
 
 	m_optionsScreen = new Options(m_titleFont, m_currentGameState, music);
+	
+	DefaultView = m_window.getDefaultView();
 }
 
 Game::~Game()
@@ -72,23 +72,29 @@ void Game::update(sf::Time deltaTime)
 	switch (*m_currentGameState)
 	{
 	case GameState::SPLASH_STATE:
+		m_window.setView(DefaultView);
 		m_splashScreen->update(&m_controller, deltaTime);
 		break;
 	case GameState::MENU_STATE:
+		m_window.setView(DefaultView);
 		m_menuScreen->update(m_controller.m_currentState, m_controller, deltaTime);
 		break;
 	case GameState::PLAY_STATE:
 		m_playScreen->update(m_controller, MS_PER_UPDATE, m_preRaceScreen->m_whichLabel);
 		break;
 	case GameState::UPGRADE_STATE:
+		m_window.setView(DefaultView);
 		m_upgradeScreen->update(m_controller, deltaTime);
 		break;
 	case GameState::OPTIONS_STATE:
+		m_window.setView(DefaultView);
 		m_optionsScreen->update(m_controller.m_currentState, m_controller, music);
 		break;
 	case GameState::CREDITS_STATE:
+		m_window.setView(DefaultView);
 		break;
 	case GameState::PRERACE_STATE:
+		m_window.setView(DefaultView);
 		m_preRaceScreen->update(m_controller.m_currentState, m_controller);
 		break;
 	case GameState::END_STATE:

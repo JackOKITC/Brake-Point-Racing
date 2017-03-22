@@ -15,6 +15,7 @@
 #include <vector>
 #include "ResourceManager.h"
 #include "Widget.h"
+#include "SFML\Graphics.hpp"
 
 
 class Play
@@ -27,8 +28,6 @@ public:
 
 	~Play();
 
-
-	const int LABEL_COUNT = 1;
 
 	void update(Xbox360Controller & controller, double dt, bool whichMap);
 	void render(sf::RenderWindow & window);
@@ -76,9 +75,12 @@ private:
 	int m_time;
 	int m_pos;
 	sf::Font m_font;
-	std::string m_strings[2] = { "Time: " + m_time, "Position: " + m_pos };
 
-	Label *m_labels[2];
+	std::string time;
 
+	std::stringstream ss;
+
+	Label *m_labels;
+	Label *m_timeLabel;
 };
 #endif // !PLAY_H
