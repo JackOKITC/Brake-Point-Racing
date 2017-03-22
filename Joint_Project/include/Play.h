@@ -35,7 +35,7 @@ private:
 	GameState *m_state;
 	Xbox360Controller * m_controller;
 
-	static const int MAX_AI = 1;
+	static const int MAX_AI = 2;
 	Ai * aiCars[MAX_AI];
 	Player *m_player;
 	int m_currentCar;

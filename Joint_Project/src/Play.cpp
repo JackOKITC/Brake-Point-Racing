@@ -26,7 +26,7 @@ Play::~Play()
 
 void Play::update(Xbox360Controller & controller, double dt, bool whichMap)
 {
-
+	m_whichMap = whichMap;
 	if (m_callOnce)
 	{
 		m_currentCar = m_player->m_currentCar;
@@ -34,10 +34,10 @@ void Play::update(Xbox360Controller & controller, double dt, bool whichMap)
 		{
 			for (int i = 0; i < MAX_AI; i++)
 			{
-				aiCars[i] = new Ai(m_nodes2, m_nodes2.at(0)->m_position);
+				aiCars[i] = new Ai(m_nodes2, sf::Vector2f(m_nodes2.at(0)->m_position.x - (20 * i), m_nodes2.at(0)->m_position.y));
 			}
 
-			m_player->m_playerCar[m_currentCar]->m_position = m_nodes2.at(0)->m_position;
+			m_player->m_playerCar[m_currentCar]->m_position = sf::Vector2f(m_nodes2.at(0)->m_position.x + 10, m_nodes2.at(0)->m_position.y);
 			m_player->m_playerCar[m_currentCar]->m_rotation = 0.0f;
 
 			for (int i = 0; i < m_checkpoints2.size(); i++)
@@ -55,7 +55,7 @@ void Play::update(Xbox360Controller & controller, double dt, bool whichMap)
 		{
 			for (int i = 0; i < MAX_AI; i++)
 			{
-				aiCars[i] = new Ai(m_nodes1, m_nodes1.at(0)->m_position);
+				aiCars[i] = new Ai(m_nodes1, sf::Vector2f(m_nodes1.at(0)->m_position.x - (100 * i), m_nodes1.at(0)->m_position.y - (100 * i)));
 			}
 			
 			m_player->m_playerCar[m_currentCar]->m_position = m_nodes1.at(0)->m_position;
@@ -77,11 +77,23 @@ void Play::update(Xbox360Controller & controller, double dt, bool whichMap)
 	m_followPlayer.setCenter(m_player->m_playerCar[m_currentCar]->m_position);
 	checkCheckpoint();
 	m_player->update(dt, &controller);
-	m_whichMap = whichMap;
+	
 
 	for (int i = 0; i < MAX_AI; i++)
 	{
 		aiCars[i]->update(dt, m_player->m_playerCar[m_currentCar]->m_carSprite);
+
+		for (int j = 0; j < MAX_AI; j++)
+		{
+			if (j == i)
+			{
+
+			}
+			else
+			{
+				aiCars[i]->update(dt, aiCars[i]->m_carSprite); 
+			}
+		}
 	}
 
 	if (!m_whichMap)

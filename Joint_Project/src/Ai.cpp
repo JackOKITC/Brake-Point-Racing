@@ -138,13 +138,15 @@ sf::Vector2f Ai::collisionAvoidance(sf::Sprite carSprite)
 
 const sf::CircleShape Ai::findMostThreateningObstacle(sf::Sprite carSprite)
 {
-	sf::CircleShape mostThreatening;
-	mostThreatening.setRadius(0);
+	sf::CircleShape mostThreatening = sf::CircleShape();
+	mostThreatening.setRadius(0.0f);
 
-	sf::CircleShape playerCircle = sf::CircleShape(carSprite.getGlobalBounds().height);
+	sf::CircleShape playerCircle = sf::CircleShape(5.0f);
+	playerCircle.setPosition(carSprite.getPosition());
+	playerCircle.setOrigin(carSprite.getOrigin());
 
 	bool collision = Math::lineIntersectsCircle(m_ahead, m_halfAhead, playerCircle);
-
+	
 	if (collision && (mostThreatening.getRadius() == 0.0f || Math::distance(m_position, carSprite.getPosition()) < Math::distance(m_position, mostThreatening.getPosition())))
 	{
 		mostThreatening = sf::CircleShape(carSprite.getGlobalBounds().height);
