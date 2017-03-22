@@ -118,7 +118,11 @@ void Car::slowCar(bool slow)
 {
 	if (slow && m_speed > 5)
 	{
-		m_speed--;
+		m_speed -= 0.1f;
+	}
+	else if (slow && m_speed < -2.5)
+	{
+		m_speed += 0.1f;
 	}
 }
 

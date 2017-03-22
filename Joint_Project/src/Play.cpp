@@ -81,11 +81,11 @@ void Play::update(Xbox360Controller & controller, double dt, bool whichMap)
 	m_player->update(dt, &controller);
 	m_whichMap = whichMap;
 
-
 	for (int i = 0; i < MAX_AI; i++)
 	{
 		aiCars[i]->update(dt);
 	}
+
 	if (!m_whichMap)
 	{
 		for (std::unique_ptr<RoadTile> &roadTile : m_roadTiles1)
@@ -249,4 +249,9 @@ void Play::checkCheckpoint()
 			}
 		}
 	}
+}
+
+void Play::collide(sf::Sprite obstacleSprite)
+{
+
 }

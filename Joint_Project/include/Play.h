@@ -11,6 +11,7 @@
 #include "Node.h"
 #include "Checkpoint.h"
 #include "RoadTile.h"
+#include "Widget.h"
 #include <vector>
 
 class Play
@@ -26,9 +27,10 @@ public:
 
 	void generateRoad();
 	void generateNode();
-
 	void generateCheckpoint();
 	void checkCheckpoint();
+
+	void collide();
 
 private:
 	GameState *m_state;
@@ -61,6 +63,12 @@ private:
 	const float CHECKPOINT_WIDTH = 10;
 	const float CHECKPOINT_HEIGHT = 120;
 
-	bool m_gameOver = false;
+	int m_time;
+	int m_pos;
+	sf::Font m_font;
+	std::string m_strings[2] = { "Time: " + m_time, "Position: " + m_pos };
+
+	Label *m_labels[2];
+	const int LABEL_COUNT = 2;
 };
 #endif // !PLAY_H
