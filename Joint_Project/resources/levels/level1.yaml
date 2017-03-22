@@ -1007,10 +1007,3 @@ checkpoint2:
    - number: 36
      position: {x: 903.77, y: 306.203}
      rotation: 8.35
-
-audio:
-   - file: .\resources\audio\bgMusic.wav
-     ID: MusicBG
-
-
-

@@ -9,8 +9,8 @@ PreRace::PreRace(sf::Font font, GameState *gameState) :
 	m_backButton = new Button(&m_backString, &sf::Vector2f(450, 500), &m_font);
 	m_raceButton = new Button(&m_raceString, &sf::Vector2f(450, 350), &m_font);
 
-	m_grassLabel = new Label(&m_grassString, &m_font, &sf::Vector2f(450, 200), 20);
-	m_icyLabel = new Label(&m_icyString, &m_font, &sf::Vector2f(450, 200), 20);
+	m_grassLabel = new Label(&m_grassString, &m_font, &sf::Vector2f(450, 200), 20, sf::Color(255, 205, 0));
+	m_icyLabel = new Label(&m_icyString, &m_font, &sf::Vector2f(450, 200), 20, sf::Color(255, 205, 0));
 
 
 	widgets[0] = m_rightButton;

@@ -24,7 +24,7 @@ class Play
 public:
 	Play();
 
-	Play(GameState *gameState, bool whichMap, Player *player, LevelData *level);
+	Play(sf::Font & font, GameState *gameState, bool whichMap, Player *player, LevelData *level);
 
 	~Play();
 
@@ -76,9 +76,9 @@ private:
 	int m_pos;
 	sf::Font m_font;
 
-	std::string time;
+	sf::Time currentTime;
 
-	std::stringstream ss;
+	std::string time;
 
 	Label *m_labels;
 	Label *m_timeLabel;

@@ -37,7 +37,7 @@ int main()
 	sf::Font font;
 	sf::Font titleFont;
 
-	if (!font.loadFromFile(".\\resources\\fonts\\arial.ttf"))	//Checks to make sure font is correct
+	if (!font.loadFromFile(".\\resources\\fonts\\joystix.ttf"))	//Checks to make sure font is correct
 	{
 		std::cout << "Problem loading font file!" << std::endl;
 	}
