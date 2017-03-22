@@ -14,6 +14,7 @@
 #include "RoadTile.h"
 #include <vector>
 #include "Widget.h"
+#include "SFML\Graphics.hpp"
 
 
 class Play
@@ -26,8 +27,6 @@ public:
 
 	~Play();
 
-
-	const int LABEL_COUNT = 1;
 
 	void update(Xbox360Controller & controller, double dt, bool whichMap);
 	void render(sf::RenderWindow & window);
@@ -72,7 +71,10 @@ private:
 
 	bool m_gameOver = false;
 
+	std::stringstream ss;
+	std::string count;
 
-	Label *m_labels[1];
+	Label *m_labels;
+	Label *m_timeLabel;
 };
 #endif // !PLAY_H

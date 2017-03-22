@@ -3,6 +3,7 @@
 
 #include "Xbox360Controller.h"
 #include <iostream>
+#include <sstream>
 
 class Widget
 {
@@ -249,7 +250,7 @@ public:
 	void moveRight();	// Moves the Label right, This is used for transitioning between screens.
 	void moveLeft();	// Moves the Label left, This is used for transitioning between screens.
 	void updatePosition(float newPosX, float newPosY);
-	void updateText(double time);
+	void updateText(std::stringstream & ss);
 
 	sf::Vector2f m_position;	// Stores the on-screen positon of the Label.
 

@@ -16,15 +16,13 @@ Play::Play(GameState *gameState, bool whichMap, Player *player, LevelData *level
 	generateRoad();
 	generateCheckpoint();
 
+
 	m_currentCheckpoint = 0;
 	m_lap = 0;
 	m_followPlayer.setSize(450, 300); //in constructor
 	
-	for (int i = 0; i < LABEL_COUNT; i++)
-	{
-		m_labels[i] = new Label(&time, &m_font, &sf::Vector2f(m_followPlayer.getCenter()), 10, sf::Color(0, 255, 0));
-	}
-
+	m_labels = new Label(&time, &m_font, &sf::Vector2f(0, 0), 10, sf::Color(0, 255, 0));
+	m_timeLabel = new Label(&time, &m_font, &sf::Vector2f(0, 0), 10, sf::Color(0, 255, 0));
 }
 
 Play::~Play()
@@ -33,6 +31,7 @@ Play::~Play()
 
 void Play::update(Xbox360Controller & controller, double dt, bool whichMap)
 {
+
 
 	if (m_callOnce)
 	{
@@ -80,7 +79,12 @@ void Play::update(Xbox360Controller & controller, double dt, bool whichMap)
 	m_player->update(dt, &controller);
 	m_whichMap = whichMap;
 
-	
+	currentTime += TIME_PER_UPDATE;
+
+	if (m_controller->m_currentState.Start)
+	{
+		*m_state = GameState::MENU_STATE;
+	}
 
 	for (int i = 0; i < MAX_AI; i++)
 	{
@@ -110,10 +114,7 @@ void Play::update(Xbox360Controller & controller, double dt, bool whichMap)
 			}
 		}
 	}
-
 	m_player->m_playerCar[m_currentCar]->slowCar(m_slowDown);
-
-
 }
 
 void Play::render(sf::RenderWindow & window)

@@ -39,6 +39,8 @@ private:
 	Xbox360Controller m_controller;
 	LevelData m_level;
 
+	sf::View DefaultView;
+
 	Menu *m_menuScreen;
 	Garage *m_upgradeScreen;
 	Options *m_optionsScreen;
