@@ -248,6 +248,8 @@ public:
 	bool hasFocus();
 	void moveRight();	// Moves the Label right, This is used for transitioning between screens.
 	void moveLeft();	// Moves the Label left, This is used for transitioning between screens.
+	void updatePosition(float newPosX, float newPosY);
+	void updateText(double time);
 
 	sf::Vector2f m_position;	// Stores the on-screen positon of the Label.
 

@@ -18,6 +18,7 @@
 
 class Play
 {
+	const sf::Time TIME_PER_UPDATE = sf::microseconds(1000);
 public:
 	Play();
 
@@ -26,7 +27,7 @@ public:
 	~Play();
 
 
-	const int LABEL_COUNT = 2;
+	const int LABEL_COUNT = 1;
 
 	void update(Xbox360Controller & controller, double dt, bool whichMap);
 	void render(sf::RenderWindow & window);
@@ -71,5 +72,7 @@ private:
 
 	bool m_gameOver = false;
 
+
+	Label *m_labels[1];
 };
 #endif // !PLAY_H
