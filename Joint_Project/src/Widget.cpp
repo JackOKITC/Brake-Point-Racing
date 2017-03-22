@@ -308,6 +308,16 @@ void Label::moveLeft()
 	//m_text.setPosition(m_text.getPosition().x - 1, m_text.getPosition().y);	// Moves the text by negative one along the x-axis, the y-axis is unchanged.
 }
 
+void Label::updatePosition(float newPosX, float newPosY)
+{
+	m_text.setPosition(newPosX, newPosY);
+}
+
+void Label::updateText(double time)
+{
+	m_text.setString("Time " + std::to_string(time));
+}
+
 void Label::render(sf::RenderWindow & window)
 {
 	//window.draw(m_buttonRectangle);	// Draws the button rectangle to the screen.

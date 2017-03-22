@@ -19,6 +19,7 @@
 
 class Play
 {
+	const sf::Time TIME_PER_UPDATE = sf::microseconds(1000);
 public:
 	Play();
 
@@ -27,7 +28,7 @@ public:
 	~Play();
 
 
-	const int LABEL_COUNT = 2;
+	const int LABEL_COUNT = 1;
 
 	void update(Xbox360Controller & controller, double dt, bool whichMap);
 	void render(sf::RenderWindow & window);
@@ -63,7 +64,6 @@ private:
 	sf::View m_followPlayer; //private member in class
 	bool m_whichMap;
 
-
 	const int MAX_LAPS = 1;
 	int m_lap;
 
@@ -79,5 +79,6 @@ private:
 	std::string m_strings[2] = { "Time: " + m_time, "Position: " + m_pos };
 
 	Label *m_labels[2];
+
 };
 #endif // !PLAY_H
