@@ -14,6 +14,7 @@
 #include <vector>
 #include "ResourceManager.h"
 #include "Widget.h"
+#include "SFML\Graphics.hpp"
 
 class Play
 {
@@ -23,8 +24,6 @@ public:
 	Play(sf::Font & font, GameState *gameState, bool whichMap);
 	~Play();
 	LevelData m_level;
-
-	const int LABEL_COUNT = 1;
 
 	void update(Xbox360Controller & controller, double dt, bool whichMap);
 	void render(sf::RenderWindow & window);
@@ -52,8 +51,13 @@ private:
 	double m_time;
 
 	sf::Font m_font;
+
 	std::string time;
 
-	Label *m_labels[1];
+	std::stringstream ss;
+	std::string count;
+
+	Label *m_labels;
+	Label *m_timeLabel;
 };
 #endif // !PLAY_H

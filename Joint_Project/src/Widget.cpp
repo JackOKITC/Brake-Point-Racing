@@ -313,9 +313,9 @@ void Label::updatePosition(float newPosX, float newPosY)
 	m_text.setPosition(newPosX, newPosY);
 }
 
-void Label::updateText(double time)
+void Label::updateText(std::stringstream & ss)
 {
-	m_text.setString("Time " + std::to_string(time));
+	m_text.setString(ss.str());
 }
 
 void Label::render(sf::RenderWindow & window)
