@@ -13,6 +13,7 @@ Play::Play(GameState *gameState, bool whichMap, Player *player, LevelData *level
 
 	generateNode();
 	generateRoad();
+	generateCheckpoint();
 
 	m_currentCheckpoint = 0;
 	m_lap = 0;
