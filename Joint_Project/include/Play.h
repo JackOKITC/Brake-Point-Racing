@@ -28,8 +28,6 @@ public:
 	~Play();
 
 
-	const int LABEL_COUNT = 1;
-
 	void update(Xbox360Controller & controller, double dt, bool whichMap);
 	void render(sf::RenderWindow & window);
 
@@ -75,6 +73,7 @@ private:
 
 	std::stringstream ss;
 	std::string count;
+
 
 	Label *m_labels;
 	Label *m_timeLabel;

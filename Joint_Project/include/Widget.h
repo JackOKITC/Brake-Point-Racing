@@ -252,7 +252,6 @@ public:
 	void updatePosition(float newPosX, float newPosY);
 	void updateText(std::stringstream & ss);
 
-
 	sf::Vector2f m_position;	// Stores the on-screen positon of the Label.
 
 private:
