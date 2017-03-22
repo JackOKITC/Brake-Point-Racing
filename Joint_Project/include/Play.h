@@ -4,12 +4,12 @@
 #include "GameState.h"
 #include "Xbox360Controller.h"
 #include <iostream>
-#include "Car.h"
 #include "ResourceManager.h"
 #include "Ai.h"
+#include "Car.h"
+#include "Player.h"
 #include "Node.h"
 #include "Checkpoint.h"
-#include "LevelLoader.h"
 #include "RoadTile.h"
 #include <vector>
 
@@ -26,17 +26,18 @@ public:
 
 	void generateRoad();
 	void generateNode();
-	void generateCheckpoint();
 
+	void generateCheckpoint();
 	void checkCheckpoint();
 
 private:
 	GameState *m_state;
 	Xbox360Controller * m_controller;
-	Car * car;
 
 	static const int MAX_AI = 1;
 	Ai * aiCars[MAX_AI];
+	Player *m_player;
+	int m_currentCar;
 
 	std::vector<std::unique_ptr<RoadTile>> m_roadTiles1;
 	std::vector<std::unique_ptr<RoadTile>> m_roadTiles2;

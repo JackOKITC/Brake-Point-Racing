@@ -42,6 +42,9 @@ struct CarData
 {
 	std::string m_fileName;
 	std::string m_fileID;
+	int brake;
+	int handling;
+	int acceleration;
 };
 
 struct Node1Data
@@ -92,7 +95,6 @@ struct LevelData
 	std::vector<Node2Data> m_nodes2;
 	std::vector<Checkpoint1Data> m_checkpoints1;
 	std::vector<Checkpoint2Data> m_checkpoints2;
-
 	std::vector<AudioData> m_sound;
 	std::vector<UpgradeData> m_upgrades;
 };
