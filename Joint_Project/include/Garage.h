@@ -67,6 +67,5 @@ private:
 	Label * m_currency;
 	Label* m_cost;
 	int m_upgrdCost;
-
 };
 #endif // !GARAGE
