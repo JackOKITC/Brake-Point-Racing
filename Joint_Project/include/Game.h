@@ -48,6 +48,7 @@ private:
 	EndScreen *m_endScreen;
 	Player *m_player;
 
+
 	sf::SoundBuffer sBuffer;
 	sf::Sound music;
 

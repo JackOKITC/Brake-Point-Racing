@@ -31,15 +31,14 @@ public:
 	void checkCheckpoint();
 
 private:
+	LevelData m_level;
 	GameState *m_state;
 	Xbox360Controller * m_controller;
-	LevelData m_level;
 
 	static const int MAX_AI = 1;
 	Ai * aiCars[MAX_AI];
 	Player *m_player;
 	int m_currentCar;
-
 
 	std::vector<std::unique_ptr<RoadTile>> m_roadTiles1;
 	std::vector<std::unique_ptr<RoadTile>> m_roadTiles2;

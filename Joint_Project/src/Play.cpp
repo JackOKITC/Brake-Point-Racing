@@ -11,16 +11,8 @@ Play::Play(GameState *gameState, bool whichMap, Player *player, LevelData *level
 	m_level = *level;
 	m_player = player;
 
-
 	generateNode();
 	generateRoad();
-	
-	car = new Car();
-
-	for (int i = 0; i < MAX_AI; i++)
-	{
-		aiCars[i] = new Ai(m_nodes1, sf::Vector2f(0,0));
-	}
 
 	m_currentCheckpoint = 0;
 	m_lap = 0;

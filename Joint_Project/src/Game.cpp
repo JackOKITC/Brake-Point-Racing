@@ -28,8 +28,6 @@ Game::Game(sf::Font &font, sf::Font &titleFont) :
 	m_menuScreen = new Menu(m_titleFont, m_currentGameState);
 	m_upgradeScreen = new Garage(m_titleFont, m_currentGameState);
 	m_endScreen = new EndScreen(m_titleFont, m_currentGameState);
-
-
 	
 	sBuffer = ResourceManager::instance().m_soundHolder["MusicBG"];
 	music.setBuffer(sBuffer);
