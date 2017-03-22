@@ -41,6 +41,8 @@ private:
 
 	sf::View DefaultView;
 
+	sf::View DefaultView;
+
 	Menu *m_menuScreen;
 	Garage *m_upgradeScreen;
 	Options *m_optionsScreen;

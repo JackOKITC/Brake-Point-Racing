@@ -17,17 +17,13 @@
 #include "Widget.h"
 #include "SFML\Graphics.hpp"
 
-
 class Play
 {
 	const sf::Time TIME_PER_UPDATE = sf::microseconds(1000);
 public:
 	Play();
-
 	Play(sf::Font & font, GameState *gameState, bool whichMap, Player *player, LevelData *level);
-
 	~Play();
-
 
 	void update(Xbox360Controller & controller, double dt, bool whichMap);
 	void render(sf::RenderWindow & window);
@@ -62,6 +58,7 @@ private:
 
 	sf::View m_followPlayer; //private member in class
 	bool m_whichMap;
+
 
 	const int MAX_LAPS = 1;
 	int m_lap;
