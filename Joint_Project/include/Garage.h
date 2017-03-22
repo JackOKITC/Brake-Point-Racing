@@ -5,6 +5,7 @@
 #include "Xbox360Controller.h"
 #include "ResourceManager.h"
 #include "GameState.h"
+#include "Player.h"
 #include "Widget.h"
 
 class Garage
@@ -12,7 +13,7 @@ class Garage
 	const sf::Time TIME_PER_UPDATE = sf::microseconds(1000);
 
 public:
-	Garage(sf::Font font, GameState *gameState);
+	Garage(sf::Font font, GameState *gameState, Player * player);
 	~Garage();
 
 	void update(Xbox360Controller & controller, sf::Time dt);
@@ -24,6 +25,7 @@ public:
 private:
 
 	GameState *m_gameState;
+	Player *m_player;
 	bool m_transitionToNext = false;
 	sf::Time currentTime;
 	sf::Texture m_backgroundTex;
@@ -49,5 +51,10 @@ private:
 	sf::Texture m_carOptions[3]; // loading textures for each player car
 	sf::Sprite m_cars[3]; // sprite container for each car 
 	int m_currentCar; // keeps track of the currently selected car for upgrading
+
+	// 
+	int carOneUpgradeLevels[3];
+	int carTwoUpgradeLevels[3];
+	int carThreeUpgradeLevels[3];
 };
 #endif // !GARAGE

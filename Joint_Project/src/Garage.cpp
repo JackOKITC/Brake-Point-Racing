@@ -1,10 +1,10 @@
 #include <Garage.h>
 
-Garage::Garage(sf::Font font, GameState * gameState) :
+Garage::Garage(sf::Font font, GameState * gameState, Player *player) :
 	m_font(font)
 {
 	m_gameState = gameState;
-
+	m_player = player;
 	//m_backgroundTex = ResourceManager::instance().m_holder["Garage"];
 	//m_backgroundSprite.setTexture(m_backgroundTex);
 	//m_backgroundSprite.setOrigin(m_backgroundTex.getSize().x / 2, m_backgroundTex.getSize().y / 2);
@@ -103,6 +103,7 @@ void Garage::checkSelection(GamePadState m_state, Xbox360Controller m_controller
 				m_currentCar = 2;
 			}
 			m_cars[m_currentCar].setColor(m_highlight);
+
 		}
 	}
 
