@@ -17,9 +17,9 @@ class Play
 {
 public:
 	Play();
-	Play(GameState *gameState, bool whichMap);
+	Play(GameState *gameState, bool whichMap, Player *player, LevelData *level);
 	~Play();
-	LevelData m_level;
+
 
 	void update(Xbox360Controller & controller, double dt, bool whichMap);
 	void render(sf::RenderWindow & window);
@@ -33,6 +33,7 @@ public:
 private:
 	GameState *m_state;
 	Xbox360Controller * m_controller;
+	LevelData m_level;
 
 	static const int MAX_AI = 1;
 	Ai * aiCars[MAX_AI];

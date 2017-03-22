@@ -4,20 +4,13 @@ Play::Play()
 {
 }
 
-Play::Play(GameState *gameState, bool whichMap) :
+Play::Play(GameState *gameState, bool whichMap, Player *player, LevelData *level) :
 	m_whichMap(whichMap)
 {
-	m_state = gameState;	
+	m_state = gameState;
+	m_level = *level;
+	m_player = player;
 
-	int currentLevel = 1;
-	if (!LevelLoader::load(currentLevel, m_level))
-	{
-		std::cout << "Level not loaded" << std::endl;
-	}
-
-	ResourceManager::instance().loadData(m_level);
-	m_player = new Player(m_level);
-	m_currentCar = m_player->m_currentCar;
 
 	generateNode();
 	generateRoad();
@@ -44,6 +37,7 @@ void Play::update(Xbox360Controller & controller, double dt, bool whichMap)
 
 	if (m_callOnce)
 	{
+		m_currentCar = m_player->m_currentCar;
 		if (whichMap)
 		{
 			for (int i = 0; i < MAX_AI; i++)

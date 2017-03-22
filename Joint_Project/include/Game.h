@@ -37,6 +37,7 @@ private:
 
 	GameState *m_currentGameState;
 	Xbox360Controller m_controller;
+	LevelData m_level;
 
 	Menu *m_menuScreen;
 	Garage *m_upgradeScreen;
@@ -45,6 +46,7 @@ private:
 	Play *m_playScreen;
 	PreRace *m_preRaceScreen;
 	EndScreen *m_endScreen;
+	Player *m_player;
 
 	sf::SoundBuffer sBuffer;
 	sf::Sound music;
