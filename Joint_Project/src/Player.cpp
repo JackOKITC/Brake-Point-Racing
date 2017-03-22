@@ -16,8 +16,6 @@ Player::Player(LevelData &level)
 	}
 
 	m_currency = 10; // currency for the player to buy upgrades
-
-	// sets the current car to be the default
 	m_currentCar = 0;
 }
 

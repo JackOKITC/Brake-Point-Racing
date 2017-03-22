@@ -135,6 +135,7 @@ void Garage::checkSelection(GamePadState m_state, Xbox360Controller m_controller
 			m_upgradeBars[0]->assignValues(m_player->m_playerCar[m_currentCar]->m_upgradeLevels[0]);
 			m_upgradeBars[1]->assignValues(m_player->m_playerCar[m_currentCar]->m_upgradeLevels[1]);
 			m_upgradeBars[2]->assignValues(m_player->m_playerCar[m_currentCar]->m_upgradeLevels[2]);
+
 		}
 	}
 
