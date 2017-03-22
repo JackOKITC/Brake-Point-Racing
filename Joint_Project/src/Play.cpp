@@ -8,9 +8,11 @@ Play::Play(GameState *gameState, bool whichMap, Player *player, LevelData *level
 	m_whichMap(whichMap)
 
 {
+
 	m_state = gameState;
 	m_level = *level;
 	m_player = player;
+
 	
 	int currentLevel = 1;
 	if (!LevelLoader::load(currentLevel, m_level))
@@ -28,9 +30,10 @@ Play::Play(GameState *gameState, bool whichMap, Player *player, LevelData *level
 	m_currentCheckpoint = 0;
 	m_lap = 0;
 	m_followPlayer.setSize(450, 300); //in constructor
-	
+
 	m_labels = new Label(&time, &m_font, &sf::Vector2f(0, 0), 10, sf::Color(0, 255, 0));
 	m_timeLabel = new Label(&time, &m_font, &sf::Vector2f(0, 0), 10, sf::Color(0, 255, 0));
+
 
 }
 
@@ -124,11 +127,13 @@ void Play::update(Xbox360Controller & controller, double dt, bool whichMap)
 			}
 		}
 	}
+
 	m_player->m_playerCar[m_currentCar]->slowCar(m_slowDown);
 
 	for (int i = 0; i < LABEL_COUNT; i++)
 	{
-		m_labels[i] = new Label(&m_strings[i], &m_font, &sf::Vector2f(m_followPlayer.getCenter() - sf::Vector2f(175, 120 - (i* 10))), 10, sf::Color(0, 255, 0));
+		m_labels[i]->updatePosition(m_followPlayer.getCenter().x - 185, m_followPlayer.getCenter().y - 140);
+		m_labels[i]->updateText(m_time);
 	}
 }
 
