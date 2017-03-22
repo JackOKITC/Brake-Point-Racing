@@ -42,6 +42,9 @@ void operator >> (const YAML::Node& carNode, CarData& car)
 {
 	car.m_fileName = carNode["file"].as<std::string>();
 	car.m_fileID = carNode["ID"].as<std::string>();
+	car.m_brake = carNode["Brake"].as<int>();
+	car.m_handling = carNode["Handling"].as<int>();
+	car.m_acceleration = carNode["Acceleration"].as<int>();
 }
 
 void operator >> (const YAML::Node& upgradeNode, UpgradeData& upgrade)

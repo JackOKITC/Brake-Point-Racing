@@ -48,9 +48,9 @@ struct CarData
 {
 	std::string m_fileName;
 	std::string m_fileID;
-	int brake;
-	int handling;
-	int acceleration;
+	int m_brake;
+	int m_handling;
+	int m_acceleration;
 };
 
 struct Node1Data
