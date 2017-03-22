@@ -18,9 +18,9 @@ class Play
 {
 public:
 	Play();
-	Play(GameState *gameState, bool whichMap);
+	Play(GameState *gameState, bool whichMap, Player *player, LevelData *level);
 	~Play();
-	LevelData m_level;
+
 
 	void update(Xbox360Controller & controller, double dt, bool whichMap);
 	void render(sf::RenderWindow & window);
@@ -31,6 +31,7 @@ public:
 	void checkCheckpoint();
 
 private:
+	LevelData m_level;
 	GameState *m_state;
 	Xbox360Controller * m_controller;
 

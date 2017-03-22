@@ -5,11 +5,11 @@ Garage::Garage(sf::Font font, GameState * gameState) :
 {
 	m_gameState = gameState;
 
-	//m_backgroundTex = ResourceManager::instance().m_holder["MenuBG"];
+	//m_backgroundTex = ResourceManager::instance().m_holder["Garage"];
 	//m_backgroundSprite.setTexture(m_backgroundTex);
 	//m_backgroundSprite.setOrigin(m_backgroundTex.getSize().x / 2, m_backgroundTex.getSize().y / 2);
 	//m_backgroundSprite.setPosition(450, 300);
-	//m_backgroundSprite.setScale(.1 , .1);
+	//m_backgroundSprite.setColor(sf::Color(125, 125, 125, 255));
 
 	// set the integers for keeping track of currently highlighted options to 0 so they start off on the "first" in each list
 	m_currentCar = 0;

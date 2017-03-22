@@ -11,9 +11,19 @@ Game::Game(sf::Font &font, sf::Font &titleFont) :
 	// pointer to GameState object, will be passed to each menu state so
 	// they can change the state in their own source files
 
+
+	int currentLevel = 1;
+	if (!LevelLoader::load(currentLevel, m_level))
+	{
+		std::cout << "Level not loaded" << std::endl;
+	}
+
+	ResourceManager::instance().loadData(m_level);
+	m_player = new Player(m_level);
+
 	m_currentGameState = new GameState(GameState::SPLASH_STATE);
 	m_preRaceScreen = new PreRace(m_titleFont, m_currentGameState);
-	m_playScreen = new Play(m_currentGameState, m_preRaceScreen->m_whichLabel);
+	m_playScreen = new Play(m_currentGameState, m_preRaceScreen->m_whichLabel, m_player, &m_level);
 	m_splashScreen = new Splash(m_currentGameState, m_titleFont);
 	m_menuScreen = new Menu(m_titleFont, m_currentGameState);
 	m_upgradeScreen = new Garage(m_titleFont, m_currentGameState);

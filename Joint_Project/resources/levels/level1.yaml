@@ -264,7 +264,6 @@ background:
    - file: .\resources\images\UI\finish.jpg
      ID: Flag
 
-
 upgrade:
    - file: .\resources\images\car_parts\brake.png
      ID: Upgrade0

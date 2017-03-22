@@ -29,8 +29,13 @@ private:
 
 	Xbox360Controller * m_controller;
 
+	int m_currentCheckpoint;
+	int m_lap;
+
+
 	sf::Vector2f m_velocity;
 	float m_speed;
+
 
 	float m_handling;
 	float m_deceleration;

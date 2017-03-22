@@ -12,6 +12,7 @@ Car::Car(sf::Texture & carTex, int brake, int handling, int acceleration)
 	m_deceleration = brake;
 	m_handling = handling;
 	m_acceleration = acceleration;
+	m_carSprite.setPosition(sf::Vector2f(450, 400));
 
 	m_carSprite.setOrigin(m_carSprite.getLocalBounds().width / 2, m_carSprite.getLocalBounds().height / 2);
 	m_carSprite.setScale(0.2, 0.2);
@@ -42,7 +43,7 @@ void Car::moveCar(Xbox360Controller & controller)
 	{
 		if (m_speed < MAX_FORWARD_SPEED)
 		{
-			m_speed += -controller.m_currentState.triggers / 4000;
+			m_speed += -controller.m_currentState.triggers / 5000;
 		}
 	}
 	else if (!controller.m_currentState.RTrigger && m_speed > 0.01f)
@@ -54,7 +55,7 @@ void Car::moveCar(Xbox360Controller & controller)
 	{
 		if (m_speed > MAX_REVERSE_SPEED)
 		{
-			m_speed -= controller.m_currentState.triggers / 5000;;
+			m_speed -= controller.m_currentState.triggers / 10000;;
 		}
 	}
 	else if (!controller.m_currentState.LTrigger && m_speed < 0)
@@ -70,15 +71,15 @@ void Car::moveCar(Xbox360Controller & controller)
 		}
 		else if (((m_speed > -5 && m_speed < 0) || (m_speed < 5 && m_speed > 0)))
 		{
-			m_rotation += 0.01;
+			m_rotation += 0.1;
 		}
 		else if (m_speed < 10 && m_speed > 0)
 		{
-			m_rotation += 0.075;
+			m_rotation += 0.08;
 		}
 		else if (m_speed >= 10 && m_speed > 0)
 		{
-			m_rotation += 0.15;
+			m_rotation += 0.06;
 		}
 
 		if (m_rotation > 360)
@@ -96,15 +97,15 @@ void Car::moveCar(Xbox360Controller & controller)
 		}
 		else if (((m_speed > -5 && m_speed < 0) || (m_speed < 5 && m_speed > 0)))
 		{
-			m_rotation -= 0.01;
+			m_rotation -= 0.1;
 		}
 		else if (m_speed < 10 && m_speed > 0)
 		{
-			m_rotation -= 0.075;
+			m_rotation -= 0.08;
 		}
 		else if (m_speed >= 10 && m_speed > 0)
 		{
-			m_rotation -= 0.15;
+			m_rotation -= 0.06;
 		}
 
 		if (m_rotation < 0)
