@@ -12,8 +12,8 @@ Ai::Ai(std::vector<std::unique_ptr<Node>> & nodes, sf::Vector2f & position) :
 	m_carSprite.setTexture(m_carTex);
 
 	m_velocity = sf::Vector2f(0, 0);
-	m_rotation = 45.0f;
-	m_speed = 0;
+	m_rotation = 0.0f;
+	m_speed = 0.0f;
 
 
 	m_carSprite.setPosition(m_position);
@@ -38,13 +38,14 @@ Ai::~Ai()
 {
 }
 
-void Ai::update(double dt)
+void Ai::update(double dt, sf::Sprite carSprite)
 {	
 	sf::Vector2f newPos = m_position;
 
 	sf::Vector2f vectorToNode = m_followPath();
 
 	m_steering += thor::unitVector(vectorToNode);
+	m_steering += collisionAvoidance(carSprite);
 	m_steering = Math::truncate(m_steering, MAX_FORCE);
 	m_velocity = Math::truncate(m_velocity + m_steering, MAX_SPEED);
 
@@ -109,4 +110,45 @@ sf::Vector2f Ai::m_followPath()
 	}
 
 	return dist;
+}
+
+sf::Vector2f Ai::collisionAvoidance(sf::Sprite carSprite)
+{
+	auto headingRadians = thor::toRadian(m_rotation);
+	sf::Vector2f headingVector(std::cos(headingRadians) * MAX_SEE_AHEAD, std::sin(headingRadians) * MAX_SEE_AHEAD);
+	m_ahead = m_position + headingVector;
+	m_halfAhead = m_position + (headingVector * 0.5f);
+	const sf::CircleShape mostThreatening = findMostThreateningObstacle(carSprite);
+	sf::Vector2f avoidance(0, 0);
+	if (mostThreatening.getRadius() != 0.0)
+	{
+		auto threatPos = mostThreatening.getPosition();
+		auto mypos = m_position;
+		avoidance.x = m_ahead.x - mostThreatening.getPosition().x;
+		avoidance.y = m_ahead.y - mostThreatening.getPosition().y;
+		avoidance = thor::unitVector(avoidance);
+		avoidance *= MAX_AVOID_FORCE;
+	}
+	else
+	{
+		avoidance *= 0.0f;
+	}
+	return avoidance;
+}
+
+const sf::CircleShape Ai::findMostThreateningObstacle(sf::Sprite carSprite)
+{
+	sf::CircleShape mostThreatening;
+	mostThreatening.setRadius(0);
+
+	sf::CircleShape playerCircle = sf::CircleShape(carSprite.getGlobalBounds().height);
+
+	bool collision = Math::lineIntersectsCircle(m_ahead, m_halfAhead, playerCircle);
+
+	if (collision && (mostThreatening.getRadius() == 0.0f || Math::distance(m_position, carSprite.getPosition()) < Math::distance(m_position, mostThreatening.getPosition())))
+	{
+		mostThreatening = sf::CircleShape(carSprite.getGlobalBounds().height);
+	}
+
+	return mostThreatening;
 }

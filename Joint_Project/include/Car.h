@@ -17,9 +17,9 @@ public:
 
 	void moveCar(Xbox360Controller & controller);
 	void slowCar(bool slow);
-	void initCar();
 
 	sf::Vector2f m_position;
+	float m_rotation;
 	sf::Sprite m_carSprite;
 
 private:
@@ -30,7 +30,6 @@ private:
 	Xbox360Controller * m_controller;
 
 	sf::Vector2f m_velocity;
-	float m_rotation;
 	float m_speed;
 
 	float m_handling;

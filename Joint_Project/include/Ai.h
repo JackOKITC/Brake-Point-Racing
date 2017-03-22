@@ -20,7 +20,7 @@ public:
 	Ai(std::vector<std::unique_ptr<Node>> & nodes, sf::Vector2f & position);
 	~Ai();
 
-	void update(double dt);
+	void update(double dt, sf::Sprite carSprite);
 	void render(sf::RenderWindow & window);
 
 	sf::Vector2f m_followPath();
@@ -51,5 +51,14 @@ private:
 
 	const double PI = atan(1) * 4;
 	const double DEG_TO_RAD = PI / 180.0f;
+
+
+
+	const sf::CircleShape findMostThreateningObstacle(sf::Sprite);
+	sf::Vector2f collisionAvoidance(sf::Sprite carSprite);
+	const float MAX_SEE_AHEAD = 50.0f;	// The length of the m_ahead vector.
+	const float MAX_AVOID_FORCE = 50.0f;	// Maximum force applied to the ai tank to avoid collision.
+	sf::Vector2f m_ahead;	// Vector that stays ahead of the tank and detects walls before they are hit.
+	sf::Vector2f m_halfAhead;	// Vector that stays ahead of the tank and detects walls before they are hit, is half the length of m_ahead to detect only closer objects
 };
 #endif // !AI_H

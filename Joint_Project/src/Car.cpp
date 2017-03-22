@@ -14,7 +14,7 @@ Car::Car(sf::Texture & carTex, int brake, int handling, int acceleration)
 	m_acceleration = acceleration;
 
 	m_carSprite.setOrigin(m_carSprite.getLocalBounds().width / 2, m_carSprite.getLocalBounds().height / 2);
-	m_carSprite.setScale(.25, .25);
+	m_carSprite.setScale(0.2, 0.2);
 }
 
 Car::~Car() 
@@ -124,10 +124,4 @@ void Car::slowCar(bool slow)
 	{
 		m_speed += 0.1f;
 	}
-}
-
-void Car::initCar()
-{
-	m_rotation = 45;
-	m_velocity = sf::Vector2f(0, 0);
 }

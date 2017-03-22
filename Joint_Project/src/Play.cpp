@@ -26,7 +26,6 @@ Play::Play(GameState *gameState, bool whichMap) :
 	m_currentCheckpoint = 0;
 	m_lap = 0;
 	m_followPlayer.setSize(450, 300); //in constructor
-
 }
 
 Play::~Play()
@@ -44,6 +43,9 @@ void Play::update(Xbox360Controller & controller, double dt, bool whichMap)
 			{
 				aiCars[i] = new Ai(m_nodes2, m_nodes2.at(0)->m_position);
 			}
+
+			m_player->m_playerCar[m_currentCar]->m_position = m_nodes2.at(0)->m_position;
+			m_player->m_playerCar[m_currentCar]->m_rotation = 0.0f;
 
 			for (int i = 0; i < m_checkpoints2.size(); i++)
 			{
@@ -63,6 +65,8 @@ void Play::update(Xbox360Controller & controller, double dt, bool whichMap)
 				aiCars[i] = new Ai(m_nodes1, m_nodes1.at(0)->m_position);
 			}
 			
+			m_player->m_playerCar[m_currentCar]->m_position = m_nodes1.at(0)->m_position;
+			m_player->m_playerCar[m_currentCar]->m_rotation = 45.0f;
 
 			for (int i = 0; i < m_checkpoints1.size(); i++)
 			{
@@ -78,12 +82,13 @@ void Play::update(Xbox360Controller & controller, double dt, bool whichMap)
 		m_callOnce = false;
 	}
 	m_followPlayer.setCenter(m_player->m_playerCar[m_currentCar]->m_position);
+	checkCheckpoint();
 	m_player->update(dt, &controller);
 	m_whichMap = whichMap;
 
 	for (int i = 0; i < MAX_AI; i++)
 	{
-		aiCars[i]->update(dt);
+		aiCars[i]->update(dt, m_player->m_playerCar[m_currentCar]->m_carSprite);
 	}
 
 	if (!m_whichMap)
@@ -213,7 +218,7 @@ void Play::checkCheckpoint()
 			m_currentCheckpoint++;
 			std::cout << m_currentCheckpoint << std::endl;
 
-			if (m_currentCheckpoint >= m_checkpoints2.size() || m_currentCheckpoint > 35)
+			if (m_currentCheckpoint >= m_checkpoints2.size())
 			{
 				m_currentCheckpoint = 0;
 				if (m_lap < MAX_LAPS)
@@ -222,6 +227,7 @@ void Play::checkCheckpoint()
 				}
 				if (m_lap == MAX_LAPS)
 				{
+					m_callOnce = true;
 					*m_state = GameState::END_STATE;
 				}
 			}
@@ -235,7 +241,7 @@ void Play::checkCheckpoint()
 			std::cout << m_currentCheckpoint << std::endl;
 
 		
-			if (m_currentCheckpoint >= (m_checkpoints1.size()) || m_currentCheckpoint > 25)
+			if (m_currentCheckpoint >= (m_checkpoints1.size()))
 			{
 				m_currentCheckpoint = 0;
 				if (m_lap < MAX_LAPS)
@@ -244,14 +250,10 @@ void Play::checkCheckpoint()
 				}
 				if (m_lap == MAX_LAPS)
 				{
+					m_callOnce = true;
 					*m_state = GameState::END_STATE;
 				}
 			}
 		}
 	}
-}
-
-void Play::collide(sf::Sprite obstacleSprite)
-{
-
 }

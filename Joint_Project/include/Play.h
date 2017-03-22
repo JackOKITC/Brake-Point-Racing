@@ -30,8 +30,6 @@ public:
 	void generateCheckpoint();
 	void checkCheckpoint();
 
-	void collide();
-
 private:
 	GameState *m_state;
 	Xbox360Controller * m_controller;
