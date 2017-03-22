@@ -71,8 +71,8 @@ Menu::Menu(sf::Font & font, GameState *gameState) :
 		}
 		else
 		{
-			m_labels[i] = new Label(&m_strings[i], &m_font, &sf::Vector2f(355, 100 + (i * 130)), 20);
-
+			m_labels[i] = new Label(&m_strings[i], &m_font, &sf::Vector2f(365, 100 + (i * 130)), 32, sf::Color(140, 80, 160));
+			m_outline[i] = new Label(&m_strings[i], &m_font, &sf::Vector2f(368, 100 + (i * 130)), 32, sf::Color(195, 80, 215));
 		}
 		
 		m_labels[i]->loseFocus();

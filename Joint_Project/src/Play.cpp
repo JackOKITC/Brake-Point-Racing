@@ -4,9 +4,9 @@ Play::Play()
 {
 }
 
-Play::Play(GameState *gameState, bool whichMap, Player *player, LevelData *level) :
-	m_whichMap(whichMap)
-
+Play::Play(sf::Font & font, GameState *gameState, bool whichMap, Player *player, LevelData *level) :
+	m_whichMap(whichMap),
+	m_font(font)
 {
 	m_state = gameState;
 	m_level = *level;
@@ -38,6 +38,9 @@ Play::~Play()
 
 void Play::update(Xbox360Controller & controller, double dt, bool whichMap)
 {
+
+	m_controller = &controller;
+
 	if (m_callOnce)
 	{
 		m_currentCar = m_player->m_currentCar;

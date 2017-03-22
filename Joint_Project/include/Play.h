@@ -70,10 +70,13 @@ private:
 	const float CHECKPOINT_HEIGHT = 120;
 
 	bool m_gameOver = false;
-	std::stringstream ss;
-	std::string count;
+	
+	int m_time;
+	sf::Font m_font;
 
+	sf::Time currentTime;
 
+	std::string time;
 	Label *m_labels;
 	Label *m_timeLabel;
 };
