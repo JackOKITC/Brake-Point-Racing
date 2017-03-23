@@ -26,9 +26,7 @@ Play::Play(sf::Font & font, GameState *gameState, bool whichMap, Player *player,
 	m_labels[0] = new Label(&m_strings[1], &m_font, &sf::Vector2f(0, 0), 15, sf::Color(0, 255, 0));
 	m_labels[1] = new Label(&m_strings[0], &m_font, &sf::Vector2f(0, 0), 15, sf::Color(0, 255, 0));
 
-	/*m_labels = new Label(&time, &m_font, &sf::Vector2f(0, 0), 10, sf::Color(0, 255, 0));
-	m_timeLabel = new Label(&time, &m_font, &sf::Vector2f(0, 0), 10, sf::Color(0, 255, 0));*/
-
+	m_position = 0;
 }
 
 Play::~Play()
@@ -101,19 +99,7 @@ void Play::update(Xbox360Controller & controller, double dt, bool whichMap)
 		*m_state = GameState::MENU_STATE;
 	}
 
-	/*currentTime += TIME_PER_UPDATE;
-
-	if (m_controller->m_currentState.Start)
-	{
-		*m_state = GameState::MENU_STATE;
-	}
-
-	currentTime += TIME_PER_UPDATE;
-
-	if (m_controller->m_currentState.Start)
-	{
-		*m_state = GameState::MENU_STATE;
-	}*/
+	
 
 
 	for (int i = 0; i < MAX_AI; i++)
@@ -281,12 +267,22 @@ void Play::checkCheckpoint()
 				}
 				if (m_lap == MAX_LAPS)
 				{
+					m_playerTime = m_time;
 					m_callOnce = true;
-					*m_state = GameState::END_STATE;
+					finishingPos();
 				}
 			}
 		}
+
+		for (int i = 0; i < MAX_AI; i++)
+		{
+			if (aiCars[i]->m_currentNode >= 110)
+			{
+				aiCars[i]->setFinishTime(m_time);
+			}
+		}
 	}
+	
 	else if (!m_whichMap)
 	{
 		if (m_player->m_playerCar[m_currentCar]->m_carSprite.getGlobalBounds().intersects(m_checkpointRectangles1.at(m_currentCheckpoint).getGlobalBounds()))
@@ -304,10 +300,35 @@ void Play::checkCheckpoint()
 				}
 				if (m_lap == MAX_LAPS)
 				{
+					m_playerTime = m_time;
 					m_callOnce = true;
-					*m_state = GameState::END_STATE;
+					finishingPos();
 				}
 			}
 		}
+
+		for (int i = 0; i < MAX_AI; i++)
+		{
+			if (aiCars[i]->m_currentNode >= 110)
+			{
+				aiCars[i]->setFinishTime(m_time);
+			}
+		}
 	}
+}
+
+void Play::finishingPos()
+{
+	if (m_time < aiCars[0]->m_finishTime && m_time < aiCars[1]->m_finishTime)
+	{
+		m_position = 1;
+	}
+	else if (m_time > aiCars[0]->m_finishTime && m_time > aiCars[1]->m_finishTime)
+	{
+		m_position = 3;
+	}
+	else
+		m_position = 2;
+
+	*m_state = GameState::END_STATE;
 }

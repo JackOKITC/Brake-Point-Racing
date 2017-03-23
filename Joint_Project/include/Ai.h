@@ -28,6 +28,13 @@ public:
 
 	sf::Vector2f m_position;
 	sf::Sprite m_carSprite;
+	int m_currentNode;
+
+	// Function to save the AI's time
+	void setFinishTime(int time);
+
+	// The AI's time upon finishing
+	int m_finishTime;
 
 private:
 
@@ -35,7 +42,7 @@ private:
 
 	sf::Texture m_carTex;
 	
-	int m_currentNode;
+	
 
 	sf::Vector2f m_velocity;
 	

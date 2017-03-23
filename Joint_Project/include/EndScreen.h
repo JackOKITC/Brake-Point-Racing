@@ -7,6 +7,7 @@
 #include "ResourceManager.h"
 #include "GameState.h"
 #include "Widget.h"
+#include <sstream>
 
 class EndScreen
 {
@@ -18,7 +19,7 @@ public:
 	~EndScreen();
 
 	// Function to update the end screen
-	void update(Xbox360Controller & controller, sf::Time dt);
+	void update(Xbox360Controller & controller, sf::Time dt, int position);
 
 	// Function to draw everything in the end screen
 	void render(sf::RenderWindow & window);
@@ -31,7 +32,10 @@ private:
 	std::string m_backString = "Back";
 	sf::Font m_font;
 	sf::View m_view;
-
+	int m_position;
+	std::stringstream ss;
+	Label * m_label;
+	bool m_labelCreated = false;
 };
 #endif // !ENDSCREEN_H
 

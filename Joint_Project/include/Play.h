@@ -34,6 +34,9 @@ public:
 	void generateNode();
 	void generateCheckpoint();
 	void checkCheckpoint();
+	void finishingPos();
+
+	int m_position;
 
 private:
 	LevelData m_level;
@@ -82,6 +85,6 @@ private:
 
 	Label *m_labels[2];
 	const int LABEL_COUNT = 2;
-
+	int m_playerTime = 0;
 };
 #endif // !PLAY_H

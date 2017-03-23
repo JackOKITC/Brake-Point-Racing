@@ -98,7 +98,7 @@ void Game::update(sf::Time deltaTime)
 		m_preRaceScreen->update(m_controller.m_currentState, m_controller);
 		break;
 	case GameState::END_STATE:
-		m_endScreen->update(m_controller, deltaTime);
+		m_endScreen->update(m_controller, deltaTime, m_playScreen->m_position);
 		break;
 	default:
 		break;

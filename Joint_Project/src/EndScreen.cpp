@@ -7,19 +7,34 @@ EndScreen::EndScreen(sf::Font font, GameState *gameState) :
 	m_backButton = new Button(&m_backString, &sf::Vector2f(450, 500), &m_font);
 	m_view.setCenter(450, 300);
 	m_view.setSize(900, 600);
+	m_label = new Label(&ss.str(), &m_font, &sf::Vector2f(0, 0), 15, sf::Color(0, 255, 0));
 }
 
 EndScreen::~EndScreen() {}
 
-void EndScreen::update(Xbox360Controller & controller, sf::Time dt)
+void EndScreen::update(Xbox360Controller & controller, sf::Time dt, int position)
 {
+	m_position = position;
 	checkButton(controller.m_currentState, controller);
+	ss.clear();
+	if (m_position == 1)
+		ss << "Congatulations, you came in first place";
+	else if(m_position == 2)
+		ss << "Unlucky, you came in second place";
+	else if (m_position == 3)
+		ss << "Unlucky, you came in third place";
+	if (!m_labelCreated)
+	{
+		m_label->updateText(ss);
+		m_labelCreated = true;
+	}
 }
 
 void EndScreen::render(sf::RenderWindow & window)
 {
 	window.setView(m_view);
 	m_backButton->render(window);
+	m_label->render(window);
 }
 
 

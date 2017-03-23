@@ -32,6 +32,8 @@ Ai::Ai(std::vector<std::unique_ptr<Node>> & nodes, sf::Vector2f & position) :
 		m_circles.at(i).setRadius(NODE_TOLERANCE);
 		m_circles.at(i).setFillColor(sf::Color(0,0,255,126));
 	}
+
+	m_finishTime = 40000;
 	
 }
 
@@ -163,4 +165,10 @@ const sf::CircleShape Ai::findMostThreateningObstacle(sf::Sprite carSprite)
 	}
 
 	return mostThreatening;
+}
+
+// Function to save the AI's time
+void Ai::setFinishTime(int time)
+{
+	m_finishTime = time;
 }
