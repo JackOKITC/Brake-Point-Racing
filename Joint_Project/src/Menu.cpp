@@ -4,8 +4,12 @@ Menu::Menu(sf::Font & font, GameState *gameState) :
 	m_font(font)
 	, TIME_PER_UPDATE(sf::microseconds(1450))
 {
-	m_gameState = gameState;
+	m_gameState = gameState; // initialises the gamestate object
 
+	/// <summary>
+	/// The convex line variables initialised with their total points, their positions,
+	/// And their starting colours to represent them being unselected.
+	/// </summary>
 #pragma region Convex Lines
 
 	m_raceLine.setPointCount(4);
@@ -45,30 +49,35 @@ Menu::Menu(sf::Font & font, GameState *gameState) :
 
 #pragma endregion
 
-	m_backgroundTex = ResourceManager::instance().m_holder["MenuBG"];
-
+	m_backgroundTex = ResourceManager::instance().m_holder["MenuBG"];	// sets the background texture to be the MenuBG from the yaml file
+	
+	// Variables setting the texture and position of the bg sprite
 	m_backgroundSprite.setTexture(m_backgroundTex);
 	m_backgroundSprite.setPosition(-1400, -200);
 
-	m_flagTex = ResourceManager::instance().m_holder["Flag"];
+	m_flagTex = ResourceManager::instance().m_holder["Flag"];	// sets the flag texture to be Flag from the yaml file
 
+	// Variables setting the texture, position, and scale of the flag sprite
 	m_flagSprite.setTexture(m_flagTex);
 	m_flagSprite.setPosition(0, 0);
 	m_flagSprite.setScale(0.5, 0.6);
 
-	m_timeStop = false;
-	m_transitionStop = false;
+	m_timeStop = false;	// initialises m_timeStop to false;
+	m_transitionStop = false;	// intialises m_transitionStop to false;
 
-	if (!m_shader.loadFromFile(".\\resources\\Shader\\Vert.txt", ".\\resources\\Shader\\Frag.txt"))
+	if (!m_shader.loadFromFile(".\\resources\\Shader\\Vert.txt", ".\\resources\\Shader\\Frag.txt"))	// couts an error if the shader files can not be loaded
 	{
 		std::cout << "Error loading shader" << std::endl;
 	}
 
+	// sets the paramaters for the shader
 	m_shader.setParameter("uTexture", m_flagTex);
 	m_shader.setParameter("uPositionFreq", 0.1f);
 	m_shader.setParameter("uSpeed", 10);
 	m_shader.setParameter("uStrength", 0.01f);
 
+	// an if statement which diffrentiates the x value of the labels in the array based on their
+	// array position, due to fitting them properly around the curve of the wheel in the MenuBG sprite
 	for (int i = 0; i < LABEL_COUNT; i++)
 	{
 		if (i < 1 || i > 3)
@@ -87,11 +96,11 @@ Menu::Menu(sf::Font & font, GameState *gameState) :
 			m_outline[i] = new Label(&m_strings[i], &m_font, &sf::Vector2f(388, 40 + (i * 130)), 28, sf::Color(195, 80, 215));
 		}
 		
-		m_labels[i]->loseFocus();
+		m_labels[i]->loseFocus();	// defaults all the labels to be unhighlighted
 	}
 
-	m_currentLab = 0;
-	m_labels[m_currentLab]->getFocus();
+	m_currentLab = 0;	// initialises m_currentLab to 0, so none are selected
+	m_labels[m_currentLab]->getFocus();	// sets the current label in the array to be focused upon
 }
 
 Menu::~Menu()
@@ -100,28 +109,27 @@ Menu::~Menu()
 
 void Menu::update(GamePadState m_state, Xbox360Controller & m_controller, sf::Time deltaTime)
 {
-	
-
 	if (m_transitionStop)
 	{
-		checkButtonSelected(m_state, m_controller);
-		selectedButton(m_state, m_controller);
+		checkButtonSelected(m_state, m_controller);	// checks which button is selected
+		selectedButton(m_state, m_controller);	// selects the button
 	}
 
 	if (!m_timeStop)
 	{
-		deltaTime.Zero;
-		m_timeStop = true;
+		deltaTime.Zero;	// resets time to zero
+		m_timeStop = true;	// m_timeStop being true
 	}
 
+	// if statement letting the background sprite transition until 2 seconds has passed
 	if (m_time.asSeconds() <= 2.0)
 	{
 		if (m_backgroundSprite.getPosition().x < -700)
 		{
-			m_backgroundSprite.move(0.6, 0);
+			m_backgroundSprite.move(0.6, 0);	// translates the background sprite onto the screen along the x axis
 		}
 		
-		m_time += TIME_PER_UPDATE;
+		m_time += TIME_PER_UPDATE;	// updates the time
 	}
 	else
 	{
@@ -131,25 +139,26 @@ void Menu::update(GamePadState m_state, Xbox360Controller & m_controller, sf::Ti
 
 void Menu::render(sf::RenderWindow & window, sf::Clock clock)
 {
-	window.clear(sf::Color(30, 50, 90));
-	window.draw(m_flagSprite, &m_shader);
-	window.draw(m_backgroundSprite);
+	window.clear(sf::Color(30, 50, 90));	// clears the window to our desired colour, royal blue
+	window.draw(m_flagSprite, &m_shader);	// draws the flag sprite and its used shader
+	window.draw(m_backgroundSprite);	// draws the background sprite
 	
 	
-	m_shader.setParameter("uTime", clock.getElapsedTime().asSeconds());
+	m_shader.setParameter("uTime", clock.getElapsedTime().asSeconds());	// changes the parameter of the shader based on time
 	
+	// will only draw the included objects when the bg transition is over
 	if (m_transitionStop)
 	{
-		window.draw(m_raceLine);
-		window.draw(m_garLine);
-		window.draw(m_optLine);
-		window.draw(m_credLine);
-		window.draw(m_exitLine);
+		window.draw(m_raceLine);	// draws the line pointing to "Race"
+		window.draw(m_garLine);		// draws the line pointing to "Garage"
+		window.draw(m_optLine);		// draws the line pointing to "Options"
+		window.draw(m_credLine);	// draws the line pointing to "Credits"
+		window.draw(m_exitLine);	// draws the line pointing to "Exit"
 		
 		for (int i = 0; i < LABEL_COUNT; i++)
 		{
-			m_outline[i]->render(window);
-			m_labels[i]->render(window);
+			m_outline[i]->render(window);	// draws the outline of the labels
+			m_labels[i]->render(window);	// draws the label array
 		}
 	}
 }
@@ -158,38 +167,38 @@ void Menu::render(sf::RenderWindow & window, sf::Clock clock)
 // Function to check which button is selected
 void Menu::checkButtonSelected(GamePadState m_state, Xbox360Controller m_controller)
 {
+	// a switch statement which unhighlights the lines pointing to each label based on which label is curerntly selected
 	switch (m_currentLab)
 	{
-	case 0:
+	case 0:	// if race is selected:
 		m_raceLine.setFillColor(sf::Color(m_select));
 		m_garLine.setFillColor(sf::Color(m_unselect));
 		m_optLine.setFillColor(sf::Color(m_unselect));
 		m_credLine.setFillColor(sf::Color(m_unselect));
-		m_exitLine.setFillColor(sf::Color(m_unselect));
-		
+		m_exitLine.setFillColor(sf::Color(m_unselect));	
 		break;
-	case 1:
+	case 1:	// if garage is selected:
 		m_raceLine.setFillColor(sf::Color(m_unselect));
 		m_garLine.setFillColor(sf::Color(m_select));
 		m_optLine.setFillColor(sf::Color(m_unselect));
 		m_credLine.setFillColor(sf::Color(m_unselect));
 		m_exitLine.setFillColor(sf::Color(m_unselect));
 		break;
-	case 2:
+	case 2:	// if options is selected:
 		m_raceLine.setFillColor(sf::Color(m_unselect));
 		m_garLine.setFillColor(sf::Color(m_unselect));
 		m_optLine.setFillColor(sf::Color(m_select));
 		m_credLine.setFillColor(sf::Color(m_unselect));
 		m_exitLine.setFillColor(sf::Color(m_unselect));
 		break;
-	case 3:
+	case 3: // if credits is selected:
 		m_raceLine.setFillColor(sf::Color(m_unselect));
 		m_garLine.setFillColor(sf::Color(m_unselect));
 		m_optLine.setFillColor(sf::Color(m_unselect));
 		m_credLine.setFillColor(sf::Color(m_select));
 		m_exitLine.setFillColor(sf::Color(m_unselect));
 		break;
-	case 4:
+	case 4: // if exit is selected:
 		m_raceLine.setFillColor(sf::Color(m_unselect));
 		m_garLine.setFillColor(sf::Color(m_unselect));
 		m_optLine.setFillColor(sf::Color(m_unselect));
@@ -197,6 +206,7 @@ void Menu::checkButtonSelected(GamePadState m_state, Xbox360Controller m_control
 		m_exitLine.setFillColor(sf::Color(m_select));
 		break;
 	}
+
 	// if Down toggled
 	if ((m_state.dpadDown && !m_controller.m_previousState.dpadDown) || (m_state.LeftThumbStick.y > 50 && m_controller.m_previousState.LeftThumbStick.y < 50))
 	{

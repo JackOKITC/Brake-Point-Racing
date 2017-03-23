@@ -339,6 +339,7 @@ Bar::Bar()
 
 Bar::Bar(sf::Vector2f position, int size)
 {
+	// initialising the bar outer rectangle
 	m_recBar.setSize(sf::Vector2f(size * 3, size));
 	m_recBar.setPosition(position);
 	m_recBar.setOrigin(sf::Vector2f((size * 3) / 2, size / 2));
@@ -347,6 +348,7 @@ Bar::Bar(sf::Vector2f position, int size)
 	m_recBar.setOutlineColor(m_white);
 	m_currentNode = 0;
 
+	// initialising the array containing the segments of the bar
 	for (int i = 0; i < 3; i++)
 	{
 		m_innerRecs[i].setSize(sf::Vector2f(size-2, size-2));
@@ -404,6 +406,7 @@ void Bar::increment()
 
 void Bar::reset()
 {
+	// sets their colour to be virtually empty, giving the impression of the bar not being filled
 	for (int i = 0; i < 3; i++)
 	{
 		m_innerRecs[i].setFillColor(sf::Color(0, 0, 0, 0));

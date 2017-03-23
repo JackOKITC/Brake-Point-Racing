@@ -4,13 +4,14 @@
 Options::Options(sf::Font font, GameState *gameState, sf::Sound &music) :
 	m_font(font)
 {
-	m_radioTex = ResourceManager::instance().m_holder["Radio"];
+	m_radioTex = ResourceManager::instance().m_holder["Radio"];	// initialises the radio texture to be Radio from the yaml file
 
-	m_gameState = gameState;
+	m_gameState = gameState;	// initialising the gamestate object
 
-	m_volDif = 25;
-	m_volume = music.getVolume();
+	m_volDif = 25;	// initialised the slider difference variable
+	m_volume = music.getVolume();	// initialises volume to get the current musics volume (defaulted to 100)
 
+	// initialising all the slider variables and the individual widget objects
 	m_sliderValue = 5;
 	m_volSlider = new Slider(&sf::Vector2f(380, 150), m_sliderValue);
 	m_volSlider->setCurrentSegment(m_sliderValue - 1);
@@ -19,12 +20,14 @@ Options::Options(sf::Font font, GameState *gameState, sf::Sound &music) :
 	m_muteLabel = new Label(&m_muteString, &m_font, &sf::Vector2f(350, 297), 20, sf::Color(140, 80, 160));
 	m_volLabel = new Label(&m_volString, &m_font, &sf::Vector2f(280, 155), 20, sf::Color(140, 80, 160));
 
+	// assigning each widget object to the array of widgets
 	widgets[0] = m_volSlider;
 	widgets[1] = m_screenRadio;
 	widgets[2] = m_exitButton;
 	widgets[3] = m_volLabel;
 	widgets[4] = m_muteLabel;
 
+	// defaulting focus on the first element of the array
 	widgets[0]->getFocus();
 	widgets[1]->loseFocus();
 	widgets[2]->loseFocus();
@@ -38,14 +41,16 @@ Options::~Options()
 
 void Options::update(GamePadState m_state, Xbox360Controller & m_controller, sf::Sound &music)
 {
-	m_volSlider->update();
-	checkButtonSelected(m_state, m_controller, music);
-	selectedButton(m_state, m_controller, music);
+	m_volSlider->update();	// updates the volume slider
+	checkButtonSelected(m_state, m_controller, music);	// checks which button is selected
+	selectedButton(m_state, m_controller, music);	// selects the button
 }
 
 void Options::render(sf::RenderWindow & window)
 {
-	window.clear(sf::Color(30, 50, 90));
+	window.clear(sf::Color(30, 50, 90));	// sets the window to our preferred colour, royal blue
+	
+	// rendering each widget object
 	m_volSlider->render(window);
 	m_screenRadio->render(window);
 	m_exitButton->render(window);

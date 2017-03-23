@@ -303,18 +303,18 @@ public:
 
 	void moveRight();	// Moves the Label right, This is used for transitioning between screens.
 	void moveLeft();	// Moves the Label left, This is used for transitioning between screens.
-	void assignValues(int level);
-	void increment();
-	int returnNode();
-	void reset();
+	void assignValues(int level);	// assigning upgrade values to each bar
+	void increment();	// increments the bar by a set amount
+	int returnNode();	// returned the node
+	void reset();	// resets the bar
 
 	sf::Vector2f m_position;	// Stores the on-screen positon of the Label.
 private:
 	bool m_hasFocus;	// Determines whether or not the Label hasFocus.
 	int m_currentNode;
 
-	sf::RectangleShape m_recBar;
-	sf::RectangleShape m_innerRecs[3];
+	sf::RectangleShape m_recBar;	// the bar rectangle
+	sf::RectangleShape m_innerRecs[3];	// the array of inner bar segments
 };
 
 #endif // !BAR_H
