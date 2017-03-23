@@ -42,7 +42,10 @@ Garage::Garage(sf::Font font, GameState * gameState, Player *player) :
 		m_statLabel[i]->loseFocus();
 	}
 
-	m_cars[m_currentCar].setColor(m_highlight);
+	m_currency = new Label(&m_strings[3], &m_font, &sf::Vector2f(50, 20), 15);
+	m_cost = new Label(&m_strings[4], &m_font, &sf::Vector2f(450, 580), 15);
+
+	m_cars[m_currentCar].setColor(m_highlight); // sets the defa+ult hightlighted car
 
 	// test values
 	int value1 = 5, value2 = 3, value3 = 6, value4 = 8;
@@ -65,6 +68,8 @@ void Garage::update(Xbox360Controller & controller, sf::Time dt)
 void Garage::render(sf::RenderWindow &window)
 {
 	window.draw(m_backgroundSprite);
+	m_currency->render(window);
+	m_cost->render(window);
 	for (int i = 0; i < 3; i++)
 	{
 		// render each element
