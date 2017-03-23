@@ -1,5 +1,12 @@
 #ifndef GARAGE_H
 #define GARAGE_H
+
+/// <summary>
+/// Authors: John O'Grady, DJ O'Leary
+/// Version: 1.0
+/// Created: 16/02/2017
+/// </summary>
+
 #include <SFML\Graphics.hpp>
 #include <iostream>
 #include "Xbox360Controller.h"
@@ -27,7 +34,6 @@ private:
 	GameState *m_gameState;
 	Player *m_player;
 	bool m_transitionToNext = false;
-	sf::Time currentTime;
 	sf::Texture m_backgroundTex;
 	sf::Sprite m_backgroundSprite;
 	sf::Font m_font;
@@ -35,7 +41,7 @@ private:
 	Xbox360Controller * m_controller;
 
 	// stat elements
-	std::string m_strings[3] = { "Brakes", "Handling", "Acceleration" }; 	// strings to apply to labels
+	std::string m_strings[5] = { "Brakes", "Handling", "Acceleration", "Medals: ", "Cost: " }; 	// strings to apply to labels
 	Label *m_statLabel[3]; // label for each stat element of cars
 	Slider *m_statValues[3]; // sliders which indicate the current "value" of the car stat
 	int m_currentStat; // keeps track of the currently selected stat for upgrading
@@ -52,9 +58,14 @@ private:
 	sf::Sprite m_cars[3]; // sprite container for each car 
 	int m_currentCar; // keeps track of the currently selected car for upgrading
 
-	// 
+	// integers to keep track of how much each stat of each car has been upgraded
 	int carOneUpgradeLevels[3];
 	int carTwoUpgradeLevels[3];
 	int carThreeUpgradeLevels[3];
+
+	// variables for the upgrade purchasing system
+	Label * m_currency;
+	Label* m_cost;
+	int m_upgrdCost;
 };
 #endif // !GARAGE
