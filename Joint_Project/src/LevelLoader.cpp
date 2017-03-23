@@ -1,5 +1,6 @@
 #include "LevelLoader.h"
 
+// an operator to receive the data for roads in the first map
 void operator >> (const YAML::Node& roadNode, Road1Data& road)
 {
 	road.m_fileName = roadNode["file"].as<std::string>();
@@ -10,6 +11,7 @@ void operator >> (const YAML::Node& roadNode, Road1Data& road)
 	road.m_scale = roadNode["scale"].as<double>();
 }
 
+// an operator to receive the data for the roads in the second map
 void operator >> (const YAML::Node& roadNode, Road2Data& road)
 {
 	road.m_fileName = roadNode["file"].as<std::string>();
@@ -20,24 +22,28 @@ void operator >> (const YAML::Node& roadNode, Road2Data& road)
 	road.m_scale = roadNode["scale"].as<double>();
 }
 
+// an operator for receiving audio data
 void operator >> (const YAML::Node& audioNode, AudioData& audio)
 {
 	audio.m_fileName = audioNode["file"].as<std::string>();
 	audio.m_fileID = audioNode["ID"].as<std::string>();
 }
 
+// an operator for receiving the data for the start line sprite
 void operator >> (const YAML::Node& startNode, StartlineData& start)
 {
 	start.m_fileName = startNode["file"].as<std::string>();
 	start.m_fileID = startNode["ID"].as<std::string>();
 }
 
+// an operator for receiving the background data
 void operator >> (const YAML::Node& bgNode, BackgroundData& bg)
 {
 	bg.m_fileName = bgNode["file"].as<std::string>();
 	bg.m_fileID = bgNode["ID"].as<std::string>();
 }
 
+// an operator for receiving the car data
 void operator >> (const YAML::Node& carNode, CarData& car)
 {
 	car.m_fileName = carNode["file"].as<std::string>();
@@ -47,12 +53,14 @@ void operator >> (const YAML::Node& carNode, CarData& car)
 	car.m_acceleration = carNode["Acceleration"].as<int>();
 }
 
+// an operator for receiving upgrade data
 void operator >> (const YAML::Node& upgradeNode, UpgradeData& upgrade)
 {
 	upgrade.m_fileName = upgradeNode["file"].as<std::string>();
 	upgrade.m_fileID = upgradeNode["ID"].as<std::string>();
 }
 
+// an operator for receiving the node data in the first map
 void operator >> (const YAML::Node& nodeNode, Node1Data& node)
 {
 	node.m_number = nodeNode["number"].as<int>();
@@ -60,6 +68,7 @@ void operator >> (const YAML::Node& nodeNode, Node1Data& node)
 	node.m_position.y = nodeNode["position"]["y"].as<float>();
 }
 
+// an operator for receiving the node data in the second map
 void operator >> (const YAML::Node& nodeNode, Node2Data& node)
 {
 	node.m_number = nodeNode["number"].as<int>();
@@ -67,7 +76,7 @@ void operator >> (const YAML::Node& nodeNode, Node2Data& node)
 	node.m_position.y = nodeNode["position"]["y"].as<float>();
 }
 
-
+// an operator for receiving checkpoint data in the first map
 void operator >> (const YAML::Node& checkpointNode, Checkpoint1Data& checkpoint)
 {
 	checkpoint.m_number = checkpointNode["number"].as<int>();
@@ -76,6 +85,7 @@ void operator >> (const YAML::Node& checkpointNode, Checkpoint1Data& checkpoint)
 	checkpoint.m_rotation = checkpointNode["rotation"].as<double>();
 }
 
+// an operator for receiving checkpoint data in the second map
 void operator >> (const YAML::Node& checkpointNode, Checkpoint2Data& checkpoint)
 {
 	checkpoint.m_number = checkpointNode["number"].as<int>();
@@ -84,9 +94,9 @@ void operator >> (const YAML::Node& checkpointNode, Checkpoint2Data& checkpoint)
 	checkpoint.m_rotation = checkpointNode["rotation"].as<double>();
 }
 
+// an operator to load in the data from the yaml file to the level load system
 void operator >> (const YAML::Node& levelNode, LevelData& level)
-{
-	// load in the data from the yaml file to the level load system
+{	
 	const YAML::Node& roadsNode1 = levelNode["tile1"].as<YAML::Node>();
 	for (unsigned i = 0; i < roadsNode1.size(); i++)
 	{
@@ -179,8 +189,6 @@ void operator >> (const YAML::Node& levelNode, LevelData& level)
 	}
 }
 
-
-
 LevelLoader::LevelLoader()
 {
 	
@@ -195,6 +203,7 @@ bool LevelLoader::load(int levelNo, LevelData& level)
 	ss << levelNo;
 	ss << ".yaml";
 
+	// a try-catch to display an error if the files cant be found
 	try 
 	{
 		YAML::Node base = YAML::LoadFile(ss.str());

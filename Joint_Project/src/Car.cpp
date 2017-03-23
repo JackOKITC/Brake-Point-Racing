@@ -6,17 +6,20 @@ Car::Car()
 
 Car::Car(sf::Texture & carTex, int brake, int handling, int acceleration)
 {
+	// initialising all the car variables
 	m_carTex = carTex;
 	m_carSprite.setTexture(m_carTex);
 	m_velocity = sf::Vector2f(0, 0);
 	m_deceleration = brake;
 	m_handling = handling;
 	m_acceleration = acceleration;
+	
+	// setting the car sprites' position, origin, and scale
 	m_carSprite.setPosition(sf::Vector2f(450, 400));
-
 	m_carSprite.setOrigin(m_carSprite.getLocalBounds().width / 2, m_carSprite.getLocalBounds().height / 2);
 	m_carSprite.setScale(0.2, 0.2);
 
+	// initialising each upgrade segment to be empty
 	for (int i = 0; i < 3; i++)
 	{
 		m_upgradeLevels[i] = 0;
@@ -29,10 +32,11 @@ Car::~Car()
 
 void Car::update(Xbox360Controller & controller, double dt)
 {
-		moveCar(controller);
-		m_carSprite.setPosition(m_position);
-		m_carSprite.setRotation(m_rotation);
+		moveCar(controller);	// move the car based on controller input
+		m_carSprite.setPosition(m_position);	// setting the car's position
+		m_carSprite.setRotation(m_rotation);	// updating the car's rotation
 
+		// updating the position based on time, speed, and rotation
 		m_position = sf::Vector2f(m_position.x + std::cos(DEG_TO_RAD  * (m_rotation)) * m_speed * (dt / 1000),
 								  m_position.y + std::sin(DEG_TO_RAD * (m_rotation)) * m_speed * (dt / 1000));
 
@@ -40,7 +44,7 @@ void Car::update(Xbox360Controller & controller, double dt)
 
 void Car::render(sf::RenderWindow & window)
 {
-		window.draw(m_carSprite);
+		window.draw(m_carSprite);	// drawing the car sprite
 }
 
 void Car::moveCar(Xbox360Controller & controller)
@@ -146,32 +150,38 @@ void Car::slowCar(bool slow)
 
 void Car::updateStat(std::string stat)
 {
+	// increases the Brakes stat if updated with this stat
 	if(stat == "Brakes")
 	{
 		m_deceleration++;
 	}
 
+	// increases the Handling stat if updated with this stat
 	if (stat == "Handling")
 	{
 		m_handling++;
 	}
 
+	// increases the Acceleration stat if updated with this stat
 	if (stat == "Acceleration")
 	{
 		m_acceleration++;
 	}
 }
 
+// returns m_deceleration
 int Car::returnDecel()
 {
 	return m_deceleration;
 }
 
+// returns m_handling
 int Car::returnHandle()
 {
 	return m_handling;
 }
 
+// returns m_acceleration
 int Car::returnAcel()
 {
 	return m_acceleration;

@@ -7,23 +7,22 @@ Ai::Ai(std::vector<std::unique_ptr<Node>> & nodes, sf::Vector2f & position) :
 	m_position(position.x - 10, position.y)
 {
 
-	m_carTex = ResourceManager::instance().m_holder["Bus2"];
+	m_carTex = ResourceManager::instance().m_holder["Bus2"];	// initialises the car texture to be Bus2 from YAML
 
-	m_carSprite.setTexture(m_carTex);
+	m_carSprite.setTexture(m_carTex);	// assigns the cartexture to the car sprite
 
-	m_velocity = sf::Vector2f(0, 0);
-	m_rotation = 0.0f;
-	m_speed = 0.0f;
-	m_lap = 0;
+	m_velocity = sf::Vector2f(0, 0);	// initialises the velocity to be 0
+	m_rotation = 0.0f;	// rotation initialised to 0
+	m_speed = 0.0f;	// speed initialised to 0
+	m_lap = 0;	// lap initialised to 0
 
 
-	m_carSprite.setPosition(m_position);
+	m_carSprite.setPosition(m_position);	// sets the car's position
+	m_carSprite.setScale(0.2, 0.2);	// sets the car's scale
+	m_carSprite.setRotation(m_rotation);	// sets the car's rotation
+	m_carSprite.setOrigin(m_carSprite.getLocalBounds().width / 2, m_carSprite.getLocalBounds().height / 2);	// sets the car's origin
 
-	m_carSprite.setScale(0.2, 0.2);
-	m_carSprite.setRotation(m_rotation);
-
-	m_carSprite.setOrigin(m_carSprite.getLocalBounds().width / 2, m_carSprite.getLocalBounds().height / 2);
-
+	// initialises each node, setting its position depending on its array position
 	for (int i = 0; i < nodes.size(); i++)
 	{
 		sf::CircleShape circle;
@@ -34,7 +33,7 @@ Ai::Ai(std::vector<std::unique_ptr<Node>> & nodes, sf::Vector2f & position) :
 		m_circles.at(i).setFillColor(sf::Color(0,0,255,126));
 	}
 
-	m_finishTime = 40000;
+	m_finishTime = 40000;	// initialising finish time to 40000
 	
 }
 
@@ -44,10 +43,12 @@ Ai::~Ai()
 
 void Ai::update(double dt, sf::Sprite carSprite)
 {	
-	sf::Vector2f newPos = m_position;
+	sf::Vector2f newPos = m_position; // sets new position to m_position
 
-	sf::Vector2f vectorToNode = m_followPath();
+	sf::Vector2f vectorToNode = m_followPath();	// function allowing for the AI to follow nodes
 
+	// changes the AI steering and velocity based on the next node,
+	// and influences it to avoid colliding with the player
 	m_steering += thor::unitVector(vectorToNode);
 	m_steering += collisionAvoidance(carSprite);
 	m_steering = Math::truncate(m_steering, MAX_FORCE);
@@ -82,8 +83,8 @@ void Ai::update(double dt, sf::Sprite carSprite)
 		}
 	}
 
+	// updates the speed and the car sprites' rotation
 	m_speed = thor::length(m_velocity);
-
 	m_position.x += m_velocity.x * m_speed * (dt / 50000);
 	m_position.y += m_velocity.y * m_speed * (dt / 50000);
 	m_carSprite.setPosition(m_position);
@@ -93,10 +94,11 @@ void Ai::update(double dt, sf::Sprite carSprite)
 
 void Ai::render(sf::RenderWindow & window)
 {
-	window.draw(m_carSprite);
+	window.draw(m_carSprite);	// draws the car sprite
 	
 }
 
+// function allowing the AI to follow, via the vector to the current node
 sf::Vector2f Ai::m_followPath()
 {
 	sf::Vector2f dist;
@@ -125,6 +127,8 @@ sf::Vector2f Ai::m_followPath()
 	return dist;
 }
 
+// function allowing the AI to avoid colliding with eachother and the player,
+// via what they see ahead and the most threatening object
 sf::Vector2f Ai::collisionAvoidance(sf::Sprite carSprite)
 {
 	auto headingRadians = thor::toRadian(m_rotation);
@@ -149,6 +153,7 @@ sf::Vector2f Ai::collisionAvoidance(sf::Sprite carSprite)
 	return avoidance;
 }
 
+// the AI finds the most threatening obstacle
 const sf::CircleShape Ai::findMostThreateningObstacle(sf::Sprite carSprite)
 {
 	sf::CircleShape mostThreatening = sf::CircleShape();

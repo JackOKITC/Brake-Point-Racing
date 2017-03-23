@@ -10,6 +10,7 @@ ResourceManager::ResourceManager()
 
 void ResourceManager::loadData(LevelData &level)
 {
+	// a try-catch for error handling when trying to acquire the data for each object from yaml
 	try
 	{
 		for (Road1Data data : level.m_roads1)

@@ -8,9 +8,9 @@ Checkpoint::Checkpoint()
 
 Checkpoint::Checkpoint(const int & number, const sf::Vector2f & pos, const double & rotation)
 {
-	m_checkpointNumber = number;
-	m_position = pos;
-	m_rotation = rotation;
+	m_checkpointNumber = number;	// initialising the checkpoint number
+	m_position = pos;	// initialsing the position
+	m_rotation = rotation;	// initialising the rotation
 
 }
 

@@ -4,8 +4,9 @@ PreRace::PreRace(sf::Font font, GameState *gameState, Player *player) :
 	m_font(font),
 	m_gameState(gameState)
 {
-	m_player = player;
+	m_player = player;	// initialising the player object
 
+	// initialising each button via their constructors
 	m_rightButton[0] = new Button(&m_rightString, &sf::Vector2f(750, 200), &m_font);
 	m_leftButton[0] = new Button(&m_leftString, &sf::Vector2f(150, 200), &m_font);
 	m_rightButton[1] = new Button(&m_rightString, &sf::Vector2f(750, 350), &m_font);
@@ -13,10 +14,12 @@ PreRace::PreRace(sf::Font font, GameState *gameState, Player *player) :
 	m_backButton = new Button(&m_backString, &sf::Vector2f(450, 550), &m_font);
 	m_raceButton = new Button(&m_raceString, &sf::Vector2f(450, 450), &m_font);
 
+	// initialising each label via their contructors
 	m_grassLabel = new Label(&m_grassString, &m_font, &sf::Vector2f(450, 200), 20, sf::Color(255, 205, 0));
 	m_icyLabel = new Label(&m_icyString, &m_font, &sf::Vector2f(450, 200), 20, sf::Color(255, 205, 0));
 	m_carLabel = new Label(&m_carTypes[0], &m_font, &sf::Vector2f(450, 350), 20, sf::Color(255, 205, 0));
 
+	// assigning each button and label to a position in the widget array
 	widgets[0] = m_rightButton[0];
 	widgets[1] = m_leftButton[0];
 	widgets[2] = m_rightButton[1];
@@ -26,7 +29,8 @@ PreRace::PreRace(sf::Font font, GameState *gameState, Player *player) :
 	widgets[6] = m_carLabel;
 	widgets[7] = m_grassLabel;
 	widgets[8] = m_icyLabel;
-
+	
+	// defaulting the focus to the race button
 	widgets[0]->loseFocus();
 	widgets[1]->loseFocus();
 	widgets[2]->loseFocus();
@@ -34,7 +38,7 @@ PreRace::PreRace(sf::Font font, GameState *gameState, Player *player) :
 	widgets[4]->loseFocus();
 	widgets[5]->getFocus();
 
-	m_currentCar = 0;
+	m_currentCar = 0;	// setting the current car to 0
 	m_whichLabel = false;
 }
 
@@ -42,22 +46,27 @@ PreRace::~PreRace() {}
 
 void PreRace::update(GamePadState m_state, Xbox360Controller & m_controller)
 {
-	checkButtonSelected(m_state, m_controller);
-	selectedButton(m_state, m_controller);
+	checkButtonSelected(m_state, m_controller);	// checks which button is selected
+	selectedButton(m_state, m_controller);	// selects the button
 }
 
 void PreRace::render(sf::RenderWindow & window)
 {
 	window.clear(sf::Color(30, 50, 90));
+	
+	// rendering the widget objects
 	for (int i = 0; i < WIDGET_COUNT; i++)
 	{
 		widgets[i]->render(window);
 	}
 
+	// only render if m_whichLabel is false
 	if (!m_whichLabel)
 	{
 		widgets[7]->render(window);
 	}
+
+	// only render if m_whichLabel is true
 	if (m_whichLabel)
 	{
 		widgets[8]->render(window);
@@ -67,6 +76,8 @@ void PreRace::render(sf::RenderWindow & window)
 // Function to check which button is selected
 void PreRace::checkButtonSelected(GamePadState m_state, Xbox360Controller m_controller)
 {
+	// switch statement for losing focus and gaining focus on the current button
+	// and for changing which case is currently in use (which button is pressed"
 	switch (m_buttonSelected)
 	{
 	case raceSelection::MapNext:
