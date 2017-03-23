@@ -334,6 +334,7 @@ void Play::finishingPos()
 	if (m_time < aiCars[0]->m_finishTime && m_time < aiCars[1]->m_finishTime)
 	{
 		m_position = 1;
+		m_player->m_currency += 2;
 	}
 	else if (m_time > aiCars[0]->m_finishTime && m_time > aiCars[1]->m_finishTime)
 	{
@@ -341,6 +342,7 @@ void Play::finishingPos()
 	}
 	else
 		m_position = 2;
+		m_player->m_currency += 1;
 
 	*m_state = GameState::END_STATE;
 }

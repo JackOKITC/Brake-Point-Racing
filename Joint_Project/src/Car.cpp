@@ -16,6 +16,11 @@ Car::Car(sf::Texture & carTex, int brake, int handling, int acceleration)
 
 	m_carSprite.setOrigin(m_carSprite.getLocalBounds().width / 2, m_carSprite.getLocalBounds().height / 2);
 	m_carSprite.setScale(0.2, 0.2);
+
+	for (int i = 0; i < 3; i++)
+	{
+		m_upgradeLevels[i] = 0;
+	}
 }
 
 Car::~Car() 
@@ -125,4 +130,37 @@ void Car::slowCar(bool slow)
 	{
 		m_speed += 0.1f;
 	}
+}
+
+void Car::updateStat(std::string stat)
+{
+	if(stat == "Brakes")
+	{
+		m_deceleration++;
+	}
+
+	if (stat == "Handling")
+	{
+		m_handling++;
+	}
+
+	if (stat == "Acceleration")
+	{
+		m_acceleration++;
+	}
+}
+
+int Car::returnDecel()
+{
+	return m_deceleration;
+}
+
+int Car::returnHandle()
+{
+	return m_handling;
+}
+
+int Car::returnAcel()
+{
+	return m_acceleration;
 }

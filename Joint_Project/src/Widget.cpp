@@ -396,14 +396,21 @@ void Bar::increment()
 	}
 }
 
+void Bar::reset()
+{
+	for (int i = 0; i < 3; i++)
+	{
+		m_innerRecs[i].setFillColor(sf::Color(0, 0, 0, 0));
+	}
+}
+
 void Bar::assignValues(int level)
 {
+	m_currentNode = level;
 	// sets the number of upgrades in the bar to be at a certain level
-
 	for (int i = 0; i < level; i++)
 	{
-		m_currentNode = i;
-		m_innerRecs[m_currentNode].setFillColor(m_gold);
+		m_innerRecs[i].setFillColor(m_gold);
 	}
 }
 

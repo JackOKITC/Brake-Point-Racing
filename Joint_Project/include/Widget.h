@@ -299,6 +299,7 @@ public:
 	void assignValues(int level);
 	void increment();
 	int returnNode();
+	void reset();
 
 	sf::Vector2f m_position;	// Stores the on-screen positon of the Label.
 private:

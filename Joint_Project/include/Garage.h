@@ -20,7 +20,7 @@ class Garage
 	const sf::Time TIME_PER_UPDATE = sf::microseconds(1000);
 
 public:
-	Garage(sf::Font font, GameState *gameState, Player * player);
+	Garage(sf::Font font, sf::Font currencyFont, GameState *gameState, Player * player);
 	~Garage();
 
 	void update(Xbox360Controller & controller, sf::Time dt);
@@ -36,7 +36,7 @@ private:
 	bool m_transitionToNext = false;
 	sf::Texture m_backgroundTex;
 	sf::Sprite m_backgroundSprite;
-	sf::Font m_font;
+	sf::Font m_textFont, m_currencyFont;
 
 	Xbox360Controller * m_controller;
 

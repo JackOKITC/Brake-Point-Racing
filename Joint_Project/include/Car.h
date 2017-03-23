@@ -17,10 +17,16 @@ public:
 
 	void moveCar(Xbox360Controller & controller);
 	void slowCar(bool slow);
+	void updateStat(std::string stat);
+	int returnDecel();
+	int returnHandle();
+	int returnAcel();
 
 	sf::Vector2f m_position;
 	float m_rotation;
 	sf::Sprite m_carSprite;
+
+	int m_upgradeLevels[3];
 
 private:
 
@@ -31,7 +37,6 @@ private:
 
 	int m_currentCheckpoint;
 	int m_lap;
-
 
 	sf::Vector2f m_velocity;
 	float m_speed;
