@@ -50,7 +50,7 @@ void Car::moveCar(Xbox360Controller & controller)
 	{
 		if (m_speed < MAX_FORWARD_SPEED)
 		{
-			m_speed += (-controller.m_currentState.triggers / 500) * (m_acceleration);
+			m_speed += (-controller.m_currentState.triggers / 50000) * (m_acceleration);
 		}
 	}
 	// If the right trigger is not being held down and speed is greater than .01;
@@ -63,7 +63,7 @@ void Car::moveCar(Xbox360Controller & controller)
 	{
 		if (m_speed > MAX_REVERSE_SPEED)
 		{
-			m_speed -= (controller.m_currentState.triggers / 1000) * (m_deceleration);
+			m_speed -= (controller.m_currentState.triggers / 100000) * (m_deceleration);
 		}
 	}
 	// If the left trigger is being held down.
@@ -75,18 +75,22 @@ void Car::moveCar(Xbox360Controller & controller)
 	// Checks if the right button has been pressed
 	if ((controller.m_currentState.dpadRight) || (controller.m_currentState.LeftThumbStick.x > 50))
 	{
-		if ((m_speed > -1 && m_speed < 0) || (m_speed < 1 && m_speed > 0))
+		if (m_speed < 0.1 && m_speed > 0)
 		{
 		}
-		else if ((m_speed > -5 && m_speed < 0) || (m_speed < 5 && m_speed > 0))
+		else if (m_speed < 5 && m_speed > 0)
 		{
 			m_rotation += (m_handling * 0.0133);
 		}
-		else if ((m_speed > -10 && m_speed < 0) || (m_speed < 10 && m_speed > 0))
+		else if (m_speed < 10 && m_speed > 0)
 		{
 			m_rotation += (m_handling * 0.0011);
 		}
-		else if ((m_speed <= -10 && m_speed < 0) || (m_speed >= 10 && m_speed > 0))
+		else if (m_speed >= 10 && m_speed > 0)
+		{
+			m_rotation += (m_handling * 0.009);
+		}
+		else if ((m_speed < 0))
 		{
 			m_rotation += (m_handling * 0.009);
 		}
@@ -101,18 +105,22 @@ void Car::moveCar(Xbox360Controller & controller)
 	// Checks if the left button has been pressed
 	if ((controller.m_currentState.dpadLeft) || (controller.m_currentState.LeftThumbStick.x < -50))
 	{
-		if ((m_speed > -1 && m_speed < 0) || (m_speed < 1 && m_speed > 0))
+		if (m_speed < 0.1 && m_speed > 0)
 		{
 		}
-		else if ((m_speed > -5 && m_speed < 0) || (m_speed < 5 && m_speed > 0))
+		else if (m_speed < 5 && m_speed > 0)
 		{
 			m_rotation -= (m_handling * 0.0133);
 		}
-		else if ((m_speed > -10 && m_speed < 0) || (m_speed < 10 && m_speed > 0))
+		else if (m_speed < 10 && m_speed > 0)
 		{
 			m_rotation -= (m_handling * 0.0011);
 		}
-		else if ((m_speed <= -10 && m_speed < 0) || (m_speed >= 10 && m_speed > 0))
+		else if (m_speed >= 10 && m_speed > 0)
+		{
+			m_rotation -= (m_handling * 0.009);
+		}
+		else if ((m_speed < 0))
 		{
 			m_rotation -= (m_handling * 0.009);
 		}
@@ -128,11 +136,11 @@ void Car::slowCar(bool slow)
 {
 	if (slow && m_speed > 5)
 	{
-		m_speed -= 1.5f * m_acceleration;
+		m_speed -= 0.1f;
 	}
 	else if (slow && m_speed < -2.5)
 	{
-		m_speed += 0.8f * m_deceleration;
+		m_speed += 0.1f;
 	}
 }
 
