@@ -2,7 +2,6 @@
 
 Player::Player()
 {
-	
 }
 
 // player contrsuctor taking level data as an arguement so that it can load in textures and variable
