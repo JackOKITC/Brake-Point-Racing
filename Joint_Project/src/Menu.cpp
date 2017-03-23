@@ -9,31 +9,38 @@ Menu::Menu(sf::Font & font, GameState *gameState) :
 #pragma region Convex Lines
 
 	m_raceLine.setPointCount(4);
-	m_raceLine.setPoint(0, sf::Vector2f(144.5, 140));
-	m_raceLine.setPoint(1, sf::Vector2f(243, 105));
-	m_raceLine.setPoint(2, sf::Vector2f(247.6, 115));
-	m_raceLine.setPoint(3, sf::Vector2f(153, 160));
+	m_raceLine.setPoint(0, sf::Vector2f(123.5, 102));
+	m_raceLine.setPoint(1, sf::Vector2f(223.5, 67));
+	m_raceLine.setPoint(2, sf::Vector2f(229.1, 77));
+	m_raceLine.setPoint(3, sf::Vector2f(135, 122));
 	m_raceLine.setFillColor(sf::Color(m_unselect));
 	
 	m_garLine.setPointCount(4);
-	m_garLine.setPoint(0, sf::Vector2f(175.5, 240));
-	m_garLine.setPoint(1, sf::Vector2f(278.5, 225));
-	m_garLine.setPoint(2, sf::Vector2f(280.75, 235));
-	m_garLine.setPoint(3, sf::Vector2f(179, 260));
+	m_garLine.setPoint(0, sf::Vector2f(168.5, 205));
+	m_garLine.setPoint(1, sf::Vector2f(269.5, 180));
+	m_garLine.setPoint(2, sf::Vector2f(271.75, 190));
+	m_garLine.setPoint(3, sf::Vector2f(172.5, 225));
 	m_garLine.setFillColor(sf::Color(m_unselect));
 
 	m_optLine.setPointCount(4);
-	m_optLine.setPoint(0, sf::Vector2f(179, 340));
-	m_optLine.setPoint(1, sf::Vector2f(282.5, 350));
-	m_optLine.setPoint(2, sf::Vector2f(280.5, 360));
-	m_optLine.setPoint(3, sf::Vector2f(176, 360));
+	m_optLine.setPoint(0, sf::Vector2f(181, 290.5));
+	m_optLine.setPoint(1, sf::Vector2f(284.5, 298));
+	m_optLine.setPoint(2, sf::Vector2f(284.5, 308));
+	m_optLine.setPoint(3, sf::Vector2f(181, 310.5));
 	m_optLine.setFillColor(sf::Color(m_unselect));
 	
+	m_credLine.setPointCount(4);
+	m_credLine.setPoint(0, sf::Vector2f(172.75, 378));
+	m_credLine.setPoint(1, sf::Vector2f(271.5, 415));
+	m_credLine.setPoint(2, sf::Vector2f(267.5, 426));
+	m_credLine.setPoint(3, sf::Vector2f(167.5, 401));
+	m_credLine.setFillColor(sf::Color(m_unselect));
+
 	m_exitLine.setPointCount(4);
-	m_exitLine.setPoint(0, sf::Vector2f(155.5, 438));
-	m_exitLine.setPoint(1, sf::Vector2f(252, 475));
-	m_exitLine.setPoint(2, sf::Vector2f(248, 485));
-	m_exitLine.setPoint(3, sf::Vector2f(147, 458));
+	m_exitLine.setPoint(0, sf::Vector2f(137, 478));
+	m_exitLine.setPoint(1, sf::Vector2f(227, 527));
+	m_exitLine.setPoint(2, sf::Vector2f(221.5, 537.5));
+	m_exitLine.setPoint(3, sf::Vector2f(127, 498));
 	m_exitLine.setFillColor(sf::Color(m_unselect));
 
 #pragma endregion
@@ -64,15 +71,20 @@ Menu::Menu(sf::Font & font, GameState *gameState) :
 
 	for (int i = 0; i < LABEL_COUNT; i++)
 	{
-		if (i < 1 || i > 2)
+		if (i < 1 || i > 3)
 		{
-			m_labels[i] = new Label(&m_strings[i], &m_font, &sf::Vector2f(315, 100 + (i * 130)), 32, sf::Color(140, 80, 160));
-			m_outline[i] = new Label(&m_strings[i], &m_font, &sf::Vector2f(318, 100 + (i * 130)), 32, sf::Color(195, 80, 215));
+			m_labels[i] = new Label(&m_strings[i], &m_font, &sf::Vector2f(290, 40 + (i * 130)), 28, sf::Color(140, 80, 160));
+			m_outline[i] = new Label(&m_strings[i], &m_font, &sf::Vector2f(293, 40 + (i * 130)), 28, sf::Color(195, 80, 215));
+		}
+		else if (i == 1 || i == 3)
+		{
+			m_labels[i] = new Label(&m_strings[i], &m_font, &sf::Vector2f(365, 40 + (i * 130)), 28, sf::Color(140, 80, 160));
+			m_outline[i] = new Label(&m_strings[i], &m_font, &sf::Vector2f(368, 40 + (i * 130)), 28, sf::Color(195, 80, 215));
 		}
 		else
 		{
-			m_labels[i] = new Label(&m_strings[i], &m_font, &sf::Vector2f(365, 100 + (i * 130)), 32, sf::Color(140, 80, 160));
-			m_outline[i] = new Label(&m_strings[i], &m_font, &sf::Vector2f(368, 100 + (i * 130)), 32, sf::Color(195, 80, 215));
+			m_labels[i] = new Label(&m_strings[i], &m_font, &sf::Vector2f(385, 40 + (i * 130)), 28, sf::Color(140, 80, 160));
+			m_outline[i] = new Label(&m_strings[i], &m_font, &sf::Vector2f(388, 40 + (i * 130)), 28, sf::Color(195, 80, 215));
 		}
 		
 		m_labels[i]->loseFocus();
@@ -131,7 +143,9 @@ void Menu::render(sf::RenderWindow & window, sf::Clock clock)
 		window.draw(m_raceLine);
 		window.draw(m_garLine);
 		window.draw(m_optLine);
+		window.draw(m_credLine);
 		window.draw(m_exitLine);
+		
 		for (int i = 0; i < LABEL_COUNT; i++)
 		{
 			m_outline[i]->render(window);
@@ -150,6 +164,7 @@ void Menu::checkButtonSelected(GamePadState m_state, Xbox360Controller m_control
 		m_raceLine.setFillColor(sf::Color(m_select));
 		m_garLine.setFillColor(sf::Color(m_unselect));
 		m_optLine.setFillColor(sf::Color(m_unselect));
+		m_credLine.setFillColor(sf::Color(m_unselect));
 		m_exitLine.setFillColor(sf::Color(m_unselect));
 		
 		break;
@@ -157,18 +172,28 @@ void Menu::checkButtonSelected(GamePadState m_state, Xbox360Controller m_control
 		m_raceLine.setFillColor(sf::Color(m_unselect));
 		m_garLine.setFillColor(sf::Color(m_select));
 		m_optLine.setFillColor(sf::Color(m_unselect));
+		m_credLine.setFillColor(sf::Color(m_unselect));
 		m_exitLine.setFillColor(sf::Color(m_unselect));
 		break;
 	case 2:
 		m_raceLine.setFillColor(sf::Color(m_unselect));
 		m_garLine.setFillColor(sf::Color(m_unselect));
 		m_optLine.setFillColor(sf::Color(m_select));
+		m_credLine.setFillColor(sf::Color(m_unselect));
 		m_exitLine.setFillColor(sf::Color(m_unselect));
 		break;
 	case 3:
 		m_raceLine.setFillColor(sf::Color(m_unselect));
 		m_garLine.setFillColor(sf::Color(m_unselect));
 		m_optLine.setFillColor(sf::Color(m_unselect));
+		m_credLine.setFillColor(sf::Color(m_select));
+		m_exitLine.setFillColor(sf::Color(m_unselect));
+		break;
+	case 4:
+		m_raceLine.setFillColor(sf::Color(m_unselect));
+		m_garLine.setFillColor(sf::Color(m_unselect));
+		m_optLine.setFillColor(sf::Color(m_unselect));
+		m_credLine.setFillColor(sf::Color(m_unselect));
 		m_exitLine.setFillColor(sf::Color(m_select));
 		break;
 	}
@@ -222,6 +247,12 @@ void Menu::selectedButton(GamePadState m_gamePadState, Xbox360Controller m_contr
 		if (m_gamePadState.A && !m_controller.m_previousState.A)	// If the A button has been pressed
 		{
 			*m_gameState = GameState::OPTIONS_STATE;
+		}
+		break;
+	case button::Credits:
+		if (m_gamePadState.A && !m_controller.m_previousState.A)	// If the A button has been pressed
+		{
+			*m_gameState = GameState::CREDITS_STATE;	// Exits the game
 		}
 		break;
 	case button::Exit:	// The exit button 
