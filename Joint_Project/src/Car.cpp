@@ -45,20 +45,15 @@ void Car::render(sf::RenderWindow & window)
 
 void Car::moveCar(Xbox360Controller & controller)
 {
-	if (controller.m_currentState.A && !controller.m_previousState.A)
-	{
-		std::cout << "Handling: " << m_handling << std::endl;
-		std::cout << "Braking: " << m_deceleration << std::endl;
-		std::cout << "Acceleration: " << m_acceleration << std::endl;
-	}
-
+	// If the right trigger is being held down.
 	if (controller.m_currentState.RTrigger)
 	{
 		if (m_speed < MAX_FORWARD_SPEED)
 		{
-			m_speed += (-controller.m_currentState.triggers / 5000) * (m_acceleration + 1);
+			m_speed += (-controller.m_currentState.triggers / 500) * (m_acceleration);
 		}
 	}
+	// If the right trigger is not being held down and speed is greater than .01;
 	else if (!controller.m_currentState.RTrigger && m_speed > 0.01f)
 	{
 		m_speed -= DECCELERATION_CAUSED_BY_FRICTION;
@@ -68,15 +63,16 @@ void Car::moveCar(Xbox360Controller & controller)
 	{
 		if (m_speed > MAX_REVERSE_SPEED)
 		{
-			m_speed -= (controller.m_currentState.triggers / 10000) * (m_deceleration + 1);
+			m_speed -= (controller.m_currentState.triggers / 1000) * (m_deceleration);
 		}
 	}
+	// If the left trigger is being held down.
 	else if (!controller.m_currentState.LTrigger && m_speed < 0)
 	{
 		m_speed += DECCELERATION_CAUSED_BY_FRICTION;
 	}
 
-	// Checks if the down button has been pressed
+	// Checks if the right button has been pressed
 	if ((controller.m_currentState.dpadRight) || (controller.m_currentState.LeftThumbStick.x > 50))
 	{
 		if ((m_speed > -1 && m_speed < 0) || (m_speed < 1 && m_speed > 0))
@@ -102,7 +98,7 @@ void Car::moveCar(Xbox360Controller & controller)
 
 	}
 
-	// Checks if the up button has been pressed
+	// Checks if the left button has been pressed
 	if ((controller.m_currentState.dpadLeft) || (controller.m_currentState.LeftThumbStick.x < -50))
 	{
 		if ((m_speed > -1 && m_speed < 0) || (m_speed < 1 && m_speed > 0))
@@ -132,11 +128,11 @@ void Car::slowCar(bool slow)
 {
 	if (slow && m_speed > 5)
 	{
-		m_speed -= 0.1f;
+		m_speed -= 1.5f * m_acceleration;
 	}
 	else if (slow && m_speed < -2.5)
 	{
-		m_speed += 0.1f;
+		m_speed += 0.8f * m_deceleration;
 	}
 }
 
