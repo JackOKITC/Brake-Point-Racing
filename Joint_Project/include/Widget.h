@@ -251,6 +251,7 @@ public:
 	void moveLeft();	// Moves the Label left, This is used for transitioning between screens.
 	void updatePosition(float newPosX, float newPosY);
 	void updateText(std::stringstream & ss);
+	void updateText(std::string &string);
 
 	sf::Vector2f m_position;	// Stores the on-screen positon of the Label.
 

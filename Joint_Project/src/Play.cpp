@@ -46,7 +46,6 @@ void Play::update(Xbox360Controller & controller, double dt, bool whichMap)
 
 	if (m_callOnce)
 	{
-		m_currentCar = m_player->m_currentCar;
 		if (whichMap)
 		{
 			for (int i = 0; i < MAX_AI; i++)
@@ -54,8 +53,11 @@ void Play::update(Xbox360Controller & controller, double dt, bool whichMap)
 				aiCars[i] = new Ai(m_nodes2, sf::Vector2f(m_nodes2.at(0)->m_position.x - (20 * i), m_nodes2.at(0)->m_position.y + (20 * i)));
 			}
 
-			m_player->m_playerCar[m_currentCar]->m_position = sf::Vector2f(m_nodes2.at(0)->m_position.x + 10, m_nodes2.at(0)->m_position.y );
-			m_player->m_playerCar[m_currentCar]->m_rotation = 0.0f;
+			for (int i = 0; i < 3; i++)
+			{
+				m_player->m_playerCar[i]->m_position = sf::Vector2f(m_nodes2.at(0)->m_position.x + 10, m_nodes2.at(0)->m_position.y);
+				m_player->m_playerCar[i]->m_rotation = 0.0f;
+			}
 
 			m_startlineSprite.setPosition(m_checkpoints2.at(0)->m_position.x, m_checkpoints2.at(0)->m_position.y + 17);
 			m_startlineSprite.setRotation(0);
@@ -78,9 +80,12 @@ void Play::update(Xbox360Controller & controller, double dt, bool whichMap)
 			{
 				aiCars[i] = new Ai(m_nodes1, sf::Vector2f(m_nodes1.at(0)->m_position.x + (30 * i), m_nodes1.at(0)->m_position.y - (100 * i)));
 			}
-			
-			m_player->m_playerCar[m_currentCar]->m_position = m_nodes1.at(0)->m_position;
-			m_player->m_playerCar[m_currentCar]->m_rotation = 45.0f;
+
+			for (int i = 0; i < 3; i++)
+			{
+				m_player->m_playerCar[i]->m_position = m_nodes1.at(0)->m_position;
+				m_player->m_playerCar[i]->m_rotation = 45.0f;
+			}
 
 			m_startlineSprite.setPosition(m_checkpoints1.at(0)->m_position);
 			m_startlineSprite.setRotation(m_checkpoints1.at(0)->m_rotation);
@@ -106,6 +111,7 @@ void Play::update(Xbox360Controller & controller, double dt, bool whichMap)
 		m_currentCheckpoint = 0;
 		m_callOnce = false;
 	}
+	m_currentCar = m_player->m_currentCar;
 	m_followPlayer.setCenter(m_player->m_playerCar[m_currentCar]->m_position);
 	checkCheckpoint();
 	m_player->update(dt, &controller);
