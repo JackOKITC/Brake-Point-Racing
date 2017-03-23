@@ -56,7 +56,7 @@ private:
 	std::vector<sf::CircleShape> m_circles;
 
 	const float MAX_FORCE = 10.0f;
-	const float MAX_SPEED = 18.0f;
+	const float MAX_SPEED = 20.0f;
 
 	const double PI = atan(1) * 4;
 	const double DEG_TO_RAD = PI / 180.0f;
