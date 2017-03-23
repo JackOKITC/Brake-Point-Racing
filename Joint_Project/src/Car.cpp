@@ -80,11 +80,11 @@ void Car::moveCar(Xbox360Controller & controller)
 		}
 		else if (m_speed < 5 && m_speed > 0)
 		{
-			m_rotation += (m_handling * 0.0133);
+			m_rotation += (m_handling * 0.00133);
 		}
 		else if (m_speed < 10 && m_speed > 0)
 		{
-			m_rotation += (m_handling * 0.0011);
+			m_rotation += (m_handling * 0.00115);
 		}
 		else if (m_speed >= 10 && m_speed > 0)
 		{
@@ -110,11 +110,11 @@ void Car::moveCar(Xbox360Controller & controller)
 		}
 		else if (m_speed < 5 && m_speed > 0)
 		{
-			m_rotation -= (m_handling * 0.0133);
+			m_rotation -= (m_handling * 0.00133);
 		}
 		else if (m_speed < 10 && m_speed > 0)
 		{
-			m_rotation -= (m_handling * 0.0011);
+			m_rotation -= (m_handling * 0.00115);
 		}
 		else if (m_speed >= 10 && m_speed > 0)
 		{

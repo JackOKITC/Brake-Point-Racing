@@ -1,6 +1,12 @@
 #ifndef RESOURCEMANAGER_H
 #define RESOURCEMANAGER_H
 
+/// <summary>
+/// Author: Peter Daly, Jack O'Kelly
+/// Version: 1.0
+/// Created: 13/03/2017
+/// </summary>
+
 #include <Thor\Resources.hpp>
 #include <iostream>
 #include "LevelLoader.h"
@@ -13,8 +19,8 @@ class ResourceManager
 public:
 	static ResourceManager& instance() { return m_instance; }
 	void loadData(LevelData &level);
-	thor::ResourceHolder<sf::Texture, std::string> m_holder;
-	thor::ResourceHolder<sf::SoundBuffer, std::string> m_soundHolder;
+	thor::ResourceHolder<sf::Texture, std::string> m_holder;	// Resource holder for a texture, to load audio in with thor
+	thor::ResourceHolder<sf::SoundBuffer, std::string> m_soundHolder;	// Resource holder for a soundbuffer, to load audio in with thor
 
 private: 
 	ResourceManager();

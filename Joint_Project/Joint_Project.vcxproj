@@ -182,6 +182,22 @@
   <ItemGroup>
     <Image Include="resources\images\UI\menu.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="SFE\avcodec-54.dll" />
+    <None Include="SFE\avcodec-56.dll" />
+    <None Include="SFE\avdevice-56.dll" />
+    <None Include="SFE\avfilter-5.dll" />
+    <None Include="SFE\avformat-54.dll" />
+    <None Include="SFE\avformat-56.dll" />
+    <None Include="SFE\avutil-51.dll" />
+    <None Include="SFE\avutil-54.dll" />
+    <None Include="SFE\openal32.dll" />
+    <None Include="SFE\sfeMovie-d.dll" />
+    <None Include="SFE\sfeMovie.dll" />
+    <None Include="SFE\swresample-1.dll" />
+    <None Include="SFE\swscale-2.dll" />
+    <None Include="SFE\swscale-3.dll" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

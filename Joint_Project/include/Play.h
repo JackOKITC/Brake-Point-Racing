@@ -1,6 +1,11 @@
-
 #ifndef PLAY_H
 #define PLAY_H
+
+/// <summary>
+/// Author: Peter Daly, John O'Grady, Jack O'Kelly, D.J. O'Leary
+/// Version: 1.0
+/// Created: 08/03/2017
+/// </summary>
 
 #include "GameState.h"
 #include "Xbox360Controller.h"
@@ -79,13 +84,14 @@ private:
 
 	bool m_gameOver = false;
 
-	sf::Font m_font;
+	sf::Font m_font;	// Stores a font
 
-	sf::Time m_currentTime;
+	sf::Time m_currentTime;	// Stores the current time
 
-	int m_time = 0;
-	int m_pos;
+	int m_time = 0;	// Initialising the time variable that will be added to a string
+	int m_pos;	// Stores the player's position
 
+	// Label Array variables
 	std::string m_strings[2] = { "Time: " + m_time, "Position: " + m_pos };
 	Label *m_labels[2];
 	const int LABEL_COUNT = 2;

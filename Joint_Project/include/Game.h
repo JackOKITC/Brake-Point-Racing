@@ -1,6 +1,12 @@
 #ifndef GAME_H
 #define GAME_H
 
+/// <summary>
+/// Author: Peter Daly, John O'Grady, Jack O'Kelly, D.J. O'Leary
+/// Version: 1.0
+/// Created: 03/03/2017
+/// </summary>
+
 #include "SFML\Graphics.hpp"
 #include "Xbox360Controller.h"
 #include "Widget.h"
@@ -25,8 +31,6 @@ public:
 	void run();
 
 private:
-	
-
 	void update(sf::Time deltaTime);
 	void render(sf::RenderWindow & window);
 	
@@ -36,12 +40,13 @@ private:
 	sf::Font m_font;
 	sf::Font m_titleFont;
 
-	GameState *m_currentGameState;
-	Xbox360Controller m_controller;
-	LevelData m_level;
+	GameState *m_currentGameState;	// Stores the current game state
+	Xbox360Controller m_controller;	// stores the controller object
+	LevelData m_level;	// Stores the level object
 
-	sf::View DefaultView;
+	sf::View DefaultView;	// a view variable allowing us to reset the view
 
+	// Objects for all the screens and relevant classes
 	Menu *m_menuScreen;
 	Garage *m_upgradeScreen;
 	Options *m_optionsScreen;
@@ -52,6 +57,7 @@ private:
 	Player *m_player;
 	Credits *m_credits;
 
+	// Music variables
 	sf::SoundBuffer sBuffer;
 	sf::Sound music;
 

@@ -1,6 +1,12 @@
 #ifndef CREDITS_H
 #define CREDITS_H
 
+/// <summary>
+/// Author: Peter Daly & Jack O'Kelly
+/// Version: 1.0
+/// Created: 23/03/2017
+/// </summary>
+
 #include "Widget.h"
 #include "Xbox360Controller.h"
 #include <Sfe\Movie.hpp>
@@ -18,7 +24,7 @@ public:
 	void render(sf::RenderWindow & window);
 	void update(Xbox360Controller & controller, sf::Time dt);
 private:
-	sfe::Movie m_movie;
+	sfe::Movie m_movie;	// the movie variable which stores our .mov
 	sf::Font m_font;
 	GameState * m_gameState;
 	Label * m_label;

@@ -1,6 +1,12 @@
 #ifndef ROADTILE_H
 #define ROADTILE_H
 
+/// <summary>
+/// Author: John o'Grady
+/// Version: 1.0
+/// Created: 15/03/2017
+/// </summary>
+
 #include <iostream>
 #include "SFML\Graphics.hpp"
 #include "ResourceManager.h"

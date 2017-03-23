@@ -1,6 +1,12 @@
 #ifndef ENDSCREEN_H
 #define ENDSCREEN_H
 
+/// <summary>
+/// Author: Peter Daly
+/// Version: 1.0
+/// Created: 22/03/2017
+/// </summary>
+
 #include <SFML\Graphics.hpp>
 #include <iostream>
 #include "Xbox360Controller.h"

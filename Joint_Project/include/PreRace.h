@@ -1,6 +1,12 @@
 #ifndef  PRERACE_H
 #define  PRERACE_H
 
+/// <summary>
+/// Author: Peter Daly
+/// Version: 1.0
+/// Created: 20/03/2017
+/// </summary>
+
 #include <SFML\Graphics.hpp>
 #include "GameState.h"
 #include "Widget.h"

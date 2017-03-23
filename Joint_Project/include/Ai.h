@@ -1,6 +1,12 @@
 #ifndef AI_H
 #define AI_H
 
+/// <summary>
+/// Author: Peter Daly, John O'Grady, Jack O'Kelly, D.J. O'Leary
+/// Version: 1.0
+/// Created: 13/03/2017
+/// </summary>
+
 #include <SFML\Graphics.hpp>
 #include <iostream>
 #include <vector>
@@ -42,9 +48,6 @@ private:
 	const int NODE_TOLERANCE = 45.0f;
 
 	sf::Texture m_carTex;
-	
-	
-
 	sf::Vector2f m_velocity;
 	
 	float m_rotation;

@@ -1,6 +1,12 @@
 #ifndef WIDGET_H
 #define WIDGET_H
 
+/// <summary>
+/// Author: Peter Daly, John O'Grady, Jack O'Kelly, D.J. O'Leary
+/// Version: 1.0
+/// Created: 06/03/2017
+/// </summary>
+
 #include "Xbox360Controller.h"
 #include <iostream>
 #include <sstream>
@@ -249,9 +255,9 @@ public:
 	bool hasFocus();
 	void moveRight();	// Moves the Label right, This is used for transitioning between screens.
 	void moveLeft();	// Moves the Label left, This is used for transitioning between screens.
-	void updatePosition(float newPosX, float newPosY);
-	void updateText(std::stringstream & ss);
-	void updateText(std::string &string);
+	void updatePosition(float newPosX, float newPosY);	//Updates the label's position when passed the new position, used to keep label moving with viewport
+	void updateText(std::stringstream & ss);	//Updates the text based on a stringstream, used for handling the time counter
+	void updateText(std::string &string);	//Updates the text based on a string, used for handling position counter
 
 	sf::Vector2f m_position;	// Stores the on-screen positon of the Label.
 

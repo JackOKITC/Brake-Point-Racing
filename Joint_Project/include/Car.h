@@ -1,6 +1,12 @@
 #ifndef CAR_H
 #define CAR_H
 
+/// <summary>
+/// Author: Peter Daly, John O'Grady, D.J. O'Leary
+/// Version: 1.0
+/// Created: 08/03/2017
+/// </summary>
+
 #include "Xbox360Controller.h"
 #include <iostream>
 #include "Checkpoint.h"

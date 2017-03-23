@@ -1,6 +1,12 @@
 #ifndef XBOX360CONTROLLER_H 
 #define XBOX360CONTROLLER_H
 
+/// <summary>
+/// Author: Peter Daly, D.J. O'Leary
+/// Version: 1.0
+/// Created: 06/03/2017
+/// </summary>
+
 #include <SFML\Graphics.hpp>
 #include <vector>
 

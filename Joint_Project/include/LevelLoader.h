@@ -1,6 +1,12 @@
 #ifndef LEVELLOADER_H
 #define LEVELLOADER_H
 
+/// <summary>
+/// Author: Peter Daly, John O'Grady, Jack O'Kelly, D.J. O'Leary
+/// Version: 1.0
+/// Created: 09/03/2017
+/// </summary>
+
 #include <SFML/System/Vector2.hpp>
 #include <vector>
 #include <sstream>
@@ -85,13 +91,14 @@ struct CheckpointData
 	sf::Vector2f m_position;
 };
 
+// Stores the music data so it can be loaded in via YAML
 struct AudioData
 {
 	std::string m_fileName;
 	std::string m_fileID;
 };
 
-
+// Stores all the yaml objects in the LevelData struct
 struct LevelData
 {
 	std::vector<CarData> m_car;

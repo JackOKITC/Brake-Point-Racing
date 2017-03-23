@@ -1,5 +1,11 @@
 #pragma once
 
+/// <summary>
+/// Author: Jack O'Kelly
+/// Version: 1.0
+/// Created: 13/03/2017
+/// </summary>
+
 #include <SFML/System/Vector2.hpp>
 #include <SFML/Graphics.hpp>
 #include <Thor/Vectors.hpp>
