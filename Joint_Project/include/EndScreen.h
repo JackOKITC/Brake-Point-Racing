@@ -35,7 +35,6 @@ private:
 	int m_position;
 	std::stringstream ss;
 	Label * m_label;
-	bool m_labelCreated = false;
 };
 #endif // !ENDSCREEN_H
 

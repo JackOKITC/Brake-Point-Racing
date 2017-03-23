@@ -5,7 +5,7 @@ static sf::Int32 MS_PER_UPDATE = 10.0;;
 
 Game::Game(sf::Font &font, sf::Font &titleFont) :
 	m_titleFont(titleFont),
-	m_window(sf::VideoMode(900,600,32), "Brake Point Racing", sf::Style::Default),
+	m_window(sf::VideoMode(900,600,32), "Brake Point Racing"),
 	m_font(font)
 {
 	// pointer to GameState object, will be passed to each menu state so
@@ -98,7 +98,7 @@ void Game::update(sf::Time deltaTime)
 		m_preRaceScreen->update(m_controller.m_currentState, m_controller);
 		break;
 	case GameState::END_STATE:
-		m_endScreen->update(m_controller, deltaTime, m_playScreen->m_position);
+		m_endScreen->update(m_controller, deltaTime, m_playScreen->m_racePosition);
 		break;
 	default:
 		break;

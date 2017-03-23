@@ -4,7 +4,7 @@ Ai::Ai(std::vector<std::unique_ptr<Node>> & nodes, sf::Vector2f & position) :
 	m_nodes(nodes),
 	m_currentNode(0),
 	m_steering(0, 0),
-	m_position(position.x - 10, position.y) 
+	m_position(position.x - 10, position.y)
 {
 
 	m_carTex = ResourceManager::instance().m_holder["Bus2"];
@@ -14,6 +14,7 @@ Ai::Ai(std::vector<std::unique_ptr<Node>> & nodes, sf::Vector2f & position) :
 	m_velocity = sf::Vector2f(0, 0);
 	m_rotation = 0.0f;
 	m_speed = 0.0f;
+	m_lap = 0;
 
 
 	m_carSprite.setPosition(m_position);

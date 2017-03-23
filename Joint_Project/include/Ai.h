@@ -35,6 +35,7 @@ public:
 
 	// The AI's time upon finishing
 	int m_finishTime;
+	int m_lap;
 
 private:
 

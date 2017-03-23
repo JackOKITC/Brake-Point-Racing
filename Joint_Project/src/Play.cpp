@@ -26,7 +26,7 @@ Play::Play(sf::Font & font, GameState *gameState, bool whichMap, Player *player,
 	m_labels[0] = new Label(&m_strings[1], &m_font, &sf::Vector2f(0, 0), 15, sf::Color(0, 255, 0));
 	m_labels[1] = new Label(&m_strings[0], &m_font, &sf::Vector2f(0, 0), 15, sf::Color(0, 255, 0));
 
-	m_position = 0;
+	m_racePosition = 0;
 
 	m_startlineTexture = ResourceManager::instance().m_holder["Startline"];
 	m_startlineSprite.setTexture(m_startlineTexture);
@@ -97,6 +97,13 @@ void Play::update(Xbox360Controller & controller, double dt, bool whichMap)
 				m_checkpointRectangles1.at(i).setFillColor(sf::Color(255, 0, 0, 126));
 			}
 		}
+
+		for (int i = 0; i < MAX_AI; i++)
+		{
+			aiCars[i]->setFinishTime(40000);
+		}
+		m_currentTime = sf::Time::Zero;
+		m_currentCheckpoint = 0;
 		m_callOnce = false;
 	}
 	m_followPlayer.setCenter(m_player->m_playerCar[m_currentCar]->m_position);
@@ -104,10 +111,11 @@ void Play::update(Xbox360Controller & controller, double dt, bool whichMap)
 	m_player->update(dt, &controller);
 	m_whichMap = whichMap;
 
-	currentTime += TIME_PER_UPDATE;
+	m_currentTime += TIME_PER_UPDATE;
 
 	if (m_controller->m_currentState.Start)
 	{
+		m_callOnce = true;
 		*m_state = GameState::MENU_STATE;
 	}
 
@@ -149,7 +157,7 @@ void Play::update(Xbox360Controller & controller, double dt, bool whichMap)
 	}
 	m_player->m_playerCar[m_currentCar]->slowCar(m_slowDown);
 	
-	m_time = currentTime.asSeconds();
+	m_time = m_currentTime.asSeconds();
 	
 	std::stringstream ss;
 	ss << "Time: " << m_time;
@@ -268,7 +276,6 @@ void Play::checkCheckpoint()
 		if (m_player->m_playerCar[m_currentCar]->m_carSprite.getGlobalBounds().intersects(m_checkpointRectangles2.at(m_currentCheckpoint).getGlobalBounds()))
 		{
 			m_currentCheckpoint++;
-			std::cout << m_currentCheckpoint << std::endl;
 
 			if (m_currentCheckpoint >= m_checkpoints2.size())
 			{
@@ -288,7 +295,7 @@ void Play::checkCheckpoint()
 
 		for (int i = 0; i < MAX_AI; i++)
 		{
-			if (aiCars[i]->m_currentNode >= 110)
+			if (aiCars[i]->m_currentNode >= m_nodes2.size() - 1)
 			{
 				aiCars[i]->setFinishTime(m_time);
 			}
@@ -300,8 +307,6 @@ void Play::checkCheckpoint()
 		if (m_player->m_playerCar[m_currentCar]->m_carSprite.getGlobalBounds().intersects(m_checkpointRectangles1.at(m_currentCheckpoint).getGlobalBounds()))
 		{
 			m_currentCheckpoint++;
-			std::cout << m_currentCheckpoint << std::endl;
-
 		
 			if (m_currentCheckpoint >= (m_checkpoints1.size()))
 			{
@@ -321,8 +326,9 @@ void Play::checkCheckpoint()
 
 		for (int i = 0; i < MAX_AI; i++)
 		{
-			if (aiCars[i]->m_currentNode >= 110)
-			{
+
+			if (aiCars[i]->m_currentNode >= m_nodes1.size() - 1)
+			{	
 				aiCars[i]->setFinishTime(m_time);
 			}
 		}
@@ -333,16 +339,19 @@ void Play::finishingPos()
 {
 	if (m_time < aiCars[0]->m_finishTime && m_time < aiCars[1]->m_finishTime)
 	{
-		m_position = 1;
+		m_racePosition = 1;
 		m_player->m_currency += 2;
+
 	}
 	else if (m_time > aiCars[0]->m_finishTime && m_time > aiCars[1]->m_finishTime)
 	{
-		m_position = 3;
+		m_racePosition = 3;
 	}
 	else
-		m_position = 2;
+	{
+		m_racePosition = 2;
 		m_player->m_currency += 1;
+	}
 
 	*m_state = GameState::END_STATE;
 }

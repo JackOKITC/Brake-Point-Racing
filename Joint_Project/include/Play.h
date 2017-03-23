@@ -35,7 +35,7 @@ public:
 	void checkCheckpoint();
 	void finishingPos();
 
-	int m_position;
+	int m_racePosition;
 
 private:
 	LevelData m_level;
@@ -81,7 +81,7 @@ private:
 
 	sf::Font m_font;
 
-	sf::Time currentTime;
+	sf::Time m_currentTime;
 
 	int m_time = 0;
 	int m_pos;
@@ -91,6 +91,5 @@ private:
 	const int LABEL_COUNT = 2;
 
 	int m_playerTime = 0;
-
 };
 #endif // !PLAY_H
