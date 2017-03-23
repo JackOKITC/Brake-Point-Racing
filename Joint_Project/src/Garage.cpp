@@ -6,11 +6,6 @@ Garage::Garage(sf::Font font, sf::Font currencyFont, GameState * gameState, Play
 {
 	m_gameState = gameState;
 	m_player = player;
-	//m_backgroundTex = ResourceManager::instance().m_holder["Garage"];
-	//m_backgroundSprite.setTexture(m_backgroundTex);
-	//m_backgroundSprite.setOrigin(m_backgroundTex.getSize().x / 2, m_backgroundTex.getSize().y / 2);
-	//m_backgroundSprite.setPosition(450, 300);
-	//m_backgroundSprite.setColor(sf::Color(125, 125, 125, 255));
 
 	// set the integers for keeping track of currently highlighted options to 0 so they start off on the "first" in each list
 	m_currentCar = 0;
@@ -48,13 +43,7 @@ Garage::Garage(sf::Font font, sf::Font currencyFont, GameState * gameState, Play
 
 	m_cars[m_currentCar].setColor(m_highlight); // sets the defa+ult hightlighted car
 
-	m_statValues[0]->setCurrentSegment(m_player->m_playerCar[m_currentCar]->returnDecel());
-	m_statValues[1]->setCurrentSegment(m_player->m_playerCar[m_currentCar]->returnHandle());
-	m_statValues[2]->setCurrentSegment(m_player->m_playerCar[m_currentCar]->returnAcel());
-
-	m_statValues[0]->setCurrentSegment(m_player->m_playerCar[m_currentCar]->returnDecel());
-	m_statValues[1]->setCurrentSegment(m_player->m_playerCar[m_currentCar]->returnHandle());
-	m_statValues[2]->setCurrentSegment(m_player->m_playerCar[m_currentCar]->returnAcel());
+	updateUI();
 
 	m_upgrdCost = m_player->m_playerCar[m_currentCar]->m_upgradeLevels[m_currentStat] + 1;
 }
@@ -125,17 +114,7 @@ void Garage::checkSelection(GamePadState m_state, Xbox360Controller m_controller
 			}
 			m_cars[m_currentCar].setColor(m_highlight);
 
-			m_statValues[0]->setCurrentSegment(m_player->m_playerCar[m_currentCar]->returnDecel());
-			m_statValues[1]->setCurrentSegment(m_player->m_playerCar[m_currentCar]->returnHandle());
-			m_statValues[2]->setCurrentSegment(m_player->m_playerCar[m_currentCar]->returnAcel());
-
-			m_upgradeBars[0]->reset();
-			m_upgradeBars[1]->reset();
-			m_upgradeBars[2]->reset();
-			m_upgradeBars[0]->assignValues(m_player->m_playerCar[m_currentCar]->m_upgradeLevels[0]);
-			m_upgradeBars[1]->assignValues(m_player->m_playerCar[m_currentCar]->m_upgradeLevels[1]);
-			m_upgradeBars[2]->assignValues(m_player->m_playerCar[m_currentCar]->m_upgradeLevels[2]);
-
+			updateUI();
 		}
 	}
 
@@ -166,17 +145,7 @@ void Garage::checkSelection(GamePadState m_state, Xbox360Controller m_controller
 			}
 			m_cars[m_currentCar].setColor(m_highlight);
 
-			m_upgradeBars[0]->reset();
-			m_upgradeBars[1]->reset();
-			m_upgradeBars[2]->reset();
-
-			m_statValues[0]->setCurrentSegment(m_player->m_playerCar[m_currentCar]->returnDecel());
-			m_statValues[1]->setCurrentSegment(m_player->m_playerCar[m_currentCar]->returnHandle());
-			m_statValues[2]->setCurrentSegment(m_player->m_playerCar[m_currentCar]->returnAcel());
-
-			m_upgradeBars[0]->assignValues(m_player->m_playerCar[m_currentCar]->m_upgradeLevels[0]);
-			m_upgradeBars[1]->assignValues(m_player->m_playerCar[m_currentCar]->m_upgradeLevels[1]);
-			m_upgradeBars[2]->assignValues(m_player->m_playerCar[m_currentCar]->m_upgradeLevels[2]);
+			updateUI();
 		}
 	}
 }
@@ -223,4 +192,17 @@ void Garage::checkButton(GamePadState m_gamePadState, Xbox360Controller m_contro
 			}
 		}
 	}
+}
+
+void Garage::updateUI()
+{
+	for (int i = 0; i < 3; i ++)
+	{
+		m_upgradeBars[i]->reset();
+		m_upgradeBars[i]->assignValues(m_player->m_playerCar[m_currentCar]->m_upgradeLevels[i]);
+	}
+
+	m_statValues[0]->setCurrentSegment(m_player->m_playerCar[m_currentCar]->returnDecel());
+	m_statValues[1]->setCurrentSegment(m_player->m_playerCar[m_currentCar]->returnHandle());
+	m_statValues[2]->setCurrentSegment(m_player->m_playerCar[m_currentCar]->returnAcel());
 }
