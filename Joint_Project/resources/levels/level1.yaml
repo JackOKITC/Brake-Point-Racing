@@ -298,6 +298,10 @@ audio:
    - file: .\resources\audio\bgMusic.wav
      ID: MusicBG
 
+movie: 
+   - file: .\resources\movie\Animation.mov
+     ID: Movie
+
 
 node1:
    - number: 1

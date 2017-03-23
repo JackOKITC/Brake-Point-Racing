@@ -12,6 +12,7 @@
 #include "PreRace.h"
 #include "EndScreen.h"
 #include "GameState.h"
+#include "Credits.h"
 #include <iostream>
 #include "SFML\Audio.hpp"
 
@@ -49,7 +50,7 @@ private:
 	PreRace *m_preRaceScreen;
 	EndScreen *m_endScreen;
 	Player *m_player;
-
+	Credits *m_credits;
 
 	sf::SoundBuffer sBuffer;
 	sf::Sound music;

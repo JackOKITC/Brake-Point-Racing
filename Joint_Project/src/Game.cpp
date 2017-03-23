@@ -28,7 +28,8 @@ Game::Game(sf::Font &font, sf::Font &titleFont) :
 	m_menuScreen = new Menu(m_titleFont, m_currentGameState);
 	m_upgradeScreen = new Garage(m_titleFont, m_font, m_currentGameState, m_player);
 	m_endScreen = new EndScreen(m_titleFont, m_currentGameState);
-	
+	m_credits = new Credits(m_titleFont, m_currentGameState);
+
 	sBuffer = ResourceManager::instance().m_soundHolder["MusicBG"];
 	music.setBuffer(sBuffer);
 
@@ -92,6 +93,7 @@ void Game::update(sf::Time deltaTime)
 		break;
 	case GameState::CREDITS_STATE:
 		m_window.setView(DefaultView);
+		m_credits->update(m_controller, deltaTime);
 		break;
 	case GameState::PRERACE_STATE:
 		m_window.setView(DefaultView);
@@ -126,7 +128,7 @@ void Game::render(sf::RenderWindow &window)
 		m_optionsScreen->render(window);
 		break;
 	case GameState::CREDITS_STATE:
-
+		m_credits->render(window);
 		break;
 	case GameState::PRERACE_STATE:
 		m_preRaceScreen->render(window);

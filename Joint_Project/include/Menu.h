@@ -13,6 +13,7 @@ enum class button	// Enum for the buttons
 	Play,
 	Garage,
 	Options,
+	Credits,
 	Exit
 };
 
@@ -30,10 +31,9 @@ public:
 	void checkButtonSelected(GamePadState m_state, Xbox360Controller m_controller);	// Function to check which button is selected
 	void selectedButton(GamePadState m_state, Xbox360Controller m_controller);	// Function to check if the selected button is clicked
 
-
 private:
 	GameState *m_gameState;
-	const int LABEL_COUNT = 4;
+	const int LABEL_COUNT = 5;
 	int m_currentLab;
 
 	bool m_timeStop;
@@ -52,6 +52,7 @@ private:
 	sf::ConvexShape m_raceLine;
 	sf::ConvexShape m_garLine;
 	sf::ConvexShape m_optLine;
+	sf::ConvexShape m_credLine;
 	sf::ConvexShape m_exitLine;
 
 	sf::Color m_select = sf::Color(225, 30, 30);
@@ -62,10 +63,10 @@ private:
 	sf::Font m_font;
 	button m_buttonSelected = button::Play; // The button enum which starts on the play button
 
-	std::string m_strings[4] = { "Race", "Garage", "Options", "Exit" };
+	std::string m_strings[5] = { "Race", "Garage", "Options", "Credits", "Exit" };
 
-	Label *m_labels[4];
-	Label *m_outline[4];
+	Label *m_labels[5];
+	Label *m_outline[5];
 
 	sf::Shader m_shader;
 };

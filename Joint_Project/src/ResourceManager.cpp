@@ -46,6 +46,7 @@ void ResourceManager::loadData(LevelData &level)
 		{
 			m_holder.acquire(data.m_fileID, thor::Resources::fromFile<sf::Texture>(data.m_fileName));
 		}
+
 	}
 
 	catch (thor::ResourceLoadingException& e)
