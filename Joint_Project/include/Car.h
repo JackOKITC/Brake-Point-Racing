@@ -41,7 +41,6 @@ private:
 	sf::Vector2f m_velocity;
 	float m_speed;
 
-
 	float m_handling;
 	float m_deceleration;
 	float m_acceleration;
