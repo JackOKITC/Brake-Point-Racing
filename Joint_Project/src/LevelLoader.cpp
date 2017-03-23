@@ -140,6 +140,7 @@ void operator >> (const YAML::Node& levelNode, LevelData& level)
 		level.m_sound.push_back(audio);
 	}
 
+
 	const YAML::Node& nodesNode1 = levelNode["node1"].as<YAML::Node>();
 	for (unsigned i = 0; i < nodesNode1.size(); i++)
 	{
