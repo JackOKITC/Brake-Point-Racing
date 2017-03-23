@@ -8,12 +8,11 @@ Play::Play(sf::Font & font, GameState *gameState, bool whichMap, Player *player,
 	m_whichMap(whichMap),
 	m_font(font)
 {
-	m_state = gameState;
-	m_level = *level;
-	m_player = player;
-
-	m_state = gameState;	
-	m_time = 0.0;
+	m_state = gameState;	// initialises the m_state to the passed gamestate
+	m_level = *level;	// initialises the level objecet
+	m_player = player;	// initialises the player object
+	
+	m_time = 0.0;	// Initialises time as 0
 
 	generateNode();
 	generateRoad();
@@ -23,6 +22,7 @@ Play::Play(sf::Font & font, GameState *gameState, bool whichMap, Player *player,
 	m_lap = 0;
 	m_followPlayer.setSize(450, 300); //in constructor
 
+	// initialises an array of labels, being passed their relevant variables
 	m_labels[0] = new Label(&m_strings[1], &m_font, &sf::Vector2f(0, 0), 15, sf::Color(0, 255, 0));
 	m_labels[1] = new Label(&m_strings[0], &m_font, &sf::Vector2f(0, 0), 15, sf::Color(0, 255, 0));
 
@@ -117,7 +117,7 @@ void Play::update(Xbox360Controller & controller, double dt, bool whichMap)
 	m_player->update(dt, &controller);
 	m_whichMap = whichMap;
 
-	m_currentTime += TIME_PER_UPDATE;
+	m_currentTime += TIME_PER_UPDATE;	//updates the m_currenttime variable via the TIME_PER_UPDATE variable
 
 	if (m_controller->m_currentState.Start)
 	{
@@ -165,15 +165,19 @@ void Play::update(Xbox360Controller & controller, double dt, bool whichMap)
 	
 	m_time = m_currentTime.asSeconds();
 	
+	// Stringstream variable and string variable for time
 	std::stringstream ss;
 	ss << "Time: " << m_time;
 
+	// Stringstream variable and string variable for position
 	std::stringstream ssPos;
 	ssPos << "Checkpoint: " << m_currentCheckpoint;
 
+	// Updating label position based on viewport
 	m_labels[0]->updatePosition(m_followPlayer.getCenter().x - 165, m_followPlayer.getCenter().y - 140);
 	m_labels[1]->updatePosition(m_followPlayer.getCenter().x + 130, m_followPlayer.getCenter().y - 140);
 
+	// Updating the labels text based on time and position
 	m_labels[1]->updateText(ss);
 	m_labels[0]->updateText(ssPos);
 }
@@ -210,6 +214,7 @@ void Play::render(sf::RenderWindow & window)
 
 		m_player->render(window);
 	
+		// Rendering the labels
 		m_labels[0]->render(window);
 		m_labels[1]->render(window);
 

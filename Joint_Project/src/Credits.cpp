@@ -17,8 +17,8 @@ Credits::~Credits() {}
 
 void Credits::update(Xbox360Controller & controller, sf::Time dt)
 {
-	m_movie.play();
-	m_movie.update();
+	m_movie.play();	// Tells the movie to play
+	m_movie.update();	
 
 	if (controller.m_currentState.B && !controller.m_previousState.B)
 	{

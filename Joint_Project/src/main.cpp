@@ -1,15 +1,13 @@
 /// <summary>
-/// @mainpage Joint Project -> A game that features 
+/// @mainpage Joint Project -> A 2d Racing Game featuring upgrades, maps, and bus selection
 /// @Authors D.J. O'Leary, Peter Daly, Jack O'Kelly and John O'Grady
 /// @Version 1.0
-/// @brief
-///
-/// 
-/// Date / Start time -> End time / length of time.
-/// 06-03-17 / 09:00 -> 11:00 / 2hr.
-/// 06-03-17 / 13:00 -> 
-/// 
-/// Total Time Taken: ???
+/// @brief We were tasked with making a 2d racing game in 3 weeks using what assets we were given.
+/// We needed to include multiple maps, multiple upgradeable vehicles, and AI that would race against the player.
+/// Break Point Racing is a challenging game that is fun to play, and allows each player to have their own game,
+/// As they get to choose which vehicle they race with (as each vehicle specialises in different stats; Brakes, Handling, and Acceleration),
+/// What upgrades they choose with their winnings, and what map they want to race the AI in.
+/// Total Time Taken: 140 hours
 /// </summary> 
 
 #ifdef _DEBUG 
@@ -38,11 +36,11 @@ int main()
 	sf::Font font;
 	sf::Font titleFont;
 
-	if (!font.loadFromFile(".\\resources\\fonts\\joystix.ttf"))	//Checks to make sure font is correct
+	if (!font.loadFromFile(".\\resources\\fonts\\joystix.ttf"))	// Checks to make sure font is correct
 	{
 		std::cout << "Problem loading font file!" << std::endl;
 	}
-	if (!titleFont.loadFromFile(".\\resources\\fonts\\Orena.ttf"))	//Checks to make sure font is correct
+	if (!titleFont.loadFromFile(".\\resources\\fonts\\Orena.ttf"))	// Checks to make sure font is correct
 	{
 		std::cout << "Problem loading font file!" << std::endl;
 	}
