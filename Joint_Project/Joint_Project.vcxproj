@@ -68,7 +68,12 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IncludePath>.\include;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <IncludePath>.\include;$(IncludePath)</IncludePath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -78,7 +83,7 @@
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>$(SFML_SDK)\lib;.\lib;</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SFML_SDK)\lib;.\lib</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -106,7 +111,7 @@
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>$(SFML_SDK)\lib;.\lib;</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SFML_SDK)\lib;.\lib</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -130,6 +135,7 @@
     <ClCompile Include="src\BTMath.cpp" />
     <ClCompile Include="src\Car.cpp" />
     <ClCompile Include="src\Checkpoint.cpp" />
+    <ClCompile Include="src\Credits.cpp" />
     <ClCompile Include="src\EndScreen.cpp" />
     <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="src\Garage.cpp" />
@@ -152,6 +158,7 @@
     <ClInclude Include="include\BTMath.h" />
     <ClInclude Include="include\Car.h" />
     <ClInclude Include="include\Checkpoint.h" />
+    <ClInclude Include="include\Credits.h" />
     <ClInclude Include="include\EndScreen.h" />
     <ClInclude Include="include\Game.h" />
     <ClInclude Include="include\GameState.h" />
@@ -165,6 +172,9 @@
     <ClInclude Include="include\PreRace.h" />
     <ClInclude Include="include\ResourceManager.h" />
     <ClInclude Include="include\RoadTile.h" />
+    <ClInclude Include="include\Sfe\Movie.hpp" />
+    <ClInclude Include="include\Sfe\StreamSelection.hpp" />
+    <ClInclude Include="include\Sfe\Visibility.hpp" />
     <ClInclude Include="include\Splash.h" />
     <ClInclude Include="include\Widget.h" />
     <ClInclude Include="include\Xbox360Controller.h" />
