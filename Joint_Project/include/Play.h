@@ -12,6 +12,7 @@
 #include "Node.h"
 #include "Checkpoint.h"
 #include "RoadTile.h"
+#include "Widget.h"
 #include <vector>
 #include "Widget.h"
 #include "SFML\Graphics.hpp"
@@ -31,7 +32,6 @@ public:
 
 	void generateRoad();
 	void generateNode();
-
 	void generateCheckpoint();
 	void checkCheckpoint();
 
@@ -40,7 +40,7 @@ private:
 	GameState *m_state;
 	Xbox360Controller * m_controller;
 
-	static const int MAX_AI = 1;
+	static const int MAX_AI = 2;
 	Ai * aiCars[MAX_AI];
 	Player *m_player;
 	int m_currentCar;
@@ -68,17 +68,20 @@ private:
 	const float CHECKPOINT_WIDTH = 10;
 	const float CHECKPOINT_HEIGHT = 120;
 
+
 	bool m_gameOver = false;
-	
-	int m_time;
 
 	sf::Font m_font;
 
 	sf::Time currentTime;
 
-	std::string time;
+	int m_time = 0;
+	int m_pos;
 
-	Label *m_labels;
-	Label *m_timeLabel;
+	std::string m_strings[2] = { "Time: " + m_time, "Position: " + m_pos };
+
+	Label *m_labels[2];
+	const int LABEL_COUNT = 2;
+
 };
 #endif // !PLAY_H
