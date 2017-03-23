@@ -71,7 +71,11 @@ void Garage::render(sf::RenderWindow &window)
 {
 	window.draw(m_backgroundSprite);
 	m_currency->render(window);
-	m_cost->render(window);
+	if (m_upgradeBars[m_currentStat]->returnNode() != 3)
+	{
+		m_cost->render(window);
+	}
+
 	for (int i = 0; i < 3; i++)
 	{
 		// render each element

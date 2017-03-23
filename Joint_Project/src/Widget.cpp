@@ -318,6 +318,12 @@ void Label::updateText(std::stringstream & ss)
 	m_text.setString(ss.str());
 }
 
+void Label::updateText(std::string & string)
+{
+	m_text.setString(string);
+}
+
+
 void Label::render(sf::RenderWindow & window)
 {
 	//window.draw(m_buttonRectangle);	// Draws the button rectangle to the screen.
