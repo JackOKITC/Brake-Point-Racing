@@ -32,6 +32,12 @@ struct BackgroundData
 	std::string m_fileID;
 };
 
+struct StartlineData
+{
+	std::string m_fileName;
+	std::string m_fileID;
+};
+
 struct UpgradeData
 {
 	std::string m_fileName;
@@ -96,6 +102,7 @@ struct LevelData
 	std::vector<Checkpoint1Data> m_checkpoints1;
 	std::vector<Checkpoint2Data> m_checkpoints2;
 	std::vector<AudioData> m_sound;
+	std::vector<StartlineData> m_start;
 	std::vector<UpgradeData> m_upgrades;
 };
 

@@ -22,9 +22,7 @@ class Play
 	const sf::Time TIME_PER_UPDATE = sf::microseconds(1000);
 public:
 	Play();
-
 	Play(sf::Font & font, GameState *gameState, bool whichMap, Player *player, LevelData *level);
-
 	~Play();
 
 	void update(Xbox360Controller & controller, double dt, bool whichMap);
@@ -33,6 +31,7 @@ public:
 	void generateRoad();
 	void generateNode();
 	void generateCheckpoint();
+
 	void checkCheckpoint();
 	void finishingPos();
 
@@ -45,17 +44,24 @@ private:
 
 	static const int MAX_AI = 2;
 	Ai * aiCars[MAX_AI];
+
 	Player *m_player;
 	int m_currentCar;
 
 	std::vector<std::unique_ptr<RoadTile>> m_roadTiles1;
 	std::vector<std::unique_ptr<RoadTile>> m_roadTiles2;
+
 	std::vector<std::unique_ptr<Node>> m_nodes1;
 	std::vector<std::unique_ptr<Node>> m_nodes2;
+
 	std::vector<std::unique_ptr<Checkpoint>> m_checkpoints1;
 	std::vector<std::unique_ptr<Checkpoint>> m_checkpoints2;
 	std::vector<sf::RectangleShape> m_checkpointRectangles1;
 	std::vector<sf::RectangleShape> m_checkpointRectangles2;
+
+	// 
+	sf::Texture m_startlineTexture;
+	sf::Sprite m_startlineSprite;
 
 	bool m_callOnce = true;
 	bool m_slowDown = false;
@@ -71,7 +77,6 @@ private:
 	const float CHECKPOINT_WIDTH = 10;
 	const float CHECKPOINT_HEIGHT = 120;
 
-
 	bool m_gameOver = false;
 
 	sf::Font m_font;
@@ -82,9 +87,10 @@ private:
 	int m_pos;
 
 	std::string m_strings[2] = { "Time: " + m_time, "Position: " + m_pos };
-
 	Label *m_labels[2];
 	const int LABEL_COUNT = 2;
+
 	int m_playerTime = 0;
+
 };
 #endif // !PLAY_H

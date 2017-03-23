@@ -125,7 +125,6 @@ tile1:
      rotation: 0
      scale: 0
 
-
 tile2:
    - file: .\resources\images\road\OurRoad\snow1.png
      ID: RoadA
@@ -253,6 +252,9 @@ tile2:
      rotation: 0
      scale: 0
 
+startline:
+   - file: .\resources\images\road\road_marks\check.png
+     ID: Startline 
 
 background:
    - file: .\resources\images\UI\bg.jpg
@@ -897,6 +899,9 @@ checkpoint1:
    - number: 26
      position: {x: 1995.94, y: 667.272}
      rotation: 39.89
+   - number: 27
+     position: {x: 2212.02, y: 969.343}
+     rotation: 54.0001
 
 checkpoint2: 
    - number: 1
@@ -1007,3 +1012,6 @@ checkpoint2:
    - number: 36
      position: {x: 903.77, y: 306.203}
      rotation: 8.35
+   - number: 37
+     position: {x: 1709.88, y: 276.277}
+     rotation: 7.6

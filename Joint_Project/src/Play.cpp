@@ -27,6 +27,10 @@ Play::Play(sf::Font & font, GameState *gameState, bool whichMap, Player *player,
 	m_labels[1] = new Label(&m_strings[0], &m_font, &sf::Vector2f(0, 0), 15, sf::Color(0, 255, 0));
 
 	m_position = 0;
+
+	m_startlineTexture = ResourceManager::instance().m_holder["Startline"];
+	m_startlineSprite.setTexture(m_startlineTexture);
+	m_startlineSprite.setOrigin(m_startlineSprite.getGlobalBounds().width / 2, m_startlineSprite.getGlobalBounds().height / 2);
 }
 
 Play::~Play()
@@ -53,6 +57,10 @@ void Play::update(Xbox360Controller & controller, double dt, bool whichMap)
 			m_player->m_playerCar[m_currentCar]->m_position = sf::Vector2f(m_nodes2.at(0)->m_position.x + 10, m_nodes2.at(0)->m_position.y );
 			m_player->m_playerCar[m_currentCar]->m_rotation = 0.0f;
 
+			m_startlineSprite.setPosition(m_checkpoints2.at(0)->m_position.x, m_checkpoints2.at(0)->m_position.y + 17);
+			m_startlineSprite.setRotation(0);
+			m_startlineSprite.setScale(0.1,0.19);
+
 			for (int i = 0; i < m_checkpoints2.size(); i++)
 			{
 				sf::RectangleShape rectangle;
@@ -73,6 +81,10 @@ void Play::update(Xbox360Controller & controller, double dt, bool whichMap)
 			
 			m_player->m_playerCar[m_currentCar]->m_position = m_nodes1.at(0)->m_position;
 			m_player->m_playerCar[m_currentCar]->m_rotation = 45.0f;
+
+			m_startlineSprite.setPosition(m_checkpoints1.at(0)->m_position);
+			m_startlineSprite.setRotation(m_checkpoints1.at(0)->m_rotation);
+			m_startlineSprite.setScale(0.1, 0.13);
 
 			for (int i = 0; i < m_checkpoints1.size(); i++)
 			{
@@ -98,9 +110,6 @@ void Play::update(Xbox360Controller & controller, double dt, bool whichMap)
 	{
 		*m_state = GameState::MENU_STATE;
 	}
-
-	
-
 
 	for (int i = 0; i < MAX_AI; i++)
 	{
@@ -169,6 +178,7 @@ void Play::render(sf::RenderWindow & window)
 					roadTile->render(window);
 				}
 			}
+			window.draw(m_startlineSprite);
 			window.draw(m_checkpointRectangles1.at(m_currentCheckpoint));
 		}
 		else if (m_whichMap)
@@ -180,13 +190,15 @@ void Play::render(sf::RenderWindow & window)
 					roadTile->render(window);
 				}
 			}
+			window.draw(m_startlineSprite);
 			window.draw(m_checkpointRectangles2.at(m_currentCheckpoint));
 		}
 
-	m_player->render(window);
+		m_player->render(window);
 	
-	m_labels[0]->render(window);
-	m_labels[1]->render(window);
+		m_labels[0]->render(window);
+		m_labels[1]->render(window);
+
 
 		for (int i = 0; i < MAX_AI; i++)
 		{

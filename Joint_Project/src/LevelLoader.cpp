@@ -26,6 +26,12 @@ void operator >> (const YAML::Node& audioNode, AudioData& audio)
 	audio.m_fileID = audioNode["ID"].as<std::string>();
 }
 
+void operator >> (const YAML::Node& startNode, StartlineData& start)
+{
+	start.m_fileName = startNode["file"].as<std::string>();
+	start.m_fileID = startNode["ID"].as<std::string>();
+}
+
 void operator >> (const YAML::Node& bgNode, BackgroundData& bg)
 {
 	bg.m_fileName = bgNode["file"].as<std::string>();
@@ -94,6 +100,14 @@ void operator >> (const YAML::Node& levelNode, LevelData& level)
 		level.m_roads2.push_back(road);
 	}
 
+	const YAML::Node& startNode = levelNode["startline"].as<YAML::Node>();
+	for (unsigned i = 0; i < startNode.size(); i++)
+	{
+		StartlineData startline;
+		startNode[i] >> startline;
+		level.m_start.push_back(startline);
+	}
+
 	const YAML::Node& bgNode = levelNode["background"].as<YAML::Node>();
 	for (unsigned i = 0; i < bgNode.size(); i++)
 	{
@@ -116,6 +130,14 @@ void operator >> (const YAML::Node& levelNode, LevelData& level)
 		UpgradeData upgrade;
 		upgradeNode[i] >> upgrade;
 		level.m_upgrades.push_back(upgrade);
+	}
+
+	const YAML::Node& audioNode = levelNode["audio"].as<YAML::Node>();
+	for (unsigned i = 0; i < audioNode.size(); i++)
+	{
+		AudioData audio;
+		audioNode[i] >> audio;
+		level.m_sound.push_back(audio);
 	}
 
 	const YAML::Node& nodesNode1 = levelNode["node1"].as<YAML::Node>();
@@ -150,14 +172,6 @@ void operator >> (const YAML::Node& levelNode, LevelData& level)
 		checkpointNode2[i] >> checkpoint;
 		level.m_checkpoints2.push_back(checkpoint);
 
-	}
-
-	const YAML::Node& audioNode = levelNode["audio"].as<YAML::Node>();
-	for (unsigned i = 0; i < audioNode.size(); i++)
-	{
-		AudioData audio;
-		audioNode[i] >> audio;
-		level.m_sound.push_back(audio);
 	}
 }
 

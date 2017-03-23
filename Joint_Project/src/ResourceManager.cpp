@@ -31,12 +31,18 @@ void ResourceManager::loadData(LevelData &level)
 		{
 			m_holder.acquire(data.m_fileID, thor::Resources::fromFile<sf::Texture>(data.m_fileName));
 		}
+		
 		for (AudioData data : level.m_sound)
 		{
 			m_soundHolder.acquire(data.m_fileID, thor::Resources::fromFile<sf::SoundBuffer>(data.m_fileName));
 		}
 
 		for (UpgradeData data : level.m_upgrades)
+		{
+			m_holder.acquire(data.m_fileID, thor::Resources::fromFile<sf::Texture>(data.m_fileName));
+		}
+
+		for (StartlineData data : level.m_start)
 		{
 			m_holder.acquire(data.m_fileID, thor::Resources::fromFile<sf::Texture>(data.m_fileName));
 		}
