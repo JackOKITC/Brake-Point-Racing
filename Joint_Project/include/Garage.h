@@ -28,6 +28,7 @@ public:
 
 	void checkSelection(GamePadState m_state, Xbox360Controller m_controller);	// Function to check which button is selected
 	void checkButton(GamePadState m_state, Xbox360Controller m_controller);	// Function to check if the selected button is clicked
+	void updateUI(); // used to update the currentlly displayed stats/upgrades onscreen
 
 private:
 
