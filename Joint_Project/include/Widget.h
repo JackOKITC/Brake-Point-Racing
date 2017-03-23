@@ -278,24 +278,24 @@ class Bar : public Widget
 {
 public:
 	Bar();	// Default constructor for the Label object.
-				/// <summary>
-				/// Overloaded constructor fothe Label object.
-				/// Takes a string of text that is to drawn on screen, the font that the text will be, 
-				/// the position the text will be on-screen and the size of the font as arguments.
-				/// </summary>
-				/// <param name="text"></param>
-				/// <param name="font"></param>
-				/// <param name="position"></param>
-				/// <param name="size"></param>
+	/// <summary>
+	/// Overloaded constructor fothe Label object.
+	/// Takes a string of text that is to drawn on screen, the font that the text will be, 
+	/// the position the text will be on-screen and the size of the font as arguments.
+	/// </summary>
+	/// <param name="text"></param>
+	/// <param name="font"></param>
+	/// <param name="position"></param>
+	/// <param name="size"></param>
 	Bar(sf::Vector2f position, int size);
 	~Bar();	// Deconstructor for the Label object.
 
 	virtual void update() override;	// "update" method for the Label object, Overrides the "update" method in the widget.
-									/// <summary>
-									/// "render" method for the Label object, Overrides the "render" method in the widget.
-									/// Takes the address of the game window as a argument.
-									/// </summary>
-									/// <param name="window"></param>
+	/// /// <summary>
+	/// "render" method for the Label object, Overrides the "render" method in the widget.
+	/// Takes the address of the game window as a argument.
+	/// </summary>
+	/// <param name="window"></param>
 	virtual void render(sf::RenderWindow& window) override;
 
 	virtual void getFocus() override;	// Sets hasFocus to "True" as well as changes the colour of the text to show the player that the Label hasFocus.
@@ -303,18 +303,20 @@ public:
 
 	void moveRight();	// Moves the Label right, This is used for transitioning between screens.
 	void moveLeft();	// Moves the Label left, This is used for transitioning between screens.
-	void assignValues(int level);	// assigning upgrade values to each bar
-	void increment();	// increments the bar by a set amount
-	int returnNode();	// returned the node
-	void reset();	// resets the bar
+
+	void assignValues(int level);	// Assigns the value of m_currentNode
+	void increment(); // Increments the value of m_currentNode by one.
+	int returnNode();	// Returns the value stored in m_currentNode.
+	void reset();	// Resets the value of m_currentNode. and clears the nodes.
+
 
 	sf::Vector2f m_position;	// Stores the on-screen positon of the Label.
 private:
 	bool m_hasFocus;	// Determines whether or not the Label hasFocus.
-	int m_currentNode;
+	int m_currentNode;	// Stores the value of the maximum node achieved.
 
-	sf::RectangleShape m_recBar;	// the bar rectangle
-	sf::RectangleShape m_innerRecs[3];	// the array of inner bar segments
+	sf::RectangleShape m_recBar;	// Outer rectangle to seperate nodes from the background
+	sf::RectangleShape m_innerRecs[3]; // Rectangles used to represent the nodes.
 };
 
 #endif // !BAR_H

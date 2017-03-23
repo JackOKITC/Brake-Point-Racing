@@ -1,7 +1,7 @@
 #pragma once
 
 /// <summary>
-/// Author: Jack O'Kelly
+/// Author: Ross Palmer
 /// Version: 1.0
 /// Created: 13/03/2017
 /// </summary>
@@ -13,9 +13,9 @@
 namespace Math
 {
 
-	double distance(sf::Vector2f v1, sf::Vector2f v2);
+	double distance(sf::Vector2f v1, sf::Vector2f v2);	// Formula for the distance between two points.
 
-	bool lineIntersectsCircle(sf::Vector2f ahead, sf::Vector2f halfAhead, sf::CircleShape circle);
+	bool lineIntersectsCircle(sf::Vector2f ahead, sf::Vector2f halfAhead, sf::CircleShape circle);	// Formula for checking if a line intersects a circle.
 
-	sf::Vector2f truncate(sf::Vector2f v, float const num);
+	sf::Vector2f truncate(sf::Vector2f v, float const num);	// Removes the decimal numbers from the whole.
 }

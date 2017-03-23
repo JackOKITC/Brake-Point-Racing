@@ -9,7 +9,7 @@ Garage::Garage(sf::Font font, sf::Font currencyFont, GameState * gameState, Play
 
 	// set the integers for keeping track of currently highlighted options to 0 so they start off on the "first" in each list
 	m_currentCar = 0;
-	m_currentStat = 1; // the DJ Dilema
+	m_currentStat = 1; // the DJ Dilemma
 	m_textFont = font;
 
 	// generate and place the images of each upgradeable car as well as the curent stats of the cars, with each upgrade bath and its current value set at the bottom of the screen

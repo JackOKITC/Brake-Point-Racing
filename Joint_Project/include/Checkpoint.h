@@ -13,15 +13,23 @@
 class Checkpoint
 {
 public:
-	Checkpoint();
-
+	Checkpoint();	// Default constructor for a checkpoint with no arguments.
+	/// <summary>
+	/// Checkpoint that takes 3 arguments, them being:
+	/// number which is used to determine where it falls on the list,
+	/// pos to determine where it will be place in the game world,
+	/// rotation which is used to determine its rotation in the game world.
+	/// </summary>
+	/// <param name="number"></param>
+	/// <param name="pos"></param>
+	/// <param name="rotation"></param>
 	Checkpoint(const int &number, const sf::Vector2f &pos, const double &rotation);
 	~Checkpoint();
 
-	sf::Vector2f m_position;
-	double m_rotation;
+	sf::Vector2f m_position;	// Stores the passed value of the checkpoint.
+	double m_rotation;	// Stores the passed value of the checkpoint.
 
 private:
-	int m_checkpointNumber;
+	int m_checkpointNumber; // Stores the passed value of the checkpoint.
 };
 #endif // !CHECKPOINT_H

@@ -7,7 +7,10 @@
 /// Break Point Racing is a challenging game that is fun to play, and allows each player to have their own game,
 /// As they get to choose which vehicle they race with (as each vehicle specialises in different stats; Brakes, Handling, and Acceleration),
 /// What upgrades they choose with their winnings, and what map they want to race the AI in.
-/// Total Time Taken: 140 hours
+/// 
+/// 
+/// Total Time Taken: 560hrs between 4 people.
+
 /// </summary> 
 
 #ifdef _DEBUG 

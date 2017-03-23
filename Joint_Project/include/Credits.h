@@ -2,7 +2,7 @@
 #define CREDITS_H
 
 /// <summary>
-/// Author: Peter Daly & Jack O'Kelly
+/// Author: Peter Daly, Jack O'Kelly
 /// Version: 1.0
 /// Created: 23/03/2017
 /// </summary>
