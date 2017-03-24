@@ -25,20 +25,33 @@
 class Game
 {
 public:
+	/// <summary>
+	/// Constructor that takes 2 arguments, them being:
+	/// font which stores the font that will be used to draw text to the screen,
+	/// titleFont which stores the font that will be used to draw text to the screen.
+	/// </summary>
+	/// <param name="font"></param>
+	/// <param name="titleFont"></param>
 	Game(sf::Font & font, sf::Font & titleFont);
-	~Game();
+	~Game();	// The De-constructor for the Game object.
 
 	void run();
 
 private:
+	/// <summary>
+	/// Takes a arguments, it being:
+	/// deltaTime
+	/// This is also where any other method that needs to be called frequently is called.
+	/// </summary>
+	/// <param name="deltaTime"></param>
 	void update(sf::Time deltaTime);
 	void render(sf::RenderWindow & window);
 	
 	GameState m_screen = GameState::SPLASH_STATE;
 
-	sf::RenderWindow m_window;
-	sf::Font m_font;
-	sf::Font m_titleFont;
+	sf::RenderWindow m_window;	// The game window.
+	sf::Font m_font;	// Used to draw text to the screen.
+	sf::Font m_titleFont;	// Used to draw text to the screen.
 
 	GameState *m_currentGameState;	// Stores the current game state
 	Xbox360Controller m_controller;	// stores the controller object

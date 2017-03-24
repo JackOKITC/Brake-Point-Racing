@@ -20,11 +20,31 @@ class Garage
 	const sf::Time TIME_PER_UPDATE = sf::microseconds(1000);
 
 public:
+	/// <summary>
+	/// Constructor that takes 4 arguments, them being:
+	/// font which stores the font that will be used to draw text to the screen,
+	/// currencyFont which stores the font that will be used to draw text to the screen,
+	/// gameState is a pointer to the object in game.cpp,
+	/// player is a pointer the player object.
+	/// </summary>
+	/// <param name="font"></param>
+	/// <param name="currencyFont"></param>
+	/// <param name="gameState"></param>
+	/// <param name="player"></param>
 	Garage(sf::Font font, sf::Font currencyFont, GameState *gameState, Player * player);
-	~Garage();
+	~Garage();	// De-constructor for the garage screen.
 
+	/// <summary>
+	/// Takes 2 arguments, them being:
+	/// controller which is a reference to the controller object in game.cpp,
+	/// dt is the time between updates.
+	/// 
+	/// This is also where any other method that needs to be called frequently is called.
+	/// </summary>
+	/// <param name="controller"></param>
+	/// <param name="dt"></param>
 	void update(Xbox360Controller & controller, sf::Time dt);
-	void render(sf::RenderWindow & window);
+	void render(sf::RenderWindow & window);	// Where everything is drawn to the game window.
 
 	void checkSelection(GamePadState m_state, Xbox360Controller m_controller);	// Function to check which button is selected
 	void checkButton(GamePadState m_state, Xbox360Controller m_controller);	// Function to check if the selected button is clicked
@@ -32,12 +52,12 @@ public:
 
 private:
 
-	GameState *m_gameState;
-	Player *m_player;
-	bool m_transitionToNext = false;
-	sf::Texture m_backgroundTex;
-	sf::Sprite m_backgroundSprite;
-	sf::Font m_textFont, m_currencyFont;
+	GameState *m_gameState;	// Pointer to the object in game.cpp.
+	Player *m_player;	// Pointer to the player object.
+	bool m_transitionToNext = false;	// Represents whether the player is selecting a car or upgrading one.
+	sf::Texture m_backgroundTex;	// Stores the background texture.
+	sf::Sprite m_backgroundSprite;	// Represents the background in the game world.
+	sf::Font m_textFont, m_currencyFont;	// Used to draw text to the screen.
 
 	Xbox360Controller * m_controller;
 

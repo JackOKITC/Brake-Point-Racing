@@ -16,86 +16,80 @@
 
 struct Road1Data
 {
-	std::string m_fileName;
-	std::string m_fileID;
-	sf::Vector2f m_position;
-	double m_rotation;
-	double m_scale;
+	std::string m_fileName;		// The name of the file in the yaml file.
+	std::string m_fileID;		// The name the file can be called by.
+	sf::Vector2f m_position;	// Its position in the game world.
+	double m_rotation;			// Its rotation in the game world.
+	double m_scale;				// Its scale in the game world.
 };
 
 struct Road2Data
 {
-	std::string m_fileName;
-	std::string m_fileID;
-	sf::Vector2f m_position;
-	double m_rotation;
-	double m_scale;
+	std::string m_fileName;		// The name of the file in the yaml file.
+	std::string m_fileID;		// The name the file can be called by.
+	sf::Vector2f m_position;	// Its position in the game world.
+	double m_rotation;			// Its rotation in the game world.
+	double m_scale;				// Its scale in the game world.
 };
 
 struct BackgroundData
 {
-	std::string m_fileName;
-	std::string m_fileID;
+	std::string m_fileName;		// The name of the file in the yaml file.
+	std::string m_fileID;		// The name the file can be called by.
 };
 
 struct StartlineData
 {
-	std::string m_fileName;
-	std::string m_fileID;
+	std::string m_fileName;		// The name of the file in the yaml file.
+	std::string m_fileID;		// The name the file can be called by.
 };
 
 struct UpgradeData
 {
-	std::string m_fileName;
-	std::string m_fileID;
+	std::string m_fileName;		// The name of the file in the yaml file.
+	std::string m_fileID;		// The name the file can be called by.
 };
 
 struct CarData
 {
-	std::string m_fileName;
-	std::string m_fileID;
-	int m_brake;
-	int m_handling;
-	int m_acceleration;
+	std::string m_fileName;		// The name of the file in the yaml file.
+	std::string m_fileID;		// The name the file can be called by.
+	int m_brake;				// The brake value of the car.
+	int m_handling;				// The handling value of the car.
+	int m_acceleration;			// The acceleration value of the car.
 };
 
 struct Node1Data
 {
-	int m_number;
-	sf::Vector2f m_position;
+	int m_number;				// The number of the node in the yaml file.
+	sf::Vector2f m_position;	// Its position in the game world.
 };
 
 struct Node2Data
 {
-	int m_number;
-	sf::Vector2f m_position;
+	int m_number;				// The number of the node in the yaml file.
+	sf::Vector2f m_position;	// Its position in the game world.
 };
 
 struct Checkpoint1Data
 {
-	int m_number;
-	sf::Vector2f m_position;
-	double m_rotation;
+	int m_number;				// The number of the node in the yaml file.
+	sf::Vector2f m_position;	// Its position in the game world.
+	double m_rotation;			// Its rotation in the game world.
 };
 
 struct Checkpoint2Data
 {
-	int m_number;
-	sf::Vector2f m_position;
-	double m_rotation;
-};
-
-struct CheckpointData
-{
-	int m_number;
-	sf::Vector2f m_position;
+	int m_number;				// The number of the node in the yaml file.
+	sf::Vector2f m_position;	// Its position in the game world.
+	double m_rotation;			// Its rotation in the game world.
 };
 
 // Stores the music data so it can be loaded in via YAML
 struct AudioData
 {
-	std::string m_fileName;
-	std::string m_fileID;
+	std::string m_fileName;		// The name of the file in the yaml file.
+	std::string m_fileID;		// The name the file can be called by.
 };
 
 // Stores all the yaml objects in the LevelData struct

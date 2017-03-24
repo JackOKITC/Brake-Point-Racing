@@ -9,13 +9,13 @@
 
 enum class GameState
 {
-	SPLASH_STATE,
-	MENU_STATE,
-	PLAY_STATE,
-	UPGRADE_STATE,
-	OPTIONS_STATE,
-	CREDITS_STATE,
-	PRERACE_STATE,
-	END_STATE
+	SPLASH_STATE,	// Enum that represents Splash.cpp
+	MENU_STATE,		// Enum that represents Menu.cpp
+	PLAY_STATE,		// Enum that represents Play.cpp
+	UPGRADE_STATE,	// Enum that represents Garage.cpp
+	OPTIONS_STATE,	// Enum that represents Options.cpp
+	CREDITS_STATE,	// Enum that represents Credits.cpp
+	PRERACE_STATE,	// Enum that represents PreRace.cpp
+	END_STATE		// Enum that represents EndScreen.cpp
 };
 #endif // !GAME_STATE_H
